@@ -1,0 +1,40 @@
+<RCC>
+  <qresource>
+    <file alias="search.png">../../../../../../../usr/share/icons/oxygen/16x16/actions/edit-find.png</file>
+    <file alias="edit.png">../../../../../../../usr/share/icons/oxygen/16x16/actions/document-edit.png</file>
+    <file alias="minus.png">../../../../../../../usr/share/icons/oxygen/16x16/actions/list-remove.png</file>
+    <file alias="cancel.png">../../../../../../../usr/share/icons/oxygen/16x16/actions/dialog-cancel.png</file>
+    <file alias="plus.png">../../../../../../../usr/share/icons/oxygen/16x16/actions/list-add.png</file>
+    <file alias="save.png">../../../../../../../usr/share/icons/oxygen/16x16/actions/dialog-ok-apply.png</file>
+    <file alias="arrow-right-double.png">../../../../../../../usr/share/icons/oxygen/22x22/actions/arrow-right-double.png</file>
+    <file alias="arrow-left-double.png">../../../../../../../usr/share/icons/oxygen/22x22/actions/arrow-left-double.png</file>
+    <file alias="arrow-up-double.png">../../../../../../../usr/share/icons/oxygen/22x22/actions/arrow-up-double.png</file>
+    <file alias="arrow-down-double.png">../../../../../../../usr/share/icons/oxygen/22x22/actions/arrow-down-double.png</file>
+    <file alias="arrow-down.png">../../../../../../../usr/share/icons/oxygen/22x22/actions/arrow-down.png</file>
+    <file alias="arrow-up">../../../../../../../usr/share/icons/oxygen/22x22/actions/arrow-up.png</file>
+    <file alias="panel-icon.png">../../../../../../../usr/share/icons/oxygen/32x32/actions/run-build.png</file>
+
+    <file alias="status-installed-inactive.png">../../../../../../../usr/share/icons/nuvola/22x22/actions/ledred.png</file>
+    <file alias="status-installed-active.png">../../../../../../../usr/share/icons/nuvola/22x22/actions/ledgreen.png</file>
+    <file alias="status-installed-starting.png">../../../../../../../usr/share/icons/nuvola/22x22/actions/ledyellow.png</file>
+    <file alias="status-installed-stopping.png">../../../../../../../usr/share/icons/nuvola/22x22/actions/ledyellow.png</file>
+    <file alias="status-installed-unknown.png">../../../../../../../usr/share/icons/nuvola/22x22/actions/ledyellow.png</file>
+
+    <file alias="status-unavailable-inactive.png">../../../../../../../usr/share/icons/nuvola/22x22/actions/ledred.png</file>
+    <file alias="status-unavailable-active.png">../../../../../../../usr/share/icons/nuvola/22x22/actions/ledgreen.png</file>
+    <file alias="status-unavailable-starting.png">../../../../../../../usr/share/icons/nuvola/22x22/actions/ledyellow.png</file>
+    <file alias="status-unavailable-stopping.png">../../../../../../../usr/share/icons/nuvola/22x22/actions/ledyellow.png</file>
+    <file alias="status-unavailable-unknown.png">../../../../../../../usr/share/icons/nuvola/22x22/actions/ledyellow.png</file>
+
+    <file alias="status-unknown-inactive.png">../../../../../../../usr/share/icons/nuvola/22x22/actions/ledred.png</file>
+    <file alias="status-unknown-active.png">../../../../../../../usr/share/icons/nuvola/22x22/actions/ledgreen.png</file>
+    <file alias="status-unknown-starting.png">../../../../../../../usr/share/icons/nuvola/22x22/actions/ledyellow.png</file>
+    <file alias="status-unknown-stopping.png">../../../../../../../usr/share/icons/nuvola/22x22/actions/ledyellow.png</file>
+    <file alias="status-unknown-unknown.png">../../../../../../../usr/share/icons/nuvola/22x22/actions/ledyellow.png</file>
+
+    <file alias="status-installed.png">../../../../../../../usr/share/icons/nuvola/22x22/actions/ledgreen.png</file>
+    <file alias="status-unavailable.png">../../../../../../../usr/share/icons/nuvola/22x22/actions/ledred.png</file>
+    <file alias="status-unknown.png">../../../../../../../usr/share/icons/nuvola/22x22/actions/ledyellow.png</file>
+
+  </qresource>
+</RCC>

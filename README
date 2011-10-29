@@ -1,0 +1,5 @@
+see http://kde-look.org/content/show.php/Service+Monitor?content=125203 for description
+
+INSTALLATION: execute "plasmapkg -i /path/to/smart-notify"
+
+REMOVAL: "plasmapkg -r service-monitor"

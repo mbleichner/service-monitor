@@ -1,0 +1,45 @@
+<services>
+
+  <name>Less common services</name>
+
+  <description>
+    Less common services/daemons or services specific to some systems.
+  </description>
+
+  <service id="polipo-daemon">
+    <name>Polipo Caching Proxy</name>
+    <description>Polipo Caching Proxy Daemon - submitted by rysiek</description>
+    <installcheck>ls $INITDIR/polipo</installcheck>
+    <runningcheck>pidof polipo</runningcheck>
+    <startcommand>$SUDO $INITDIR/polipo start</startcommand>
+    <stopcommand>$SUDO $INITDIR/polipo stop</stopcommand>
+  </service>
+
+  <service id="nginx-daemon">
+    <name>Nginx Webserver</name>
+    <description>Lite web server</description>
+    <installcheck>ls $INITDIR/nginx</installcheck>
+    <runningcheck>$INITDIR/nginx status</runningcheck>
+    <startcommand>$SUDO $INITDIR/nginx start</startcommand>
+    <stopcommand>$SUDO $INITDIR/nginx stop</stopcommand>
+  </service>
+
+  <service id="mongodb-daemon">
+    <name>MongoDB</name>
+    <description>A document-oriented database</description>
+    <installcheck>ls /bin/mongod</installcheck>
+    <runningcheck>pidof mongod</runningcheck>
+    <startcommand>$SUDO $INITDIR/mongodb start</startcommand>
+    <stopcommand>$SUDO $INITDIR/mongodb stop</stopcommand>
+  </service>
+
+  <service id="asus-oled-daemon">
+    <name>Asus OLEDs</name>
+    <description>OLED display control for ASUS laptops (http://asusg50oled.sourceforge.net)</description>
+    <installcheck>ls $INITDIR/asusg50leds.sh</installcheck>
+    <runningcheck>ps ax | grep leds.jar | grep -v grep</runningcheck>
+    <startcommand>$SUDO $INITDIR/asusg50leds.sh start</startcommand>
+    <stopcommand>$SUDO $INITDIR/asusg50leds.sh stop</stopcommand>
+  </service>
+
+</services>

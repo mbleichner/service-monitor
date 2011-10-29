@@ -1,0 +1,19 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Service Monitor
+Comment=Monitor/start/stop background services (daemons)
+Type=Service
+ServiceTypes=Plasma/Applet
+Icon=run-build
+X-Plasma-API=python
+X-Plasma-MainScript=code/main.py
+X-Plasma-NotificationArea=true
+X-KDE-PluginInfo-Author=Manuel Bleichner
+X-KDE-PluginInfo-Email=mbleichner@web.de
+X-KDE-PluginInfo-Name=service-monitor
+X-KDE-PluginInfo-Version=1.0.2
+X-KDE-PluginInfo-Website=http://www.documentroot.net
+X-KDE-PluginInfo-Category=System Information
+X-KDE-PluginInfo-Depends=Python-kde4, plasma-scriptengine-python
+X-KDE-PluginInfo-License=GPL
+X-KDE-PluginInfo-EnabledByDefault=true
