@@ -1,5 +1,6 @@
 see http://kde-look.org/content/show.php/Service+Monitor?content=125203 for description
 
-INSTALLATION: execute "plasmapkg -i /path/to/smart-notify"
+INSTALLATION: plasmapkg -i /path/to/service-monitor
+              Then add the widget in KDE.
 
-REMOVAL: "plasmapkg -r service-monitor"
+REMOVAL:      plasmapkg -r service-monitor
