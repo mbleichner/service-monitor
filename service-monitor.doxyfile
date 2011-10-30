@@ -1,0 +1,56 @@
+DOXYFILE_ENCODING      = UTF-8
+
+# Projektdaten
+PROJECT_NAME           = "Service Monitor"
+PROJECT_NUMBER         = "1.1.3"
+
+# Welche Dateien sollen dokumentiert werden?
+EXTRACT_ALL            = YES
+INPUT                  = contents/code
+IGNORE_PREFIX          = contents/code
+INPUT_ENCODING         = UTF-8
+FILE_PATTERNS          = *.py
+RECURSIVE              = YES
+EXCLUDE_PATTERNS       = */.git */.svn */sync */tmp */log
+
+# Wohin sollen die Daten ausgegeben werden?
+OUTPUT_DIRECTORY       = doxygen
+GENERATE_HTML          = YES
+GENERATE_LATEX         = NO
+HTML_OUTPUT            = .
+
+# Wie sollen die Daten aufbereitet werden?
+OPTIMIZE_OUTPUT_FOR_C  = YES
+OPTIMIZE_OUTPUT_JAVA   = NO
+OPTIMIZE_FOR_FORTRAN   = NO
+OPTIMIZE_OUTPUT_VHDL   = NO
+HTML_DYNAMIC_SECTIONS  = YES
+SHOW_NAMESPACES        = NO
+HIDE_SCOPE_NAMES       = YES
+JAVADOC_AUTOBRIEF      = YES
+BRIEF_MEMBER_DESC      = NO
+SOURCE_BROWSER         = YES
+STRIP_CODE_COMMENTS    = NO
+TAB_SIZE               = 2
+
+# Optionen für GraphViz, HAVE_DOT = NO deaktiviert Graphviz
+HAVE_DOT               = NO
+DOT_NUM_THREADS        = 0
+DOT_FONTNAME           = Helvetica
+DOT_FONTSIZE           = 10
+DOT_FONTPATH           = 
+CLASS_GRAPH            = NO
+COLLABORATION_GRAPH    = NO
+GROUP_GRAPHS           = NO
+UML_LOOK               = NO
+TEMPLATE_RELATIONS     = NO
+INCLUDE_GRAPH          = YES
+INCLUDED_BY_GRAPH      = YES
+CALL_GRAPH             = YES
+CALLER_GRAPH           = YES
+GRAPHICAL_HIERARCHY    = NO
+DIRECTORY_GRAPH        = YES
+DOT_IMAGE_FORMAT       = png
+
+# Eine Dokumentation aller verfügbaren Optionen gibts hier:
+# http://www.stack.nl/~dimitri/doxygen/config.html
