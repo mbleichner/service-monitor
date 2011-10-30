@@ -14,8 +14,8 @@
     <description>Periodic command scheduler</description>
     <installcheck>ls /usr/sbin/cron</installcheck>
     <runningcheck>pidof cron</runningcheck>
-    <startcommand>$SUDO $INITDIR/cron start</startcommand>
-    <stopcommand>$SUDO $INITDIR/cron stop</stopcommand>
+    <startcommand>$SUDO $INITDIR/cron start &amp;> /dev/null</startcommand>
+    <stopcommand>$SUDO $INITDIR/cron stop &amp;> /dev/null</stopcommand>
   </service>
 
   <service id="cups-daemon">
@@ -23,8 +23,8 @@
     <description>The Common Unix Printing System daemon</description>
     <installcheck>ls /usr/sbin/cupsd</installcheck>
     <runningcheck>pidof cupsd</runningcheck>
-    <startcommand>$SUDO $INITDIR/cups start</startcommand>
-    <stopcommand>$SUDO $INITDIR/cups stop</stopcommand>
+    <startcommand>$SUDO $INITDIR/cups start &amp;> /dev/null</startcommand>
+    <stopcommand>$SUDO $INITDIR/cups stop &amp;> /dev/null</stopcommand>
   </service>
 
   <service id="apache2-daemon">
@@ -32,8 +32,8 @@
     <description>The most commonly used web server</description>
     <installcheck>ls /usr/sbin/apache2</installcheck>
     <runningcheck>pidof apache2</runningcheck>
-    <startcommand>$SUDO $INITDIR/apache2 start</startcommand>
-    <stopcommand>$SUDO $INITDIR/apache2 stop</stopcommand>
+    <startcommand>$SUDO $INITDIR/apache2 start &amp;> /dev/null</startcommand>
+    <stopcommand>$SUDO $INITDIR/apache2 stop &amp;> /dev/null</stopcommand>
   </service>
 
   <service id="boinc-daemon">
@@ -50,8 +50,8 @@
     <description>Database server used by many programs (stopping could be a bad idea)</description>
     <installcheck>ls $INITDIR/mysql</installcheck>
     <runningcheck>pidof mysqld</runningcheck>
-    <startcommand>$SUDO $INITDIR/mysql start</startcommand>
-    <stopcommand>$SUDO $INITDIR/mysql stop</stopcommand>
+    <startcommand>$SUDO $INITDIR/mysql start &amp;> /dev/null</startcommand>
+    <stopcommand>$SUDO $INITDIR/mysql stop &amp;> /dev/null</stopcommand>
   </service>
 
   <service id="wicd-daemon">
@@ -59,8 +59,8 @@
     <description>An alternative to Network Manager</description>
     <installcheck>ls $INITDIR/wicd</installcheck>
     <runningcheck>ps ax | grep wicd-daemon | grep -v grep</runningcheck>
-    <startcommand>$SUDO $INITDIR/wicd start</startcommand>
-    <stopcommand>$SUDO $INITDIR/wicd stop</stopcommand>
+    <startcommand>$SUDO $INITDIR/wicd start &amp;> /dev/null</startcommand>
+    <stopcommand>$SUDO $INITDIR/wicd stop &amp;> /dev/null</stopcommand>
   </service>
 
   <service id="bluetooth-daemon">
@@ -68,8 +68,8 @@
     <description>The bluetooth daemon</description>
     <installcheck>ls $INITDIR/bluetooth</installcheck>
     <runningcheck>pidof bluetoothd</runningcheck>
-    <startcommand>$SUDO $INITDIR/bluetooth start</startcommand>
-    <stopcommand>$SUDO $INITDIR/bluetooth stop</stopcommand>
+    <startcommand>$SUDO $INITDIR/bluetooth start &amp;> /dev/null</startcommand>
+    <stopcommand>$SUDO $INITDIR/bluetooth stop &amp;> /dev/null</stopcommand>
   </service>
 
   <service id="proftp-daemon">
@@ -77,17 +77,8 @@
     <description>Powerful, highly configurable FTP server</description>
     <installcheck>ls $INITDIR/proftpd</installcheck>
     <runningcheck>$INITDIR/proftpd status</runningcheck>
-    <startcommand>$SUDO $INITDIR/proftpd start</startcommand>
-    <stopcommand>$SUDO $INITDIR/proftpd stop</stopcommand>
-  </service>
-
-  <service id="nginx-daemon">
-    <name>Nginx Webserver</name>
-    <description>Lite web server</description>
-    <installcheck>ls $INITDIR/nginx</installcheck>
-    <runningcheck>$INITDIR/nginx status</runningcheck>
-    <startcommand>$SUDO $INITDIR/nginx start</startcommand>
-    <stopcommand>$SUDO $INITDIR/nginx stop</stopcommand>
+    <startcommand>$SUDO $INITDIR/proftpd start &amp;> /dev/null</startcommand>
+    <stopcommand>$SUDO $INITDIR/proftpd stop &amp;> /dev/null</stopcommand>
   </service>
 
   <service id="ssh-daemon">
@@ -95,8 +86,17 @@
     <description>OpenSSH (Secure Shell) Server</description>
     <installcheck>ls $INITDIR/ssh</installcheck>
     <runningcheck>pidof sshd</runningcheck>
-    <startcommand>$SUDO $INITDIR/ssh start</startcommand>
-    <stopcommand>$SUDO $INITDIR/ssh stop</stopcommand>
+    <startcommand>$SUDO $INITDIR/ssh start &amp;> /dev/null</startcommand>
+    <stopcommand>$SUDO $INITDIR/ssh stop &amp;> /dev/null</stopcommand>
+  </service>
+
+  <service id="ssh-daemon-2">
+    <name>SSH Server (alternative)</name>
+    <description>Use this definition if the other one does not work for you</description>
+    <installcheck>ls $INITDIR/sshd</installcheck>
+    <runningcheck>pidof sshd</runningcheck>
+    <startcommand>$SUDO $INITDIR/sshd start &amp;> /dev/null</startcommand>
+    <stopcommand>$SUDO $INITDIR/sshd stop &amp;> /dev/null</stopcommand>
   </service>
 
   <service id="samba-daemon">
@@ -104,17 +104,17 @@
     <description>SMB File Server</description>
     <installcheck>ls $INITDIR/samba</installcheck>
     <runningcheck>pidof smbd</runningcheck>
-    <startcommand>$SUDO $INITDIR/samba start</startcommand>
-    <stopcommand>$SUDO $INITDIR/samba stop</stopcommand>
+    <startcommand>$SUDO $INITDIR/samba start &amp;> /dev/null</startcommand>
+    <stopcommand>$SUDO $INITDIR/samba stop &amp;> /dev/null</stopcommand>
   </service>
 
   <service id="postgresql-daemon">
     <name>PostgreSQL Server</name>
     <description>PostgreSQL Database Server</description>
-    <installcheck>ls $INITDIR/postgresql-8.4</installcheck>
+    <installcheck>ls $INITDIR/postgresql</installcheck>
     <runningcheck>pidof postgres</runningcheck>
-    <startcommand>$SUDO $INITDIR/postgresql-8.4 start</startcommand>
-    <stopcommand>$SUDO $INITDIR/postgresql-8.4 stop</stopcommand>
+    <startcommand>$SUDO $INITDIR/postgresql start &amp;> /dev/null</startcommand>
+    <stopcommand>$SUDO $INITDIR/postgresql stop &amp;> /dev/null</stopcommand>
   </service>
 
   <service id="akonadi-daemon">
@@ -122,8 +122,8 @@
     <description>Akonadi Personal Information Management</description>
     <installcheck>ls /usr/bin/akonadictl</installcheck>
     <runningcheck>pidof akonadiserver</runningcheck>
-    <startcommand>/usr/bin/akonadictl start</startcommand>
-    <stopcommand>/usr/bin/akonadictl stop</stopcommand>
+    <startcommand>/usr/bin/akonadictl start &amp;> /dev/null</startcommand>
+    <stopcommand>/usr/bin/akonadictl stop &amp;> /dev/null</stopcommand>
   </service>
 
   <service id="nepomuk-daemon">
@@ -135,22 +135,31 @@
     <stopcommand>/usr/bin/akonadictl stop; qdbus org.kde.NepomukServer /nepomukserver org.kde.NepomukServer.quit</stopcommand>
   </service>
 
-  <service id="polipo-daemon">
-    <name>Polipo Caching Proxy</name>
-    <description>Polipo Caching Proxy Daemon - submitted by rysiek</description>
-    <installcheck>ls $INITDIR/polipo</installcheck>
-    <runningcheck>pidof polipo</runningcheck>
-    <startcommand>$SUDO $INITDIR/polipo start</startcommand>
-    <stopcommand>$SUDO $INITDIR/polipo stop</stopcommand>
-  </service>
-
   <service id="tor-daemon">
     <name>TOR Daemon</name>
     <description>The Onion Router anonimizing daemon - submitted by rysiek</description>
-    <installcheck>ls $INITDIR/tor</installcheck>
+    <installcheck>ls /usr/bin/tor</installcheck>
     <runningcheck>pidof tor</runningcheck>
-    <startcommand>$SUDO $INITDIR/tor start</startcommand>
-    <stopcommand>$SUDO $INITDIR/tor stop</stopcommand>
+    <startcommand>$SUDO $INITDIR/tor start &amp;> /dev/null</startcommand>
+    <stopcommand>$SUDO $INITDIR/tor stop &amp;> /dev/null</stopcommand>
+  </service>
+
+  <service id="avahi-daemon">
+    <name>Avahi Daemon</name>
+    <description>Avahi Network Discovery Daemon</description>
+    <installcheck>ls $INITDIR/avahi-daemon</installcheck>
+    <runningcheck>pidof avahi-daemon</runningcheck>
+    <startcommand>$SUDO $INITDIR/avahi-daemon start &amp;> /dev/null</startcommand>
+    <stopcommand>$SUDO $INITDIR/avahi-daemon stop &amp;> /dev/null</stopcommand>
+  </service>
+
+  <service id="privoxy-daemon">
+    <name>Privoxy</name>
+    <description>Proxy for enhanced security and privacy - submitted by FreeInfo</description>
+    <installcheck>ls $INITDIR/privoxy</installcheck>
+    <runningcheck>pidof privoxy</runningcheck>
+    <startcommand>$SUDO $INITDIR/privoxy start &amp;> /dev/null</startcommand>
+    <stopcommand>$SUDO $INITDIR/privoxy stop &amp;> /dev/null</stopcommand>
   </service>
 
 </services>

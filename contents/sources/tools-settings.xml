@@ -31,7 +31,7 @@
     <description>Shut down the system 1 hour delayed.</description>
     <installcheck>echo "always installed"</installcheck>
     <runningcheck>pidof shutdown</runningcheck>
-    <startcommand>$SUDO "shutdown -h 60" &amp; sleep 0.5</startcommand>
+    <startcommand>$SUDO "shutdown -h 60"</startcommand>
     <stopcommand>$SUDO "shutdown -c"</stopcommand>
   </service>
 
@@ -51,6 +51,24 @@
     <runningcheck>pidof aptitude</runningcheck>
     <startcommand>$SUDO " bash -c 'aptitude update &amp;&amp; aptitude -y -d safe-upgrade &amp;&amp; aptitude autoclean' " &amp;</startcommand>
     <stopcommand>$SUDO "killall aptitude"</stopcommand>
+  </service>
+
+  <service id="kde-compositing">
+    <name>Compositing</name>
+    <description>KDE4 Compositing effects - submitted by Lord Spectre</description>
+    <installcheck>qdbus org.kde.kwin | grep KWin</installcheck>
+    <runningcheck>qdbus org.kde.kwin /KWin compositingActive | grep true</runningcheck>
+    <startcommand>qdbus org.kde.kwin /KWin toggleCompositing; sleep 1</startcommand>
+    <stopcommand>qdbus org.kde.kwin /KWin toggleCompositing; sleep 0.5</stopcommand>
+  </service>
+
+  <service id="xbindkeys">
+    <name>Xbindkeys</name>
+    <description>Map commands to keyboard or mouse buttons - submitted by Scoolasse</description>
+    <installcheck>ls /usr/bin/xbindkeys</installcheck>
+    <runningcheck>pidof xbindkeys</runningcheck>
+    <startcommand>xbindkeys &amp;</startcommand>
+    <stopcommand>killall xbindkeys</stopcommand>
   </service>
 
 </services>
