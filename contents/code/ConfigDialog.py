@@ -181,7 +181,7 @@ class ConfigDialog(KPageDialog):
       item.service = service
       self.servicesPage.activeServicesList.addItem(item)
       item.setIcon(QIcon(':/status-%s.png' % service.state[0]))
-    for source in self.sources.values():
+    for filename, source in sorted(self.sources.items()):
       servicesToShow = [s for s in source.services if not activeServicesIDs.contains(s.id) and self.services[s.id] == s]
       if len(servicesToShow) == 0: continue
       item = QListWidgetItem(source.name if source.name else source.filename)
