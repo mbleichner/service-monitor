@@ -144,7 +144,7 @@ class Service(QObject):
     proc = self.sender()
     errorOutput = QString(proc.readAllStandardError())
     if errorOutput:
-      QMessageBox.critical(None, self.name, 'The command produced the following error:\n%s' % errorOutput, QMessageBox.Ok)
+      QMessageBox.critical(None, self.name, self.tr('The command produced the following error:') + '\n' + errorOutput, QMessageBox.Ok)
     self.setState( (self.state[0], 'unknown') )
     self.startPolling()
 
