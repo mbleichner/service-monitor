@@ -1,20 +1,20 @@
 # -*- coding: utf-8 -*-
+import shutil, random, os
 
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 from PyKDE4.kdeui import *
 
-import shutil, random
+from generated.Services_ui import *
+from generated.Custom_ui import *
+from generated.Sources_ui import *
+from generated.Settings_ui import *
 
-from UI.Services import *
-from UI.Custom import *
-from UI.Sources import *
-from UI.Settings import *
 from Source import *
 from Service import *
 
-
-contentsdir = os.path.dirname(os.path.dirname(__file__))
+codedir = os.path.dirname(__file__)
+contentsdir = os.path.dirname(codedir)
 
 ## A KPageDialog for accessing and manipulating settings.
 #

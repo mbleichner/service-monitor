@@ -6,9 +6,11 @@ from PyKDE4.plasma import *
 from PyKDE4.plasmascript import *
 from PyKDE4.kdeui import *
 
+import generated.icons_default_rc
+import generated.indicators_default_rc
+
 from ConfigDialog import *
 from ShellProcess import *
-import UI.Icons_rc
 
 ## This is the plasmoid which can be placed on the desktop or in dock.
 # First the config dialog is initialised which loads all sources, services and configuration.
