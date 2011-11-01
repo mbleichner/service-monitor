@@ -5,7 +5,7 @@
     <message>
         <location filename="ConfigDialog.py" line="63"/>
         <source>Service Monitor Configuration</source>
-        <translation>SM KONFIG</translation>
+        <translation>Service Monitor Konfiguration</translation>
     </message>
 </context>
 <context>
@@ -13,62 +13,62 @@
     <message>
         <location filename="Custom_ui.py" line="166"/>
         <source>Dialog</source>
-        <translation></translation>
+        <translation>Dialog</translation>
     </message>
     <message>
         <location filename="Custom_ui.py" line="167"/>
         <source>Add custom service</source>
-        <translation type="unfinished">Hinzufügen</translation>
+        <translation>Eigenen Dienst hinzufügen</translation>
     </message>
     <message>
         <location filename="Custom_ui.py" line="168"/>
         <source>Edit selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Bearbeiten</translation>
     </message>
     <message>
         <location filename="Custom_ui.py" line="169"/>
         <source>Remove selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Löschen</translation>
     </message>
     <message>
         <location filename="Custom_ui.py" line="170"/>
         <source>Upload service definition for other people</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="Custom_ui.py" line="171"/>
         <source>Share with others</source>
-        <translation type="unfinished"></translation>
+        <translation>Mit anderen teilen</translation>
     </message>
     <message>
         <location filename="Custom_ui.py" line="172"/>
         <source>Service Name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Name des Dienstes:</translation>
     </message>
     <message>
         <location filename="Custom_ui.py" line="173"/>
         <source>Short description:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kurzbeschreibung:</translation>
     </message>
     <message>
         <location filename="Custom_ui.py" line="174"/>
         <source>Install check:</source>
-        <translation type="unfinished"></translation>
+        <translation>Install Check:</translation>
     </message>
     <message>
         <location filename="Custom_ui.py" line="175"/>
         <source>Running check:</source>
-        <translation type="unfinished"></translation>
+        <translation>Running Check:</translation>
     </message>
     <message>
         <location filename="Custom_ui.py" line="176"/>
         <source>Start command:</source>
-        <translation type="unfinished"></translation>
+        <translation>Start-Kommando:</translation>
     </message>
     <message>
         <location filename="Custom_ui.py" line="177"/>
         <source>Stop command:</source>
-        <translation type="unfinished"></translation>
+        <translation>Stop-Kommando:</translation>
     </message>
     <message>
         <location filename="Custom_ui.py" line="178"/>
@@ -79,7 +79,13 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Install/running checks:&lt;/span&gt; These fields take bash commands. For a check to succeed, it must produce non-empty output &lt;span style=&quot; font-weight:600;&quot;&gt;and&lt;/span&gt; return a non-zero exit code.&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;For example, to check if a file exists, you can use: &lt;span style=&quot; font-style:italic;&quot;&gt;ls /path/to/file&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Start/stop commands:&lt;/span&gt; Every command should terminate shortly after invocation. Unlike the earlier version, the desktop will no longer freeze if a command does not terminate, but Service Monitor will never know if the command succeeded. Use &amp;amp; to start a process in background if necessary.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Nimbus Sans L&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Install/running checks:&lt;/span&gt; These fields take bash commands. For a check to succeed, it must produce non-empty output &lt;span style=&quot; font-weight:600;&quot;&gt;and&lt;/span&gt; return a non-zero exit code.&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;For example, to check if a file exists, you can use: &lt;span style=&quot; font-style:italic;&quot;&gt;ls /path/to/file&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Start/stop commands:&lt;/span&gt; Every command should terminate shortly after invocation. Unlike the earlier version, the desktop will no longer freeze if a command does not terminate, but Service Monitor will never know if the command succeeded. Use &amp;amp; to start a process in background if necessary.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
@@ -87,17 +93,17 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Services_ui.py" line="144"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Dialog</translation>
     </message>
     <message>
         <location filename="Services_ui.py" line="145"/>
         <source>Active Services</source>
-        <translation>Aktive Dienste</translation>
+        <translation>Überwachte Dienste</translation>
     </message>
     <message>
         <location filename="Services_ui.py" line="146"/>
         <source>Available Services</source>
-        <translation type="unfinished"></translation>
+        <translation>Verfügbare Dienste</translation>
     </message>
     <message>
         <location filename="Services_ui.py" line="147"/>
@@ -116,58 +122,59 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Settings_ui.py" line="109"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Dialog</translation>
     </message>
     <message>
         <location filename="Settings_ui.py" line="110"/>
         <source>Environment Variables</source>
-        <translation type="unfinished"></translation>
+        <translation>Umgebungsvariablen</translation>
     </message>
     <message>
         <location filename="Settings_ui.py" line="111"/>
         <source>Variable name</source>
-        <translation type="unfinished"></translation>
+        <translation>Variablenname</translation>
     </message>
     <message>
         <location filename="Settings_ui.py" line="112"/>
         <source>Value</source>
-        <translation type="unfinished"></translation>
+        <translation>Wert</translation>
     </message>
     <message>
         <location filename="Settings_ui.py" line="113"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Hinzufügen</translation>
     </message>
     <message>
         <location filename="Settings_ui.py" line="114"/>
         <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Entfernen</translation>
     </message>
     <message>
         <location filename="Settings_ui.py" line="115"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Einstellungen</translation>
     </message>
     <message>
         <location filename="Settings_ui.py" line="116"/>
         <source>Polling interval:</source>
-        <translation type="unfinished"></translation>
+        <translation>Abfrageintervall:</translation>
     </message>
     <message>
         <location filename="Settings_ui.py" line="117"/>
         <source>Update service status every x seconds.</source>
-        <translation type="unfinished"></translation>
+        <translation>Status alle x Sekunden aktualisieren.</translation>
     </message>
     <message>
         <location filename="Settings_ui.py" line="118"/>
         <source>Append sleep to start/stop command:</source>
-        <translation type="unfinished"></translation>
+        <translation>Wartezeit nach start/stop Kommandos:</translation>
     </message>
     <message>
         <location filename="Settings_ui.py" line="119"/>
         <source>Wait x seconds after execution of start/stop commands before rechecking service status.
 If the status immediatly flashes back to inactive when starting a service, increase this value.</source>
-        <translation type="unfinished"></translation>
+        <translation>Warte x Sekunden nach Ausführung von Start/Stop-Kommandos bevor der Status wieder gecheckt wird.
+Erhöhe diesen Wert, wenn der Status eines Dienstes beim Starten nochmal kurz auf inaktiv springt.</translation>
     </message>
     <message>
         <location filename="Settings_ui.py" line="121"/>
@@ -177,7 +184,12 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Nimbus Sans L&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Environment Variables:&lt;/span&gt; Set bash variables which are available in the commands. Please ensure that all needed variables are set here if certain services do not work.&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Settings:&lt;/span&gt; Hover over the input fields for help.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Nimbus Sans L&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Umgebungsvariablen:&lt;/span&gt;Bash-Variablen, die in allen Kommandos verfügbar sind. Sollten gewisse Dienste nicht funktionieren, vergewissere dich, dass hier alles richtig gesetzt ist.&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Einstellungen:&lt;/span&gt;Für Hilfe bewege den Mauszeiger über die Felder.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
@@ -185,27 +197,27 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Sources_ui.py" line="67"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Dialog</translation>
     </message>
     <message>
         <location filename="Sources_ui.py" line="68"/>
         <source>Look for new XML files on the internet</source>
-        <translation type="unfinished"></translation>
+        <translation>Suche im Internet nach neuen XML-Dateien</translation>
     </message>
     <message>
         <location filename="Sources_ui.py" line="69"/>
         <source>Search for new source files</source>
-        <translation type="unfinished"></translation>
+        <translation>Suche neue Quellen</translation>
     </message>
     <message>
         <location filename="Sources_ui.py" line="70"/>
         <source>Add XML source file</source>
-        <translation type="unfinished"></translation>
+        <translation>XML-Datei hinzufügen</translation>
     </message>
     <message>
         <location filename="Sources_ui.py" line="71"/>
         <source>Remove selected file</source>
-        <translation type="unfinished"></translation>
+        <translation>Entferne gewählte Datei</translation>
     </message>
     <message>
         <location filename="Sources_ui.py" line="72"/>
