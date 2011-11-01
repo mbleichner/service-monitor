@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>587</width>
+    <width>612</width>
     <height>463</height>
    </rect>
   </property>
@@ -34,7 +34,7 @@
       <string>Add custom service</string>
      </property>
      <property name="icon">
-      <iconset resource="../resources/Icons_Default.qrc">
+      <iconset resource="../resources/icons/icons.qrc">
        <normaloff>:/plus.png</normaloff>:/plus.png</iconset>
      </property>
     </widget>
@@ -45,7 +45,7 @@
       <string>Edit selected</string>
      </property>
      <property name="icon">
-      <iconset resource="../resources/Icons_Default.qrc">
+      <iconset resource="../resources/icons/icons.qrc">
        <normaloff>:/edit.png</normaloff>:/edit.png</iconset>
      </property>
     </widget>
@@ -56,7 +56,7 @@
       <string>Remove selected</string>
      </property>
      <property name="icon">
-      <iconset resource="../resources/Icons_Default.qrc">
+      <iconset resource="../resources/icons/icons.qrc">
        <normaloff>:/minus.png</normaloff>:/minus.png</iconset>
      </property>
     </widget>
@@ -262,7 +262,7 @@ p, li { white-space: pre-wrap; }
   </layout>
  </widget>
  <resources>
-  <include location="../resources/Icons_Default.qrc"/>
+  <include location="../resources/icons/icons.qrc"/>
  </resources>
  <connections/>
 </ui>

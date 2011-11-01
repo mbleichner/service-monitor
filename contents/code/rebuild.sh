@@ -6,8 +6,9 @@
 for dialog in 'Services' 'Settings' 'Custom' 'Sources'
 do pyuic4 dialogs/${dialog}.ui > generated/${dialog}_ui.py; done
 
-# ICON THEMES
-for icontheme in 'indicators_default' 'icons_default'
+# ICONS
+pyrcc4 resources/icons/icons.qrc > generated/icons_rc.py
+for icontheme in 'indicators_default'
 do pyrcc4 resources/${icontheme}/theme.qrc > generated/${icontheme}_rc.py; done
 
 # TRANSLATIONS

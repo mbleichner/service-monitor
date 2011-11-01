@@ -49,7 +49,7 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="../resources/Icons_Default.qrc">
+            <iconset resource="../resources/icons/icons.qrc">
              <normaloff>:/arrow-up-double.png</normaloff>:/arrow-up-double.png</iconset>
            </property>
            <property name="flat">
@@ -63,7 +63,7 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="../resources/Icons_Default.qrc">
+            <iconset resource="../resources/icons/icons.qrc">
              <normaloff>:/arrow-up</normaloff>:/arrow-up</iconset>
            </property>
           </widget>
@@ -74,7 +74,7 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="../resources/Icons_Default.qrc">
+            <iconset resource="../resources/icons/icons.qrc">
              <normaloff>:/arrow-down.png</normaloff>:/arrow-down.png</iconset>
            </property>
           </widget>
@@ -85,7 +85,7 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="../resources/Icons_Default.qrc">
+            <iconset resource="../resources/icons/icons.qrc">
              <normaloff>:/arrow-down-double.png</normaloff>:/arrow-down-double.png</iconset>
            </property>
           </widget>
@@ -115,7 +115,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="../resources/Icons_Default.qrc">
+          <iconset resource="../resources/icons/icons.qrc">
            <normaloff>:/arrow-left-double.png</normaloff>:/arrow-left-double.png</iconset>
          </property>
         </widget>
@@ -126,7 +126,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="../resources/Icons_Default.qrc">
+          <iconset resource="../resources/icons/icons.qrc">
            <normaloff>:/arrow-right-double.png</normaloff>:/arrow-right-double.png</iconset>
          </property>
         </widget>
@@ -222,7 +222,7 @@ p, li { white-space: pre-wrap; }
   </layout>
  </widget>
  <resources>
-  <include location="../resources/Icons_Default.qrc"/>
+  <include location="../resources/icons/icons.qrc"/>
  </resources>
  <connections/>
  <slots>

@@ -75,7 +75,7 @@
            <string>Add</string>
           </property>
           <property name="icon">
-           <iconset resource="../resources/Icons_Default.qrc">
+           <iconset resource="../resources/icons/icons.qrc">
             <normaloff>:/plus.png</normaloff>:/plus.png</iconset>
           </property>
          </widget>
@@ -86,7 +86,7 @@
            <string>Remove</string>
           </property>
           <property name="icon">
-           <iconset resource="../resources/Icons_Default.qrc">
+           <iconset resource="../resources/icons/icons.qrc">
             <normaloff>:/minus.png</normaloff>:/minus.png</iconset>
           </property>
          </widget>
@@ -221,7 +221,7 @@ p, li { white-space: pre-wrap; }
   </layout>
  </widget>
  <resources>
-  <include location="../resources/Icons_Default.qrc"/>
+  <include location="../resources/icons/icons.qrc"/>
  </resources>
  <connections/>
 </ui>

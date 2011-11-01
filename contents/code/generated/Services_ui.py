@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'dialogs/Services.ui'
 #
-# Created: Tue Nov  1 23:11:07 2011
+# Created: Tue Nov  1 23:45:45 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -152,4 +152,4 @@ class Ui_Services(object):
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">If you find some service missing, you can add it either as custom service or through a source file downloaded from the internet (see the sources tab).</p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
 
-import Icons_Default_rc
+import icons_rc

@@ -6,7 +6,6 @@ from PyKDE4.plasma import *
 from PyKDE4.plasmascript import *
 from PyKDE4.kdeui import *
 
-import generated.icons_default_rc
 import generated.indicators_default_rc
 
 from ConfigDialog import *
