@@ -28,7 +28,7 @@
         <string>Search for new source files</string>
        </property>
        <property name="icon">
-        <iconset resource="Icons.qrc">
+        <iconset resource="../resources/Icons_Default.qrc">
          <normaloff>:/search.png</normaloff>:/search.png</iconset>
        </property>
       </widget>
@@ -39,7 +39,7 @@
         <string>Add XML source file</string>
        </property>
        <property name="icon">
-        <iconset resource="Icons.qrc">
+        <iconset resource="../resources/Icons_Default.qrc">
          <normaloff>:/plus.png</normaloff>:/plus.png</iconset>
        </property>
       </widget>
@@ -50,7 +50,7 @@
         <string>Remove selected file</string>
        </property>
        <property name="icon">
-        <iconset resource="Icons.qrc">
+        <iconset resource="../resources/Icons_Default.qrc">
          <normaloff>:/minus.png</normaloff>:/minus.png</iconset>
        </property>
       </widget>
@@ -91,7 +91,7 @@ p, li { white-space: pre-wrap; }
   </layout>
  </widget>
  <resources>
-  <include location="Icons.qrc"/>
+  <include location="../resources/Icons_Default.qrc"/>
  </resources>
  <connections/>
 </ui>

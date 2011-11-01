@@ -1,0 +1,17 @@
+<RCC>
+  <qresource>
+    <file>search.png</file>
+    <file>edit.png</file>
+    <file>minus.png</file>
+    <file>cancel.png</file>
+    <file>plus.png</file>
+    <file>save.png</file>
+    <file>arrow-right-double.png</file>
+    <file>arrow-left-double.png</file>
+    <file>arrow-up-double.png</file>
+    <file>arrow-down-double.png</file>
+    <file>arrow-down.png</file>
+    <file>arrow-up.png</file>
+    <file>panel-icon.png</file>
+  </qresource>
+</RCC>
