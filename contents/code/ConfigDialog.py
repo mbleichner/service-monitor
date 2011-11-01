@@ -67,10 +67,10 @@ class ConfigDialog(KPageDialog):
     self.servicesPage = ServicesPage(self)
     self.sourcesPage = SourcesPage(self)
     self.customPage = CustomPage(self)
-    self.addPage(self.servicesPage, "Activate Services").setIcon(KIcon("run-build-configure"))
-    self.addPage(self.settingsPage, "Settings").setIcon(KIcon("configure"))
-    self.addPage(self.sourcesPage, "Manage Sources").setIcon(KIcon("document-new"))
-    self.addPage(self.customPage, "Custom Services").setIcon(KIcon("edit-rename"))
+    self.addPage(self.servicesPage, self.tr("Activate Services")).setIcon(KIcon("run-build-configure"))
+    self.addPage(self.settingsPage, self.tr("Settings")).setIcon(KIcon("configure"))
+    self.addPage(self.sourcesPage, self.tr("Manage Sources")).setIcon(KIcon("document-new"))
+    self.addPage(self.customPage, self.tr("Custom Services")).setIcon(KIcon("edit-rename"))
 
     # Connections für die ServicesPage
     QObject.connect(self.servicesPage.activeServicesList, SIGNAL('itemClicked(QListWidgetItem*)'), self, SLOT('showServiceInfo(QListWidgetItem*)'))

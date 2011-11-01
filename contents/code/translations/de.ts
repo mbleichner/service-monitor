@@ -7,6 +7,26 @@
         <source>Service Monitor Configuration</source>
         <translation>Service Monitor Konfiguration</translation>
     </message>
+    <message>
+        <location filename="ConfigDialog.py" line="70"/>
+        <source>Activate Services</source>
+        <translation>Dienste aktivieren</translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="71"/>
+        <source>Settings</source>
+        <translation>Einstellungen</translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="72"/>
+        <source>Manage Sources</source>
+        <translation>Quellen verwalten</translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="73"/>
+        <source>Custom Services</source>
+        <translation>Eigene Dienste</translation>
+    </message>
 </context>
 <context>
     <name>Custom</name>
@@ -86,6 +106,14 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Install/running checks:&lt;/span&gt; These fields take bash commands. For a check to succeed, it must produce non-empty output &lt;span style=&quot; font-weight:600;&quot;&gt;and&lt;/span&gt; return a non-zero exit code.&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;For example, to check if a file exists, you can use: &lt;span style=&quot; font-style:italic;&quot;&gt;ls /path/to/file&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Start/stop commands:&lt;/span&gt; Every command should terminate shortly after invocation. Unlike the earlier version, the desktop will no longer freeze if a command does not terminate, but Service Monitor will never know if the command succeeded. Use &amp;amp; to start a process in background if necessary.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+</context>
+<context>
+    <name>Service</name>
+    <message>
+        <location filename="Service.py" line="147"/>
+        <source>The command produced the following error:</source>
+        <translation>Bei der Ausführung des Kommandos trat folgender Fehler auf:</translation>
     </message>
 </context>
 <context>
@@ -184,12 +212,12 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Nimbus Sans L&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Environment Variables:&lt;/span&gt; Set bash variables which are available in the commands. Please ensure that all needed variables are set here if certain services do not work.&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Settings:&lt;/span&gt; Hover over the input fields for help.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+        <translation type="unfinished">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Nimbus Sans L&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Umgebungsvariablen:&lt;/span&gt;Bash-Variablen, die in allen Kommandos verfügbar sind. Sollten gewisse Dienste nicht funktionieren, vergewissere dich, dass hier alles richtig gesetzt ist.&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Einstellungen:&lt;/span&gt;Für Hilfe bewege den Mauszeiger über die Felder.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Umgebungsvariablen:&lt;/span&gt; Bash-Variablen, die in allen Kommandos verfügbar sind. Sollten gewisse Dienste nicht funktionieren, vergewissere dich, dass hier alles richtig gesetzt ist.&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Einstellungen:&lt;/span&gt; Für Hilfe bewege den Mauszeiger über die Felder.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
