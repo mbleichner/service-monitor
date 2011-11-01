@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'dialogs/Custom.ui'
 #
-# Created: Tue Nov  1 23:11:07 2011
+# Created: Tue Nov  1 23:45:45 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -17,7 +17,7 @@ except AttributeError:
 class Ui_Custom(object):
     def setupUi(self, Custom):
         Custom.setObjectName(_fromUtf8("Custom"))
-        Custom.resize(587, 463)
+        Custom.resize(612, 463)
         self.gridLayout_3 = QtGui.QGridLayout(Custom)
         self.gridLayout_3.setObjectName(_fromUtf8("gridLayout_3"))
         self.gridLayout = QtGui.QGridLayout()
@@ -183,4 +183,4 @@ class Ui_Custom(object):
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">For example, to check if a file exists, you can use: <span style=\" font-style:italic;\">ls /path/to/file</span></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Start/stop commands:</span> Every command should terminate shortly after invocation. Unlike the earlier version, the desktop will no longer freeze if a command does not terminate, but Service Monitor will never know if the command succeeded. Use &amp; to start a process in background if necessary.</p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
 
-import Icons_Default_rc
+import icons_rc

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'dialogs/Sources.ui'
 #
-# Created: Tue Nov  1 23:11:08 2011
+# Created: Tue Nov  1 23:45:45 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -76,4 +76,4 @@ class Ui_Sources(object):
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Here you can manage your files containing the service definitions. If you find a specific service missing, you may find it on my website, where I\'ll provide you with the latest definition files. Just click the &quot;search for new source files&quot; button.</p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
 
-import Icons_Default_rc
+import icons_rc
