@@ -12,7 +12,7 @@ for icontheme in 'indicators_default'
 do pyrcc4 resources/${icontheme}/theme.qrc > generated/${icontheme}_rc.py; done
 
 # TRANSLATIONS
-for lang in 'de'
+for lang in 'de' 'fr' 'es'
 do
   pylupdate4 *.py generated/*.py -ts translations/${lang}.ts
   lrelease translations/${lang}.ts -qm translations/${lang}.qm
