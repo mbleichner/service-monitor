@@ -224,7 +224,7 @@ class ConfigDialog(KPageDialog):
       self.servicesPage.infoTextarea.document().setHtml(item.source.description)
     elif hasattr(item, 'service'):
       s = item.service
-      self.servicesPage.infoTextarea.document().setHtml('''
+      self.servicesPage.infoTextarea.document().setHtml(self.tr('''
         <strong>%s</strong><br/>
         %s<br/>
         <table>
@@ -232,7 +232,7 @@ class ConfigDialog(KPageDialog):
         <tr><td>Running check:</td><td>&nbsp;</td><td>%s</td></tr>
         <tr><td>Start command:</td><td>&nbsp;</td><td>%s</td></tr>
         <tr><td>Stop command:</td><td>&nbsp;</td><td>%s</td></tr>
-        </table>''' % (s.name, s.description, s.installCheck, s.runningCheck, s.startCommand, s.stopCommand)
+        </table>''') % (s.name, s.description, s.installCheck, s.runningCheck, s.startCommand, s.stopCommand)
       )
 
 
@@ -315,7 +315,7 @@ class ConfigDialog(KPageDialog):
     fileinfo = QFileInfo(filename)
     destination = '%s/sources/%s' % (contentsdir, fileinfo.fileName())
     if QFile.exists(destination):
-      answer = QMessageBox.question(self, 'Add source file', 'This will overwrite an existing file. Continue?', QMessageBox.Yes | QMessageBox.No)
+      answer = QMessageBox.question(self, self.tr('Add source file'), self.tr('This will overwrite an existing file. Continue?'), QMessageBox.Yes | QMessageBox.No)
       if answer == QMessageBox.No: return
     shutil.copyfile(filename, destination)
     self.readSources()
@@ -329,7 +329,7 @@ class ConfigDialog(KPageDialog):
   @pyqtSlot()
   def removeSource(self):
     '''Löscht eine XML-Datei aus dem source-Verzeichnis'''
-    answer = QMessageBox.question(self, 'Delete source file', 'Really delete the file?', QMessageBox.Yes | QMessageBox.No)
+    answer = QMessageBox.question(self, self.tr('Delete source file'), self.tr('Really delete the file?'), QMessageBox.Yes | QMessageBox.No)
     if answer == QMessageBox.No: return
     item = self.sourcesPage.sourceList.currentItem()
     QFile.remove('%s/sources/%s' % (contentsdir, item.source.filename))
@@ -342,7 +342,7 @@ class ConfigDialog(KPageDialog):
   ## [slot] Opens a browser and go to the sources download page on documentroot.net.
   @pyqtSlot()
   def openBrowser(self):
-    answer = QMessageBox.question(self, 'Search for new sources', 'This will open a page in your web browser where additional service definitions can be downloaded.', QMessageBox.Ok | QMessageBox.Cancel)
+    answer = QMessageBox.question(self, self.tr('Search for new sources'), self.tr('This will open a page in your web browser where additional service definitions can be downloaded.'), QMessageBox.Ok | QMessageBox.Cancel)
     if answer == QMessageBox.Ok: QDesktopServices.openUrl(QUrl('http://www.documentroot.net/en/download-service-definitions'))
 
 
@@ -360,7 +360,7 @@ class ConfigDialog(KPageDialog):
   def populateCustomList(self):
     self.customPage.serviceList.clear()
     if not self.sources.has_key(QString('custom.xml')):
-      self.customPage.serviceList.addItem('Error - custom.xml is missing or has been damaged')
+      self.customPage.serviceList.addItem(self.tr('Error - custom.xml is missing or has been damaged'))
       return
     for service in self.sources[QString('custom.xml')].services:
       icon = KIcon('text-x-generic')
@@ -394,8 +394,8 @@ class ConfigDialog(KPageDialog):
       self.editmode = False
 
       # Widget-Status anpassen
-      self.customPage.editButton.setText('Edit selected')
-      self.customPage.removeButton.setText('Remove selected')
+      self.customPage.editButton.setText(self.tr('Edit selected'))
+      self.customPage.removeButton.setText(self.tr('Remove selected'))
       self.customPage.addButton.setEnabled(True)
       self.customPage.shareButton.setEnabled(True)
       self.customPage.serviceList.setEnabled(True)
@@ -409,8 +409,8 @@ class ConfigDialog(KPageDialog):
       # Widget-Status anpassen
       self.setLineEditsEnabled(True)
       self.synchronizeLineEdits()
-      self.customPage.editButton.setText('Save changes')
-      self.customPage.removeButton.setText('Cancel editing')
+      self.customPage.editButton.setText(self.tr('Save changes'))
+      self.customPage.removeButton.setText(self.tr('Cancel editing'))
       self.customPage.addButton.setEnabled(False)
       self.customPage.shareButton.setEnabled(False)
       self.customPage.serviceList.setEnabled(False)
@@ -449,7 +449,7 @@ class ConfigDialog(KPageDialog):
       self.toggleEditmode(False)
 
     elif self.customPage.serviceList.currentItem():
-      answer = QMessageBox.question(self, 'Remove service', 'Really delete the selected service?', QMessageBox.Yes | QMessageBox.No)
+      answer = QMessageBox.question(self, self.tr('Remove service'), self.tr('Really delete the selected service?'), QMessageBox.Yes | QMessageBox.No)
       if answer == QMessageBox.No: return
       item = self.customPage.serviceList.currentItem()
       self.sources[QString('custom.xml')].services.remove(item.service)
@@ -466,7 +466,7 @@ class ConfigDialog(KPageDialog):
   def addCustomService(self):
     service = Service()
     service.id = 'custom-%i' % random.randrange(1, 999999)
-    service.name = 'New Service - edit me'
+    service.name = self.tr('New Service - edit me')
     service.description = 'Enter a short, concise description here'
     self.sources[QString('custom.xml')].services.append(service)
     self.sources[QString('custom.xml')].writeBack()
@@ -495,7 +495,7 @@ class ConfigDialog(KPageDialog):
   @pyqtSlot()
   def uploadCustomService(self):
     if not self.customPage.serviceList.currentItem(): return
-    answer = QMessageBox.question(self, 'Upload service definition', 'This will open a page in your web browser where you can submit the selected service definition to the community.', QMessageBox.Ok | QMessageBox.Cancel)
+    answer = QMessageBox.question(self, self.tr('Upload service definition'), self.tr('This will open a page in your web browser where you can submit the selected service definition to the community.'), QMessageBox.Ok | QMessageBox.Cancel)
     if answer == QMessageBox.Cancel: return
     item = self.customPage.serviceList.currentItem()
     url = QUrl('http://www.documentroot.net/en/submit-service-definition')
@@ -547,7 +547,7 @@ class ConfigDialog(KPageDialog):
     row = self.settingsPage.variableTable.row(item)
     regex = QRegExp('([A-Z_][A-Z0-9_]*)', Qt.CaseInsensitive)
     if not regex.exactMatch( self.settingsPage.variableTable.item(row, 0).text() ):
-      QMessageBox.warning(self, 'Warning', 'Only alphanumeric characters are allowed in the variable name, so this will not work. Please edit.', QMessageBox.Ok)
+      QMessageBox.warning(self, self.tr('Warning'), self.tr('Only alphanumeric characters are allowed in the variable name, so this will not work. Please edit.'), QMessageBox.Ok)
     variables[2*row] = self.settingsPage.variableTable.item(row, 0).text()
     variables[2*row+1] = self.settingsPage.variableTable.item(row, 1).text()
     self.config.setValue('variables', variables)

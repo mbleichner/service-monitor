@@ -133,7 +133,7 @@ class ServiceMonitor(Applet):
     # Falls keine Services eingerichtet: Einleitungstext anzeigen
     if not activeServices:
       self.widgets['intro'] = Plasma.Label()
-      self.widgets['intro'].setText('<b>Thank you for downloading<br/>Service Monitor!</b><br/><br/>Right click to open the<br/>settings dialog.')
+      self.widgets['intro'].setText(self.tr('<b>Thank you for downloading<br/>Service Monitor!</b><br/><br/>Right click to open the<br/>settings dialog.'))
       self.mainLayout.addItem(self.widgets['intro'], 0, 0)
 
     # Hier ist das Layout eingerichtet - aktivieren

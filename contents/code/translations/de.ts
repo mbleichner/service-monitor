@@ -27,6 +27,109 @@
         <source>Custom Services</source>
         <translation>Eigene Dienste</translation>
     </message>
+    <message>
+        <location filename="ConfigDialog.py" line="227"/>
+        <source>
+        &lt;strong&gt;%s&lt;/strong&gt;&lt;br/&gt;
+        %s&lt;br/&gt;
+        &lt;table&gt;
+        &lt;tr&gt;&lt;td&gt;Install check:&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;%s&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;Running check:&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;%s&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;Start command:&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;%s&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;Stop command:&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;%s&lt;/td&gt;&lt;/tr&gt;
+        &lt;/table&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="318"/>
+        <source>Add source file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="318"/>
+        <source>This will overwrite an existing file. Continue?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="332"/>
+        <source>Delete source file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="332"/>
+        <source>Really delete the file?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="345"/>
+        <source>Search for new sources</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="345"/>
+        <source>This will open a page in your web browser where additional service definitions can be downloaded.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="363"/>
+        <source>Error - custom.xml is missing or has been damaged</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="397"/>
+        <source>Edit selected</source>
+        <translation type="unfinished">Bearbeiten</translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="398"/>
+        <source>Remove selected</source>
+        <translation type="unfinished">Löschen</translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="412"/>
+        <source>Save changes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="413"/>
+        <source>Cancel editing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="452"/>
+        <source>Remove service</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="452"/>
+        <source>Really delete the selected service?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="469"/>
+        <source>New Service - edit me</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="498"/>
+        <source>Upload service definition</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="498"/>
+        <source>This will open a page in your web browser where you can submit the selected service definition to the community.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="550"/>
+        <source>Warning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="550"/>
+        <source>Only alphanumeric characters are allowed in the variable name, so this will not work. Please edit.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Custom</name>
@@ -114,6 +217,14 @@ p, li { white-space: pre-wrap; }
         <location filename="Service.py" line="147"/>
         <source>The command produced the following error:</source>
         <translation>Bei der Ausführung des Kommandos trat folgender Fehler auf:</translation>
+    </message>
+</context>
+<context>
+    <name>ServiceMonitor</name>
+    <message>
+        <location filename="ServiceMonitor.py" line="136"/>
+        <source>&lt;b&gt;Thank you for downloading&lt;br/&gt;Service Monitor!&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;Right click to open the&lt;br/&gt;settings dialog.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
