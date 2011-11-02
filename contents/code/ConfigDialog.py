@@ -174,7 +174,7 @@ class ConfigDialog(KPageDialog):
   @pyqtSlot()
   def populateServiceLists(self):
 
-    # load ID list of active services and clean orphans (fixes sorting bug)
+    # load ID list of active services and clean orphans (fixes bug when reordering list)
     activeServicesIDs = self.config.value('activeServices').toStringList()
     deadlinks = [id for id in activeServicesIDs if not self.services.has_key(id)]
     if deadlinks:
@@ -232,17 +232,15 @@ class ConfigDialog(KPageDialog):
       self.servicesPage.infoTextarea.document().setHtml(item.source.description)
     elif hasattr(item, 'service'):
       s = item.service
-      self.servicesPage.infoTextarea.document().setHtml(self.tr(
-        QString('''<strong>%1</strong><br/>
-                   %2<br/>
-                   <table>
-                   <tr><td>Install check:</td><td>&nbsp;</td><td>%3</td></tr>
-                   <tr><td>Running check:</td><td>&nbsp;</td><td>%4</td></tr>
-                   <tr><td>Start command:</td><td>&nbsp;</td><td>%5</td></tr>
-                   <tr><td>Stop command:</td><td>&nbsp;</td><td>%6</td></tr>
-                   </table>'''
-        ).arg(s.name).arg(s.description).arg(s.installCheck).arg(s.runningCheck).arg(s.startCommand).arg(s.stopCommand)
-      ))
+      self.servicesPage.infoTextarea.document().setHtml(self.tr('''<strong>%1</strong><br/>
+        %2<br/>
+        <table>
+        <tr><td>Install check:</td><td>&nbsp;</td><td>%3</td></tr>
+        <tr><td>Running check:</td><td>&nbsp;</td><td>%4</td></tr>
+        <tr><td>Start command:</td><td>&nbsp;</td><td>%5</td></tr>
+        <tr><td>Stop command:</td><td>&nbsp;</td><td>%6</td></tr>
+        </table>''').arg(s.name).arg(s.description).arg(s.installCheck).arg(s.runningCheck).arg(s.startCommand).arg(s.stopCommand)
+      )
 
 
   ## [slot] Add selected service to the list of active services (then repopulate lists).
@@ -311,7 +309,7 @@ class ConfigDialog(KPageDialog):
     for source in self.sources.values():
       if source.filename == QString('custom.xml'): continue
       icon = KIcon('application-xml')
-      item = QListWidgetItem(icon, '%s (%s, %i entries)' % (source.name if source.name else 'Unnamed', source.filename, len(source.services)))
+      item = QListWidgetItem(icon, self.tr('%1 (%2, %3 entries)').arg(source.name if source.name else 'Unnamed').arg(source.filename).arg(len(source.services)))
       item.source = source
       self.sourcesPage.sourceList.addItem(item)
 
@@ -319,7 +317,7 @@ class ConfigDialog(KPageDialog):
   ## [slot] Selects and copies a file into the sources directory (and repopulates sources list).
   @pyqtSlot()
   def addSource(self):
-    filename = QFileDialog.getOpenFileName(self, 'moep', '~', 'Service definitions (*.xml)')
+    filename = QFileDialog.getOpenFileName(self, self.tr('Select source file'), '~', self.tr('Service definitions (*.xml)'))
     if not filename: return
     fileinfo = QFileInfo(filename)
     destination = '%s/sources/%s' % (contentsdir, fileinfo.fileName())
@@ -476,7 +474,7 @@ class ConfigDialog(KPageDialog):
     service = Service()
     service.id = 'custom-%i' % random.randrange(1, 999999)
     service.name = self.tr('New Service - edit me')
-    service.description = 'Enter a short, concise description here'
+    service.description = self.tr('Enter a short, concise description here')
     self.sources[QString('custom.xml')].services.append(service)
     self.sources[QString('custom.xml')].writeBack()
     self.readSources()

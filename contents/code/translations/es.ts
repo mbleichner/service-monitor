@@ -28,106 +28,125 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="227"/>
-        <source>
-        &lt;strong&gt;%s&lt;/strong&gt;&lt;br/&gt;
-        %s&lt;br/&gt;
-        &lt;table&gt;
-        &lt;tr&gt;&lt;td&gt;Install check:&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;%s&lt;/td&gt;&lt;/tr&gt;
-        &lt;tr&gt;&lt;td&gt;Running check:&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;%s&lt;/td&gt;&lt;/tr&gt;
-        &lt;tr&gt;&lt;td&gt;Start command:&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;%s&lt;/td&gt;&lt;/tr&gt;
-        &lt;tr&gt;&lt;td&gt;Stop command:&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;%s&lt;/td&gt;&lt;/tr&gt;
-        &lt;/table&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="ConfigDialog.py" line="318"/>
+        <location filename="ConfigDialog.py" line="325"/>
         <source>Add source file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="318"/>
+        <location filename="ConfigDialog.py" line="325"/>
         <source>This will overwrite an existing file. Continue?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="332"/>
+        <location filename="ConfigDialog.py" line="339"/>
         <source>Delete source file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="332"/>
+        <location filename="ConfigDialog.py" line="339"/>
         <source>Really delete the file?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="345"/>
+        <location filename="ConfigDialog.py" line="352"/>
         <source>Search for new sources</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="345"/>
+        <location filename="ConfigDialog.py" line="352"/>
         <source>This will open a page in your web browser where additional service definitions can be downloaded.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="363"/>
+        <location filename="ConfigDialog.py" line="370"/>
         <source>Error - custom.xml is missing or has been damaged</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="397"/>
+        <location filename="ConfigDialog.py" line="404"/>
         <source>Edit selected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="398"/>
+        <location filename="ConfigDialog.py" line="405"/>
         <source>Remove selected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="412"/>
+        <location filename="ConfigDialog.py" line="419"/>
         <source>Save changes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="413"/>
+        <location filename="ConfigDialog.py" line="420"/>
         <source>Cancel editing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="452"/>
+        <location filename="ConfigDialog.py" line="459"/>
         <source>Remove service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="452"/>
+        <location filename="ConfigDialog.py" line="459"/>
         <source>Really delete the selected service?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="469"/>
+        <location filename="ConfigDialog.py" line="476"/>
         <source>New Service - edit me</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="498"/>
+        <location filename="ConfigDialog.py" line="505"/>
         <source>Upload service definition</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="498"/>
+        <location filename="ConfigDialog.py" line="505"/>
         <source>This will open a page in your web browser where you can submit the selected service definition to the community.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="550"/>
+        <location filename="ConfigDialog.py" line="557"/>
         <source>Warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="550"/>
+        <location filename="ConfigDialog.py" line="557"/>
         <source>Only alphanumeric characters are allowed in the variable name, so this will not work. Please edit.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="235"/>
+        <source>&lt;strong&gt;%1&lt;/strong&gt;&lt;br/&gt;
+        %2&lt;br/&gt;
+        &lt;table&gt;
+        &lt;tr&gt;&lt;td&gt;Install check:&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;%3&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;Running check:&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;%4&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;Start command:&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;%5&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;Stop command:&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;%6&lt;/td&gt;&lt;/tr&gt;
+        &lt;/table&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="312"/>
+        <source>%1 (%2, %3 entries)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="320"/>
+        <source>Select source file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="320"/>
+        <source>Service definitions (*.xml)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="477"/>
+        <source>Enter a short, concise description here</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
