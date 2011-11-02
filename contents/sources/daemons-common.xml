@@ -47,9 +47,18 @@
 
   <service id="mysql-daemon" priority="0">
     <name>MySQL Database</name>
-    <description>Database server used by many programs (stopping could be a bad idea)</description>
+    <description>Database server, mainly used for PHP</description>
     <installcheck>ls $INITDIR/mysql</installcheck>
-    <runningcheck>pidof mysqld</runningcheck>
+    <runningcheck>ps ax | grep "/usr/sbin/mysqld" | grep -v grep | grep -v akonadi</runningcheck>
+    <startcommand>$SUDO $INITDIR/mysql start &amp;> /dev/null</startcommand>
+    <stopcommand>$SUDO $INITDIR/mysql stop &amp;> /dev/null</stopcommand>
+  </service>
+
+  <service id="mysql-akonadi" priority="0">
+    <name>Akonadi MySQL Process</name>
+    <description>MySQL process used by Akonadi services</description>
+    <installcheck>ls $INITDIR/mysql</installcheck>
+    <runningcheck>ps ax | grep "/usr/sbin/mysqld" | grep -v grep | grep akonadi</runningcheck>
     <startcommand>$SUDO $INITDIR/mysql start &amp;> /dev/null</startcommand>
     <stopcommand>$SUDO $INITDIR/mysql stop &amp;> /dev/null</stopcommand>
   </service>

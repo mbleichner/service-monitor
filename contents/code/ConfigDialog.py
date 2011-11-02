@@ -173,7 +173,15 @@ class ConfigDialog(KPageDialog):
   # When this happens, only the one with higher priority (or the one parsed later) is displayed.
   @pyqtSlot()
   def populateServiceLists(self):
+
+    # load ID list of active services and clean orphans (fixes sorting bug)
     activeServicesIDs = self.config.value('activeServices').toStringList()
+    deadlinks = [id for id in activeServicesIDs if not self.services.has_key(id)]
+    if deadlinks:
+      for id in deadlinks: activeServicesIDs.removeAll(id)
+      self.config.setValue('activeServices', activeServicesIDs)
+
+    # now populate the lists
     self.servicesPage.activeServicesList.clear()
     self.servicesPage.inactiveServicesList.clear()
     for service in self.activeServices():
@@ -224,16 +232,17 @@ class ConfigDialog(KPageDialog):
       self.servicesPage.infoTextarea.document().setHtml(item.source.description)
     elif hasattr(item, 'service'):
       s = item.service
-      self.servicesPage.infoTextarea.document().setHtml(self.tr('''
-        <strong>%s</strong><br/>
-        %s<br/>
-        <table>
-        <tr><td>Install check:</td><td>&nbsp;</td><td>%s</td></tr>
-        <tr><td>Running check:</td><td>&nbsp;</td><td>%s</td></tr>
-        <tr><td>Start command:</td><td>&nbsp;</td><td>%s</td></tr>
-        <tr><td>Stop command:</td><td>&nbsp;</td><td>%s</td></tr>
-        </table>''') % (s.name, s.description, s.installCheck, s.runningCheck, s.startCommand, s.stopCommand)
-      )
+      self.servicesPage.infoTextarea.document().setHtml(self.tr(
+        QString('''<strong>%1</strong><br/>
+                   %2<br/>
+                   <table>
+                   <tr><td>Install check:</td><td>&nbsp;</td><td>%3</td></tr>
+                   <tr><td>Running check:</td><td>&nbsp;</td><td>%4</td></tr>
+                   <tr><td>Start command:</td><td>&nbsp;</td><td>%5</td></tr>
+                   <tr><td>Stop command:</td><td>&nbsp;</td><td>%6</td></tr>
+                   </table>'''
+        ).arg(s.name).arg(s.description).arg(s.installCheck).arg(s.runningCheck).arg(s.startCommand).arg(s.stopCommand)
+      ))
 
 
   ## [slot] Add selected service to the list of active services (then repopulate lists).
@@ -262,7 +271,7 @@ class ConfigDialog(KPageDialog):
   ## Called when clicking one of the sort buttons
   #  @param direction identifies the clicked button
   def sort(self, direction):
-    activeServicesIDs = self.config.value("activeServices").toStringList()
+    activeServicesIDs = self.config.value('activeServices').toStringList()
     n = len(activeServicesIDs)
     oldPosition = self.servicesPage.activeServicesList.currentRow()
     if   direction == 'top'    and n > 1:             newPosition = 0
