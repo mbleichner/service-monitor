@@ -13,5 +13,6 @@
     <file>arrow-down.png</file>
     <file>arrow-up.png</file>
     <file>panel-icon.png</file>
+    <file>help.png</file>
   </qresource>
 </RCC>

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'dialogs/Settings.ui'
 #
-# Created: Tue Nov  1 23:45:45 2011
+# Created: Wed Nov  2 20:06:33 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -17,7 +17,7 @@ except AttributeError:
 class Ui_Settings(object):
     def setupUi(self, Settings):
         Settings.setObjectName(_fromUtf8("Settings"))
-        Settings.resize(514, 441)
+        Settings.resize(564, 487)
         self.verticalLayout = QtGui.QVBoxLayout(Settings)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
         self.groupBox = QtGui.QGroupBox(Settings)
@@ -87,22 +87,49 @@ class Ui_Settings(object):
         self.sleepTimeSpinbox.setObjectName(_fromUtf8("sleepTimeSpinbox"))
         self.gridLayout_2.addWidget(self.sleepTimeSpinbox, 1, 1, 1, 1)
         self.verticalLayout.addWidget(self.groupBox_2)
+        self.line_2 = QtGui.QFrame(Settings)
+        self.line_2.setFrameShape(QtGui.QFrame.HLine)
+        self.line_2.setFrameShadow(QtGui.QFrame.Sunken)
+        self.line_2.setObjectName(_fromUtf8("line_2"))
+        self.verticalLayout.addWidget(self.line_2)
         spacerItem1 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
         self.verticalLayout.addItem(spacerItem1)
-        self.line = QtGui.QFrame(Settings)
-        self.line.setFrameShape(QtGui.QFrame.HLine)
-        self.line.setFrameShadow(QtGui.QFrame.Sunken)
-        self.line.setObjectName(_fromUtf8("line"))
-        self.verticalLayout.addWidget(self.line)
-        self.label_3 = QtGui.QLabel(Settings)
-        self.label_3.setToolTip(_fromUtf8(""))
-        self.label_3.setTextFormat(QtCore.Qt.RichText)
-        self.label_3.setWordWrap(True)
-        self.label_3.setIndent(0)
-        self.label_3.setObjectName(_fromUtf8("label_3"))
-        self.verticalLayout.addWidget(self.label_3)
+        self.helpTabWidget = QtGui.QTabWidget(Settings)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.helpTabWidget.sizePolicy().hasHeightForWidth())
+        self.helpTabWidget.setSizePolicy(sizePolicy)
+        self.helpTabWidget.setObjectName(_fromUtf8("helpTabWidget"))
+        self.help = QtGui.QWidget()
+        self.help.setObjectName(_fromUtf8("help"))
+        self.verticalLayout_4 = QtGui.QVBoxLayout(self.help)
+        self.verticalLayout_4.setObjectName(_fromUtf8("verticalLayout_4"))
+        self.label_4 = QtGui.QLabel(self.help)
+        self.label_4.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.label_4.setObjectName(_fromUtf8("label_4"))
+        self.verticalLayout_4.addWidget(self.label_4)
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap(_fromUtf8(":/help.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.helpTabWidget.addTab(self.help, icon2, _fromUtf8(""))
+        self.tab_1 = QtGui.QWidget()
+        self.tab_1.setObjectName(_fromUtf8("tab_1"))
+        self.verticalLayout_5 = QtGui.QVBoxLayout(self.tab_1)
+        self.verticalLayout_5.setObjectName(_fromUtf8("verticalLayout_5"))
+        self.label_5 = QtGui.QLabel(self.tab_1)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_5.sizePolicy().hasHeightForWidth())
+        self.label_5.setSizePolicy(sizePolicy)
+        self.label_5.setWordWrap(False)
+        self.label_5.setObjectName(_fromUtf8("label_5"))
+        self.verticalLayout_5.addWidget(self.label_5)
+        self.helpTabWidget.addTab(self.tab_1, _fromUtf8(""))
+        self.verticalLayout.addWidget(self.helpTabWidget)
 
         self.retranslateUi(Settings)
+        self.helpTabWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(Settings)
 
     def retranslateUi(self, Settings):
@@ -118,11 +145,9 @@ class Ui_Settings(object):
         self.label_2.setText(QtGui.QApplication.translate("Settings", "Append sleep to start/stop command:", None, QtGui.QApplication.UnicodeUTF8))
         self.sleepTimeSpinbox.setToolTip(QtGui.QApplication.translate("Settings", "Wait x seconds after execution of start/stop commands before rechecking service status.\n"
 "If the status immediatly flashes back to inactive when starting a service, increase this value.", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_3.setText(QtGui.QApplication.translate("Settings", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Nimbus Sans L\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Environment Variables:</span> Set bash variables which are available in the commands. Please ensure that all needed variables are set here if certain services do not work.</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Settings:</span> Hover over the input fields for help.</p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_4.setText(QtGui.QApplication.translate("Settings", "Set global options here.", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_5.setText(QtGui.QApplication.translate("Settings", "Set bash variables which are available in the commands. Please ensure\n"
+"that all needed variables are set here if certain services do not work.", None, QtGui.QApplication.UnicodeUTF8))
+        self.helpTabWidget.setTabText(self.helpTabWidget.indexOf(self.tab_1), QtGui.QApplication.translate("Settings", "environment variables", None, QtGui.QApplication.UnicodeUTF8))
 
 import icons_rc

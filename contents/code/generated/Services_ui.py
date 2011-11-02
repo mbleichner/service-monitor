@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'dialogs/Services.ui'
 #
-# Created: Tue Nov  1 23:45:45 2011
+# Created: Wed Nov  2 20:06:33 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -17,9 +17,9 @@ except AttributeError:
 class Ui_Services(object):
     def setupUi(self, Services):
         Services.setObjectName(_fromUtf8("Services"))
-        Services.resize(588, 472)
-        self.verticalLayout_4 = QtGui.QVBoxLayout(Services)
-        self.verticalLayout_4.setObjectName(_fromUtf8("verticalLayout_4"))
+        Services.resize(604, 427)
+        self.verticalLayout_8 = QtGui.QVBoxLayout(Services)
+        self.verticalLayout_8.setObjectName(_fromUtf8("verticalLayout_8"))
         self.horizontalLayout_2 = QtGui.QHBoxLayout()
         self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
         self.verticalLayout_2 = QtGui.QVBoxLayout()
@@ -113,7 +113,7 @@ class Ui_Services(object):
         self.inactiveServicesList.setObjectName(_fromUtf8("inactiveServicesList"))
         self.verticalLayout_3.addWidget(self.inactiveServicesList)
         self.horizontalLayout_2.addLayout(self.verticalLayout_3)
-        self.verticalLayout_4.addLayout(self.horizontalLayout_2)
+        self.verticalLayout_8.addLayout(self.horizontalLayout_2)
         self.line = QtGui.QFrame(Services)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -123,7 +123,7 @@ class Ui_Services(object):
         self.line.setFrameShape(QtGui.QFrame.HLine)
         self.line.setFrameShadow(QtGui.QFrame.Sunken)
         self.line.setObjectName(_fromUtf8("line"))
-        self.verticalLayout_4.addWidget(self.line)
+        self.verticalLayout_8.addWidget(self.line)
         self.infoTextarea = QtGui.QTextEdit(Services)
         self.infoTextarea.setEnabled(True)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Maximum)
@@ -134,22 +134,78 @@ class Ui_Services(object):
         self.infoTextarea.setStyleSheet(_fromUtf8(""))
         self.infoTextarea.setFrameShadow(QtGui.QFrame.Sunken)
         self.infoTextarea.setReadOnly(True)
+        self.infoTextarea.setHtml(_fromUtf8("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'DejaVu Sans\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p></body></html>"))
         self.infoTextarea.setObjectName(_fromUtf8("infoTextarea"))
-        self.verticalLayout_4.addWidget(self.infoTextarea)
+        self.verticalLayout_8.addWidget(self.infoTextarea)
+        self.line_2 = QtGui.QFrame(Services)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.line_2.sizePolicy().hasHeightForWidth())
+        self.line_2.setSizePolicy(sizePolicy)
+        self.line_2.setFrameShape(QtGui.QFrame.HLine)
+        self.line_2.setFrameShadow(QtGui.QFrame.Sunken)
+        self.line_2.setObjectName(_fromUtf8("line_2"))
+        self.verticalLayout_8.addWidget(self.line_2)
+        self.helpTabWidget = QtGui.QTabWidget(Services)
+        self.helpTabWidget.setObjectName(_fromUtf8("helpTabWidget"))
+        self.help = QtGui.QWidget()
+        self.help.setObjectName(_fromUtf8("help"))
+        self.verticalLayout_4 = QtGui.QVBoxLayout(self.help)
+        self.verticalLayout_4.setObjectName(_fromUtf8("verticalLayout_4"))
+        self.label_2 = QtGui.QLabel(self.help)
+        self.label_2.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.label_2.setObjectName(_fromUtf8("label_2"))
+        self.verticalLayout_4.addWidget(self.label_2)
+        icon6 = QtGui.QIcon()
+        icon6.addPixmap(QtGui.QPixmap(_fromUtf8(":/help.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.helpTabWidget.addTab(self.help, icon6, _fromUtf8(""))
+        self.tab_1 = QtGui.QWidget()
+        self.tab_1.setObjectName(_fromUtf8("tab_1"))
+        self.verticalLayout_5 = QtGui.QVBoxLayout(self.tab_1)
+        self.verticalLayout_5.setObjectName(_fromUtf8("verticalLayout_5"))
+        self.label = QtGui.QLabel(self.tab_1)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
+        self.label.setSizePolicy(sizePolicy)
+        self.label.setWordWrap(False)
+        self.label.setObjectName(_fromUtf8("label"))
+        self.verticalLayout_5.addWidget(self.label)
+        self.helpTabWidget.addTab(self.tab_1, _fromUtf8(""))
+        self.tab_2 = QtGui.QWidget()
+        self.tab_2.setObjectName(_fromUtf8("tab_2"))
+        self.verticalLayout_6 = QtGui.QVBoxLayout(self.tab_2)
+        self.verticalLayout_6.setObjectName(_fromUtf8("verticalLayout_6"))
+        self.label_3 = QtGui.QLabel(self.tab_2)
+        self.label_3.setObjectName(_fromUtf8("label_3"))
+        self.verticalLayout_6.addWidget(self.label_3)
+        self.helpTabWidget.addTab(self.tab_2, _fromUtf8(""))
+        self.verticalLayout_8.addWidget(self.helpTabWidget)
 
         self.retranslateUi(Services)
+        self.helpTabWidget.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(Services)
 
     def retranslateUi(self, Services):
         Services.setWindowTitle(QtGui.QApplication.translate("Services", "Dialog", None, QtGui.QApplication.UnicodeUTF8))
         self.activeServicesLabel.setText(QtGui.QApplication.translate("Services", "Active Services", None, QtGui.QApplication.UnicodeUTF8))
         self.inactiveServicesLabel.setText(QtGui.QApplication.translate("Services", "Available Services", None, QtGui.QApplication.UnicodeUTF8))
-        self.infoTextarea.setHtml(QtGui.QApplication.translate("Services", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Nimbus Sans L\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Add the services to be monitored to the list of active services. The icons show the install status of each service.</p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">If you find some service missing, you can add it either as custom service or through a source file downloaded from the internet (see the sources tab).</p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_2.setText(QtGui.QApplication.translate("Services", "Add the services to be monitored to the list of active services. The icons show the install\n"
+"status of each service. If you find some service missing, you can add it either as custom\n"
+"service or through a source file downloaded from the internet (see the sources tab).", None, QtGui.QApplication.UnicodeUTF8))
+        self.label.setText(QtGui.QApplication.translate("Services", "This list shows all services to be monitored. Add items from the right-hand list and reorder\n"
+"them to your needs. Be aware that only services marked with a green dot will work.\n"
+"A red dot means the install check has failed, so the definition will not work.", None, QtGui.QApplication.UnicodeUTF8))
+        self.helpTabWidget.setTabText(self.helpTabWidget.indexOf(self.tab_1), QtGui.QApplication.translate("Services", "active services", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_3.setText(QtGui.QApplication.translate("Services", "The list of available services is loaded from your definition source files, which you can\n"
+"manage under the \"Sources\" tab. If a specific service is missing here, try looking for it\n"
+"in the sources tab or define it yourself under \"Custom Services\".", None, QtGui.QApplication.UnicodeUTF8))
+        self.helpTabWidget.setTabText(self.helpTabWidget.indexOf(self.tab_2), QtGui.QApplication.translate("Services", "available services", None, QtGui.QApplication.UnicodeUTF8))
 
 import icons_rc

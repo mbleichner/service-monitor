@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'dialogs/Custom.ui'
 #
-# Created: Tue Nov  1 23:45:45 2011
+# Created: Wed Nov  2 20:06:33 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -17,7 +17,7 @@ except AttributeError:
 class Ui_Custom(object):
     def setupUi(self, Custom):
         Custom.setObjectName(_fromUtf8("Custom"))
-        Custom.resize(612, 463)
+        Custom.resize(612, 509)
         self.gridLayout_3 = QtGui.QGridLayout(Custom)
         self.gridLayout_3.setObjectName(_fromUtf8("gridLayout_3"))
         self.gridLayout = QtGui.QGridLayout()
@@ -81,16 +81,6 @@ class Ui_Custom(object):
         self.descriptionLabel.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.descriptionLabel.setObjectName(_fromUtf8("descriptionLabel"))
         self.gridLayout_2.addWidget(self.descriptionLabel, 1, 0, 1, 1)
-        self.line1 = QtGui.QFrame(Custom)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.line1.sizePolicy().hasHeightForWidth())
-        self.line1.setSizePolicy(sizePolicy)
-        self.line1.setFrameShape(QtGui.QFrame.HLine)
-        self.line1.setFrameShadow(QtGui.QFrame.Sunken)
-        self.line1.setObjectName(_fromUtf8("line1"))
-        self.gridLayout_2.addWidget(self.line1, 2, 0, 1, 2)
         self.installCheckLabel = QtGui.QLabel(Custom)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -99,11 +89,11 @@ class Ui_Custom(object):
         self.installCheckLabel.setSizePolicy(sizePolicy)
         self.installCheckLabel.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.installCheckLabel.setObjectName(_fromUtf8("installCheckLabel"))
-        self.gridLayout_2.addWidget(self.installCheckLabel, 3, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.installCheckLabel, 2, 0, 1, 1)
         self.installCheckInput = QtGui.QLineEdit(Custom)
         self.installCheckInput.setEnabled(False)
         self.installCheckInput.setObjectName(_fromUtf8("installCheckInput"))
-        self.gridLayout_2.addWidget(self.installCheckInput, 3, 1, 1, 1)
+        self.gridLayout_2.addWidget(self.installCheckInput, 2, 1, 1, 1)
         self.runningCheckLabel = QtGui.QLabel(Custom)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -112,11 +102,11 @@ class Ui_Custom(object):
         self.runningCheckLabel.setSizePolicy(sizePolicy)
         self.runningCheckLabel.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.runningCheckLabel.setObjectName(_fromUtf8("runningCheckLabel"))
-        self.gridLayout_2.addWidget(self.runningCheckLabel, 4, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.runningCheckLabel, 3, 0, 1, 1)
         self.runningCheckInput = QtGui.QLineEdit(Custom)
         self.runningCheckInput.setEnabled(False)
         self.runningCheckInput.setObjectName(_fromUtf8("runningCheckInput"))
-        self.gridLayout_2.addWidget(self.runningCheckInput, 4, 1, 1, 1)
+        self.gridLayout_2.addWidget(self.runningCheckInput, 3, 1, 1, 1)
         self.startCommandLabel = QtGui.QLabel(Custom)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -125,11 +115,11 @@ class Ui_Custom(object):
         self.startCommandLabel.setSizePolicy(sizePolicy)
         self.startCommandLabel.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.startCommandLabel.setObjectName(_fromUtf8("startCommandLabel"))
-        self.gridLayout_2.addWidget(self.startCommandLabel, 5, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.startCommandLabel, 4, 0, 1, 1)
         self.startCommandInput = QtGui.QLineEdit(Custom)
         self.startCommandInput.setEnabled(False)
         self.startCommandInput.setObjectName(_fromUtf8("startCommandInput"))
-        self.gridLayout_2.addWidget(self.startCommandInput, 5, 1, 1, 1)
+        self.gridLayout_2.addWidget(self.startCommandInput, 4, 1, 1, 1)
         self.stopCommandLabel = QtGui.QLabel(Custom)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -138,28 +128,68 @@ class Ui_Custom(object):
         self.stopCommandLabel.setSizePolicy(sizePolicy)
         self.stopCommandLabel.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.stopCommandLabel.setObjectName(_fromUtf8("stopCommandLabel"))
-        self.gridLayout_2.addWidget(self.stopCommandLabel, 6, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.stopCommandLabel, 5, 0, 1, 1)
         self.stopCommandInput = QtGui.QLineEdit(Custom)
         self.stopCommandInput.setEnabled(False)
         self.stopCommandInput.setObjectName(_fromUtf8("stopCommandInput"))
-        self.gridLayout_2.addWidget(self.stopCommandInput, 6, 1, 1, 1)
+        self.gridLayout_2.addWidget(self.stopCommandInput, 5, 1, 1, 1)
         self.descriptionInput = QtGui.QLineEdit(Custom)
         self.descriptionInput.setEnabled(False)
         self.descriptionInput.setObjectName(_fromUtf8("descriptionInput"))
         self.gridLayout_2.addWidget(self.descriptionInput, 1, 1, 1, 1)
-        self.gridLayout_3.addLayout(self.gridLayout_2, 3, 0, 1, 4)
         self.line = QtGui.QFrame(Custom)
         self.line.setFrameShape(QtGui.QFrame.HLine)
         self.line.setFrameShadow(QtGui.QFrame.Sunken)
         self.line.setObjectName(_fromUtf8("line"))
-        self.gridLayout_3.addWidget(self.line, 4, 0, 1, 4)
-        self.helpLabel = QtGui.QLabel(Custom)
-        self.helpLabel.setTextFormat(QtCore.Qt.RichText)
-        self.helpLabel.setWordWrap(True)
-        self.helpLabel.setObjectName(_fromUtf8("helpLabel"))
-        self.gridLayout_3.addWidget(self.helpLabel, 5, 0, 1, 4)
+        self.gridLayout_2.addWidget(self.line, 6, 1, 1, 1)
+        self.gridLayout_3.addLayout(self.gridLayout_2, 3, 0, 1, 4)
+        self.helpTabWidget = QtGui.QTabWidget(Custom)
+        self.helpTabWidget.setObjectName(_fromUtf8("helpTabWidget"))
+        self.help = QtGui.QWidget()
+        self.help.setObjectName(_fromUtf8("help"))
+        self.verticalLayout_2 = QtGui.QVBoxLayout(self.help)
+        self.verticalLayout_2.setObjectName(_fromUtf8("verticalLayout_2"))
+        self.label_2 = QtGui.QLabel(self.help)
+        self.label_2.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.label_2.setObjectName(_fromUtf8("label_2"))
+        self.verticalLayout_2.addWidget(self.label_2)
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap(_fromUtf8(":/help.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.helpTabWidget.addTab(self.help, icon3, _fromUtf8(""))
+        self.tab_1 = QtGui.QWidget()
+        self.tab_1.setObjectName(_fromUtf8("tab_1"))
+        self.verticalLayout = QtGui.QVBoxLayout(self.tab_1)
+        self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
+        self.label = QtGui.QLabel(self.tab_1)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
+        self.label.setSizePolicy(sizePolicy)
+        self.label.setWordWrap(False)
+        self.label.setObjectName(_fromUtf8("label"))
+        self.verticalLayout.addWidget(self.label)
+        self.helpTabWidget.addTab(self.tab_1, _fromUtf8(""))
+        self.tab_2 = QtGui.QWidget()
+        self.tab_2.setObjectName(_fromUtf8("tab_2"))
+        self.verticalLayout_3 = QtGui.QVBoxLayout(self.tab_2)
+        self.verticalLayout_3.setObjectName(_fromUtf8("verticalLayout_3"))
+        self.label_3 = QtGui.QLabel(self.tab_2)
+        self.label_3.setObjectName(_fromUtf8("label_3"))
+        self.verticalLayout_3.addWidget(self.label_3)
+        self.helpTabWidget.addTab(self.tab_2, _fromUtf8(""))
+        self.tab_3 = QtGui.QWidget()
+        self.tab_3.setObjectName(_fromUtf8("tab_3"))
+        self.verticalLayout_4 = QtGui.QVBoxLayout(self.tab_3)
+        self.verticalLayout_4.setObjectName(_fromUtf8("verticalLayout_4"))
+        self.label_4 = QtGui.QLabel(self.tab_3)
+        self.label_4.setObjectName(_fromUtf8("label_4"))
+        self.verticalLayout_4.addWidget(self.label_4)
+        self.helpTabWidget.addTab(self.tab_3, _fromUtf8(""))
+        self.gridLayout_3.addWidget(self.helpTabWidget, 4, 0, 1, 4)
 
         self.retranslateUi(Custom)
+        self.helpTabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(Custom)
 
     def retranslateUi(self, Custom):
@@ -175,12 +205,19 @@ class Ui_Custom(object):
         self.runningCheckLabel.setText(QtGui.QApplication.translate("Custom", "Running check:", None, QtGui.QApplication.UnicodeUTF8))
         self.startCommandLabel.setText(QtGui.QApplication.translate("Custom", "Start command:", None, QtGui.QApplication.UnicodeUTF8))
         self.stopCommandLabel.setText(QtGui.QApplication.translate("Custom", "Stop command:", None, QtGui.QApplication.UnicodeUTF8))
-        self.helpLabel.setText(QtGui.QApplication.translate("Custom", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Nimbus Sans L\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Install/running checks:</span> These fields take bash commands. For a check to succeed, it must produce non-empty output <span style=\" font-weight:600;\">and</span> return a non-zero exit code.</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">For example, to check if a file exists, you can use: <span style=\" font-style:italic;\">ls /path/to/file</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Start/stop commands:</span> Every command should terminate shortly after invocation. Unlike the earlier version, the desktop will no longer freeze if a command does not terminate, but Service Monitor will never know if the command succeeded. Use &amp; to start a process in background if necessary.</p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_2.setText(QtGui.QApplication.translate("Custom", "Here you can create and edit custom service definitions. Tailor them exactly to your\n"
+"needs and share useful definitions with other people!", None, QtGui.QApplication.UnicodeUTF8))
+        self.label.setText(QtGui.QApplication.translate("Custom", "These fields take bash commands. For a check to succeed, it must producen on-empty\n"
+"output and return exit code 0.\n"
+"For example, to check if a file exists, you can use: ls /path/to/file", None, QtGui.QApplication.UnicodeUTF8))
+        self.helpTabWidget.setTabText(self.helpTabWidget.indexOf(self.tab_1), QtGui.QApplication.translate("Custom", "install/running checks", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_3.setText(QtGui.QApplication.translate("Custom", "Every command should terminate shortly after invocation. Unlike the earlier version, the\n"
+"desktop will no longer freeze if a command does not terminate, but Service Monitor will never\n"
+"know if the command succeeded. Use \"&\" to start a process in background if necessary.", None, QtGui.QApplication.UnicodeUTF8))
+        self.helpTabWidget.setTabText(self.helpTabWidget.indexOf(self.tab_2), QtGui.QApplication.translate("Custom", "start/stop commands", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_4.setText(QtGui.QApplication.translate("Custom", "Using this button, you can submit a service definition on www.documentroot.net, where\n"
+"they may be included in the official sources, so others can download it. If you wish, you\n"
+"will be mentioned as author of the submission. Please only submit working definitions!", None, QtGui.QApplication.UnicodeUTF8))
+        self.helpTabWidget.setTabText(self.helpTabWidget.indexOf(self.tab_3), QtGui.QApplication.translate("Custom", "share with others", None, QtGui.QApplication.UnicodeUTF8))
 
 import icons_rc

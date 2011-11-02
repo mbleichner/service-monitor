@@ -134,74 +134,105 @@
 <context>
     <name>Custom</name>
     <message>
-        <location filename="Custom_ui.py" line="166"/>
+        <location filename="Custom_ui.py" line="196"/>
         <source>Dialog</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="167"/>
+        <location filename="Custom_ui.py" line="197"/>
         <source>Add custom service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="168"/>
+        <location filename="Custom_ui.py" line="198"/>
         <source>Edit selected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="169"/>
+        <location filename="Custom_ui.py" line="199"/>
         <source>Remove selected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="170"/>
+        <location filename="Custom_ui.py" line="200"/>
         <source>Upload service definition for other people</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="171"/>
+        <location filename="Custom_ui.py" line="201"/>
         <source>Share with others</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="172"/>
+        <location filename="Custom_ui.py" line="202"/>
         <source>Service Name:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="173"/>
+        <location filename="Custom_ui.py" line="203"/>
         <source>Short description:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="174"/>
+        <location filename="Custom_ui.py" line="204"/>
         <source>Install check:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="175"/>
+        <location filename="Custom_ui.py" line="205"/>
         <source>Running check:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="176"/>
+        <location filename="Custom_ui.py" line="206"/>
         <source>Start command:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="177"/>
+        <location filename="Custom_ui.py" line="207"/>
         <source>Stop command:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="178"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Nimbus Sans L&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Install/running checks:&lt;/span&gt; These fields take bash commands. For a check to succeed, it must produce non-empty output &lt;span style=&quot; font-weight:600;&quot;&gt;and&lt;/span&gt; return a non-zero exit code.&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;For example, to check if a file exists, you can use: &lt;span style=&quot; font-style:italic;&quot;&gt;ls /path/to/file&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Start/stop commands:&lt;/span&gt; Every command should terminate shortly after invocation. Unlike the earlier version, the desktop will no longer freeze if a command does not terminate, but Service Monitor will never know if the command succeeded. Use &amp;amp; to start a process in background if necessary.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <location filename="Custom_ui.py" line="208"/>
+        <source>Here you can create and edit custom service definitions. Tailor them exactly to your
+needs and share useful definitions with other people!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Custom_ui.py" line="213"/>
+        <source>install/running checks</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Custom_ui.py" line="214"/>
+        <source>Every command should terminate shortly after invocation. Unlike the earlier version, the
+desktop will no longer freeze if a command does not terminate, but Service Monitor will never
+know if the command succeeded. Use &quot;&amp;&quot; to start a process in background if necessary.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Custom_ui.py" line="217"/>
+        <source>start/stop commands</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Custom_ui.py" line="218"/>
+        <source>Using this button, you can submit a service definition on www.documentroot.net, where
+they may be included in the official sources, so others can download it. If you wish, you
+will be mentioned as author of the submission. Please only submit working definitions!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Custom_ui.py" line="221"/>
+        <source>share with others</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Custom_ui.py" line="210"/>
+        <source>These fields take bash commands. For a check to succeed, it must producen on-empty
+output and return exit code 0.
+For example, to check if a file exists, you can use: ls /path/to/file</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -224,136 +255,159 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>Services</name>
     <message>
-        <location filename="Services_ui.py" line="144"/>
+        <location filename="Services_ui.py" line="196"/>
         <source>Dialog</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Services_ui.py" line="145"/>
+        <location filename="Services_ui.py" line="197"/>
         <source>Active Services</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Services_ui.py" line="146"/>
+        <location filename="Services_ui.py" line="198"/>
         <source>Available Services</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Services_ui.py" line="147"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Nimbus Sans L&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Add the services to be monitored to the list of active services. The icons show the install status of each service.&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;If you find some service missing, you can add it either as custom service or through a source file downloaded from the internet (see the sources tab).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <location filename="Services_ui.py" line="199"/>
+        <source>Add the services to be monitored to the list of active services. The icons show the install
+status of each service. If you find some service missing, you can add it either as custom
+service or through a source file downloaded from the internet (see the sources tab).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Services_ui.py" line="202"/>
+        <source>This list shows all services to be monitored. Add items from the right-hand list and reorder
+them to your needs. Be aware that only services marked with a green dot will work.
+A red dot means the install check has failed, so the definition will not work.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Services_ui.py" line="205"/>
+        <source>active services</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Services_ui.py" line="206"/>
+        <source>The list of available services is loaded from your definition source files, which you can
+manage under the &quot;Sources&quot; tab. If a specific service is missing here, try looking for it
+in the sources tab or define it yourself under &quot;Custom Services&quot;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Services_ui.py" line="209"/>
+        <source>available services</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>Settings</name>
     <message>
-        <location filename="Settings_ui.py" line="109"/>
+        <location filename="Settings_ui.py" line="136"/>
         <source>Dialog</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="110"/>
+        <location filename="Settings_ui.py" line="137"/>
         <source>Environment Variables</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="111"/>
+        <location filename="Settings_ui.py" line="138"/>
         <source>Variable name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="112"/>
+        <location filename="Settings_ui.py" line="139"/>
         <source>Value</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="113"/>
+        <location filename="Settings_ui.py" line="140"/>
         <source>Add</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="114"/>
+        <location filename="Settings_ui.py" line="141"/>
         <source>Remove</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="115"/>
+        <location filename="Settings_ui.py" line="142"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="116"/>
+        <location filename="Settings_ui.py" line="143"/>
         <source>Polling interval:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="117"/>
+        <location filename="Settings_ui.py" line="144"/>
         <source>Update service status every x seconds.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="118"/>
+        <location filename="Settings_ui.py" line="145"/>
         <source>Append sleep to start/stop command:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="119"/>
+        <location filename="Settings_ui.py" line="146"/>
         <source>Wait x seconds after execution of start/stop commands before rechecking service status.
 If the status immediatly flashes back to inactive when starting a service, increase this value.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="121"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Nimbus Sans L&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Environment Variables:&lt;/span&gt; Set bash variables which are available in the commands. Please ensure that all needed variables are set here if certain services do not work.&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Settings:&lt;/span&gt; Hover over the input fields for help.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <location filename="Settings_ui.py" line="148"/>
+        <source>Set global options here.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Settings_ui.py" line="149"/>
+        <source>Set bash variables which are available in the commands. Please ensure
+that all needed variables are set here if certain services do not work.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Settings_ui.py" line="151"/>
+        <source>environment variables</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>Sources</name>
     <message>
-        <location filename="Sources_ui.py" line="67"/>
+        <location filename="Sources_ui.py" line="92"/>
         <source>Dialog</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Sources_ui.py" line="68"/>
+        <location filename="Sources_ui.py" line="93"/>
         <source>Look for new XML files on the internet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Sources_ui.py" line="69"/>
+        <location filename="Sources_ui.py" line="94"/>
         <source>Search for new source files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Sources_ui.py" line="70"/>
+        <location filename="Sources_ui.py" line="95"/>
         <source>Add XML source file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Sources_ui.py" line="71"/>
+        <location filename="Sources_ui.py" line="96"/>
         <source>Remove selected file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Sources_ui.py" line="72"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Nimbus Sans L&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Here you can manage your files containing the service definitions. If you find a specific service missing, you may find it on my website, where I&apos;ll provide you with the latest definition files. Just click the &amp;quot;search for new source files&amp;quot; button.&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <location filename="Sources_ui.py" line="97"/>
+        <source>This list holds files containing service definitions. You can search www.documentroot.net
+for updated definitions and then include them in the applet, so you can immediately
+use them.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
