@@ -54,15 +54,6 @@
     <stopcommand>$SUDO $INITDIR/mysql stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="mysql-akonadi" priority="0">
-    <name>Akonadi MySQL Process</name>
-    <description>MySQL process used by Akonadi services</description>
-    <installcheck>ls $INITDIR/mysql</installcheck>
-    <runningcheck>ps ax | grep "/usr/sbin/mysqld" | grep -v grep | grep akonadi</runningcheck>
-    <startcommand>$SUDO $INITDIR/mysql start &amp;> /dev/null</startcommand>
-    <stopcommand>$SUDO $INITDIR/mysql stop &amp;> /dev/null</stopcommand>
-  </service>
-
   <service id="wicd-daemon">
     <name>WICD (Network manager)</name>
     <description>An alternative to Network Manager</description>
