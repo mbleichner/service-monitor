@@ -9,20 +9,4 @@
     <startcommand>/path/to/executable &amp;</startcommand>
     <stopcommand>killall executable</stopcommand>
   </service>
-  <service id="custom-882428">
-    <name>New Service - edit me</name>
-    <description>Enter a short, concise description here</description>
-    <installcheck></installcheck>
-    <runningcheck></runningcheck>
-    <startcommand></startcommand>
-    <stopcommand></stopcommand>
-  </service>
-  <service id="custom-972694">
-    <name>New Service - edit me</name>
-    <description>Enter a short, concise description here</description>
-    <installcheck></installcheck>
-    <runningcheck></runningcheck>
-    <startcommand></startcommand>
-    <stopcommand></stopcommand>
-  </service>
 </services>
