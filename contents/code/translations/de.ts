@@ -93,11 +93,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="476"/>
-        <source>New Service - edit me</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="ConfigDialog.py" line="505"/>
         <source>Upload service definition</source>
         <translation type="unfinished"></translation>
@@ -147,6 +142,11 @@
     <message>
         <location filename="ConfigDialog.py" line="477"/>
         <source>Enter a short, concise description here</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="476"/>
+        <source>New Service, edit me</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

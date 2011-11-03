@@ -371,7 +371,7 @@ class ConfigDialog(KPageDialog):
       return
     for service in self.sources[QString('custom.xml')].services:
       icon = KIcon('text-x-generic')
-      item = QListWidgetItem(icon, service.name)
+      item = QListWidgetItem(icon, (service.name + ' - ' + service.description) if service.description else service.name)
       item.service = service
       self.customPage.serviceList.addItem(item)
 
@@ -473,7 +473,7 @@ class ConfigDialog(KPageDialog):
   def addCustomService(self):
     service = Service()
     service.id = 'custom-%i' % random.randrange(1, 999999)
-    service.name = self.tr('New Service - edit me')
+    service.name = self.tr('New Service, edit me')
     service.description = self.tr('Enter a short, concise description here')
     self.sources[QString('custom.xml')].services.append(service)
     self.sources[QString('custom.xml')].writeBack()
