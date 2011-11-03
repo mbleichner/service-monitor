@@ -459,8 +459,8 @@ class ConfigDialog(KPageDialog):
   @pyqtSlot()
   def removeCustomService(self):
 
-    if self.editmode:
-      self.toggleEditmode(False)
+    if self.editmode: # cancel editing
+      self.stopEditmode(False)
 
     elif self.customPage.serviceList.currentItem():
       answer = QMessageBox.question(self, self.tr('Remove service'), self.tr('Really delete the selected service?'), QMessageBox.Yes | QMessageBox.No)
