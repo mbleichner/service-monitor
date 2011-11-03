@@ -232,8 +232,20 @@ p, li { white-space: pre-wrap; }
    </item>
    <item>
     <widget class="QTabWidget" name="helpTabWidget">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>110</height>
+      </size>
+     </property>
      <property name="currentIndex">
-      <number>2</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="help">
       <attribute name="icon">
@@ -244,15 +256,24 @@ p, li { white-space: pre-wrap; }
        <string/>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_4">
+       <property name="margin">
+        <number>10</number>
+       </property>
        <item>
         <widget class="QLabel" name="label_2">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="text">
           <string>Add the services to be monitored to the list of active services. The icons show the install
 status of each service. If you find some service missing, you can add it either as custom
 service or through a source file downloaded from the internet (see the sources tab).</string>
          </property>
          <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
          </property>
         </widget>
        </item>
@@ -263,10 +284,13 @@ service or through a source file downloaded from the internet (see the sources t
        <string>active services</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_5">
+       <property name="margin">
+        <number>10</number>
+       </property>
        <item>
         <widget class="QLabel" name="label">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -275,6 +299,9 @@ service or through a source file downloaded from the internet (see the sources t
           <string>This list shows all services to be monitored. Add items from the right-hand list and reorder
 them to your needs. Be aware that only services marked with a green dot will work.
 A red dot means the install check has failed, so the definition will not work.</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
          </property>
          <property name="wordWrap">
           <bool>false</bool>
@@ -288,12 +315,24 @@ A red dot means the install check has failed, so the definition will not work.</
        <string>available services</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_6">
+       <property name="margin">
+        <number>10</number>
+       </property>
        <item>
         <widget class="QLabel" name="label_3">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="text">
           <string>The list of available services is loaded from your definition source files, which you can
 manage under the &quot;Sources&quot; tab. If a specific service is missing here, try looking for it
 in the sources tab or define it yourself under &quot;Custom Services&quot;.</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
          </property>
         </widget>
        </item>

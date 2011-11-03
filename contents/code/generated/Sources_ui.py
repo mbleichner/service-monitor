@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'dialogs/Sources.ui'
 #
-# Created: Wed Nov  2 20:06:33 2011
+# Created: Thu Nov  3 19:04:39 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -17,7 +17,7 @@ except AttributeError:
 class Ui_Sources(object):
     def setupUi(self, Sources):
         Sources.setObjectName(_fromUtf8("Sources"))
-        Sources.resize(604, 458)
+        Sources.resize(604, 435)
         self.verticalLayout_5 = QtGui.QVBoxLayout(Sources)
         self.verticalLayout_5.setObjectName(_fromUtf8("verticalLayout_5"))
         self.sourceList = QtGui.QListWidget(Sources)
@@ -70,13 +70,30 @@ class Ui_Sources(object):
         self.line_2.setObjectName(_fromUtf8("line_2"))
         self.verticalLayout_5.addWidget(self.line_2)
         self.helpTabWidget = QtGui.QTabWidget(Sources)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.helpTabWidget.sizePolicy().hasHeightForWidth())
+        self.helpTabWidget.setSizePolicy(sizePolicy)
+        self.helpTabWidget.setMinimumSize(QtCore.QSize(0, 110))
         self.helpTabWidget.setObjectName(_fromUtf8("helpTabWidget"))
         self.help = QtGui.QWidget()
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.help.sizePolicy().hasHeightForWidth())
+        self.help.setSizePolicy(sizePolicy)
         self.help.setObjectName(_fromUtf8("help"))
         self.verticalLayout_2 = QtGui.QVBoxLayout(self.help)
+        self.verticalLayout_2.setMargin(10)
         self.verticalLayout_2.setObjectName(_fromUtf8("verticalLayout_2"))
         self.label_2 = QtGui.QLabel(self.help)
-        self.label_2.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_2.sizePolicy().hasHeightForWidth())
+        self.label_2.setSizePolicy(sizePolicy)
+        self.label_2.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.label_2.setObjectName(_fromUtf8("label_2"))
         self.verticalLayout_2.addWidget(self.label_2)
         icon3 = QtGui.QIcon()

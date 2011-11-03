@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>604</width>
-    <height>458</height>
+    <height>435</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -96,10 +96,28 @@ p, li { white-space: pre-wrap; }
    </item>
    <item>
     <widget class="QTabWidget" name="helpTabWidget">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>110</height>
+      </size>
+     </property>
      <property name="currentIndex">
       <number>0</number>
      </property>
      <widget class="QWidget" name="help">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <attribute name="icon">
        <iconset resource="../resources/icons/icons.qrc">
         <normaloff>:/help.png</normaloff>:/help.png</iconset>
@@ -108,15 +126,24 @@ p, li { white-space: pre-wrap; }
        <string/>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="margin">
+        <number>10</number>
+       </property>
        <item>
         <widget class="QLabel" name="label_2">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="text">
           <string>This list holds files containing service definitions. You can search www.documentroot.net
 for updated definitions and then include them in the applet, so you can immediately
 use them.</string>
          </property>
          <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
          </property>
         </widget>
        </item>

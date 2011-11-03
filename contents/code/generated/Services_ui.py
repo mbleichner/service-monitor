@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'dialogs/Services.ui'
 #
-# Created: Wed Nov  2 20:06:33 2011
+# Created: Thu Nov  3 19:04:38 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -152,13 +152,25 @@ class Ui_Services(object):
         self.line_2.setObjectName(_fromUtf8("line_2"))
         self.verticalLayout_8.addWidget(self.line_2)
         self.helpTabWidget = QtGui.QTabWidget(Services)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.helpTabWidget.sizePolicy().hasHeightForWidth())
+        self.helpTabWidget.setSizePolicy(sizePolicy)
+        self.helpTabWidget.setMinimumSize(QtCore.QSize(0, 110))
         self.helpTabWidget.setObjectName(_fromUtf8("helpTabWidget"))
         self.help = QtGui.QWidget()
         self.help.setObjectName(_fromUtf8("help"))
         self.verticalLayout_4 = QtGui.QVBoxLayout(self.help)
+        self.verticalLayout_4.setMargin(10)
         self.verticalLayout_4.setObjectName(_fromUtf8("verticalLayout_4"))
         self.label_2 = QtGui.QLabel(self.help)
-        self.label_2.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_2.sizePolicy().hasHeightForWidth())
+        self.label_2.setSizePolicy(sizePolicy)
+        self.label_2.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.label_2.setObjectName(_fromUtf8("label_2"))
         self.verticalLayout_4.addWidget(self.label_2)
         icon6 = QtGui.QIcon()
@@ -167,13 +179,15 @@ class Ui_Services(object):
         self.tab_1 = QtGui.QWidget()
         self.tab_1.setObjectName(_fromUtf8("tab_1"))
         self.verticalLayout_5 = QtGui.QVBoxLayout(self.tab_1)
+        self.verticalLayout_5.setMargin(10)
         self.verticalLayout_5.setObjectName(_fromUtf8("verticalLayout_5"))
         self.label = QtGui.QLabel(self.tab_1)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
         self.label.setSizePolicy(sizePolicy)
+        self.label.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.label.setWordWrap(False)
         self.label.setObjectName(_fromUtf8("label"))
         self.verticalLayout_5.addWidget(self.label)
@@ -181,15 +195,22 @@ class Ui_Services(object):
         self.tab_2 = QtGui.QWidget()
         self.tab_2.setObjectName(_fromUtf8("tab_2"))
         self.verticalLayout_6 = QtGui.QVBoxLayout(self.tab_2)
+        self.verticalLayout_6.setMargin(10)
         self.verticalLayout_6.setObjectName(_fromUtf8("verticalLayout_6"))
         self.label_3 = QtGui.QLabel(self.tab_2)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_3.sizePolicy().hasHeightForWidth())
+        self.label_3.setSizePolicy(sizePolicy)
+        self.label_3.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.label_3.setObjectName(_fromUtf8("label_3"))
         self.verticalLayout_6.addWidget(self.label_3)
         self.helpTabWidget.addTab(self.tab_2, _fromUtf8(""))
         self.verticalLayout_8.addWidget(self.helpTabWidget)
 
         self.retranslateUi(Services)
-        self.helpTabWidget.setCurrentIndex(2)
+        self.helpTabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(Services)
 
     def retranslateUi(self, Services):

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'dialogs/Settings.ui'
 #
-# Created: Wed Nov  2 20:06:33 2011
+# Created: Thu Nov  3 19:04:38 2011
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -95,33 +95,52 @@ class Ui_Settings(object):
         spacerItem1 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
         self.verticalLayout.addItem(spacerItem1)
         self.helpTabWidget = QtGui.QTabWidget(Settings)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.helpTabWidget.sizePolicy().hasHeightForWidth())
         self.helpTabWidget.setSizePolicy(sizePolicy)
+        self.helpTabWidget.setMinimumSize(QtCore.QSize(0, 110))
         self.helpTabWidget.setObjectName(_fromUtf8("helpTabWidget"))
         self.help = QtGui.QWidget()
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.help.sizePolicy().hasHeightForWidth())
+        self.help.setSizePolicy(sizePolicy)
         self.help.setObjectName(_fromUtf8("help"))
         self.verticalLayout_4 = QtGui.QVBoxLayout(self.help)
+        self.verticalLayout_4.setMargin(10)
         self.verticalLayout_4.setObjectName(_fromUtf8("verticalLayout_4"))
         self.label_4 = QtGui.QLabel(self.help)
-        self.label_4.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_4.sizePolicy().hasHeightForWidth())
+        self.label_4.setSizePolicy(sizePolicy)
+        self.label_4.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.label_4.setObjectName(_fromUtf8("label_4"))
         self.verticalLayout_4.addWidget(self.label_4)
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap(_fromUtf8(":/help.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.helpTabWidget.addTab(self.help, icon2, _fromUtf8(""))
         self.tab_1 = QtGui.QWidget()
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.tab_1.sizePolicy().hasHeightForWidth())
+        self.tab_1.setSizePolicy(sizePolicy)
         self.tab_1.setObjectName(_fromUtf8("tab_1"))
         self.verticalLayout_5 = QtGui.QVBoxLayout(self.tab_1)
+        self.verticalLayout_5.setMargin(10)
         self.verticalLayout_5.setObjectName(_fromUtf8("verticalLayout_5"))
         self.label_5 = QtGui.QLabel(self.tab_1)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_5.sizePolicy().hasHeightForWidth())
         self.label_5.setSizePolicy(sizePolicy)
+        self.label_5.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.label_5.setWordWrap(False)
         self.label_5.setObjectName(_fromUtf8("label_5"))
         self.verticalLayout_5.addWidget(self.label_5)
@@ -145,9 +164,11 @@ class Ui_Settings(object):
         self.label_2.setText(QtGui.QApplication.translate("Settings", "Append sleep to start/stop command:", None, QtGui.QApplication.UnicodeUTF8))
         self.sleepTimeSpinbox.setToolTip(QtGui.QApplication.translate("Settings", "Wait x seconds after execution of start/stop commands before rechecking service status.\n"
 "If the status immediatly flashes back to inactive when starting a service, increase this value.", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_4.setText(QtGui.QApplication.translate("Settings", "Set global options here.", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_5.setText(QtGui.QApplication.translate("Settings", "Set bash variables which are available in the commands. Please ensure\n"
-"that all needed variables are set here if certain services do not work.", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_4.setText(QtGui.QApplication.translate("Settings", "These settings influence behavior of the start stop commands. Use environment\n"
+"variables to customize paths and tools.", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_5.setText(QtGui.QApplication.translate("Settings", "Environment variables are available in start/stop commands. Default variables are\n"
+"$SUDO for the sudo command to use (e.g. kdesudo or gksudo) and $INITDIR for\n"
+"the path to your init-scripts (usually /etc/init.d).", None, QtGui.QApplication.UnicodeUTF8))
         self.helpTabWidget.setTabText(self.helpTabWidget.indexOf(self.tab_1), QtGui.QApplication.translate("Settings", "environment variables", None, QtGui.QApplication.UnicodeUTF8))
 
 import icons_rc

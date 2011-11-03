@@ -153,102 +153,102 @@
 <context>
     <name>Custom</name>
     <message>
-        <location filename="Custom_ui.py" line="196"/>
+        <location filename="Custom_ui.py" line="224"/>
         <source>Dialog</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="197"/>
+        <location filename="Custom_ui.py" line="225"/>
         <source>Add custom service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="198"/>
+        <location filename="Custom_ui.py" line="226"/>
         <source>Edit selected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="199"/>
+        <location filename="Custom_ui.py" line="227"/>
         <source>Remove selected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="200"/>
+        <location filename="Custom_ui.py" line="228"/>
         <source>Upload service definition for other people</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="201"/>
+        <location filename="Custom_ui.py" line="229"/>
         <source>Share with others</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="202"/>
+        <location filename="Custom_ui.py" line="230"/>
         <source>Service Name:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="203"/>
+        <location filename="Custom_ui.py" line="231"/>
         <source>Short description:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="204"/>
+        <location filename="Custom_ui.py" line="232"/>
         <source>Install check:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="205"/>
+        <location filename="Custom_ui.py" line="233"/>
         <source>Running check:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="206"/>
+        <location filename="Custom_ui.py" line="234"/>
         <source>Start command:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="207"/>
+        <location filename="Custom_ui.py" line="235"/>
         <source>Stop command:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="208"/>
+        <location filename="Custom_ui.py" line="236"/>
         <source>Here you can create and edit custom service definitions. Tailor them exactly to your
 needs and share useful definitions with other people!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="213"/>
+        <location filename="Custom_ui.py" line="241"/>
         <source>install/running checks</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="214"/>
+        <location filename="Custom_ui.py" line="242"/>
         <source>Every command should terminate shortly after invocation. Unlike the earlier version, the
 desktop will no longer freeze if a command does not terminate, but Service Monitor will never
 know if the command succeeded. Use &quot;&amp;&quot; to start a process in background if necessary.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="217"/>
+        <location filename="Custom_ui.py" line="245"/>
         <source>start/stop commands</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="218"/>
+        <location filename="Custom_ui.py" line="246"/>
         <source>Using this button, you can submit a service definition on www.documentroot.net, where
 they may be included in the official sources, so others can download it. If you wish, you
 will be mentioned as author of the submission. Please only submit working definitions!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="221"/>
+        <location filename="Custom_ui.py" line="249"/>
         <source>share with others</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="210"/>
+        <location filename="Custom_ui.py" line="238"/>
         <source>These fields take bash commands. For a check to succeed, it must producen on-empty
 output and return exit code 0.
 For example, to check if a file exists, you can use: ls /path/to/file</source>
@@ -274,48 +274,48 @@ For example, to check if a file exists, you can use: ls /path/to/file</source>
 <context>
     <name>Services</name>
     <message>
-        <location filename="Services_ui.py" line="196"/>
+        <location filename="Services_ui.py" line="217"/>
         <source>Dialog</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Services_ui.py" line="197"/>
+        <location filename="Services_ui.py" line="218"/>
         <source>Active Services</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Services_ui.py" line="198"/>
+        <location filename="Services_ui.py" line="219"/>
         <source>Available Services</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Services_ui.py" line="199"/>
+        <location filename="Services_ui.py" line="220"/>
         <source>Add the services to be monitored to the list of active services. The icons show the install
 status of each service. If you find some service missing, you can add it either as custom
 service or through a source file downloaded from the internet (see the sources tab).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Services_ui.py" line="202"/>
+        <location filename="Services_ui.py" line="223"/>
         <source>This list shows all services to be monitored. Add items from the right-hand list and reorder
 them to your needs. Be aware that only services marked with a green dot will work.
 A red dot means the install check has failed, so the definition will not work.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Services_ui.py" line="205"/>
+        <location filename="Services_ui.py" line="226"/>
         <source>active services</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Services_ui.py" line="206"/>
+        <location filename="Services_ui.py" line="227"/>
         <source>The list of available services is loaded from your definition source files, which you can
 manage under the &quot;Sources&quot; tab. If a specific service is missing here, try looking for it
 in the sources tab or define it yourself under &quot;Custom Services&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Services_ui.py" line="209"/>
+        <location filename="Services_ui.py" line="230"/>
         <source>available services</source>
         <translation type="unfinished"></translation>
     </message>
@@ -323,107 +323,109 @@ in the sources tab or define it yourself under &quot;Custom Services&quot;.</sou
 <context>
     <name>Settings</name>
     <message>
-        <location filename="Settings_ui.py" line="136"/>
+        <location filename="Settings_ui.py" line="155"/>
         <source>Dialog</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="137"/>
+        <location filename="Settings_ui.py" line="156"/>
         <source>Environment Variables</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="138"/>
+        <location filename="Settings_ui.py" line="157"/>
         <source>Variable name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="139"/>
+        <location filename="Settings_ui.py" line="158"/>
         <source>Value</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="140"/>
+        <location filename="Settings_ui.py" line="159"/>
         <source>Add</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="141"/>
+        <location filename="Settings_ui.py" line="160"/>
         <source>Remove</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="142"/>
+        <location filename="Settings_ui.py" line="161"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="143"/>
+        <location filename="Settings_ui.py" line="162"/>
         <source>Polling interval:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="144"/>
+        <location filename="Settings_ui.py" line="163"/>
         <source>Update service status every x seconds.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="145"/>
+        <location filename="Settings_ui.py" line="164"/>
         <source>Append sleep to start/stop command:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="146"/>
+        <location filename="Settings_ui.py" line="165"/>
         <source>Wait x seconds after execution of start/stop commands before rechecking service status.
 If the status immediatly flashes back to inactive when starting a service, increase this value.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="148"/>
-        <source>Set global options here.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Settings_ui.py" line="149"/>
-        <source>Set bash variables which are available in the commands. Please ensure
-that all needed variables are set here if certain services do not work.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Settings_ui.py" line="151"/>
+        <location filename="Settings_ui.py" line="172"/>
         <source>environment variables</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Settings_ui.py" line="167"/>
+        <source>These settings influence behavior of the start stop commands. Use environment
+variables to customize paths and tools.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Settings_ui.py" line="169"/>
+        <source>Environment variables are available in start/stop commands. Default variables are
+$SUDO for the sudo command to use (e.g. kdesudo or gksudo) and $INITDIR for
+the path to your init-scripts (usually /etc/init.d).</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>Sources</name>
     <message>
-        <location filename="Sources_ui.py" line="92"/>
+        <location filename="Sources_ui.py" line="109"/>
         <source>Dialog</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Sources_ui.py" line="93"/>
+        <location filename="Sources_ui.py" line="110"/>
         <source>Look for new XML files on the internet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Sources_ui.py" line="94"/>
+        <location filename="Sources_ui.py" line="111"/>
         <source>Search for new source files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Sources_ui.py" line="95"/>
+        <location filename="Sources_ui.py" line="112"/>
         <source>Add XML source file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Sources_ui.py" line="96"/>
+        <location filename="Sources_ui.py" line="113"/>
         <source>Remove selected file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Sources_ui.py" line="97"/>
+        <location filename="Sources_ui.py" line="114"/>
         <source>This list holds files containing service definitions. You can search www.documentroot.net
 for updated definitions and then include them in the applet, so you can immediately
 use them.</source>
