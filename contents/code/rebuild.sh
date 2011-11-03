@@ -1,7 +1,7 @@
 #/bin/bash
 # Rebuild resources, translations and UI dialogs. Use -r to remove obsolete translation strings.
 
-# parse command line params
+# Parse command line parameters
 for PAR in $@; do
   case $PAR in
     -r)
@@ -19,23 +19,23 @@ for PAR in $@; do
 done
 
 # DIALOGS
-for dialog in 'Services' 'Settings' 'Custom' 'Sources'
-do
+for dialog in 'Services' 'Settings' 'Custom' 'Sources'; do
   pyuic4 dialogs/${dialog}.ui > generated/${dialog}_ui.py
-  sed -e '1p;/^#/d' -i generated/${dialog}_ui.py
 done
 
 # ICONS
 pyrcc4 resources/icons/icons.qrc > generated/icons_rc.py
-for icontheme in 'indicators_default'
-do
+for icontheme in 'indicators_default'; do
   pyrcc4 resources/${icontheme}/theme.qrc > generated/${icontheme}_rc.py
-  sed -e '1p;/^#/d' -i generated/${icontheme}_rc.py
 done
 
 # TRANSLATIONS
-for lang in 'de' 'fr' 'es'
-do
+for lang in 'de' 'fr' 'es'; do
   pylupdate4 $PYLUPDATE *.py generated/*.py -ts translations/${lang}.ts
   lrelease translations/${lang}.ts -qm translations/${lang}.qm
+done
+
+# Remove from generated files
+for FILE in generated/*; do
+  sed -e '1p;/^#/d' -i $FILE
 done
