@@ -1,11 +1,5 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'dialogs/Custom.ui'
-#
-# Created: Thu Nov  3 19:04:38 2011
-#      by: PyQt4 UI code generator 4.8.3
-#
-# WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
 
@@ -17,7 +11,7 @@ except AttributeError:
 class Ui_Custom(object):
     def setupUi(self, Custom):
         Custom.setObjectName(_fromUtf8("Custom"))
-        Custom.resize(612, 509)
+        Custom.resize(614, 509)
         self.gridLayout_3 = QtGui.QGridLayout(Custom)
         self.gridLayout_3.setObjectName(_fromUtf8("gridLayout_3"))
         self.gridLayout = QtGui.QGridLayout()
@@ -217,7 +211,7 @@ class Ui_Custom(object):
         self.gridLayout_3.addWidget(self.helpTabWidget, 4, 0, 1, 4)
 
         self.retranslateUi(Custom)
-        self.helpTabWidget.setCurrentIndex(0)
+        self.helpTabWidget.setCurrentIndex(3)
         QtCore.QMetaObject.connectSlotsByName(Custom)
 
     def retranslateUi(self, Custom):
@@ -238,14 +232,14 @@ class Ui_Custom(object):
         self.label.setText(QtGui.QApplication.translate("Custom", "These fields take bash commands. For a check to succeed, it must producen on-empty\n"
 "output and return exit code 0.\n"
 "For example, to check if a file exists, you can use: ls /path/to/file", None, QtGui.QApplication.UnicodeUTF8))
-        self.helpTabWidget.setTabText(self.helpTabWidget.indexOf(self.tab_1), QtGui.QApplication.translate("Custom", "install/running checks", None, QtGui.QApplication.UnicodeUTF8))
+        self.helpTabWidget.setTabText(self.helpTabWidget.indexOf(self.tab_1), QtGui.QApplication.translate("Custom", "Install/running checks", None, QtGui.QApplication.UnicodeUTF8))
         self.label_3.setText(QtGui.QApplication.translate("Custom", "Every command should terminate shortly after invocation. Unlike the earlier version, the\n"
 "desktop will no longer freeze if a command does not terminate, but Service Monitor will never\n"
 "know if the command succeeded. Use \"&\" to start a process in background if necessary.", None, QtGui.QApplication.UnicodeUTF8))
-        self.helpTabWidget.setTabText(self.helpTabWidget.indexOf(self.tab_2), QtGui.QApplication.translate("Custom", "start/stop commands", None, QtGui.QApplication.UnicodeUTF8))
+        self.helpTabWidget.setTabText(self.helpTabWidget.indexOf(self.tab_2), QtGui.QApplication.translate("Custom", "Start/stop commands", None, QtGui.QApplication.UnicodeUTF8))
         self.label_4.setText(QtGui.QApplication.translate("Custom", "Using this button, you can submit a service definition on www.documentroot.net, where\n"
 "they may be included in the official sources, so others can download it. If you wish, you\n"
 "will be mentioned as author of the submission. Please only submit working definitions!", None, QtGui.QApplication.UnicodeUTF8))
-        self.helpTabWidget.setTabText(self.helpTabWidget.indexOf(self.tab_3), QtGui.QApplication.translate("Custom", "share with others", None, QtGui.QApplication.UnicodeUTF8))
+        self.helpTabWidget.setTabText(self.helpTabWidget.indexOf(self.tab_3), QtGui.QApplication.translate("Custom", "Share with others", None, QtGui.QApplication.UnicodeUTF8))
 
 import icons_rc

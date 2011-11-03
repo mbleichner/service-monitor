@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>612</width>
+    <width>614</width>
     <height>509</height>
    </rect>
   </property>
@@ -242,7 +242,7 @@
       </size>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="help">
       <attribute name="icon">
@@ -277,7 +277,7 @@ needs and share useful definitions with other people!</string>
      </widget>
      <widget class="QWidget" name="tab_1">
       <attribute name="title">
-       <string>install/running checks</string>
+       <string>Install/running checks</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout">
        <property name="margin">
@@ -308,7 +308,7 @@ For example, to check if a file exists, you can use: ls /path/to/file</string>
      </widget>
      <widget class="QWidget" name="tab_2">
       <attribute name="title">
-       <string>start/stop commands</string>
+       <string>Start/stop commands</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <property name="margin">
@@ -336,7 +336,7 @@ know if the command succeeded. Use &quot;&amp;&quot; to start a process in backg
      </widget>
      <widget class="QWidget" name="tab_3">
       <attribute name="title">
-       <string>share with others</string>
+       <string>Share with others</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_4">
        <property name="margin">
