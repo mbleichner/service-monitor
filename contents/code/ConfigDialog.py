@@ -90,7 +90,7 @@ class ConfigDialog(KPageDialog):
 
     # Connections für die CustomPage
     QObject.connect(self.customPage.serviceList, SIGNAL('itemClicked(QListWidgetItem*)'), self, SLOT('synchronizeLineEdits()'))
-    QObject.connect(self.customPage.serviceList, SIGNAL('itemDoubleClicked(QListWidgetItem*)'), self, SLOT('toggleEditmode()'))
+    QObject.connect(self.customPage.serviceList, SIGNAL('itemDoubleClicked(QListWidgetItem*)'), self, SLOT('startEditmode()'))
     QObject.connect(self.customPage.editButton, SIGNAL('clicked()'), self, SLOT('toggleEditmode()'))
     QObject.connect(self.customPage.removeButton, SIGNAL('clicked()'), self, SLOT('removeCustomService()'))
     QObject.connect(self.customPage.addButton, SIGNAL('clicked()'), self, SLOT('addCustomService()'))
@@ -103,7 +103,7 @@ class ConfigDialog(KPageDialog):
     QObject.connect(self.settingsPage.pollingIntervalSpinbox, SIGNAL('valueChanged(double)'), self, SLOT('setPollingInterval(double)'))
     QObject.connect(self.settingsPage.sleepTimeSpinbox, SIGNAL('valueChanged(double)'), self, SLOT('setSleepTime(double)'))
 
-    QObject.connect(self, SIGNAL('closeClicked()'), self, SLOT('toggleEditmode()'))
+    QObject.connect(self, SIGNAL('closeClicked()'), self, SLOT('stopEditmode()'))
 
   ## (re)populates all widgets with current config data when window is shown
   def showEvent(self, event):
@@ -364,7 +364,8 @@ class ConfigDialog(KPageDialog):
 
 
   ## Populates list of custom services from custom.xml source file.
-  def populateCustomList(self):
+  # @param select automatically select service with given id
+  def populateCustomList(self, select = None):
     self.customPage.serviceList.clear()
     if not self.sources.has_key(QString('custom.xml')):
       self.customPage.serviceList.addItem(self.tr('Error - custom.xml is missing or has been damaged'))
@@ -374,6 +375,8 @@ class ConfigDialog(KPageDialog):
       item = QListWidgetItem(icon, (service.name + ' - ' + service.description) if service.description else service.name)
       item.service = service
       self.customPage.serviceList.addItem(item)
+      if select == service.id:
+        self.customPage.serviceList.setCurrentRow(self.customPage.serviceList.count()-1)
 
   ## [slot] Switches editmode on or off.
   # @param save Save when disabling editmode?
@@ -381,47 +384,51 @@ class ConfigDialog(KPageDialog):
   # In editmode, the edit button becomes a save button and the remove button becomes a cancel button.
   @pyqtSlot()
   def toggleEditmode(self, save = True):
-
     if self.editmode:
+      self.stopEditmode()
+    else:
+      self.startEditmode()
 
-      if save:
-        # Konfiguration schreiben und relevante Bereiche aktualisieren
-        self.synchronizeService()
-        self.sources[QString('custom.xml')].writeBack()
-        self.emit(SIGNAL('configurationChanged()')) # Falls sich der Name geändert hat
-        self.populateCustomList()
-        self.populateServiceLists()
-        self.execInstallChecks()
-      else:
-        # LineEdits wieder mit ursprünglichen Werten füllen
-        self.synchronizeLineEdits()
+  @pyqtSlot()
+  def startEditmode(self):
+    item = self.customPage.serviceList.currentItem()
+    if not item: return
+    self.editmode = True
 
-      # Stoppe Editmode
-      self.setLineEditsEnabled(False)
-      self.editmode = False
-
-      # Widget-Status anpassen
-      self.customPage.editButton.setText(self.tr('Edit selected'))
-      self.customPage.removeButton.setText(self.tr('Remove selected'))
-      self.customPage.addButton.setEnabled(True)
-      self.customPage.shareButton.setEnabled(True)
-      self.customPage.serviceList.setEnabled(True)
-
-    elif self.customPage.serviceList.currentItem():
-
-      # Starte Editmode
-      item = self.customPage.serviceList.currentItem()
-      self.editmode = True
-
-      # Widget-Status anpassen
-      self.setLineEditsEnabled(True)
+    # Widget-Status anpassen
+    self.setLineEditsEnabled(True)
+    self.synchronizeLineEdits()
+    self.customPage.editButton.setText(self.tr('Save changes'))
+    self.customPage.removeButton.setText(self.tr('Cancel editing'))
+    self.customPage.addButton.setEnabled(False)
+    self.customPage.shareButton.setEnabled(False)
+    self.customPage.serviceList.setEnabled(False)
+      
+  @pyqtSlot()
+  def stopEditmode(self, save = True):
+    if save:
+      # Konfiguration schreiben und relevante Bereiche aktualisieren
+      self.synchronizeService()
+      self.sources[QString('custom.xml')].writeBack()
+      self.emit(SIGNAL('configurationChanged()')) # Falls sich der Name geändert hat
+      selected = self.customPage.serviceList.currentItem().service.id
+      self.populateCustomList(selected)
+      self.populateServiceLists()
+      self.execInstallChecks()
+    else:
+      # LineEdits wieder mit ursprünglichen Werten füllen
       self.synchronizeLineEdits()
-      self.customPage.editButton.setText(self.tr('Save changes'))
-      self.customPage.removeButton.setText(self.tr('Cancel editing'))
-      self.customPage.addButton.setEnabled(False)
-      self.customPage.shareButton.setEnabled(False)
-      self.customPage.serviceList.setEnabled(False)
 
+    # Stoppe Editmode
+    self.setLineEditsEnabled(False)
+    self.editmode = False
+
+    # Widget-Status anpassen
+    self.customPage.editButton.setText(self.tr('Edit selected'))
+    self.customPage.removeButton.setText(self.tr('Remove selected'))
+    self.customPage.addButton.setEnabled(True)
+    self.customPage.shareButton.setEnabled(True)
+    self.customPage.serviceList.setEnabled(True)
 
   ## [slot] Writes data of selected custom service to line edits.
   # Called as slot when a custom service in the list is clicked.
@@ -480,11 +487,7 @@ class ConfigDialog(KPageDialog):
     self.readSources()
     self.populateServiceLists()
     self.execInstallChecks()
-    self.populateCustomList()
-
-    # Letzten Eintrag markieren
-    count = self.customPage.serviceList.count()
-    self.customPage.serviceList.setCurrentRow(count-1)
+    self.populateCustomList(service.id)
     self.synchronizeLineEdits() # Triggert nicht automatisch
 
 
