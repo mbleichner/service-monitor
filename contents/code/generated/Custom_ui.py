@@ -211,7 +211,7 @@ class Ui_Custom(object):
         self.gridLayout_3.addWidget(self.helpTabWidget, 4, 0, 1, 4)
 
         self.retranslateUi(Custom)
-        self.helpTabWidget.setCurrentIndex(3)
+        self.helpTabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(Custom)
 
     def retranslateUi(self, Custom):

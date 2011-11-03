@@ -298,11 +298,6 @@ A red dot means the install check has failed, so the definition will not work.</
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Services_ui.py" line="226"/>
-        <source>active services</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="Services_ui.py" line="227"/>
         <source>The list of available services is loaded from your definition source files, which you can
 manage under the &quot;Sources&quot; tab. If a specific service is missing here, try looking for it
@@ -310,8 +305,13 @@ in the sources tab or define it yourself under &quot;Custom Services&quot;.</sou
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="Services_ui.py" line="226"/>
+        <source>Active services</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="Services_ui.py" line="230"/>
-        <source>available services</source>
+        <source>Available services</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -374,11 +374,6 @@ If the status immediatly flashes back to inactive when starting a service, incre
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="172"/>
-        <source>environment variables</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="Settings_ui.py" line="167"/>
         <source>These settings influence behavior of the start stop commands. Use environment
 variables to customize paths and tools.</source>
@@ -389,6 +384,11 @@ variables to customize paths and tools.</source>
         <source>Environment variables are available in start/stop commands. Default variables are
 $SUDO for the sudo command to use (e.g. kdesudo or gksudo) and $INITDIR for
 the path to your init-scripts (usually /etc/init.d).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Settings_ui.py" line="172"/>
+        <source>Environment variables</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

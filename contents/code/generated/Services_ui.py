@@ -217,10 +217,10 @@ class Ui_Services(object):
         self.label.setText(QtGui.QApplication.translate("Services", "This list shows all services to be monitored. Add items from the right-hand list and reorder\n"
 "them to your needs. Be aware that only services marked with a green dot will work.\n"
 "A red dot means the install check has failed, so the definition will not work.", None, QtGui.QApplication.UnicodeUTF8))
-        self.helpTabWidget.setTabText(self.helpTabWidget.indexOf(self.tab_1), QtGui.QApplication.translate("Services", "active services", None, QtGui.QApplication.UnicodeUTF8))
+        self.helpTabWidget.setTabText(self.helpTabWidget.indexOf(self.tab_1), QtGui.QApplication.translate("Services", "Active services", None, QtGui.QApplication.UnicodeUTF8))
         self.label_3.setText(QtGui.QApplication.translate("Services", "The list of available services is loaded from your definition source files, which you can\n"
 "manage under the \"Sources\" tab. If a specific service is missing here, try looking for it\n"
 "in the sources tab or define it yourself under \"Custom Services\".", None, QtGui.QApplication.UnicodeUTF8))
-        self.helpTabWidget.setTabText(self.helpTabWidget.indexOf(self.tab_2), QtGui.QApplication.translate("Services", "available services", None, QtGui.QApplication.UnicodeUTF8))
+        self.helpTabWidget.setTabText(self.helpTabWidget.indexOf(self.tab_2), QtGui.QApplication.translate("Services", "Available services", None, QtGui.QApplication.UnicodeUTF8))
 
 import icons_rc

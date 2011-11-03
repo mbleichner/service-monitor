@@ -142,7 +142,7 @@ class Ui_Settings(object):
         self.verticalLayout.addWidget(self.helpTabWidget)
 
         self.retranslateUi(Settings)
-        self.helpTabWidget.setCurrentIndex(1)
+        self.helpTabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(Settings)
 
     def retranslateUi(self, Settings):
@@ -163,6 +163,6 @@ class Ui_Settings(object):
         self.label_5.setText(QtGui.QApplication.translate("Settings", "Environment variables are available in start/stop commands. Default variables are\n"
 "$SUDO for the sudo command to use (e.g. kdesudo or gksudo) and $INITDIR for\n"
 "the path to your init-scripts (usually /etc/init.d).", None, QtGui.QApplication.UnicodeUTF8))
-        self.helpTabWidget.setTabText(self.helpTabWidget.indexOf(self.tab_1), QtGui.QApplication.translate("Settings", "environment variables", None, QtGui.QApplication.UnicodeUTF8))
+        self.helpTabWidget.setTabText(self.helpTabWidget.indexOf(self.tab_1), QtGui.QApplication.translate("Settings", "Environment variables", None, QtGui.QApplication.UnicodeUTF8))
 
 import icons_rc

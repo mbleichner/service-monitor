@@ -200,7 +200,7 @@ If the status immediatly flashes back to inactive when starting a service, incre
       </size>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="help">
       <property name="sizePolicy">
@@ -247,7 +247,7 @@ variables to customize paths and tools.</string>
        </sizepolicy>
       </property>
       <attribute name="title">
-       <string>environment variables</string>
+       <string>Environment variables</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_5">
        <property name="margin">

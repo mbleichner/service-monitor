@@ -281,7 +281,7 @@ service or through a source file downloaded from the internet (see the sources t
      </widget>
      <widget class="QWidget" name="tab_1">
       <attribute name="title">
-       <string>active services</string>
+       <string>Active services</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_5">
        <property name="margin">
@@ -312,7 +312,7 @@ A red dot means the install check has failed, so the definition will not work.</
      </widget>
      <widget class="QWidget" name="tab_2">
       <attribute name="title">
-       <string>available services</string>
+       <string>Available services</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_6">
        <property name="margin">
