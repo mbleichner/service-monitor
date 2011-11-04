@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="de_DE">
+<!DOCTYPE TS>
+<TS version="2.0" language="de_DE">
 <context>
     <name>ConfigDialog</name>
     <message>
@@ -223,21 +224,28 @@
         <location filename="Custom_ui.py" line="236"/>
         <source>Here you can create and edit custom service definitions. Tailor them exactly to your
 needs and share useful definitions with other people!</source>
-        <translation type="unfinished"></translation>
+        <translation>Hier kannst du eigene Definitionen anlegen und verwalten. Richte sie nach deinen
+Wünschen ein und teile nützliche Definitionen mit der Community!</translation>
     </message>
     <message>
         <location filename="Custom_ui.py" line="242"/>
         <source>Every command should terminate shortly after invocation. Unlike the earlier version, the
 desktop will no longer freeze if a command does not terminate, but Service Monitor will never
 know if the command succeeded. Use &quot;&amp;&quot; to start a process in background if necessary.</source>
-        <translation type="unfinished"></translation>
+        <translation>Jedes Kommando sollte kurz nach dem Start wieder terminieren. Anders als die vorherige
+Version friert der Desktop zwar nicht mehr ein, wenn ein Kommando die Kontrolle nicht mehr
+abgibt, aber Service Monitor bekommt nicht mit, ob es erfolgreich war. Wen nötig, nutze &quot;&amp;&quot;,
+um den Prozess im Hintergrund zu starten.</translation>
     </message>
     <message>
         <location filename="Custom_ui.py" line="246"/>
         <source>Using this button, you can submit a service definition on www.documentroot.net, where
 they may be included in the official sources, so others can download it. If you wish, you
 will be mentioned as author of the submission. Please only submit working definitions!</source>
-        <translation type="unfinished"></translation>
+        <translation>Mit diesem Button kannst du nützliche Definitionen auf www.documentroot.net hochladen,
+wo sie eventuell in die offiziellen Quellen aufgenommen werden und andere sie herunterladen
+können. Wenn du willst, wirst du als Autor genannt. Bitte nur funktionierende Definitionen
+hochladen!</translation>
     </message>
     <message>
         <location filename="Custom_ui.py" line="238"/>
@@ -272,7 +280,7 @@ Um z.B. die Existenz einer Datei zu prüfen, kann man &quot;ls /pfad/zur/datei&q
     <message>
         <location filename="ServiceMonitor.py" line="136"/>
         <source>&lt;b&gt;Thank you for downloading&lt;br/&gt;Service Monitor!&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;Right click to open the&lt;br/&gt;settings dialog.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Danke fürs Installieren von&lt;br/&gt;Service Monitor!&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;Öffne die Einstellungen&lt;br/&gt;mit einem Rechtsklick.</translation>
     </message>
 </context>
 <context>
@@ -316,12 +324,12 @@ in the sources tab or define it yourself under &quot;Custom Services&quot;.</sou
     <message>
         <location filename="Services_ui.py" line="226"/>
         <source>Active services</source>
-        <translation type="unfinished"></translation>
+        <translation>Überwachte Dienste</translation>
     </message>
     <message>
         <location filename="Services_ui.py" line="230"/>
         <source>Available services</source>
-        <translation type="unfinished"></translation>
+        <translation>Verfügbare Dienste</translation>
     </message>
 </context>
 <context>
@@ -387,19 +395,22 @@ Erhöhe diesen Wert, wenn der Status eines Dienstes beim Starten nochmal kurz au
         <location filename="Settings_ui.py" line="167"/>
         <source>These settings influence behavior of the start stop commands. Use environment
 variables to customize paths and tools.</source>
-        <translation type="unfinished"></translation>
+        <translation>Diese Einstellungen beeinflussen das Verhalten der Start-/Stop-Kommandos.
+Setze systemspezifische Einstellungen mit Hilfe von Umgebungsvariablen.</translation>
     </message>
     <message>
         <location filename="Settings_ui.py" line="169"/>
         <source>Environment variables are available in start/stop commands. Default variables are
 $SUDO for the sudo command to use (e.g. kdesudo or gksudo) and $INITDIR for
 the path to your init-scripts (usually /etc/init.d).</source>
-        <translation type="unfinished"></translation>
+        <translation>Umgebungsvariablen sind in den Start-/Stop-Kommandos verfügbar. Standard-Variablen
+sind $SUDO für dein Lieblings-Sudo-Tool (z.B. kdesudo oder gksudo) und $INITDIR für das
+Verzeichnis, in dem die Init-Skripte liegen (normalerweise /etc/init.d).</translation>
     </message>
     <message>
         <location filename="Settings_ui.py" line="172"/>
         <source>Environment variables</source>
-        <translation type="unfinished"></translation>
+        <translation>Umgebungsvariablen</translation>
     </message>
 </context>
 <context>
@@ -434,7 +445,8 @@ the path to your init-scripts (usually /etc/init.d).</source>
         <source>This list holds files containing service definitions. You can search www.documentroot.net
 for updated definitions and then include them in the applet, so you can immediately
 use them.</source>
-        <translation type="unfinished"></translation>
+        <translation>Diese Liste enthält Dateien mit Dienst-Definitionen. Du kannst auf www.documentroot.net
+nach weiteren oder aktuelleren Quellen suchen und diese direkt ins Applet integrieren.</translation>
     </message>
 </context>
 </TS>
