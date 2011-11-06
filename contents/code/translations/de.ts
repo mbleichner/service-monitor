@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="de_DE">
+<!DOCTYPE TS><TS version="1.1" language="de_DE">
 <context>
     <name>ConfigDialog</name>
     <message>
@@ -305,21 +304,27 @@ Um z.B. die Existenz einer Datei zu prüfen, kann man &quot;ls /pfad/zur/datei&q
         <source>Add the services to be monitored to the list of active services. The icons show the install
 status of each service. If you find some service missing, you can add it either as custom
 service or through a source file downloaded from the internet (see the sources tab).</source>
-        <translation type="unfinished"></translation>
+        <translation>Füge die zu überwachenden Dienste zur linken Liste hinzu. Die roten und grünen Icons
+zeigen an, ob der jeweilige Dienst installiert ist. Falls due einen bestimmten Dienst vermisst,
+kannst du ihn entweder selbst anlegen oder im Internet nach aktualisierten Definitionen suchen.</translation>
     </message>
     <message>
         <location filename="Services_ui.py" line="223"/>
         <source>This list shows all services to be monitored. Add items from the right-hand list and reorder
 them to your needs. Be aware that only services marked with a green dot will work.
 A red dot means the install check has failed, so the definition will not work.</source>
-        <translation type="unfinished"></translation>
+        <translation>Diese Liste zeigt alle Dienste, die momentan überwacht werden. Füge Dienste aus der rechten
+Liste hinzu und ordne sie nach Belieben an. Achtung: nur grün markierte Dienste werden
+funktionieren - ein roter Punkt bedeutet, dass der Install-Check fehlgeschlagen ist.</translation>
     </message>
     <message>
         <location filename="Services_ui.py" line="227"/>
         <source>The list of available services is loaded from your definition source files, which you can
 manage under the &quot;Sources&quot; tab. If a specific service is missing here, try looking for it
 in the sources tab or define it yourself under &quot;Custom Services&quot;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Die Liste der verfügbaren Dienste wird aus den installierten Quell-Dateien geladen, die
+im Tab &quot;Quellen&quot; verwaltet werden können. Wenn ein bestimmter Dienst fehlt, suche
+zunächst dort oder definiere ihn unter &quot;Eigene Dienste&quot; selbst.</translation>
     </message>
     <message>
         <location filename="Services_ui.py" line="226"/>
