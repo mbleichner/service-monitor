@@ -35,7 +35,7 @@ for lang in 'de' 'fr' 'es'; do
   lrelease translations/${lang}.ts -qm translations/${lang}.qm
 done
 
-# Remove from generated files
+# Remove comments from generated files
 for FILE in generated/*; do
   sed -e '1p;/^#/d' -i $FILE
 done
