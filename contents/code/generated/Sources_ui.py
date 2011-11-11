@@ -12,6 +12,7 @@ class Ui_Sources(object):
     def setupUi(self, Sources):
         Sources.setObjectName(_fromUtf8("Sources"))
         Sources.resize(604, 435)
+        Sources.setWindowTitle(QtGui.QApplication.translate("Sources", "Dialog", None, QtGui.QApplication.UnicodeUTF8))
         self.verticalLayout_5 = QtGui.QVBoxLayout(Sources)
         self.verticalLayout_5.setObjectName(_fromUtf8("verticalLayout_5"))
         self.sourceList = QtGui.QListWidget(Sources)
@@ -20,18 +21,22 @@ class Ui_Sources(object):
         self.horizontalLayout = QtGui.QHBoxLayout()
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
         self.searchButton = QtGui.QPushButton(Sources)
+        self.searchButton.setToolTip(QtGui.QApplication.translate("Sources", "Look for new XML files on the internet", None, QtGui.QApplication.UnicodeUTF8))
+        self.searchButton.setText(QtGui.QApplication.translate("Sources", "Search for new source files", None, QtGui.QApplication.UnicodeUTF8))
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(_fromUtf8(":/search.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.searchButton.setIcon(icon)
         self.searchButton.setObjectName(_fromUtf8("searchButton"))
         self.horizontalLayout.addWidget(self.searchButton)
         self.addButton = QtGui.QPushButton(Sources)
+        self.addButton.setText(QtGui.QApplication.translate("Sources", "Add XML source file", None, QtGui.QApplication.UnicodeUTF8))
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap(_fromUtf8(":/plus.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.addButton.setIcon(icon1)
         self.addButton.setObjectName(_fromUtf8("addButton"))
         self.horizontalLayout.addWidget(self.addButton)
         self.removeButton = QtGui.QPushButton(Sources)
+        self.removeButton.setText(QtGui.QApplication.translate("Sources", "Remove selected file", None, QtGui.QApplication.UnicodeUTF8))
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap(_fromUtf8(":/minus.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.removeButton.setIcon(icon2)
@@ -87,6 +92,9 @@ class Ui_Sources(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_2.sizePolicy().hasHeightForWidth())
         self.label_2.setSizePolicy(sizePolicy)
+        self.label_2.setText(QtGui.QApplication.translate("Sources", "This list holds files containing service definitions. You can search www.documentroot.net\n"
+"for updated definitions and then include them in the applet, so you can immediately\n"
+"use them.", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.label_2.setObjectName(_fromUtf8("label_2"))
         self.verticalLayout_2.addWidget(self.label_2)
@@ -100,13 +108,6 @@ class Ui_Sources(object):
         QtCore.QMetaObject.connectSlotsByName(Sources)
 
     def retranslateUi(self, Sources):
-        Sources.setWindowTitle(QtGui.QApplication.translate("Sources", "Dialog", None, QtGui.QApplication.UnicodeUTF8))
-        self.searchButton.setToolTip(QtGui.QApplication.translate("Sources", "Look for new XML files on the internet", None, QtGui.QApplication.UnicodeUTF8))
-        self.searchButton.setText(QtGui.QApplication.translate("Sources", "Search for new source files", None, QtGui.QApplication.UnicodeUTF8))
-        self.addButton.setText(QtGui.QApplication.translate("Sources", "Add XML source file", None, QtGui.QApplication.UnicodeUTF8))
-        self.removeButton.setText(QtGui.QApplication.translate("Sources", "Remove selected file", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_2.setText(QtGui.QApplication.translate("Sources", "This list holds files containing service definitions. You can search www.documentroot.net\n"
-"for updated definitions and then include them in the applet, so you can immediately\n"
-"use them.", None, QtGui.QApplication.UnicodeUTF8))
+        pass
 
 import icons_rc
