@@ -15,7 +15,7 @@ class ShellProcess(KProcess):
 class RootProcess(ShellProcess):
 
   def __init__(self, command, rootpw, parent = None):
-    ShellProcess.__init__(self, "sudo -S %s" % command, parent)
+    ShellProcess.__init__(self, "sudo -kS %s" % command, parent)
     self.rootpw = rootpw
 
   def start(self):
