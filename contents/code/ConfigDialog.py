@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import shutil, random, os
+import shutil, random, os, sys
 
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
@@ -48,6 +48,11 @@ class ConfigDialog(KPageDialog):
 
     # Daten einlesen
     self.readSources()
+
+    #p = RootProcess("echo 'test' > /test", "password")
+    #p.start()
+    #p.waitForFinished()
+    #sys.exit()
 
 
   ## Initialize the internal QSettings object with sensible default values

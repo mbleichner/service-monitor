@@ -9,14 +9,20 @@ class ShellProcess(KProcess):
   def __init__(self, command, parent = None):
     KProcess.__init__(self, parent)
     self.setOutputChannelMode(KProcess.MergedChannels)
-    self.setShellCommand(command)
+    self.setProgram(self.generateProgram(command))
+
+  def generateProgram(self, command):
+    return QStringList() << "/bin/bash" << "-c" << command
 
 
 class RootProcess(ShellProcess):
 
   def __init__(self, command, rootpw, parent = None):
-    ShellProcess.__init__(self, "sudo -kS %s" % command, parent)
+    ShellProcess.__init__(self, command, parent)
     self.rootpw = rootpw
+
+  def generateProgram(self, command):
+    return (QStringList() << "/usr/bin/sudo" << "-kS") + ShellProcess.generateProgram(self, command)
 
   def start(self):
     ShellProcess.start(self)
