@@ -102,11 +102,11 @@ class ConfigDialog(KPageDialog):
     QObject.connect(self.customPage.shareButton, SIGNAL('clicked()'), self, SLOT('uploadCustomService()'))
 
     # Connections für die SettingsPage
-    QObject.connect(self.settingsPage.addButton, SIGNAL('clicked()'), self, SLOT('addVariable()'))
-    QObject.connect(self.settingsPage.removeButton, SIGNAL('clicked()'), self, SLOT('removeVariable()'))
-    QObject.connect(self.settingsPage.variableTable, SIGNAL('itemChanged(QTableWidgetItem*)'), self, SLOT('editVariable(QTableWidgetItem*)'))
-    QObject.connect(self.settingsPage.pollingIntervalSpinbox, SIGNAL('valueChanged(double)'), self, SLOT('setPollingInterval(double)'))
-    QObject.connect(self.settingsPage.sleepTimeSpinbox, SIGNAL('valueChanged(double)'), self, SLOT('setSleepTime(double)'))
+    #QObject.connect(self.settingsPage.addButton, SIGNAL('clicked()'), self, SLOT('addVariable()'))
+    #QObject.connect(self.settingsPage.removeButton, SIGNAL('clicked()'), self, SLOT('removeVariable()'))
+    #QObject.connect(self.settingsPage.variableTable, SIGNAL('itemChanged(QTableWidgetItem*)'), self, SLOT('editVariable(QTableWidgetItem*)'))
+    #QObject.connect(self.settingsPage.pollingIntervalSpinbox, SIGNAL('valueChanged(double)'), self, SLOT('setPollingInterval(double)'))
+    #QObject.connect(self.settingsPage.sleepTimeSpinbox, SIGNAL('valueChanged(double)'), self, SLOT('setSleepTime(double)'))
 
     QObject.connect(self, SIGNAL('closeClicked()'), self, SLOT('stopEditmode()'))
 

@@ -183,6 +183,7 @@ class ServiceMonitor(Applet):
 
   ## Updates the icon corresponding to the service argument.
   def refreshStateIcon(self, service):
+    if not isinstance(service, Service): return
     icon = KIcon(':/status-%s-%s.png' % service.state)
     self.widgets[service.id]['status'].setIcon(icon)
 
