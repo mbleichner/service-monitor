@@ -25,9 +25,6 @@ done
 
 # ICONS
 pyrcc4 resources/icons/icons.qrc > generated/icons_rc.py
-for icontheme in 'indicators_default'; do
-  pyrcc4 resources/${icontheme}/theme.qrc > generated/${icontheme}_rc.py
-done
 
 # TRANSLATIONS
 for lang in 'de' 'fr' 'es'; do

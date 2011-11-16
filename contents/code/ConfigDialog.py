@@ -161,6 +161,17 @@ class ConfigDialog(KPageDialog):
     return self.config.value('sleepTime').toDouble()[0]
 
 
+  def indicatorTheme(self):
+    return "default"
+
+
+  def installStateIndicator(self, service):
+    return QIcon("%s/indicators/%s/%s.png" % (codedir, self.indicatorTheme(), service.state[0]))
+    
+  def runningStateIndicator(self, service):
+    return QIcon("%s/indicators/%s/%s.png" % (codedir, self.indicatorTheme(), service.state[1]))
+
+
   ## Returns a QProcessEnvironment instance containing all environment variables from config.
   def processEnvironment(self):
     variables = self.config.value('variables').toStringList()
@@ -193,7 +204,7 @@ class ConfigDialog(KPageDialog):
       item = QListWidgetItem(service.name)
       item.service = service
       self.servicesPage.activeServicesList.addItem(item)
-      item.setIcon(QIcon(':/status-%s.png' % service.state[0]))
+      item.setIcon(self.installStateIndicator(service))
     for filename, source in sorted(self.sources.items()):
       servicesToShow = [s for s in source.services if not activeServicesIDs.contains(s.id) and self.services[s.id] == s]
       if len(servicesToShow) == 0: continue
@@ -205,7 +216,7 @@ class ConfigDialog(KPageDialog):
         item = QListWidgetItem(service.name)
         item.service = service
         self.servicesPage.inactiveServicesList.addItem(item)
-        item.setIcon(QIcon(':/status-%s.png' % service.state[0]))
+        item.setIcon(self.installStateIndicator(service))
 
 
   ## Initiates install checks for all services shown on the services page.
@@ -227,7 +238,7 @@ class ConfigDialog(KPageDialog):
                [self.servicesPage.inactiveServicesList.item(i) for i in range(self.servicesPage.inactiveServicesList.count())]
     activeItems = [item for item in allItems if hasattr(item, 'service') and item.service == service]
     for item in activeItems:
-      item.setIcon(QIcon(':/status-%s.png' % service.state[0]))
+      item.setIcon(self.installStateIndicator(service))
 
 
   ## [slot] Print info about the clicked service in the textarea.

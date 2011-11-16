@@ -149,10 +149,10 @@ class Service(QObject):
   def checkFinished(self, which):
     proc = self.sender()
     if which == "installcheck":
-      newState = ('installed' if (proc.exitCode() == 0 and proc.readAll().length() > 0) else 'unavailable', self.state[1])
+      newState = ('installed' if (proc.exitCode() == 0 and proc.readAll().length() > 0) else 'missing', self.state[1])
       self.setState(newState)
     if which == "runningcheck":
-      newState = (self.state[0], 'active' if (proc.exitCode() == 0 and proc.readAll().length() > 0) else 'inactive')
+      newState = (self.state[0], 'running' if (proc.exitCode() == 0 and proc.readAll().length() > 0) else 'stopped')
       self.setState(newState)
     QTimer.singleShot(0, self.cleanupProcesses)
 
