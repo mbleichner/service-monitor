@@ -27,16 +27,15 @@ class Service(QObject):
     self.runningCheck = ''
     self.startCommand = ''
     self.stopCommand = ''
-    self.processes = set()
+    self.process = None
     self.environment = None
     self.sleepTime = 0
     self.state = ('unknown', 'unknown')   # (Install-Status, Running-Status)
-
-    # Timer einrichten und connecten (gestartet wird er von außen)
+    self.interval = 4000
+    self.polling = False
     self.timer = QTimer()
-    self.timer.setInterval(4000)
-    QObject.connect(self.timer, SIGNAL('timeout()'), self.execInstallCheck)
-    QObject.connect(self.timer, SIGNAL('timeout()'), self.execRunningCheck)
+    self.timer.setSingleShot(True)
+    QObject.connect(self.timer, SIGNAL('timeout()'), partial(self.execute, "runningcheck"))
 
 
   ## [static] Creates a new service object from a DOM node.
@@ -87,97 +86,20 @@ class Service(QObject):
 
   ## Starts polling with the interval set up by setPollingInterval().
   def startPolling(self):
+    self.polling = True
     self.timer.start()
-    self.timer.emit(SIGNAL('timeout()'))
+    self.execute("runningcheck")
 
 
   ## Stops polling...
   def stopPolling(self):
-    self.timer.stop()
+    self.polling = False
 
 
-  ## Starts running check (threaded).
-  @pyqtSlot()
-  def execRunningCheck(self):
-    proc = ShellProcess(self.runningCheck)
-    if self.environment:
-      proc.setProcessEnvironment(self.environment)
-    QObject.connect(proc, SIGNAL('finished(int)'), partial(self.checkFinished, "runningcheck"))
-    QObject.connect(proc, SIGNAL('error()'), partial(self.checkFinished, "runningcheck"))
-    self.processes.add(proc)
-    proc.start()
-
-
-  ## Starts install check (threaded).
-  @pyqtSlot()
-  def execInstallCheck(self):
-    proc = ShellProcess(self.installCheck)
-    if self.environment:
-      proc.setProcessEnvironment(self.environment)
-    QObject.connect(proc, SIGNAL('finished(int)'), partial(self.checkFinished, "installcheck"))
-    QObject.connect(proc, SIGNAL('error()'), partial(self.checkFinished, "installcheck"))
-    self.processes.add(proc)
-    proc.start()
-
-
-  ## Starts this service (threaded).
-  # Polling is suspended until command is finished.
-  @pyqtSlot()
-  def execStartCommand(self):
-    self.stopPolling()
-    self.killAllProcesses()
-    self.setState( (self.state[0], 'starting') )
-    cmd = self.startCommand
-    print cmd
-    proc = RootProcess(cmd)
-    if self.environment:
-      proc.setProcessEnvironment(self.environment)
-    QObject.connect(proc, SIGNAL('finished(int)'), partial(self.commandFinished, "startcommand"))
-    QObject.connect(proc, SIGNAL('error()'), partial(self.commandFinished, "startcommand"))
-    self.processes.add(proc)
-    proc.start()
-    print "continuing"
-
-
-  ## Stops this service (threaded).
-  # Polling is suspended until command is finished.
-  @pyqtSlot()
-  def execStopCommand(self):
-    self.stopPolling()
-    self.killAllProcesses()
-    self.setState( (self.state[0], 'stopping') )
-    cmd = self.stopCommand
-    print cmd
-    proc = RootProcess(cmd)
-    if self.environment:
-      proc.setProcessEnvironment(self.environment)
-    QObject.connect(proc, SIGNAL('finished()'), partial(self.commandFinished, "stopcommand"))
-    QObject.connect(proc, SIGNAL('error()'), partial(self.commandFinished, "stopcommand"))
-    self.processes.add(proc)
-    proc.start()
-    print "continuing"
-
-
-  ## Updates service state and emit stateChanged() if necessary.
-  def checkFinished(self, which):
-    proc = self.sender()
-    if which == "installcheck":
-      newState = ('installed' if (proc.exitCode() == 0 and proc.readAll().length() > 0) else 'missing', self.state[1])
-      self.setState(newState)
-    if which == "runningcheck":
-      newState = (self.state[0], 'running' if (proc.exitCode() == 0 and proc.readAll().length() > 0) else 'stopped')
-      self.setState(newState)
-    QTimer.singleShot(0, self.cleanupProcesses)
-
-
-  ## [internal] Processes possible errors and continue checks
-  def commandFinished(self, which):
-    proc = self.sender()
-    errorOutput = QString(proc.readAllStandardError())
-    if errorOutput:
-      QMessageBox.critical(None, self.name, self.tr('The command produced the following error:') + '\n' + errorOutput, QMessageBox.Ok)
-    self.setState( (self.state[0], 'unknown') )
-    self.startPolling()
+  def execRunningCheck(self): self.execute("runningcheck")
+  def execInstallCheck(self): self.execute("installcheck")
+  def execStartCommand(self): self.execute("startcommand")
+  def execStopCommand(self):  self.execute("stopcommand")
 
 
   ## Shortcut for setting state and check if stateChanged() has to be emitted.
@@ -188,15 +110,42 @@ class Service(QObject):
       self.emit(SIGNAL('stateChanged()'))
 
 
+  def setRunningState(self, runningState):
+    self.setState( (self.state[0], runningState) )
 
-# Prozess-Verwaltungs-Funktionen ################################################################################
+
+  def setInstallState(self, installState):
+    self.setState( (installState, self.state[1]) )
 
 
+  def execute(self, which):
+    print which, self.id
+    self.killRunningProcess()
+    self.timer.stop()
+    if "command" in which:
+      self.process = RootProcess(self.startCommand if which == "startcommand" else self.stopCommand)
+      self.setRunningState("starting" if which == "startcommand" else "stopping")
+    else:
+      self.process = ShellProcess(self.runningCheck if which == "runningcheck" else self.installCheck)
+    QObject.connect(self.process, SIGNAL('finished(int)'), partial(self.procFinished, which))
+    QTimer.singleShot(0, self.process.start)
+
+
+  def procFinished(self, which):
+    errorOutput = QString(self.process.readAllStandardError())
+    if errorOutput:
+      QMessageBox.critical(None, self.name, self.tr('The command produced the following error:') + '\n' + errorOutput, QMessageBox.Ok)
+    if which == "installcheck":
+      self.setInstallState('installed' if (self.process.exitCode() == 0 and self.process.readAll().length() > 0) else 'missing')
+    if which == "runningcheck":
+      self.setRunningState('running' if (self.process.exitCode() == 0 and self.process.readAll().length() > 0) else 'stopped')
+    if self.polling:
+      self.timer.start()
+    self.killRunningProcess()
+
+    
   ## Sets the environment for all processes.
-  def setProcessEnvironment(self, env):
-    #env.remove("SUDO")
-    #env.insert("SUDO", "")
-    self.environment = env
+  def setProcessEnvironment(self, env): pass
 
 
   ## Sets a sleep time to be appended to all commands.
@@ -204,18 +153,12 @@ class Service(QObject):
     self.sleepTime = n
 
 
-  ## [internal] Removes dead QProcesses.
-  def cleanupProcesses(self):
-    for proc in list(self.processes):
-      if proc.state() == 0: self.processes.remove(proc)
-
-
   ## [internal] Kills all running Processes.
-  def killAllProcesses(self):
-    for proc in list(self.processes):
-      proc.kill()
-      self.processes.remove(proc)
-
+  def killRunningProcess(self):
+    if self.process is not None:
+      #QObject.disconnect(self.process, self)
+      self.process.deleteLater()
+      self.process = None
 
 
 ## Shortcut for creating a DOM element containing text data.
