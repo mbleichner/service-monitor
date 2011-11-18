@@ -142,12 +142,10 @@ class ServiceMonitor(Applet):
       service.stopPolling()
 
     # Aktive Prozesse neu einrichten und Polling starten
-    env = self.configDialog.processEnvironment()
     interval = self.configDialog.pollingInterval()
     sleepTime = self.configDialog.sleepTime()
     for service in activeServices:
       QObject.connect(service, SIGNAL('stateChanged()'), partial(self.refreshStateIcon, service))
-      service.setProcessEnvironment(env)
       service.setSleepTime(sleepTime)
       service.setPollingInterval(interval)
       service.startPolling()

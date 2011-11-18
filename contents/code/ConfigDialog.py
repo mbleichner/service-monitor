@@ -103,11 +103,8 @@ class ConfigDialog(KPageDialog):
     QObject.connect(self.customPage.shareButton, SIGNAL('clicked()'), self.uploadCustomService)
 
     # Connections für die SettingsPage
-    #QObject.connect(self.settingsPage.addButton, SIGNAL('clicked()'), self.addVariable())
-    #QObject.connect(self.settingsPage.removeButton, SIGNAL('clicked()'), self.removeVariable())
-    #QObject.connect(self.settingsPage.variableTable, SIGNAL('itemChanged(QTableWidgetItem*)'), self.editVariable(QTableWidgetItem*))
-    #QObject.connect(self.settingsPage.pollingIntervalSpinbox, SIGNAL('valueChanged(double)'), self.setPollingInterval(double))
-    #QObject.connect(self.settingsPage.sleepTimeSpinbox, SIGNAL('valueChanged(double)'), self.setSleepTime(double))
+    QObject.connect(self.settingsPage.pollingIntervalSpinbox, SIGNAL('valueChanged(double)'), self.setPollingInterval)
+    QObject.connect(self.settingsPage.sleepTimeSpinbox, SIGNAL('valueChanged(double)'), self.setSleepTime)
 
     QObject.connect(self, SIGNAL('closeClicked()'), self.stopEditmode)
 
@@ -175,15 +172,6 @@ class ConfigDialog(KPageDialog):
     return QIcon("%s/indicators/%s/%s.png" % (codedir, self.indicatorTheme(), service.state[1]))
 
 
-  ## Returns a QProcessEnvironment instance containing all environment variables from config.
-  def processEnvironment(self):
-    variables = self.config.value('variables').toStringList()
-    env = QProcessEnvironment.systemEnvironment()
-    for i in range(len(variables)/2):
-      env.insert(variables[2*i], variables[2*i+1])
-    return env
-
-
 # SERVICES PAGE ###########################################################################################################
 
 
@@ -226,10 +214,8 @@ class ConfigDialog(KPageDialog):
   # When a state is changed by the install check, the slot self.serviceStateChanged() is called, which updates the icon in the list.
   def execInstallChecks(self):
     print '(re)checking install status of all services...'
-    env = self.processEnvironment()
     for service in self.services.values():
       QObject.connect(service, SIGNAL('stateChanged()'), partial(self.serviceStateChanged, service))
-      service.setProcessEnvironment(env)
       service.execInstallCheck()
 
 
@@ -536,66 +522,13 @@ class ConfigDialog(KPageDialog):
     QDesktopServices.openUrl(url)
 
 
-# CUSTOM PAGE ###########################################################################################################
-
-  ## Populates the table with environment variables.
-  def populateVariableList(self):
-    self.settingsPage.variableTable.blockSignals(True)
-    self.settingsPage.variableTable.clearContents()
-    variables = self.config.value('variables').toStringList()
-    self.settingsPage.variableTable.setRowCount(len(variables)/2)
-    for i in range(len(variables)/2):
-      self.settingsPage.variableTable.setItem(i, 0, QTableWidgetItem(variables[2*i]))
-      self.settingsPage.variableTable.setItem(i, 1, QTableWidgetItem(variables[2*i+1]))
-    self.settingsPage.variableTable.blockSignals(False)
+# SETTINGS PAGE ###########################################################################################################
 
 
   ## Populates everything in the settings frame (currently only polling time and sleep time).
   def populateSettings(self):
     self.settingsPage.pollingIntervalSpinbox.setValue(self.config.value('pollingInterval').toDouble()[0])
     self.settingsPage.sleepTimeSpinbox.setValue(self.config.value('sleepTime').toDouble()[0])
-
-
-  ## [slot] Adds a new dummy environment variale to the internal config and repopulates the table.
-  @pyqtSlot()
-  def addVariable(self):
-    variables = self.config.value('variables').toStringList()
-    variables << 'NAME'
-    variables << '<value>'
-    self.config.setValue('variables', variables)
-    self.populateVariableList()
-    self.emit(SIGNAL('configurationChanged()'))
-
-
-  ## [slot] Saves changes to the edited variable.
-  # @param item The item which has been edited.
-  @pyqtSlot('QTableWidgetItem*')
-  def editVariable(self, item):
-    variables = self.config.value('variables').toStringList()
-    row = self.settingsPage.variableTable.row(item)
-    regex = QRegExp('([A-Z_][A-Z0-9_]*)', Qt.CaseInsensitive)
-    if not regex.exactMatch( self.settingsPage.variableTable.item(row, 0).text() ):
-      QMessageBox.warning(self, self.tr('Warning'), self.tr('Only alphanumeric characters are allowed in the variable name, so this will not work. Please edit.'), QMessageBox.Ok)
-    variables[2*row] = self.settingsPage.variableTable.item(row, 0).text()
-    variables[2*row+1] = self.settingsPage.variableTable.item(row, 1).text()
-    self.config.setValue('variables', variables)
-    self.populateVariableList()
-    self.execInstallChecks()
-    self.emit(SIGNAL('configurationChanged()'))
-
-
-  ## [slot] Remove selected variable from internal config and repopulate table.
-  @pyqtSlot()
-  def removeVariable(self):
-    variables = self.config.value('variables').toStringList()
-    rowsToRemove = list(set([self.settingsPage.variableTable.row(item) for item in self.settingsPage.variableTable.selectedItems()]))
-    if len(rowsToRemove) == 0: return
-    for row in reversed(sorted(rowsToRemove)):
-      variables.removeAt(2*row+1)
-      variables.removeAt(2*row)
-    self.config.setValue('variables', variables)
-    self.populateVariableList()
-    self.emit(SIGNAL('configurationChanged()'))
 
 
   ## [slot] Save polling interval to internal config.

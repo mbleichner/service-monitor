@@ -28,7 +28,6 @@ class Service(QObject):
     self.startCommand = ''
     self.stopCommand = ''
     self.process = None
-    self.environment = None
     self.sleepTime = 0
     self.state = ('unknown', 'unknown')   # (Install-Status, Running-Status)
     self.interval = 4000
@@ -142,10 +141,6 @@ class Service(QObject):
     if self.polling:
       self.timer.start()
     self.killRunningProcess()
-
-    
-  ## Sets the environment for all processes.
-  def setProcessEnvironment(self, env): pass
 
 
   ## Sets a sleep time to be appended to all commands.
