@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import shutil, random, os, sys
+from functools import *
 
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
@@ -78,37 +79,38 @@ class ConfigDialog(KPageDialog):
     self.addPage(self.customPage, self.tr("Custom Services")).setIcon(KIcon("edit-rename"))
 
     # Connections für die ServicesPage
-    QObject.connect(self.servicesPage.activeServicesList, SIGNAL('itemClicked(QListWidgetItem*)'), self, SLOT('showServiceInfo(QListWidgetItem*)'))
-    QObject.connect(self.servicesPage.inactiveServicesList, SIGNAL('itemClicked(QListWidgetItem*)'), self, SLOT('showServiceInfo(QListWidgetItem*)'))
-    QObject.connect(self.servicesPage.activateButton, SIGNAL('clicked()'), self, SLOT('activateService()'))
-    QObject.connect(self.servicesPage.deactivateButton, SIGNAL('clicked()'), self, SLOT('deactivateService()'))
-    QObject.connect(self.servicesPage.sortUpButton, SIGNAL('clicked()'), self, SLOT('sortUp()'))
-    QObject.connect(self.servicesPage.sortDownButton, SIGNAL('clicked()'), self, SLOT('sortDown()'))
-    QObject.connect(self.servicesPage.sortTopButton, SIGNAL('clicked()'), self, SLOT('sortTop()'))
-    QObject.connect(self.servicesPage.sortBottomButton, SIGNAL('clicked()'), self, SLOT('sortBottom()'))
+    QObject.connect(self.servicesPage.activeServicesList, SIGNAL('itemClicked(QListWidgetItem*)'), partial(self.showServiceInfo))
+    QObject.connect(self.servicesPage.inactiveServicesList, SIGNAL('itemClicked(QListWidgetItem*)'), partial(self.showServiceInfo,))
+    QObject.connect(self.servicesPage.activateButton, SIGNAL('clicked()'), self.activateService)
+    QObject.connect(self.servicesPage.deactivateButton, SIGNAL('clicked()'), self.deactivateService)
+    QObject.connect(self.servicesPage.sortUpButton, SIGNAL('clicked()'), self.sortUp)
+    QObject.connect(self.servicesPage.sortDownButton, SIGNAL('clicked()'), self.sortDown)
+    QObject.connect(self.servicesPage.sortTopButton, SIGNAL('clicked()'), self.sortTop)
+    QObject.connect(self.servicesPage.sortBottomButton, SIGNAL('clicked()'), self.sortBottom)
 
     # Connections für die SourcesPage
-    QObject.connect(self.sourcesPage.addButton, SIGNAL('clicked()'), self, SLOT('addSource()'))
-    QObject.connect(self.sourcesPage.removeButton, SIGNAL('clicked()'), self, SLOT('removeSource()'))
-    QObject.connect(self.sourcesPage.searchButton, SIGNAL('clicked()'), self, SLOT('openBrowser()'))
-    QObject.connect(self.sourcesPage.sourceList, SIGNAL('itemClicked(QListWidgetItem*)'), self, SLOT('showSourceInfo(QListWidgetItem*)'))
+    QObject.connect(self.sourcesPage.addButton, SIGNAL('clicked()'), self.addSource)
+    QObject.connect(self.sourcesPage.removeButton, SIGNAL('clicked()'), self.removeSource)
+    QObject.connect(self.sourcesPage.searchButton, SIGNAL('clicked()'), self.openBrowser)
+    QObject.connect(self.sourcesPage.sourceList, SIGNAL('itemClicked(QListWidgetItem*)'), partial(self.showSourceInfo))
 
     # Connections für die CustomPage
-    QObject.connect(self.customPage.serviceList, SIGNAL('itemClicked(QListWidgetItem*)'), self, SLOT('synchronizeLineEdits()'))
-    QObject.connect(self.customPage.serviceList, SIGNAL('itemDoubleClicked(QListWidgetItem*)'), self, SLOT('startEditmode()'))
-    QObject.connect(self.customPage.editButton, SIGNAL('clicked()'), self, SLOT('toggleEditmode()'))
-    QObject.connect(self.customPage.removeButton, SIGNAL('clicked()'), self, SLOT('removeCustomService()'))
-    QObject.connect(self.customPage.addButton, SIGNAL('clicked()'), self, SLOT('addCustomService()'))
-    QObject.connect(self.customPage.shareButton, SIGNAL('clicked()'), self, SLOT('uploadCustomService()'))
+    QObject.connect(self.customPage.serviceList, SIGNAL('itemClicked(QListWidgetItem*)'), partial(self.synchronizeLineEdits))
+    QObject.connect(self.customPage.serviceList, SIGNAL('itemDoubleClicked(QListWidgetItem*)'), self.startEditmode)
+    QObject.connect(self.customPage.editButton, SIGNAL('clicked()'), self.toggleEditmode)
+    QObject.connect(self.customPage.removeButton, SIGNAL('clicked()'), self.removeCustomService)
+    QObject.connect(self.customPage.addButton, SIGNAL('clicked()'), self.addCustomService)
+    QObject.connect(self.customPage.shareButton, SIGNAL('clicked()'), self.uploadCustomService)
 
     # Connections für die SettingsPage
-    #QObject.connect(self.settingsPage.addButton, SIGNAL('clicked()'), self, SLOT('addVariable()'))
-    #QObject.connect(self.settingsPage.removeButton, SIGNAL('clicked()'), self, SLOT('removeVariable()'))
-    #QObject.connect(self.settingsPage.variableTable, SIGNAL('itemChanged(QTableWidgetItem*)'), self, SLOT('editVariable(QTableWidgetItem*)'))
-    #QObject.connect(self.settingsPage.pollingIntervalSpinbox, SIGNAL('valueChanged(double)'), self, SLOT('setPollingInterval(double)'))
-    #QObject.connect(self.settingsPage.sleepTimeSpinbox, SIGNAL('valueChanged(double)'), self, SLOT('setSleepTime(double)'))
+    #QObject.connect(self.settingsPage.addButton, SIGNAL('clicked()'), self.addVariable())
+    #QObject.connect(self.settingsPage.removeButton, SIGNAL('clicked()'), self.removeVariable())
+    #QObject.connect(self.settingsPage.variableTable, SIGNAL('itemChanged(QTableWidgetItem*)'), self.editVariable(QTableWidgetItem*))
+    #QObject.connect(self.settingsPage.pollingIntervalSpinbox, SIGNAL('valueChanged(double)'), self.setPollingInterval(double))
+    #QObject.connect(self.settingsPage.sleepTimeSpinbox, SIGNAL('valueChanged(double)'), self.setSleepTime(double))
 
-    QObject.connect(self, SIGNAL('closeClicked()'), self, SLOT('stopEditmode()'))
+    QObject.connect(self, SIGNAL('closeClicked()'), self.stopEditmode)
+
 
   ## (re)populates all widgets with current config data when window is shown
   def showEvent(self, event):
@@ -117,7 +119,7 @@ class ConfigDialog(KPageDialog):
     self.execInstallChecks()
     self.populateSourceList()
     self.populateCustomList()
-    self.populateVariableList()
+    #self.populateVariableList()
     self.populateSettings()
 
 
@@ -167,7 +169,8 @@ class ConfigDialog(KPageDialog):
 
   def installStateIndicator(self, service):
     return QIcon("%s/indicators/%s/%s.png" % (codedir, self.indicatorTheme(), service.state[0]))
-    
+
+
   def runningStateIndicator(self, service):
     return QIcon("%s/indicators/%s/%s.png" % (codedir, self.indicatorTheme(), service.state[1]))
 
@@ -225,15 +228,13 @@ class ConfigDialog(KPageDialog):
     print '(re)checking install status of all services...'
     env = self.processEnvironment()
     for service in self.services.values():
-      QObject.connect(service, SIGNAL('stateChanged()'), self.serviceStateChanged)
+      QObject.connect(service, SIGNAL('stateChanged()'), partial(self.serviceStateChanged, service))
       service.setProcessEnvironment(env)
       service.execInstallCheck()
 
 
   ## [slot] Updates the icon in the list for the service which has sent the stateChanged() signal.
-  @pyqtSlot()
-  def serviceStateChanged(self):
-    service = self.sender()
+  def serviceStateChanged(self, service):
     allItems = [self.servicesPage.activeServicesList.item(i) for i in range(self.servicesPage.activeServicesList.count())] + \
                [self.servicesPage.inactiveServicesList.item(i) for i in range(self.servicesPage.inactiveServicesList.count())]
     activeItems = [item for item in allItems if hasattr(item, 'service') and item.service == service]
@@ -242,7 +243,6 @@ class ConfigDialog(KPageDialog):
 
 
   ## [slot] Print info about the clicked service in the textarea.
-  @pyqtSlot('QListWidgetItem*')
   def showServiceInfo(self, item):
     if hasattr(item, 'source'):
       self.servicesPage.infoTextarea.document().setHtml(item.source.description)
@@ -422,6 +422,8 @@ class ConfigDialog(KPageDialog):
       
   @pyqtSlot()
   def stopEditmode(self, save = True):
+    if not self.customPage.serviceList.currentItem(): return
+      
     if save:
       # Konfiguration schreiben und relevante Bereiche aktualisieren
       self.synchronizeService()

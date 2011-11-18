@@ -7,6 +7,7 @@ from PyKDE4.plasmascript import *
 from PyKDE4.kdeui import *
 
 import generated.indicators_default_rc
+from functools import *
 
 from ConfigDialog import *
 from ShellProcess import *
@@ -23,9 +24,6 @@ class ServiceMonitor(Applet):
     ## [dict] Place for all widgets, so they can be addressed nicely.
     self.widgets = {}
 
-    ## [QSignalMapper] Maps every QIcon to its corresponding service.
-    self.iconMapper = None
-
     ## [QLayout] The layout containing all the widgets.
     self.mainLayout = None
 
@@ -39,10 +37,6 @@ class ServiceMonitor(Applet):
 
     # Benutzeroberfläche einrichten
     self.setupAppletUi() if self.formFactor() == Plasma.Planar else self.setupPopupUi()
-
-    # SignalMapper für die Buttons (Icons) einrichten
-    self.iconMapper = QSignalMapper()
-    QObject.connect(self.iconMapper, SIGNAL('mapped(QObject*)'), self, SLOT('iconClicked(QObject*)'))
 
     # Widgets im Main-Layout erzeugen, Timer starten
     self.setupServicesAndWidgets()
@@ -127,8 +121,7 @@ class ServiceMonitor(Applet):
         self.refreshStateIcon(service)
         self.mainLayout.addItem(statusIcon, i, 0)
         self.mainLayout.addItem(nameLabel, i, 1)
-        self.iconMapper.setMapping(statusIcon, service)
-        QObject.connect(statusIcon, SIGNAL('clicked()'), self.iconMapper, SLOT('map()'))
+        QObject.connect(statusIcon, SIGNAL('clicked()'), partial(self.iconClicked, service))
 
     # Falls keine Services eingerichtet: Einleitungstext anzeigen
     if not activeServices:
@@ -153,7 +146,7 @@ class ServiceMonitor(Applet):
     interval = self.configDialog.pollingInterval()
     sleepTime = self.configDialog.sleepTime()
     for service in activeServices:
-      QObject.connect(service, SIGNAL('stateChanged()'), self.serviceStateChanged)
+      QObject.connect(service, SIGNAL('stateChanged()'), partial(self.refreshStateIcon, service))
       service.setProcessEnvironment(env)
       service.setSleepTime(sleepTime)
       service.setPollingInterval(interval)
@@ -161,31 +154,22 @@ class ServiceMonitor(Applet):
 
 
   ## [slot] Starts or stops a service corresponding to the icon clicked.
-  # @param service The service corresponding to the clicked item, provided by self.iconMapper
-  @pyqtSlot('QObject*')
   def iconClicked(self, service):
     if service.state[0] == 'unavailable':
       print 'Service %s not installed. Aborting.' % service.id
       return
-    elif service.state[1] in ['active',   'starting']:
+    elif service.state[1] in ['running', 'starting']:
       service.execStopCommand()
-    elif service.state[1] in ['inactive', 'stopping']:
+    elif service.state[1] in ['stopped', 'stopping']:
       service.execStartCommand()
-    self.refreshStateIcon(service)
-
-
-  ## [slot] Updates the icon corresponding to the service which triggered this slot.
-  @pyqtSlot()
-  def serviceStateChanged(self):
-    service = self.sender()
     self.refreshStateIcon(service)
 
 
   ## Updates the icon corresponding to the service argument.
   def refreshStateIcon(self, service):
-    if not isinstance(service, Service): return
     icon = self.configDialog.runningStateIndicator(service)
     self.widgets[service.id]['status'].setIcon(icon)
+
 
   ## [slot] Shows/hides popup dialog.
   @pyqtSlot()

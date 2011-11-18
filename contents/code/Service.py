@@ -6,6 +6,7 @@ from PyQt4.QtXml import *
 
 from ShellProcess import *
 from time import *
+from functools import *
 
 ## Container for service definitions and state polling.
 # This class manages a list of processes which perform install/running checks and
@@ -98,13 +99,25 @@ class Service(QObject):
   ## Starts running check (threaded).
   @pyqtSlot()
   def execRunningCheck(self):
-    self.execCommand(self.runningCheck, lambda: self.checkFinished("runningcheck"))
+    proc = ShellProcess(self.runningCheck)
+    if self.environment:
+      proc.setProcessEnvironment(self.environment)
+    QObject.connect(proc, SIGNAL('finished(int)'), partial(self.checkFinished, "runningcheck"))
+    QObject.connect(proc, SIGNAL('error()'), partial(self.checkFinished, "runningcheck"))
+    self.processes.add(proc)
+    proc.start()
 
 
   ## Starts install check (threaded).
   @pyqtSlot()
   def execInstallCheck(self):
-    self.execCommand(self.installCheck, lambda: self.checkFinished("installcheck"))
+    proc = ShellProcess(self.installCheck)
+    if self.environment:
+      proc.setProcessEnvironment(self.environment)
+    QObject.connect(proc, SIGNAL('finished(int)'), partial(self.checkFinished, "installcheck"))
+    QObject.connect(proc, SIGNAL('error()'), partial(self.checkFinished, "installcheck"))
+    self.processes.add(proc)
+    proc.start()
 
 
   ## Starts this service (threaded).
@@ -119,8 +132,8 @@ class Service(QObject):
     proc = RootProcess(cmd)
     if self.environment:
       proc.setProcessEnvironment(self.environment)
-    QObject.connect(proc, SIGNAL('finished(int)'), lambda: self.commandFinished("startcommand"))
-    QObject.connect(proc, SIGNAL('error()'), lambda: self.commandFinished("startcommand"))
+    QObject.connect(proc, SIGNAL('finished(int)'), partial(self.commandFinished, "startcommand"))
+    QObject.connect(proc, SIGNAL('error()'), partial(self.commandFinished, "startcommand"))
     self.processes.add(proc)
     proc.start()
     print "continuing"
@@ -138,8 +151,8 @@ class Service(QObject):
     proc = RootProcess(cmd)
     if self.environment:
       proc.setProcessEnvironment(self.environment)
-    QObject.connect(proc, SIGNAL('finished(int)'), lambda: self.commandFinished("stopcommand"))
-    QObject.connect(proc, SIGNAL('error()'), lambda: self.commandFinished("stopcommand"))
+    QObject.connect(proc, SIGNAL('finished()'), partial(self.commandFinished, "stopcommand"))
+    QObject.connect(proc, SIGNAL('error()'), partial(self.commandFinished, "stopcommand"))
     self.processes.add(proc)
     proc.start()
     print "continuing"
@@ -159,7 +172,6 @@ class Service(QObject):
 
   ## [internal] Processes possible errors and continue checks
   def commandFinished(self, which):
-    print "command finished"
     proc = self.sender()
     errorOutput = QString(proc.readAllStandardError())
     if errorOutput:
@@ -182,25 +194,14 @@ class Service(QObject):
 
   ## Sets the environment for all processes.
   def setProcessEnvironment(self, env):
-    env.remove("SUDO")
-    env.insert("SUDO", "")
+    #env.remove("SUDO")
+    #env.insert("SUDO", "")
     self.environment = env
 
 
   ## Sets a sleep time to be appended to all commands.
   def setSleepTime(self, n):
     self.sleepTime = n
-
-
-  ## [internal] Shortcut for executing a QProcess and connecting it to a slot.
-  def execCommand(self, command, slot):
-    proc = ShellProcess(command)
-    if self.environment:
-      proc.setProcessEnvironment(self.environment)
-    QObject.connect(proc, SIGNAL('finished(int)'), slot)
-    QObject.connect(proc, SIGNAL('error()'), slot)
-    self.processes.add(proc)
-    proc.start()
 
 
   ## [internal] Removes dead QProcesses.
