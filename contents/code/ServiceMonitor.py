@@ -8,6 +8,7 @@ from PyKDE4.kdeui import *
 
 import generated.indicators_default_rc
 from functools import *
+import sys
 
 from ConfigDialog import *
 from ShellProcess import *
@@ -26,7 +27,7 @@ class ServiceMonitor(Applet):
 
     ## [QLayout] The layout containing all the widgets.
     self.mainLayout = None
-
+    
 
   def init(self):
 

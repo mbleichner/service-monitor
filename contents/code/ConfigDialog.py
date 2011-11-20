@@ -4,6 +4,7 @@ from functools import *
 
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
+from PyQt4.QtNetwork import *
 from PyKDE4.kdeui import *
 
 from generated.Services_ui import *
@@ -14,8 +15,9 @@ from generated.Settings_ui import *
 from Source import *
 from Service import *
 
-codedir = os.path.dirname(__file__)
-contentsdir = os.path.dirname(codedir)
+contentsdir = os.path.dirname(os.path.dirname(__file__))
+codedir     = contentsdir + "/code"
+sourcedir   = contentsdir + "/sources"
 
 ## A KPageDialog for accessing and manipulating settings.
 #
@@ -49,11 +51,6 @@ class ConfigDialog(KPageDialog):
 
     # Daten einlesen
     self.readSources()
-
-    #p = RootProcess("echo 'test' > /test", "password")
-    #p.start()
-    #p.waitForFinished()
-    #sys.exit()
 
 
   ## Initialize the internal QSettings object with sensible default values
@@ -91,7 +88,8 @@ class ConfigDialog(KPageDialog):
     # Connections für die SourcesPage
     QObject.connect(self.sourcesPage.addButton, SIGNAL('clicked()'), self.addSource)
     QObject.connect(self.sourcesPage.removeButton, SIGNAL('clicked()'), self.removeSource)
-    QObject.connect(self.sourcesPage.searchButton, SIGNAL('clicked()'), self.openBrowser)
+    #QObject.connect(self.sourcesPage.searchButton, SIGNAL('clicked()'), self.openBrowser)
+    QObject.connect(self.sourcesPage.searchButton, SIGNAL('clicked()'), self.downloadSources)
     QObject.connect(self.sourcesPage.sourceList, SIGNAL('itemClicked(QListWidgetItem*)'), partial(self.showSourceInfo))
 
     # Connections für die CustomPage
@@ -116,7 +114,6 @@ class ConfigDialog(KPageDialog):
     self.execInstallChecks()
     self.populateSourceList()
     self.populateCustomList()
-    #self.populateVariableList()
     self.populateSettings()
 
 
@@ -133,6 +130,7 @@ class ConfigDialog(KPageDialog):
         if not self.services.has_key(service.id) or self.services[service.id].priority <= service.priority:
           self.services[service.id] = service
       print 'successfully parsed %s (%i services).' % (fn, len(source.services))
+    self.execInstallChecks()
 
 
 # PUBLIC GETTERS ###########################################################################################################
@@ -308,10 +306,10 @@ class ConfigDialog(KPageDialog):
   ## Populates the list of sources from self.sources.
   def populateSourceList(self):
     self.sourcesPage.sourceList.clear()
-    for source in self.sources.values():
-      if source.filename == QString('custom.xml'): continue
+    for filename, source in sorted(self.sources.items()):
+      if filename == QString('custom.xml'): continue
       icon = KIcon('application-xml')
-      item = QListWidgetItem(icon, self.tr('%1 (%2, %3 entries)').arg(source.name if source.name else 'Unnamed').arg(source.filename).arg(len(source.services)))
+      item = QListWidgetItem(icon, self.tr('%1 (%2, %3 entries)').arg(source.name if source.name else 'Unnamed').arg(filename).arg(len(source.services)))
       item.source = source
       self.sourcesPage.sourceList.addItem(item)
 
@@ -328,9 +326,8 @@ class ConfigDialog(KPageDialog):
       if answer == QMessageBox.No: return
     shutil.copyfile(filename, destination)
     self.readSources()
-    self.populateServiceLists()
-    self.execInstallChecks()
     self.populateSourceList()
+    self.populateServiceLists()
     self.emit(SIGNAL('configurationChanged()'))
 
 
@@ -341,10 +338,10 @@ class ConfigDialog(KPageDialog):
     answer = QMessageBox.question(self, self.tr('Delete source file'), self.tr('Really delete the file?'), QMessageBox.Yes | QMessageBox.No)
     if answer == QMessageBox.No: return
     item = self.sourcesPage.sourceList.currentItem()
-    QFile.remove('%s/sources/%s' % (contentsdir, item.source.filename))
+    QFile.remove('%s/%s' % (sourcedir, item.source.filename))
     self.readSources()
-    self.populateServiceLists()
     self.populateSourceList()
+    self.populateServiceLists()
     self.emit(SIGNAL('configurationChanged()'))
 
 
@@ -353,6 +350,24 @@ class ConfigDialog(KPageDialog):
   def openBrowser(self):
     answer = QMessageBox.question(self, self.tr('Search for new sources'), self.tr('This will open a page in your web browser where additional service definitions can be downloaded.'), QMessageBox.Ok | QMessageBox.Cancel)
     if answer == QMessageBox.Ok: QDesktopServices.openUrl(QUrl('http://www.documentroot.net/en/download-service-definitions'))
+
+
+  def downloadSources(self):
+    self.url = QUrl("http://www.documentroot.net/service-monitor/sources.tar.gz")
+    self.man = QNetworkAccessManager()
+    self.req = QNetworkRequest(self.url)
+    self.res = self.man.get(self.req)
+    def finished():
+      f = QFile("/tmp/sources.tar.gz")
+      f.open(QIODevice.WriteOnly)
+      f.write(self.res.readAll())
+      f.close()
+      QProcess.execute("/bin/tar", QStringList() << "xfz" << f.fileName() << "-C" << sourcedir)
+      print "unpacked"
+      self.readSources()
+      self.populateSourceList()
+      self.populateServiceLists()
+    QObject.connect(self.res, SIGNAL('finished()'), finished)
 
 
   ## [slot] Shows information about the clicked source in the text area.
@@ -490,7 +505,6 @@ class ConfigDialog(KPageDialog):
     self.sources[QString('custom.xml')].writeBack()
     self.readSources()
     self.populateServiceLists()
-    self.execInstallChecks()
     self.populateCustomList(service.id)
     self.synchronizeLineEdits() # Triggert nicht automatisch
 
