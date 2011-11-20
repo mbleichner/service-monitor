@@ -14,6 +14,7 @@ from generated.Settings_ui import *
 
 from Source import *
 from Service import *
+from functions import *
 
 contentsdir = os.path.dirname(os.path.dirname(__file__))
 codedir     = contentsdir + "/code"
@@ -43,11 +44,9 @@ class ConfigDialog(KPageDialog):
     # Daten einlesen
     self.readSources()
 
-    # Pages erzeugen und hinzufügen
+    # Dialog einrichten, Pages hinzufügen
     self.setButtons(KDialog.ButtonCode(KDialog.Close))
     self.setCaption(self.tr('Service Monitor Configuration'))
-
-    # Pages einrichten
     self.settingsPage = SettingsPage(self)
     self.servicesPage = ServicesPage(self)
     self.sourcesPage = SourcesPage(self)
@@ -57,12 +56,12 @@ class ConfigDialog(KPageDialog):
     self.addPage(self.sourcesPage, self.tr("Manage Sources")).setIcon(KIcon("document-new"))
     self.addPage(self.customPage, self.tr("Custom Services")).setIcon(KIcon("edit-rename"))
 
-    # Widgets mit Daten befüllen
-    self.populateServiceLists()
-    self.populateSourceList()
-    self.populateCustomList()
-    self.populateSettings()
-
+    # When opening a page, populate the corresponding widgets
+    QObject.connect(self.servicesPage, SIGNAL('show()'), chain(self.execInstallChecks, self.populateServiceLists))
+    QObject.connect(self.sourcesPage,  SIGNAL('show()'), self.populateSourceList)
+    QObject.connect(self.settingsPage, SIGNAL('show()'), self.populateSettings)
+    QObject.connect(self.customPage,   SIGNAL('show()'), self.populateCustomList)
+    
     # Connections für die ServicesPage
     QObject.connect(self.servicesPage.activeServicesList, SIGNAL('itemClicked(QListWidgetItem*)'), partial(self.showServiceInfo))
     QObject.connect(self.servicesPage.inactiveServicesList, SIGNAL('itemClicked(QListWidgetItem*)'), partial(self.showServiceInfo,))
@@ -94,12 +93,11 @@ class ConfigDialog(KPageDialog):
     # Cleanup actions when closing the config dialog
     QObject.connect(self, SIGNAL('closeClicked()'), self.stopEditmode)
 
-    # Query install state whenever the services page is being displayed
-    def servicesPageShowEvent(e):
-      for source in self.sources.values():
-        for service in source.services:
-          service.execInstallCheck()
-    self.servicesPage.showEvent = servicesPageShowEvent
+
+  def execInstallChecks(self):
+    for source in self.sources.values():
+      for service in source.services:
+        service.execute("installcheck")
 
 
   ## Initialize the internal QSettings object with sensible default values
@@ -347,7 +345,6 @@ class ConfigDialog(KPageDialog):
       QProcess.execute("/bin/tar", QStringList() << "xfz" << f.fileName() << "-C" << sourcedir)
       self.readSources()
       self.populateSourceList()
-      self.populateServiceLists()
     QObject.connect(self.res, SIGNAL('finished()'), finished)
 
 
@@ -543,23 +540,26 @@ class ConfigDialog(KPageDialog):
 
 ################################################################################################################
 
+class CustomWidget(QWidget):
+  def showEvent(self, event):
+    self.emit(SIGNAL("show()"))
 
-class SourcesPage(QWidget, Ui_Sources):
+class SourcesPage(CustomWidget, Ui_Sources):
   def __init__(self, configDialog):
     QWidget.__init__(self)
     self.setupUi(self)
 
-class ServicesPage(QWidget, Ui_Services):
+class ServicesPage(CustomWidget, Ui_Services):
   def __init__(self, configDialog):
     QWidget.__init__(self)
     self.setupUi(self)
 
-class CustomPage(QWidget, Ui_Custom):
+class CustomPage(CustomWidget, Ui_Custom):
   def __init__(self, configDialog):
     QWidget.__init__(self)
     self.setupUi(self)
 
-class SettingsPage(QWidget, Ui_Settings):
+class SettingsPage(CustomWidget, Ui_Settings):
   def __init__(self, configDialog):
     QWidget.__init__(self)
     self.setupUi(self)

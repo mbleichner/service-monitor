@@ -7,6 +7,7 @@ from PyQt4.QtXml import *
 from ShellProcess import *
 from time import *
 from functools import *
+from functions import *
 
 ## Container for service definitions and state polling.
 # This class manages a list of processes which perform install/running checks and
@@ -30,10 +31,10 @@ class Service(QObject):
     self.process = None
     self.sleepTime = 0
     self.state = ('unknown', 'unknown')   # (Install-Status, Running-Status)
-    self.interval = 4000
     self.polling = False
     self.timer = QTimer()
     self.timer.setSingleShot(True)
+    self.timer.setInterval(4000)
     QObject.connect(self.timer, SIGNAL('timeout()'), partial(self.execute, "runningcheck"))
 
 
@@ -77,28 +78,14 @@ class Service(QObject):
     return node
 
 
-  ## Sets the polling interval for this service.
-  # @param interval the interval in seconds.
-  def setPollingInterval(self, interval):
-    self.timer.setInterval(interval*1000)
-
-
-  ## Starts polling with the interval set up by setPollingInterval().
-  def startPolling(self):
-    self.polling = True
-    self.timer.start()
-    self.execute("runningcheck")
-
-
-  ## Stops polling...
-  def stopPolling(self):
-    self.polling = False
-
-
-  def execRunningCheck(self): self.execute("runningcheck")
-  def execInstallCheck(self): self.execute("installcheck")
-  def execStartCommand(self): self.execute("startcommand")
-  def execStopCommand(self):  self.execute("stopcommand")
+  def setPolling(self, flag, interval = None):
+    self.polling = flag
+    if self.polling:
+      if interval: self.timer.setInterval(interval*1000)
+      self.timer.start()
+      self.execute("runningcheck")
+    else:
+      self.timer.stop()
 
 
   ## Shortcut for setting state and check if stateChanged() has to be emitted.
@@ -147,17 +134,8 @@ class Service(QObject):
     self.sleepTime = n
 
 
-  ## [internal] Kills all running Processes.
+  ## [internal] Kills running process.
   def killRunningProcess(self):
     if self.process is not None:
-      #QObject.disconnect(self.process, self)
       self.process.deleteLater()
       self.process = None
-
-
-## Shortcut for creating a DOM element containing text data.
-def mkTextElement(doc, tagName, textData):
-  node = doc.createElement(tagName)
-  textNode = doc.createTextNode(textData)
-  node.appendChild(textNode)
-  return node

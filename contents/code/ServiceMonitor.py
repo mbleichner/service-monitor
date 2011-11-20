@@ -142,7 +142,7 @@ class ServiceMonitor(Applet):
 
     # Alle Polling-Prozesse anhalten
     for service in self.configDialog.allServices():
-      service.stopPolling()
+      service.setPolling(False)
 
     # Aktive Prozesse neu einrichten und Polling starten
     interval = self.configDialog.pollingInterval()
@@ -150,19 +150,18 @@ class ServiceMonitor(Applet):
     for service in activeServices:
       QObject.connect(service, SIGNAL('stateChanged()'), partial(self.refreshStateIcon, service))
       service.setSleepTime(sleepTime)
-      service.setPollingInterval(interval)
-      service.startPolling()
+      service.setPolling(True, interval)
 
 
   ## [slot] Starts or stops a service corresponding to the icon clicked.
   def iconClicked(self, service):
-    if service.state[0] == 'unavailable':
+    if service.state[0] == 'missing':
       print 'Service %s not installed. Aborting.' % service.id
       return
     elif service.state[1] in ['running', 'starting']:
-      service.execStopCommand()
+      service.execute("stopcommand")
     elif service.state[1] in ['stopped', 'stopping']:
-      service.execStartCommand()
+      service.execute("startcommand")
     self.refreshStateIcon(service)
 
 
