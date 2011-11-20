@@ -53,7 +53,8 @@ class Source(QObject):
       root.appendChild(service.saveToDomNode(doc))
     content = unicode(doc.toString(2))
 
-    f = file(self.filepath, 'w')
+    f = QFile(self.filepath)
+    f.open(QIODevice.WriteOnly)
     f.write(content)
     f.close()
 

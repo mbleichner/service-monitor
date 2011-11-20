@@ -345,7 +345,6 @@ class ConfigDialog(KPageDialog):
       f.write(self.res.readAll())
       f.close()
       QProcess.execute("/bin/tar", QStringList() << "xfz" << f.fileName() << "-C" << sourcedir)
-      print "unpacked"
       self.readSources()
       self.populateSourceList()
       self.populateServiceLists()
@@ -413,7 +412,7 @@ class ConfigDialog(KPageDialog):
       self.sources[QString('custom.xml')].writeBack()
       self.emit(SIGNAL('configurationChanged()')) # Falls sich der Name geändert hat
       service = self.customPage.serviceList.currentItem().service
-      self.populateCustomList(selected.id)
+      self.populateCustomList(service.id)
       self.populateServiceLists()
     else:
       # LineEdits wieder mit ursprünglichen Werten füllen
