@@ -31,16 +31,18 @@ class ServiceMonitor(Applet):
 
   def init(self):
 
-    # Konfig-Dilog einrichten
+    # Konfig-Dialog einrichten
     self.setHasConfigurationInterface(True)
     self.configDialog = ConfigDialog(self)
     QObject.connect(self.configDialog, SIGNAL('configurationChanged()'), self, SLOT('setupServicesAndWidgets()'))
 
     # Benutzeroberfläche einrichten
     self.setupAppletUi() if self.formFactor() == Plasma.Planar else self.setupPopupUi()
+    QTimer.singleShot(0, self.mainLayout.invalidate) # seems to be necessary only on start
 
     # Widgets im Main-Layout erzeugen, Timer starten
     self.setupServicesAndWidgets()
+    
 
 
   ## Sets up all widgets in a popup which can be opened when clicking the applet.

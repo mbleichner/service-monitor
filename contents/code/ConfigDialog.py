@@ -32,36 +32,18 @@ class ConfigDialog(KPageDialog):
   ## Sets up pages, widgets and connections and loads the source files.
   def __init__(self, parent = None):
     KPageDialog.__init__(self)
+    self.sources = {}       ##< [dict] Place for all xml sources, by ID.
+    self.services = {}      ##< [dict] Place for all services, by ID. On collisions the priority is considered.
+    self.editmode = False   ##< [bool] Indicates if editmode is on or off.
+    self.config = QSettings('KDE Plasmoid', 'Service Monitor') ##< [QSettings] Internal config object.
 
-    ## [dict] Place for all xml sources, by ID.
-    self.sources = {}
-
-    ## [dict] Place for all services, by ID. On collisions the priority is considered.
-    self.services = {}
-
-    ## [bool] Indicates if editmode is on or off.
-    self.editmode = False
-
-    ## [QSettings] Internal config object.
-    self.config = QSettings('KDE Plasmoid', 'Service Monitor')
+    # make sure the setting contain sane defaults
     self.setConfigDefaults()
-
-    # Widgets einrichten
-    self.setupUi()
-
+    
     # Daten einlesen
     self.readSources()
 
-
-  ## Initialize the internal QSettings object with sensible default values
-  def setConfigDefaults(self):
-    if not self.config.contains('pollingInterval'): self.config.setValue('pollingInterval', 4.0)
-    if not self.config.contains('sleepTime'):       self.config.setValue('sleepTime', 0.5)
-    if not self.config.contains('variables'):       self.config.setValue('variables', QStringList() << 'INITDIR' << '/etc/init.d' << 'SUDO' << 'kdesudo')
-
-
-  ## Set up all pages, widgets and signal-slot connections
-  def setupUi(self):
+    # Pages erzeugen und hinzufügen
     self.setButtons(KDialog.ButtonCode(KDialog.Close))
     self.setCaption(self.tr('Service Monitor Configuration'))
 
@@ -74,6 +56,12 @@ class ConfigDialog(KPageDialog):
     self.addPage(self.settingsPage, self.tr("Settings")).setIcon(KIcon("configure"))
     self.addPage(self.sourcesPage, self.tr("Manage Sources")).setIcon(KIcon("document-new"))
     self.addPage(self.customPage, self.tr("Custom Services")).setIcon(KIcon("edit-rename"))
+
+    # Widgets mit Daten befüllen
+    self.populateServiceLists()
+    self.populateSourceList()
+    self.populateCustomList()
+    self.populateSettings()
 
     # Connections für die ServicesPage
     QObject.connect(self.servicesPage.activeServicesList, SIGNAL('itemClicked(QListWidgetItem*)'), partial(self.showServiceInfo))
@@ -88,7 +76,6 @@ class ConfigDialog(KPageDialog):
     # Connections für die SourcesPage
     QObject.connect(self.sourcesPage.addButton, SIGNAL('clicked()'), self.addSource)
     QObject.connect(self.sourcesPage.removeButton, SIGNAL('clicked()'), self.removeSource)
-    #QObject.connect(self.sourcesPage.searchButton, SIGNAL('clicked()'), self.openBrowser)
     QObject.connect(self.sourcesPage.searchButton, SIGNAL('clicked()'), self.downloadSources)
     QObject.connect(self.sourcesPage.sourceList, SIGNAL('itemClicked(QListWidgetItem*)'), partial(self.showSourceInfo))
 
@@ -104,33 +91,37 @@ class ConfigDialog(KPageDialog):
     QObject.connect(self.settingsPage.pollingIntervalSpinbox, SIGNAL('valueChanged(double)'), self.setPollingInterval)
     QObject.connect(self.settingsPage.sleepTimeSpinbox, SIGNAL('valueChanged(double)'), self.setSleepTime)
 
+    # Cleanup actions when closing the config dialog
     QObject.connect(self, SIGNAL('closeClicked()'), self.stopEditmode)
 
+    # Query install state whenever the services page is being displayed
+    def servicesPageShowEvent(e):
+      for source in self.sources.values():
+        for service in source.services:
+          service.execInstallCheck()
+    self.servicesPage.showEvent = servicesPageShowEvent
 
-  ## (re)populates all widgets with current config data when window is shown
-  def showEvent(self, event):
-    print 'populating config widgets with data...'
-    self.populateServiceLists()
-    self.execInstallChecks()
-    self.populateSourceList()
-    self.populateCustomList()
-    self.populateSettings()
+
+  ## Initialize the internal QSettings object with sensible default values
+  def setConfigDefaults(self):
+    if not self.config.contains('pollingInterval'): self.config.setValue('pollingInterval', 4.0)
+    if not self.config.contains('sleepTime'):       self.config.setValue('sleepTime', 0.5)
 
 
   ## Parses all XML source files and loads containing services.
   def readSources(self):
     self.sources = {}
     self.services = {}
-    print 'looking for XML source files and trying to load them...'
-    for fn in [fn for fn in os.listdir('%s/sources' % contentsdir) if fn.endswith('.xml') and not fn.startswith('.') ]:
-      try: source = Source('%s/sources/%s' % (contentsdir, fn))
+    print 'loading definition source files from %s...' % sourcedir
+    for fn in [fn for fn in os.listdir(sourcedir) if fn.endswith('.xml') and not fn.startswith('.') ]:
+      try: source = Source('%s/%s' % (sourcedir, fn))
       except: print 'Error parsing %s.' % fn; continue
       self.sources[source.filename] = source
       for service in source.services:
         if not self.services.has_key(service.id) or self.services[service.id].priority <= service.priority:
           self.services[service.id] = service
-      print 'successfully parsed %s (%i services).' % (fn, len(source.services))
-    self.execInstallChecks()
+          QObject.connect(service, SIGNAL("stateChanged()"), partial(self.refreshIndicator, service))
+      print '* loaded %s (%i services).' % (fn, len(source.services))
 
 
 # PUBLIC GETTERS ###########################################################################################################
@@ -208,22 +199,13 @@ class ConfigDialog(KPageDialog):
         item.setIcon(self.installStateIndicator(service))
 
 
-  ## Initiates install checks for all services shown on the services page.
-  # When a state is changed by the install check, the slot self.serviceStateChanged() is called, which updates the icon in the list.
-  def execInstallChecks(self):
-    print '(re)checking install status of all services...'
-    for service in self.services.values():
-      QObject.connect(service, SIGNAL('stateChanged()'), partial(self.serviceStateChanged, service))
-      service.execInstallCheck()
-
-
   ## [slot] Updates the icon in the list for the service which has sent the stateChanged() signal.
-  def serviceStateChanged(self, service):
+  def refreshIndicator(self, service):
     allItems = [self.servicesPage.activeServicesList.item(i) for i in range(self.servicesPage.activeServicesList.count())] + \
                [self.servicesPage.inactiveServicesList.item(i) for i in range(self.servicesPage.inactiveServicesList.count())]
-    activeItems = [item for item in allItems if hasattr(item, 'service') and item.service == service]
-    for item in activeItems:
-      item.setIcon(self.installStateIndicator(service))
+    for item in allItems:
+      if hasattr(item, "service") and item.service == service:
+        item.setIcon(self.installStateIndicator(service))
 
 
   ## [slot] Print info about the clicked service in the textarea.
@@ -340,8 +322,8 @@ class ConfigDialog(KPageDialog):
     item = self.sourcesPage.sourceList.currentItem()
     QFile.remove('%s/%s' % (sourcedir, item.source.filename))
     self.readSources()
-    self.populateSourceList()
     self.populateServiceLists()
+    self.populateSourceList()
     self.emit(SIGNAL('configurationChanged()'))
 
 
@@ -430,10 +412,9 @@ class ConfigDialog(KPageDialog):
       self.synchronizeService()
       self.sources[QString('custom.xml')].writeBack()
       self.emit(SIGNAL('configurationChanged()')) # Falls sich der Name geändert hat
-      selected = self.customPage.serviceList.currentItem().service.id
-      self.populateCustomList(selected)
+      service = self.customPage.serviceList.currentItem().service
+      self.populateCustomList(selected.id)
       self.populateServiceLists()
-      self.execInstallChecks()
     else:
       # LineEdits wieder mit ursprünglichen Werten füllen
       self.synchronizeLineEdits()

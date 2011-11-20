@@ -118,7 +118,6 @@ class Service(QObject):
 
 
   def execute(self, which):
-    print which, self.id
     self.killRunningProcess()
     self.timer.stop()
     if "command" in which:
