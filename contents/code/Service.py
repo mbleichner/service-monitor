@@ -15,6 +15,7 @@ from functions import *
 # signal is emitted.
 class Service(QObject):
 
+  stateChanged = pyqtSignal()
 
   def __init__(self, parent = None):
     QObject.__init__(self, parent)
@@ -35,7 +36,7 @@ class Service(QObject):
     self.timer = QTimer()
     self.timer.setSingleShot(True)
     self.timer.setInterval(4000)
-    QObject.connect(self.timer, SIGNAL('timeout()'), partial(self.execute, "runningcheck"))
+    self.timer.timeout.connect(partial(self.execute, "runningcheck"))
 
 
   ## [static] Creates a new service object from a DOM node.
@@ -112,7 +113,7 @@ class Service(QObject):
       self.setRunningState("starting" if which == "startcommand" else "stopping")
     else:
       self.process = ShellProcess(self.runningCheck if which == "runningcheck" else self.installCheck)
-    QObject.connect(self.process, SIGNAL('finished(int)'), partial(self.procFinished, which))
+    self.process.finished.connect(partial(self.procFinished, which))
     QTimer.singleShot(0, self.process.start)
 
 

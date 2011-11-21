@@ -34,7 +34,7 @@ class ServiceMonitor(Applet):
     # Konfig-Dialog einrichten
     self.setHasConfigurationInterface(True)
     self.configDialog = ConfigDialog(self)
-    QObject.connect(self.configDialog, SIGNAL('configurationChanged()'), self, SLOT('setupServicesAndWidgets()'))
+    self.configDialog.configurationChanged.connect(self.setupServicesAndWidgets)
 
     # Benutzeroberfläche einrichten
     self.setupAppletUi() if self.formFactor() == Plasma.Planar else self.setupPopupUi()
@@ -79,7 +79,7 @@ class ServiceMonitor(Applet):
     self.iconLayout.addItem(self.icon)
     self.setAspectRatioMode(Plasma.ConstrainedSquare)
     self.applet.setLayout(self.iconLayout)
-    QObject.connect(self.icon, SIGNAL("clicked()"), self, SLOT('togglePopup()'))
+    self.icon.clicked.connect(self.togglePopup)
 
 
   ## Sets up all widgets directly in the main applet.
@@ -124,7 +124,7 @@ class ServiceMonitor(Applet):
         self.refreshStateIcon(service)
         self.mainLayout.addItem(statusIcon, i, 0)
         self.mainLayout.addItem(nameLabel, i, 1)
-        QObject.connect(statusIcon, SIGNAL('clicked()'), partial(self.iconClicked, service))
+        statusIcon.clicked.connect(partial(self.iconClicked, service))
 
     # Falls keine Services eingerichtet: Einleitungstext anzeigen
     if not activeServices:
@@ -148,7 +148,7 @@ class ServiceMonitor(Applet):
     interval = self.configDialog.pollingInterval()
     sleepTime = self.configDialog.sleepTime()
     for service in activeServices:
-      QObject.connect(service, SIGNAL('stateChanged()'), partial(self.refreshStateIcon, service))
+      service.stateChanged.connect(partial(self.refreshStateIcon, service))
       service.setSleepTime(sleepTime)
       service.setPolling(True, interval)
 

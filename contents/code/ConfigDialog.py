@@ -30,6 +30,8 @@ sourcedir   = contentsdir + "/sources"
 # This signal tells the ServiceMonitor class to re-setup its widgets and monitoring.
 class ConfigDialog(KPageDialog):
 
+  configurationChanged = pyqtSignal()
+
   ## Sets up pages, widgets and connections and loads the source files.
   def __init__(self, parent = None):
     KPageDialog.__init__(self)
@@ -57,41 +59,41 @@ class ConfigDialog(KPageDialog):
     self.addPage(self.customPage, self.tr("Custom Services")).setIcon(KIcon("edit-rename"))
 
     # When opening a page, populate the corresponding widgets
-    QObject.connect(self.servicesPage, SIGNAL('show()'), chain(self.execInstallChecks, self.populateServiceLists))
-    QObject.connect(self.sourcesPage,  SIGNAL('show()'), self.populateSourceList)
-    QObject.connect(self.settingsPage, SIGNAL('show()'), self.populateSettings)
-    QObject.connect(self.customPage,   SIGNAL('show()'), self.populateCustomList)
+    self.servicesPage.show.connect(chain(self.execInstallChecks, self.populateServiceLists))
+    self.sourcesPage.show.connect(self.populateSourceList)
+    self.settingsPage.show.connect(self.populateSettings)
+    self.customPage.show.connect(self.populateCustomList)
     
     # Connections für die ServicesPage
-    QObject.connect(self.servicesPage.activeServicesList, SIGNAL('itemClicked(QListWidgetItem*)'), partial(self.showServiceInfo))
-    QObject.connect(self.servicesPage.inactiveServicesList, SIGNAL('itemClicked(QListWidgetItem*)'), partial(self.showServiceInfo,))
-    QObject.connect(self.servicesPage.activateButton, SIGNAL('clicked()'), self.activateService)
-    QObject.connect(self.servicesPage.deactivateButton, SIGNAL('clicked()'), self.deactivateService)
-    QObject.connect(self.servicesPage.sortUpButton, SIGNAL('clicked()'), self.sortUp)
-    QObject.connect(self.servicesPage.sortDownButton, SIGNAL('clicked()'), self.sortDown)
-    QObject.connect(self.servicesPage.sortTopButton, SIGNAL('clicked()'), self.sortTop)
-    QObject.connect(self.servicesPage.sortBottomButton, SIGNAL('clicked()'), self.sortBottom)
+    self.servicesPage.activeServicesList.itemClicked[QListWidgetItem].connect(self.showServiceInfo)
+    self.servicesPage.inactiveServicesList.itemClicked[QListWidgetItem].connect(self.showServiceInfo)
+    self.servicesPage.activateButton.clicked.connect(self.activateService)
+    self.servicesPage.deactivateButton.clicked.connect(self.deactivateService)
+    self.servicesPage.sortUpButton.clicked.connect(self.sortUp)
+    self.servicesPage.sortDownButton.clicked.connect(self.sortDown)
+    self.servicesPage.sortTopButton.clicked.connect(self.sortTop)
+    self.servicesPage.sortBottomButton.clicked.connect(self.sortBottom)
 
     # Connections für die SourcesPage
-    QObject.connect(self.sourcesPage.addButton, SIGNAL('clicked()'), self.addSource)
-    QObject.connect(self.sourcesPage.removeButton, SIGNAL('clicked()'), self.removeSource)
-    QObject.connect(self.sourcesPage.searchButton, SIGNAL('clicked()'), self.downloadSources)
-    QObject.connect(self.sourcesPage.sourceList, SIGNAL('itemClicked(QListWidgetItem*)'), partial(self.showSourceInfo))
+    self.sourcesPage.addButton.clicked.connect(self.addSource)
+    self.sourcesPage.removeButton.clicked.connect(self.removeSource)
+    self.sourcesPage.searchButton.clicked.connect(self.downloadSources)
+    self.sourcesPage.sourceList.itemClicked[QListWidgetItem].connect(self.showSourceInfo)
 
     # Connections für die CustomPage
-    QObject.connect(self.customPage.serviceList, SIGNAL('itemClicked(QListWidgetItem*)'), partial(self.synchronizeLineEdits))
-    QObject.connect(self.customPage.serviceList, SIGNAL('itemDoubleClicked(QListWidgetItem*)'), self.startEditmode)
-    QObject.connect(self.customPage.editButton, SIGNAL('clicked()'), self.toggleEditmode)
-    QObject.connect(self.customPage.removeButton, SIGNAL('clicked()'), self.removeCustomService)
-    QObject.connect(self.customPage.addButton, SIGNAL('clicked()'), self.addCustomService)
-    QObject.connect(self.customPage.shareButton, SIGNAL('clicked()'), self.uploadCustomService)
+    self.customPage.serviceList.itemClicked[QListWidgetItem].connect(self.synchronizeLineEdits)
+    self.customPage.serviceList.itemDoubleClicked[QListWidgetItem].connect(self.startEditmode)
+    self.customPage.editButton.clicked.connect(self.toggleEditmode)
+    self.customPage.removeButton.clicked.connect(self.removeCustomService)
+    self.customPage.addButton.clicked.connect(self.addCustomService)
+    self.customPage.shareButton.clicked.connect(self.uploadCustomService)
 
     # Connections für die SettingsPage
-    QObject.connect(self.settingsPage.pollingIntervalSpinbox, SIGNAL('valueChanged(double)'), self.setPollingInterval)
-    QObject.connect(self.settingsPage.sleepTimeSpinbox, SIGNAL('valueChanged(double)'), self.setSleepTime)
+    self.settingsPage.pollingIntervalSpinbox.valueChanged[float].connect(self.setPollingInterval)
+    self.settingsPage.sleepTimeSpinbox.valueChanged[float].connect(self.setSleepTime)
 
     # Cleanup actions when closing the config dialog
-    QObject.connect(self, SIGNAL('closeClicked()'), self.stopEditmode)
+    self.closeClicked.connect(self.stopEditmode)
 
 
   def execInstallChecks(self):
@@ -118,7 +120,7 @@ class ConfigDialog(KPageDialog):
       for service in source.services:
         if not self.services.has_key(service.id) or self.services[service.id].priority <= service.priority:
           self.services[service.id] = service
-          QObject.connect(service, SIGNAL("stateChanged()"), partial(self.refreshIndicator, service))
+          service.stateChanged.connect(partial(self.refreshIndicator, service))
       print '* loaded %s (%i services).' % (fn, len(source.services))
 
 
@@ -165,7 +167,6 @@ class ConfigDialog(KPageDialog):
   ## Populates both lists in the services page.
   # The right list can theoretically contain multiple services with the same ID.
   # When this happens, only the one with higher priority (or the one parsed later) is displayed.
-  @pyqtSlot()
   def populateServiceLists(self):
 
     # load ID list of active services and clean orphans (fixes bug when reordering list)
@@ -224,7 +225,6 @@ class ConfigDialog(KPageDialog):
 
 
   ## [slot] Add selected service to the list of active services (then repopulate lists).
-  @pyqtSlot()
   def activateService(self):
     '''Fügt einen Service zur Liste der aktiven hinzu und aktualisiert dann alles'''
     activeServicesIDs = self.config.value("activeServices").toStringList()
@@ -236,7 +236,6 @@ class ConfigDialog(KPageDialog):
 
 
   ## [slot] Remove selected service to the list of active services (then repopulate lists).
-  @pyqtSlot()
   def deactivateService(self):
     activeServicesIDs = self.config.value("activeServices").toStringList()
     try: activeServicesIDs.removeAll( self.servicesPage.activeServicesList.currentItem().service.id )
@@ -264,19 +263,15 @@ class ConfigDialog(KPageDialog):
     self.emit(SIGNAL('configurationChanged()'))
 
   ## [slot] Calls self.sort('up')
-  @pyqtSlot()
   def sortUp(self): self.sort('up')
 
   ## [slot] Calls self.sort('down')
-  @pyqtSlot()
   def sortDown(self): self.sort('down')
 
   ## [slot] Calls self.sort('top')
-  @pyqtSlot()
   def sortTop(self): self.sort('top')
 
   ## [slot] Calls self.sort('bottom')
-  @pyqtSlot()
   def sortBottom(self): self.sort('bottom')
 
 
@@ -295,7 +290,6 @@ class ConfigDialog(KPageDialog):
 
 
   ## [slot] Selects and copies a file into the sources directory (and repopulates sources list).
-  @pyqtSlot()
   def addSource(self):
     filename = QFileDialog.getOpenFileName(self, self.tr('Select source file'), '~', self.tr('Service definitions (*.xml)'))
     if not filename: return
@@ -312,7 +306,6 @@ class ConfigDialog(KPageDialog):
 
 
   ## [slot] Deletes a file from the sources directory (and repopulates sources list).
-  @pyqtSlot()
   def removeSource(self):
     '''Löscht eine XML-Datei aus dem source-Verzeichnis'''
     answer = QMessageBox.question(self, self.tr('Delete source file'), self.tr('Really delete the file?'), QMessageBox.Yes | QMessageBox.No)
@@ -326,7 +319,6 @@ class ConfigDialog(KPageDialog):
 
 
   ## [slot] Opens a browser and go to the sources download page on documentroot.net.
-  @pyqtSlot()
   def openBrowser(self):
     answer = QMessageBox.question(self, self.tr('Search for new sources'), self.tr('This will open a page in your web browser where additional service definitions can be downloaded.'), QMessageBox.Ok | QMessageBox.Cancel)
     if answer == QMessageBox.Ok: QDesktopServices.openUrl(QUrl('http://www.documentroot.net/en/download-service-definitions'))
@@ -345,11 +337,10 @@ class ConfigDialog(KPageDialog):
       QProcess.execute("/bin/tar", QStringList() << "xfz" << f.fileName() << "-C" << sourcedir)
       self.readSources()
       self.populateSourceList()
-    QObject.connect(self.res, SIGNAL('finished()'), finished)
+    self.res.finished.connect(finished)
 
 
   ## [slot] Shows information about the clicked source in the text area.
-  @pyqtSlot('QListWidgetItem*')
   def showSourceInfo(self, item):
     if not hasattr(item, 'source'): return
     self.sourcesPage.infoTextarea.document().setHtml(item.source.description)
@@ -377,14 +368,12 @@ class ConfigDialog(KPageDialog):
   # @param save Save when disabling editmode?
   # When entering editmode, the list is disabled and the line edits are enabled and vice versa when editmode is left.
   # In editmode, the edit button becomes a save button and the remove button becomes a cancel button.
-  @pyqtSlot()
   def toggleEditmode(self, save = True):
     if self.editmode:
       self.stopEditmode()
     else:
       self.startEditmode()
 
-  @pyqtSlot()
   def startEditmode(self):
     item = self.customPage.serviceList.currentItem()
     if not item: return
@@ -399,7 +388,6 @@ class ConfigDialog(KPageDialog):
     self.customPage.shareButton.setEnabled(False)
     self.customPage.serviceList.setEnabled(False)
       
-  @pyqtSlot()
   def stopEditmode(self, save = True):
     if not self.customPage.serviceList.currentItem(): return
       
@@ -428,7 +416,6 @@ class ConfigDialog(KPageDialog):
 
   ## [slot] Writes data of selected custom service to line edits.
   # Called as slot when a custom service in the list is clicked.
-  @pyqtSlot()
   def synchronizeLineEdits(self, x = None):
     service = self.customPage.serviceList.currentItem().service
     self.customPage.serviceNameInput.setText(service.name)
@@ -452,7 +439,6 @@ class ConfigDialog(KPageDialog):
 
   ## [slot] Deletes selected custom service (and repopulate all lists)
   # When in editmode, cancel without saving.
-  @pyqtSlot()
   def removeCustomService(self):
 
     if self.editmode: # cancel editing
@@ -472,7 +458,6 @@ class ConfigDialog(KPageDialog):
 
 
   ## [slot] Adds a new, empty service with random ID to custom.xml and reload the sources.
-  @pyqtSlot()
   def addCustomService(self):
     service = Service()
     service.id = 'custom-%i' % random.randrange(1, 999999)
@@ -497,7 +482,6 @@ class ConfigDialog(KPageDialog):
 
 
   ## [slot] Submits the data of the currently selected service via GET request to documentroot.net.
-  @pyqtSlot()
   def uploadCustomService(self):
     if not self.customPage.serviceList.currentItem(): return
     answer = QMessageBox.question(self, self.tr('Upload service definition'), self.tr('This will open a page in your web browser where you can submit the selected service definition to the community.'), QMessageBox.Ok | QMessageBox.Cancel)
@@ -523,14 +507,12 @@ class ConfigDialog(KPageDialog):
 
 
   ## [slot] Save polling interval to internal config.
-  @pyqtSlot('double')
   def setPollingInterval(self, newValue):
     self.config.setValue('pollingInterval', newValue)
     self.emit(SIGNAL('configurationChanged()'))
 
 
   ## [slot] Save sleep time to internal config.
-  @pyqtSlot('double')
   def setSleepTime(self, newValue):
     self.config.setValue('sleepTime', newValue)
     self.emit(SIGNAL('configurationChanged()'))
@@ -541,6 +523,7 @@ class ConfigDialog(KPageDialog):
 ################################################################################################################
 
 class CustomWidget(QWidget):
+  show = pyqtSignal()
   def showEvent(self, event):
     self.emit(SIGNAL("show()"))
 
