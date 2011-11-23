@@ -15,10 +15,20 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_5">
    <item>
-    <widget class="QListWidget" name="sourceList"/>
-   </item>
-   <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
      <item>
       <widget class="QPushButton" name="searchButton">
        <property name="toolTip">
@@ -33,36 +43,10 @@
        </property>
       </widget>
      </item>
-     <item>
-      <widget class="QPushButton" name="addButton">
-       <property name="text">
-        <string>Add XML source file</string>
-       </property>
-       <property name="icon">
-        <iconset resource="../resources/icons/icons.qrc">
-         <normaloff>:/plus.png</normaloff>:/plus.png</iconset>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="removeButton">
-       <property name="text">
-        <string>Remove selected file</string>
-       </property>
-       <property name="icon">
-        <iconset resource="../resources/icons/icons.qrc">
-         <normaloff>:/minus.png</normaloff>:/minus.png</iconset>
-       </property>
-      </widget>
-     </item>
     </layout>
    </item>
    <item>
-    <widget class="Line" name="line">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
+    <widget class="QListWidget" name="sourceList"/>
    </item>
    <item>
     <widget class="QTextEdit" name="infoTextarea">

@@ -24,6 +24,7 @@ class Service(QObject):
     self.id = ''
     self.name = ''
     self.priority = 0
+    self.overridden = False # indicates whether there is another service with the same id, but higher priority
     self.description = ''
     self.installCheck = ''
     self.runningCheck = ''

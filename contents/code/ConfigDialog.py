@@ -75,10 +75,9 @@ class ConfigDialog(KPageDialog):
     self.servicesPage.sortBottomButton.clicked.connect(self.sortBottom)
 
     # Connections für die SourcesPage
-    self.sourcesPage.addButton.clicked.connect(self.addSource)
-    self.sourcesPage.removeButton.clicked.connect(self.removeSource)
     self.sourcesPage.searchButton.clicked.connect(self.downloadSources)
     self.sourcesPage.sourceList.itemClicked[QListWidgetItem].connect(self.showSourceInfo)
+    self.sourcesPage.sourceList.itemChanged[QListWidgetItem].connect(self.saveActiveSources)
 
     # Connections für die CustomPage
     self.customPage.serviceList.itemClicked[QListWidgetItem].connect(self.synchronizeLineEdits)
@@ -97,7 +96,7 @@ class ConfigDialog(KPageDialog):
 
 
   def execInstallChecks(self):
-    for source in self.sources.values():
+    for source in self.activeSources():
       for service in source.services:
         service.execute("installcheck")
 
@@ -106,6 +105,7 @@ class ConfigDialog(KPageDialog):
   def setConfigDefaults(self):
     if not self.config.contains('pollingInterval'): self.config.setValue('pollingInterval', 4.0)
     if not self.config.contains('sleepTime'):       self.config.setValue('sleepTime', 0.5)
+    if not self.config.contains('activeSources'):   self.config.setValue('activeSources', QStringList() << "daemons-common.xml" << "tools-settings.xml")
 
 
   ## Parses all XML source files and loads containing services.
@@ -121,6 +121,9 @@ class ConfigDialog(KPageDialog):
         if not self.services.has_key(service.id) or self.services[service.id].priority <= service.priority:
           self.services[service.id] = service
           service.stateChanged.connect(partial(self.refreshIndicator, service))
+          service.overridden = False
+        else:
+          service.overridden = True
       print '* loaded %s (%i services).' % (fn, len(source.services))
 
 
@@ -134,9 +137,18 @@ class ConfigDialog(KPageDialog):
 
 
   ## Returns the list of active services.
+  # This function may return fewer services than the config file contains because there might be temporarily unavailable services.
+  # Such services will not be removed from the config, as they might be available again later.
   def activeServices(self):
     activeServicesIDs = self.config.value('activeServices').toStringList()
-    return [self.services[id] for id in activeServicesIDs if self.services.has_key(id)]
+    activeSourcesIDs = sorted(self.config.value('activeSources').toStringList())
+    return [self.services[id] for id in activeServicesIDs if self.services.has_key(id) and self.services[id].source.filename in activeSourcesIDs]
+
+
+  ## Returns the list of active services.
+  def activeSources(self):
+    activeSourcesIDs = sorted(self.config.value('activeSources').toStringList())
+    return [self.sources[id] for id in activeSourcesIDs if self.sources.has_key(id)]
 
 
   ## Returns the polling interval from the settings page.
@@ -168,24 +180,18 @@ class ConfigDialog(KPageDialog):
   # The right list can theoretically contain multiple services with the same ID.
   # When this happens, only the one with higher priority (or the one parsed later) is displayed.
   def populateServiceLists(self):
-
-    # load ID list of active services and clean orphans (fixes bug when reordering list)
-    activeServicesIDs = self.config.value('activeServices').toStringList()
-    deadlinks = [id for id in activeServicesIDs if not self.services.has_key(id)]
-    if deadlinks:
-      for id in deadlinks: activeServicesIDs.removeAll(id)
-      self.config.setValue('activeServices', activeServicesIDs)
-
-    # now populate the lists
+    activeServices = self.activeServices()
+    activeSources = self.activeSources()
     self.servicesPage.activeServicesList.clear()
     self.servicesPage.inactiveServicesList.clear()
-    for service in self.activeServices():
+    for service in activeServices:
       item = QListWidgetItem(service.name)
       item.service = service
       self.servicesPage.activeServicesList.addItem(item)
       item.setIcon(self.installStateIndicator(service))
-    for filename, source in sorted(self.sources.items()):
-      servicesToShow = [s for s in source.services if not activeServicesIDs.contains(s.id) and self.services[s.id] == s]
+    for source in activeSources:
+      filename = source.filename
+      servicesToShow = [s for s in source.services if not s in activeServices and not s.overridden]
       if len(servicesToShow) == 0: continue
       item = QListWidgetItem(source.name if source.name else source.filename)
       item.source = source
@@ -232,7 +238,7 @@ class ConfigDialog(KPageDialog):
     except: return
     self.config.setValue("activeServices", activeServicesIDs)
     self.populateServiceLists()
-    self.emit(SIGNAL('configurationChanged()'))
+    self.configurationChanged.emit()
 
 
   ## [slot] Remove selected service to the list of active services (then repopulate lists).
@@ -242,7 +248,7 @@ class ConfigDialog(KPageDialog):
     except: return
     self.config.setValue("activeServices", activeServicesIDs)
     self.populateServiceLists()
-    self.emit(SIGNAL('configurationChanged()'))
+    self.configurationChanged.emit()
 
 
   ## Called when clicking one of the sort buttons
@@ -260,7 +266,7 @@ class ConfigDialog(KPageDialog):
     self.config.setValue("activeServices", activeServicesIDs)
     self.populateServiceLists()
     self.servicesPage.activeServicesList.setCurrentRow(newPosition)
-    self.emit(SIGNAL('configurationChanged()'))
+    self.configurationChanged.emit()
 
   ## [slot] Calls self.sort('up')
   def sortUp(self): self.sort('up')
@@ -281,54 +287,37 @@ class ConfigDialog(KPageDialog):
   ## Populates the list of sources from self.sources.
   def populateSourceList(self):
     self.sourcesPage.sourceList.clear()
+    activeSources = self.activeSources()
     for filename, source in sorted(self.sources.items()):
       if filename == QString('custom.xml'): continue
-      icon = KIcon('application-xml')
-      item = QListWidgetItem(icon, self.tr('%1 (%2, %3 entries)').arg(source.name if source.name else 'Unnamed').arg(filename).arg(len(source.services)))
+      item = QListWidgetItem(self.tr('%1 (%2, %3 entries)').arg(source.name if source.name else 'Unnamed').arg(filename).arg(len(source.services)))
       item.source = source
+      item.setCheckState(Qt.Checked if source in activeSources else Qt.Unchecked)
       self.sourcesPage.sourceList.addItem(item)
 
 
-  ## [slot] Selects and copies a file into the sources directory (and repopulates sources list).
-  def addSource(self):
-    filename = QFileDialog.getOpenFileName(self, self.tr('Select source file'), '~', self.tr('Service definitions (*.xml)'))
-    if not filename: return
-    fileinfo = QFileInfo(filename)
-    destination = '%s/sources/%s' % (contentsdir, fileinfo.fileName())
-    if QFile.exists(destination):
-      answer = QMessageBox.question(self, self.tr('Add source file'), self.tr('This will overwrite an existing file. Continue?'), QMessageBox.Yes | QMessageBox.No)
-      if answer == QMessageBox.No: return
-    shutil.copyfile(filename, destination)
-    self.readSources()
-    self.populateSourceList()
-    self.populateServiceLists()
-    self.emit(SIGNAL('configurationChanged()'))
-
-
-  ## [slot] Deletes a file from the sources directory (and repopulates sources list).
-  def removeSource(self):
-    '''Löscht eine XML-Datei aus dem source-Verzeichnis'''
-    answer = QMessageBox.question(self, self.tr('Delete source file'), self.tr('Really delete the file?'), QMessageBox.Yes | QMessageBox.No)
-    if answer == QMessageBox.No: return
-    item = self.sourcesPage.sourceList.currentItem()
-    QFile.remove('%s/%s' % (sourcedir, item.source.filename))
-    self.readSources()
-    self.populateServiceLists()
-    self.populateSourceList()
-    self.emit(SIGNAL('configurationChanged()'))
-
-
-  ## [slot] Opens a browser and go to the sources download page on documentroot.net.
-  def openBrowser(self):
-    answer = QMessageBox.question(self, self.tr('Search for new sources'), self.tr('This will open a page in your web browser where additional service definitions can be downloaded.'), QMessageBox.Ok | QMessageBox.Cancel)
-    if answer == QMessageBox.Ok: QDesktopServices.openUrl(QUrl('http://www.documentroot.net/en/download-service-definitions'))
+  def saveActiveSources(self, item):
+    activeSourcesIDs = self.config.value('activeSources').toStringList()
+    if item.checkState() == Qt.Checked:
+      activeSourcesIDs << item.source.filename
+      activeSourcesIDs.removeDuplicates()
+      self.config.setValue('activeSources', activeSourcesIDs)
+    else:
+      activeSourcesIDs.removeAll(item.source.filename)
+      self.config.setValue('activeSources', activeSourcesIDs)
+    self.configurationChanged.emit()
 
 
   def downloadSources(self):
     self.url = QUrl("http://www.documentroot.net/service-monitor/sources.tar.gz")
     self.man = QNetworkAccessManager()
     self.req = QNetworkRequest(self.url)
-    self.res = self.man.get(self.req)
+    oldText = self.sourcesPage.searchButton.text()
+    self.sourcesPage.searchButton.setText(self.tr("Downloading..."))
+    self.sourcesPage.searchButton.setEnabled(False)
+    def startDownload():
+      self.res = self.man.get(self.req)
+      self.res.finished.connect(finished)
     def finished():
       f = QFile("/tmp/sources.tar.gz")
       f.open(QIODevice.WriteOnly)
@@ -337,7 +326,10 @@ class ConfigDialog(KPageDialog):
       QProcess.execute("/bin/tar", QStringList() << "xfz" << f.fileName() << "-C" << sourcedir)
       self.readSources()
       self.populateSourceList()
-    self.res.finished.connect(finished)
+      self.sourcesPage.searchButton.setText("Download successful")
+      QTimer.singleShot(1500, partial(self.sourcesPage.searchButton.setText, oldText))
+      QTimer.singleShot(1500, partial(self.sourcesPage.searchButton.setEnabled, True))
+    QTimer.singleShot(1000, startDownload)
 
 
   ## [slot] Shows information about the clicked source in the text area.
@@ -395,10 +387,9 @@ class ConfigDialog(KPageDialog):
       # Konfiguration schreiben und relevante Bereiche aktualisieren
       self.synchronizeService()
       self.sources[QString('custom.xml')].writeBack()
-      self.emit(SIGNAL('configurationChanged()')) # Falls sich der Name geändert hat
+      self.configurationChanged.emit() # Falls sich der Name geändert hat
       service = self.customPage.serviceList.currentItem().service
       self.populateCustomList(service.id)
-      self.populateServiceLists()
     else:
       # LineEdits wieder mit ursprünglichen Werten füllen
       self.synchronizeLineEdits()
@@ -451,10 +442,9 @@ class ConfigDialog(KPageDialog):
       self.sources[QString('custom.xml')].services.remove(item.service)
       self.sources[QString('custom.xml')].writeBack()
       self.populateCustomList()
-      self.populateServiceLists()
       if item.service in self.activeServices():
         self.activeServices.remove(item.service)
-        self.emit(SIGNAL('configurationChanged()'))
+        self.configurationChanged.emit()
 
 
   ## [slot] Adds a new, empty service with random ID to custom.xml and reload the sources.
@@ -466,7 +456,6 @@ class ConfigDialog(KPageDialog):
     self.sources[QString('custom.xml')].services.append(service)
     self.sources[QString('custom.xml')].writeBack()
     self.readSources()
-    self.populateServiceLists()
     self.populateCustomList(service.id)
     self.synchronizeLineEdits() # Triggert nicht automatisch
 
@@ -509,13 +498,13 @@ class ConfigDialog(KPageDialog):
   ## [slot] Save polling interval to internal config.
   def setPollingInterval(self, newValue):
     self.config.setValue('pollingInterval', newValue)
-    self.emit(SIGNAL('configurationChanged()'))
+    self.configurationChanged.emit()
 
 
   ## [slot] Save sleep time to internal config.
   def setSleepTime(self, newValue):
     self.config.setValue('sleepTime', newValue)
-    self.emit(SIGNAL('configurationChanged()'))
+    self.configurationChanged.emit()
 
 
 
