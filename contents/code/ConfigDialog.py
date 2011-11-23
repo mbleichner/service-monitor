@@ -179,7 +179,7 @@ class ConfigDialog(KPageDialog):
   ## Populates both lists in the services page.
   # The right list can theoretically contain multiple services with the same ID.
   # When this happens, only the one with higher priority (or the one parsed later) is displayed.
-  def populateServiceLists(self):
+  def populateServiceLists(self, select = None):
     activeServices = self.activeServices()
     activeSources = self.activeSources()
     self.servicesPage.activeServicesList.clear()
@@ -189,6 +189,7 @@ class ConfigDialog(KPageDialog):
       item.service = service
       self.servicesPage.activeServicesList.addItem(item)
       item.setIcon(self.installStateIndicator(service))
+      if select == service.id: self.servicesPage.activeServicesList.setCurrentItem(item)
     for source in activeSources:
       filename = source.filename
       servicesToShow = [s for s in source.services if not s in activeServices and not s.overridden]
@@ -202,6 +203,7 @@ class ConfigDialog(KPageDialog):
         item.service = service
         self.servicesPage.inactiveServicesList.addItem(item)
         item.setIcon(self.installStateIndicator(service))
+        if select == service.id: self.servicesPage.inactiveServicesList.setCurrentItem(item)
 
 
   ## [slot] Updates the icon in the list for the service which has sent the stateChanged() signal.
@@ -254,19 +256,30 @@ class ConfigDialog(KPageDialog):
   ## Called when clicking one of the sort buttons
   #  @param direction identifies the clicked button
   def sort(self, direction):
-    activeServicesIDs = self.config.value('activeServices').toStringList()
-    n = len(activeServicesIDs)
-    oldPosition = self.servicesPage.activeServicesList.currentRow()
-    if   direction == 'top'    and n > 1:             newPosition = 0
-    elif direction == 'bottom' and n > 1:             newPosition = n-1
-    elif direction == 'up'     and oldPosition > 0:   newPosition = oldPosition-1
-    elif direction == 'down'   and oldPosition < n-1: newPosition = oldPosition+1
+    if not self.servicesPage.activeServicesList.currentItem(): return
+
+    # load active services and currently selected service
+    activeServices = self.activeServices()
+    n = len(activeServices)
+    service1 = self.servicesPage.activeServicesList.currentItem().service
+    pos = activeServices.index(service1)
+
+    # find service to change positions with
+    if   direction == 'top'    and n > 1:     service2 = activeServices[0]
+    elif direction == 'bottom' and n > 1:     service2 = activeServices[n-1]
+    elif direction == 'up'     and pos > 0:   service2 = activeServices[pos-1]
+    elif direction == 'down'   and pos < n-1: service2 = activeServices[pos+1]
     else: return
-    activeServicesIDs.move(oldPosition, newPosition)
+
+    # adapt id list in self.config, repopulate list and emit config change
+    activeServicesIDs = self.config.value("activeServices").toStringList()
+    pos1 = activeServicesIDs.indexOf(service1.id)
+    pos2 = activeServicesIDs.indexOf(service2.id)
+    activeServicesIDs.swap(pos1, pos2)
     self.config.setValue("activeServices", activeServicesIDs)
-    self.populateServiceLists()
-    self.servicesPage.activeServicesList.setCurrentRow(newPosition)
+    self.populateServiceLists(service1.id)
     self.configurationChanged.emit()
+
 
   ## [slot] Calls self.sort('up')
   def sortUp(self): self.sort('up')
@@ -354,7 +367,8 @@ class ConfigDialog(KPageDialog):
       item.service = service
       self.customPage.serviceList.addItem(item)
       if select == service.id:
-        self.customPage.serviceList.setCurrentRow(self.customPage.serviceList.count()-1)
+        self.customPage.serviceList.setCurrentItem(item)
+
 
   ## [slot] Switches editmode on or off.
   # @param save Save when disabling editmode?
