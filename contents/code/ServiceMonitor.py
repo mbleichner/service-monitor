@@ -156,7 +156,7 @@ class ServiceMonitor(Applet):
   ## [slot] Starts or stops a service corresponding to the icon clicked.
   def iconClicked(self, service):
     if service.state[0] == 'missing':
-      print 'Service %s not installed. Aborting.' % service.id
+      QMessageBox.warning(None, self.tr("Error"), self.tr('Service "%1" not installed. Aborting.').arg(service.id))
       return
     elif service.state[1] in ['running', 'starting']:
       service.execute("stopcommand")

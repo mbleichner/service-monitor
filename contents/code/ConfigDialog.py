@@ -94,6 +94,8 @@ class ConfigDialog(KPageDialog):
     # Cleanup actions when closing the config dialog
     self.closeClicked.connect(self.stopEditmode)
 
+    self.execInstallChecks()
+
 
   def execInstallChecks(self):
     for source in self.activeSources():

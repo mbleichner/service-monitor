@@ -30,7 +30,9 @@ class Service(QObject):
     self.runningCheck = ''
     self.startCommand = ''
     self.stopCommand = ''
-    self.process = None
+    self.runningCheckProcess = None
+    self.installCheckProcess = None
+    self.commandProcess = None
     self.sleepTime = 0
     self.state = ('unknown', 'unknown')   # (Install-Status, Running-Status)
     self.polling = False
@@ -107,28 +109,30 @@ class Service(QObject):
 
 
   def execute(self, which):
-    self.killRunningProcess()
     self.timer.stop()
-    if "command" in which:
-      self.process = RootProcess(self.startCommand if which == "startcommand" else self.stopCommand)
+    if which in ["startcommand", "stopcommand"]:
+      self.killCommandProcess()
+      self.commandProcess = proc = RootProcess(self.startCommand if which == "startcommand" else self.stopCommand)
       self.setRunningState("starting" if which == "startcommand" else "stopping")
-    else:
-      self.process = ShellProcess(self.runningCheck if which == "runningcheck" else self.installCheck)
-    self.process.finished.connect(partial(self.procFinished, which))
-    QTimer.singleShot(0, self.process.start)
+    elif which == "runningcheck":
+      self.killRunningCheckProcess()
+      self.runningCheckProcess = proc = ShellProcess(self.runningCheck)
+    elif which == "installcheck":
+      self.killInstallCheckProcess()
+      self.installCheckProcess = proc = ShellProcess(self.installCheck)
+    proc.finished.connect(partial(self.procFinished, which))
+    proc.start()
 
 
   def procFinished(self, which):
-    errorOutput = QString(self.process.readAllStandardError())
-    if errorOutput:
-      QMessageBox.critical(None, self.name, self.tr('The command produced the following error:') + '\n' + errorOutput, QMessageBox.Ok)
     if which == "installcheck":
-      self.setInstallState('installed' if (self.process.exitCode() == 0 and self.process.readAll().length() > 0) else 'missing')
+      self.setInstallState('installed' if (self.installCheckProcess.exitCode() == 0 and self.installCheckProcess.readAll().length() > 0) else 'missing')
+      self.killInstallCheckProcess()
     if which == "runningcheck":
-      self.setRunningState('running' if (self.process.exitCode() == 0 and self.process.readAll().length() > 0) else 'stopped')
-    if self.polling:
-      self.timer.start()
-    self.killRunningProcess()
+      self.setRunningState('running' if (self.runningCheckProcess.exitCode() == 0 and self.runningCheckProcess.readAll().length() > 0) else 'stopped')
+      self.killRunningCheckProcess()
+      if self.polling:
+        self.timer.start()
 
 
   ## Sets a sleep time to be appended to all commands.
@@ -136,8 +140,17 @@ class Service(QObject):
     self.sleepTime = n
 
 
-  ## [internal] Kills running process.
-  def killRunningProcess(self):
-    if self.process is not None:
-      self.process.deleteLater()
-      self.process = None
+  def killRunningCheckProcess(self):
+    if self.runningCheckProcess is not None:
+      self.runningCheckProcess.deleteLater()
+      self.runningCheckProcess = None
+
+  def killInstallCheckProcess(self):
+    if self.installCheckProcess is not None:
+      self.installCheckProcess.deleteLater()
+      self.installCheckProcess = None
+      
+  def killCommandProcess(self):
+    if self.commandProcess is not None:
+      self.commandProcess.deleteLater()
+      self.commandProcess = None
