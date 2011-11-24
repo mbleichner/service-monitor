@@ -27,6 +27,8 @@ class ServiceMonitor(Applet):
 
     ## [QLayout] The layout containing all the widgets.
     self.mainLayout = None
+
+    self.password = None
     
 
   def init(self):
@@ -97,6 +99,20 @@ class ServiceMonitor(Applet):
     self.configDialog.show()
 
 
+  ## Triggered on wrongPassword signal. Retries the last command.
+  def retryLastAction(self, service, which):
+    print "get password from user"
+    (pw, ok) = QInputDialog.getText(None, "Password", "Enter password")
+    if ok:
+      print "retrying", which
+      self.password = pw
+      for s in self.configDialog.activeServices():
+        s.setSudoPassword(pw)
+      service.execute(str(which))
+    else:
+      print "giving up"
+
+
   ## [slot] Create all widgets inside the main layout and set up the services for monitoring.
   # This function is called as slot whenever the configuration has changed.
   @pyqtSlot()
@@ -149,6 +165,7 @@ class ServiceMonitor(Applet):
     sleepTime = self.configDialog.sleepTime()
     for service in activeServices:
       service.stateChanged.connect(partial(self.refreshStateIcon, service))
+      service.wrongPassword[str].connect(partial(self.retryLastAction, service))
       service.setSleepTime(sleepTime)
       service.setPolling(True, interval)
 

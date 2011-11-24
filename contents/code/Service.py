@@ -16,6 +16,7 @@ from functions import *
 class Service(QObject):
 
   stateChanged = pyqtSignal()
+  wrongPassword = pyqtSignal(str)
 
   def __init__(self, parent = None):
     QObject.__init__(self, parent)
@@ -30,6 +31,7 @@ class Service(QObject):
     self.runningcheck = ''
     self.startcommand = ''
     self.stopcommand = ''
+    self.password = ''
     self.processes = {'runningcheck': None, 'installcheck': None, 'startcommand': None, 'stopcommand': None}
     self.sleepTime = 0
     self.state = ('unknown', 'unknown')   # (Install-Status, Running-Status)
@@ -80,6 +82,10 @@ class Service(QObject):
     return node
 
 
+  def setSudoPassword(self, password):
+    self.password = password
+
+
   def setPolling(self, flag, interval = None):
     self.polling = flag
     if self.polling:
@@ -111,14 +117,15 @@ class Service(QObject):
     command = getattr(self, which)
     if which in ["startcommand", "stopcommand"]:
       self.killProcesses('startcommand', 'stopcommand', 'runningcheck')
-      proc = RootProcess(command)
+      proc = RootProcess(command, self.password)
+      proc.wrongPassword.connect(partial(self.wrongPassword.emit, which))
       self.setRunningState("starting" if which == "startcommand" else "stopping")
     elif which in ["runningcheck", "installcheck"]:
       self.killProcesses(which)
       proc = ShellProcess(command)
     self.processes[which] = proc
     proc.finished.connect(partial(self.procFinished, which))
-    print self.id, [x for x,y in self.processes.items() if y is not None]
+    #print self.id, [x for x,y in self.processes.items() if y is not None]
     proc.start()
 
 
@@ -128,9 +135,12 @@ class Service(QObject):
       self.setInstallState('installed' if (proc.exitCode() == 0 and proc.readAll().length() > 0) else 'missing')
     if which == "runningcheck":
       self.setRunningState('running' if (proc.exitCode() == 0 and proc.readAll().length() > 0) else 'stopped')
-    self.killProcesses(which)
-    if self.polling and which in ['startcommand', 'stopcommand', 'runningcheck']:
+    if which in ['startcommand', 'stopcommand']:
+      self.setRunningState('running' if (proc.exitCode() == 0 and proc.readAll().length() > 0) else 'stopped')
+      self.timer.timeout.emit()
+    if self.polling:
       self.timer.start()
+    self.killProcesses(which)
 
 
   ## Sets a sleep time to be appended to all commands.
@@ -141,5 +151,5 @@ class Service(QObject):
   def killProcesses(self, *args):
     for which in args:
       if self.processes[which] is not None:
-        self.processes[which].deleteLater()
+        self.processes[which].close()
         self.processes[which] = None

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+## Returns a function which is the chain of all parameter functions
 def chain(*args):
   def fnc():
     for f in args:

@@ -19,40 +19,36 @@ class ShellProcess(KProcess):
 
 class RootProcess(ShellProcess):
 
-  def __init__(self, command, parent = None):
+  wrongPassword = pyqtSignal()
+
+  def __init__(self, command, password, parent = None):
     ShellProcess.__init__(self, command, parent)
-    self.password = ''
+    self.password = password
+    self.state = ''
 
   def generateProgram(self, command):
     return (QStringList() << "/usr/bin/sudo" << "-kS") + ShellProcess.generateProgram(self, command)
 
   def start(self):
     ShellProcess.start(self)
+    self.state = 'prompt'
+    self.readyReadStandardOutput.connect(self.inputReady)
 
-    self.waitForReadyRead()
-
+  def inputReady(self):
     output = QString(self.readAllStandardOutput())
-    if output.contains("password for"):
+    if self.state == 'prompt' and output.contains("password for"):
+      print "giving password to sudo:", self.password
       self.write("%s\n" % self.password)
-
-    self.waitForReadyRead()
-
-    output = QString(self.readAllStandardOutput())
-    while output:
-      if output.contains("password for"):
-        print "wrong password",
-        (self.password, success) = QInputDialog.getText(None, "", output)
-        self.write("%s\n" % self.password)
-      self.waitForReadyRead()
-      output = QString(self.readAllStandardOutput())
-      
-    print "response", output
-    if output.trimmed() == "Sorry, try again.":
-      print "wrong sudo password"
-    else:
-      print "password correct"
-      
-    self.closeWriteChannel()
+      self.state = 'checkresult'
+    elif self.state == 'checkresult':
+      if "Sorry, try again." in output:
+        print "wrong password"
+        self.state = 'failed'
+        self.wrongPassword.emit()
+      else:
+        self.state = 'success'
+        print "password correct"
+      self.close()
 
 
 
