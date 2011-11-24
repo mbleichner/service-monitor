@@ -26,13 +26,11 @@ class Service(QObject):
     self.priority = 0
     self.overridden = False # indicates whether there is another service with the same id, but higher priority
     self.description = ''
-    self.installCheck = ''
-    self.runningCheck = ''
-    self.startCommand = ''
-    self.stopCommand = ''
-    self.runningCheckProcess = None
-    self.installCheckProcess = None
-    self.commandProcess = None
+    self.installcheck = ''
+    self.runningcheck = ''
+    self.startcommand = ''
+    self.stopcommand = ''
+    self.processes = {'runningcheck': None, 'installcheck': None, 'startcommand': None, 'stopcommand': None}
     self.sleepTime = 0
     self.state = ('unknown', 'unknown')   # (Install-Status, Running-Status)
     self.polling = False
@@ -58,13 +56,13 @@ class Service(QObject):
       if node.isElement() and node.toElement().tagName() == 'description':
         service.description = node.toElement().firstChild().toText().data()
       if node.isElement() and node.toElement().tagName() == 'installcheck':
-        service.installCheck  = node.toElement().firstChild().toText().data()
+        service.installcheck  = node.toElement().firstChild().toText().data()
       if node.isElement() and node.toElement().tagName() == 'runningcheck':
-        service.runningCheck = node.toElement().firstChild().toText().data()
+        service.runningcheck = node.toElement().firstChild().toText().data()
       if node.isElement() and node.toElement().tagName() == 'startcommand':
-        service.startCommand = node.toElement().firstChild().toText().data()
+        service.startcommand = node.toElement().firstChild().toText().data()
       if node.isElement() and node.toElement().tagName() == 'stopcommand':
-        service.stopCommand = node.toElement().firstChild().toText().data()
+        service.stopcommand = node.toElement().firstChild().toText().data()
       node = node.nextSibling()
     return service
 
@@ -75,10 +73,10 @@ class Service(QObject):
     node.setAttribute('id', self.id)
     node.appendChild(mkTextElement(doc, 'name',         self.name))
     node.appendChild(mkTextElement(doc, 'description',  self.description))
-    node.appendChild(mkTextElement(doc, 'installcheck', self.installCheck))
-    node.appendChild(mkTextElement(doc, 'runningcheck', self.runningCheck))
-    node.appendChild(mkTextElement(doc, 'startcommand', self.startCommand))
-    node.appendChild(mkTextElement(doc, 'stopcommand',  self.stopCommand))
+    node.appendChild(mkTextElement(doc, 'installcheck', self.installcheck))
+    node.appendChild(mkTextElement(doc, 'runningcheck', self.runningcheck))
+    node.appendChild(mkTextElement(doc, 'startcommand', self.startcommand))
+    node.appendChild(mkTextElement(doc, 'stopcommand',  self.stopcommand))
     return node
 
 
@@ -110,29 +108,29 @@ class Service(QObject):
 
   def execute(self, which):
     self.timer.stop()
+    command = getattr(self, which)
     if which in ["startcommand", "stopcommand"]:
-      self.killCommandProcess()
-      self.commandProcess = proc = RootProcess(self.startCommand if which == "startcommand" else self.stopCommand)
+      self.killProcesses('startcommand', 'stopcommand', 'runningcheck')
+      proc = RootProcess(command)
       self.setRunningState("starting" if which == "startcommand" else "stopping")
-    elif which == "runningcheck":
-      self.killRunningCheckProcess()
-      self.runningCheckProcess = proc = ShellProcess(self.runningCheck)
-    elif which == "installcheck":
-      self.killInstallCheckProcess()
-      self.installCheckProcess = proc = ShellProcess(self.installCheck)
+    elif which in ["runningcheck", "installcheck"]:
+      self.killProcesses(which)
+      proc = ShellProcess(command)
+    self.processes[which] = proc
     proc.finished.connect(partial(self.procFinished, which))
+    print self.id, [x for x,y in self.processes.items() if y is not None]
     proc.start()
 
 
   def procFinished(self, which):
+    proc = self.processes[which]
     if which == "installcheck":
-      self.setInstallState('installed' if (self.installCheckProcess.exitCode() == 0 and self.installCheckProcess.readAll().length() > 0) else 'missing')
-      self.killInstallCheckProcess()
+      self.setInstallState('installed' if (proc.exitCode() == 0 and proc.readAll().length() > 0) else 'missing')
     if which == "runningcheck":
-      self.setRunningState('running' if (self.runningCheckProcess.exitCode() == 0 and self.runningCheckProcess.readAll().length() > 0) else 'stopped')
-      self.killRunningCheckProcess()
-      if self.polling:
-        self.timer.start()
+      self.setRunningState('running' if (proc.exitCode() == 0 and proc.readAll().length() > 0) else 'stopped')
+    self.killProcesses(which)
+    if self.polling and which in ['startcommand', 'stopcommand', 'runningcheck']:
+      self.timer.start()
 
 
   ## Sets a sleep time to be appended to all commands.
@@ -140,17 +138,8 @@ class Service(QObject):
     self.sleepTime = n
 
 
-  def killRunningCheckProcess(self):
-    if self.runningCheckProcess is not None:
-      self.runningCheckProcess.deleteLater()
-      self.runningCheckProcess = None
-
-  def killInstallCheckProcess(self):
-    if self.installCheckProcess is not None:
-      self.installCheckProcess.deleteLater()
-      self.installCheckProcess = None
-      
-  def killCommandProcess(self):
-    if self.commandProcess is not None:
-      self.commandProcess.deleteLater()
-      self.commandProcess = None
+  def killProcesses(self, *args):
+    for which in args:
+      if self.processes[which] is not None:
+        self.processes[which].deleteLater()
+        self.processes[which] = None

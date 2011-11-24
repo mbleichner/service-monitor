@@ -230,7 +230,7 @@ class ConfigDialog(KPageDialog):
         <tr><td>Running check:</td><td>&nbsp;</td><td>%4</td></tr>
         <tr><td>Start command:</td><td>&nbsp;</td><td>%5</td></tr>
         <tr><td>Stop command:</td><td>&nbsp;</td><td>%6</td></tr>
-        </table>''').arg(s.name).arg(s.description).arg(s.installCheck).arg(s.runningCheck).arg(s.startCommand).arg(s.stopCommand)
+        </table>''').arg(s.name).arg(s.description).arg(s.installcheck).arg(s.runningcheck).arg(s.startcommand).arg(s.stopcommand)
       )
 
 
@@ -427,10 +427,10 @@ class ConfigDialog(KPageDialog):
     service = self.customPage.serviceList.currentItem().service
     self.customPage.serviceNameInput.setText(service.name)
     self.customPage.descriptionInput.setText(service.description)
-    self.customPage.installCheckInput.setText(service.installCheck)
-    self.customPage.runningCheckInput.setText(service.runningCheck)
-    self.customPage.startCommandInput.setText(service.startCommand)
-    self.customPage.stopCommandInput.setText(service.stopCommand)
+    self.customPage.installCheckInput.setText(service.installcheck)
+    self.customPage.runningCheckInput.setText(service.runningcheck)
+    self.customPage.startCommandInput.setText(service.startcommand)
+    self.customPage.stopCommandInput.setText(service.stopcommand)
 
 
   ## Writes data in line edits to selected custom service.
@@ -438,10 +438,10 @@ class ConfigDialog(KPageDialog):
     service = self.customPage.serviceList.currentItem().service
     service.name         = self.customPage.serviceNameInput.text()
     service.description  = self.customPage.descriptionInput.text()
-    service.installCheck = self.customPage.installCheckInput.text()
-    service.runningCheck = self.customPage.runningCheckInput.text()
-    service.startCommand = self.customPage.startCommandInput.text()
-    service.stopCommand  = self.customPage.stopCommandInput.text()
+    service.installcheck = self.customPage.installCheckInput.text()
+    service.runningcheck = self.customPage.runningCheckInput.text()
+    service.startcommand = self.customPage.startCommandInput.text()
+    service.stopcommand  = self.customPage.stopCommandInput.text()
 
 
   ## [slot] Deletes selected custom service (and repopulate all lists)
@@ -495,10 +495,10 @@ class ConfigDialog(KPageDialog):
     url = QUrl('http://www.documentroot.net/en/submit-service-definition')
     url.addQueryItem('servicename', item.service.name)
     url.addQueryItem('description', item.service.description)
-    url.addQueryItem('installcheck', item.service.installCheck)
-    url.addQueryItem('runningcheck', item.service.runningCheck)
-    url.addQueryItem('startcommand', item.service.startCommand)
-    url.addQueryItem('stopcommand', item.service.stopCommand)
+    url.addQueryItem('installcheck', item.service.installcheck)
+    url.addQueryItem('runningcheck', item.service.runningcheck)
+    url.addQueryItem('startcommand', item.service.startcommand)
+    url.addQueryItem('stopcommand', item.service.stopcommand)
     QDesktopServices.openUrl(url)
 
 
