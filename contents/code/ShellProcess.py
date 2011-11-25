@@ -24,7 +24,6 @@ class RootProcess(ShellProcess):
   def __init__(self, command, password, parent = None):
     ShellProcess.__init__(self, command, parent)
     self.password = password
-    self.state = ''
 
   def generateProgram(self, command):
     return (QStringList() << "/usr/bin/sudo" << "-kS") + ShellProcess.generateProgram(self, command)
@@ -32,23 +31,16 @@ class RootProcess(ShellProcess):
   def start(self):
     ShellProcess.start(self)
     self.state = 'prompt'
-    self.readyReadStandardOutput.connect(self.inputReady)
+    self.readyReadStandardOutput.connect(self.processOutput)
 
-  def inputReady(self):
+  def processOutput(self):    
     output = QString(self.readAllStandardOutput())
-    if self.state == 'prompt' and output.contains("password for"):
-      print "giving password to sudo:", self.password
-      self.write("%s\n" % self.password)
-      self.state = 'checkresult'
-    elif self.state == 'checkresult':
-      if "Sorry, try again." in output:
-        print "wrong password"
-        self.state = 'failed'
-        self.wrongPassword.emit()
-      else:
-        self.state = 'success'
-        print "password correct"
+    if output.contains("try again"):
+      self.terminate()
       self.close()
+      self.wrongPassword.emit()
+    if output.contains("password for"):
+      self.write("%s\n" % self.password)
 
 
 

@@ -36,6 +36,7 @@ class Service(QObject):
     self.sleepTime = 0
     self.state = ('unknown', 'unknown')   # (Install-Status, Running-Status)
     self.polling = False
+    self.lastCommand = ''
     self.timer = QTimer()
     self.timer.setSingleShot(True)
     self.timer.setInterval(4000)
@@ -120,6 +121,7 @@ class Service(QObject):
       proc = RootProcess(command, self.password)
       proc.wrongPassword.connect(partial(self.wrongPassword.emit, which))
       self.setRunningState("starting" if which == "startcommand" else "stopping")
+      self.lastCommand = which
     elif which in ["runningcheck", "installcheck"]:
       self.killProcesses(which)
       proc = ShellProcess(command)
@@ -127,6 +129,11 @@ class Service(QObject):
     proc.finished.connect(partial(self.procFinished, which))
     #print self.id, [x for x,y in self.processes.items() if y is not None]
     proc.start()
+
+
+  def retryLastCommand(self):
+    if not self.lastCommand: return
+    self.execute(self.lastCommand)
 
 
   def procFinished(self, which):

@@ -7,6 +7,7 @@ from PyKDE4.plasmascript import *
 from PyKDE4.kdeui import *
 
 import generated.indicators_default_rc
+from generated.Password_ui import *
 from functools import *
 import sys
 
@@ -100,17 +101,17 @@ class ServiceMonitor(Applet):
 
 
   ## Triggered on wrongPassword signal. Retries the last command.
-  def retryLastAction(self, service, which):
-    print "get password from user"
-    (pw, ok) = QInputDialog.getText(None, "Password", "Enter password")
-    if ok:
-      print "retrying", which
-      self.password = pw
+  def askPasswordAndRetry(self, service):
+    self.dialog = PasswordDialog()
+    self.dialog.setVisible(True)
+    self.dialog.setWindowTitle(service.name)
+    def retry():
+      self.password = self.dialog.passwordLineEdit.text()
       for s in self.configDialog.activeServices():
-        s.setSudoPassword(pw)
-      service.execute(str(which))
-    else:
-      print "giving up"
+        s.setSudoPassword(self.password)
+      service.retryLastCommand()
+      self.dialog.deleteLater()
+    self.dialog.buttonBox.accepted.connect(retry)
 
 
   ## [slot] Create all widgets inside the main layout and set up the services for monitoring.
@@ -165,7 +166,7 @@ class ServiceMonitor(Applet):
     sleepTime = self.configDialog.sleepTime()
     for service in activeServices:
       service.stateChanged.connect(partial(self.refreshStateIcon, service))
-      service.wrongPassword[str].connect(partial(self.retryLastAction, service))
+      service.wrongPassword[str].connect(partial(self.askPasswordAndRetry, service))
       service.setSleepTime(sleepTime)
       service.setPolling(True, interval)
 
@@ -176,9 +177,10 @@ class ServiceMonitor(Applet):
       QMessageBox.warning(None, self.tr("Error"), self.tr('Service "%1" not installed. Aborting.').arg(service.id))
       return
     elif service.state[1] in ['running', 'starting']:
-      service.execute("stopcommand")
+      action = "stopcommand"
     elif service.state[1] in ['stopped', 'stopping']:
-      service.execute("startcommand")
+      action = "startcommand"
+    service.execute(action)
     self.refreshStateIcon(service)
 
 
@@ -196,3 +198,10 @@ class ServiceMonitor(Applet):
     else:
       self.popup.move(self.popupPosition(self.popup.sizeHint()))
       self.popup.animatedShow(Plasma.Direction(0))
+
+
+class PasswordDialog(QDialog, Ui_PasswordDialog):
+
+  def __init__(self, parent = None):
+    QDialog.__init__(self, parent)
+    self.setupUi(self)

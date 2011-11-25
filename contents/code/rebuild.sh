@@ -19,7 +19,7 @@ for PAR in $@; do
 done
 
 # DIALOGS
-for dialog in 'Services' 'Settings' 'Custom' 'Sources'; do
+for dialog in 'Services' 'Settings' 'Custom' 'Sources' 'Password'; do
   pyuic4 dialogs/${dialog}.ui > generated/${dialog}_ui.py
 done
 
