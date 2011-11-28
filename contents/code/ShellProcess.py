@@ -31,16 +31,24 @@ class RootProcess(ShellProcess):
   def start(self):
     ShellProcess.start(self)
     self.state = 'prompt'
+    self.waitForReadyRead()
+    output = self.readAllStandardOutput()
+    if output.contains("password for"):
+      self.write("%s\n" % self.password)
+    else:
+      print "sudo error:", output
     self.readyReadStandardOutput.connect(self.processOutput)
 
   def processOutput(self):    
-    output = QString(self.readAllStandardOutput())
+    output = self.readAllStandardOutput()
     if output.contains("try again"):
+      self.wrongPassword.emit()
+    if output.contains("not in the sudoers file"):
+      print "sudo error:", output
       self.terminate()
       self.close()
-      self.wrongPassword.emit()
-    if output.contains("password for"):
-      self.write("%s\n" % self.password)
+
+
 
 
 
