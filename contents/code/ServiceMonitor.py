@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from functools import *
 
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
@@ -8,8 +9,6 @@ from PyKDE4.kdeui import *
 
 import generated.indicators_default_rc
 from generated.Password_ui import *
-from functools import *
-import sys
 
 from ConfigDialog import *
 from ShellProcess import *
@@ -22,14 +21,8 @@ class ServiceMonitor(Applet):
 
   def __init__(self, parent, args=None):
     Applet.__init__(self, parent)
-
-    ## [dict] Place for all widgets, so they can be addressed nicely.
-    self.widgets = {}
-
-    ## [QLayout] The layout containing all the widgets.
-    self.mainLayout = None
-
-    self.password = None
+    self.widgets = {}      ##< [dict] Place for all widgets, so they can be addressed nicely.
+    self.mainLayout = None ##< [QLayout] The layout containing all the widgets.
     
 
   def init(self):
@@ -38,6 +31,9 @@ class ServiceMonitor(Applet):
     self.setHasConfigurationInterface(True)
     self.configDialog = ConfigDialog(self)
     self.configDialog.configurationChanged.connect(self.setupServicesAndWidgets)
+
+    # Passwort-Dialog
+    self.passwordDialog = PasswordDialog(self.configDialog)
 
     # Benutzeroberfläche einrichten
     self.setupAppletUi() if self.formFactor() == Plasma.Planar else self.setupPopupUi()
@@ -102,16 +98,16 @@ class ServiceMonitor(Applet):
 
   ## Triggered on wrongPassword signal. Retries the last command.
   def askPasswordAndRetry(self, service):
-    self.dialog = PasswordDialog()
-    self.dialog.setVisible(True)
-    self.dialog.setWindowTitle(service.name)
-    def retry():
-      self.password = self.dialog.passwordLineEdit.text()
-      for s in self.configDialog.activeServices():
-        s.setSudoPassword(self.password)
-      service.retryLastCommand()
-      self.dialog.deleteLater()
-    self.dialog.buttonBox.accepted.connect(retry)
+    try: self.passwordDialog.passwordAvailable.disconnect()
+    except: pass
+    self.passwordDialog.resetPassword()
+    self.passwordDialog.setWindowTitle(service.name)
+    self.passwordDialog.setVisible(True)
+    def retry(pw):
+      self.passwordDialog.setVisible(False)
+      service.setSudoPassword(pw)
+      QTimer.singleShot(0, service.retryLastCommand)
+    self.passwordDialog.passwordAvailable[QString].connect(retry)
 
 
   ## [slot] Create all widgets inside the main layout and set up the services for monitoring.
@@ -176,11 +172,10 @@ class ServiceMonitor(Applet):
     if service.state[0] == 'missing':
       QMessageBox.warning(None, self.tr("Error"), self.tr('Service "%1" not installed. Aborting.').arg(service.id))
       return
-    elif service.state[1] in ['running', 'starting']:
-      action = "stopcommand"
-    elif service.state[1] in ['stopped', 'stopping']:
-      action = "startcommand"
-    service.execute(action)
+    if service.state[1] in ['running', 'starting']: command = "stopcommand"
+    if service.state[1] in ['stopped', 'stopping']: command = "startcommand"
+    service.setSudoPassword(self.passwordDialog.password())
+    service.execute(command)
     self.refreshStateIcon(service)
 
 
@@ -200,8 +195,41 @@ class ServiceMonitor(Applet):
       self.popup.animatedShow(Plasma.Direction(0))
 
 
+
 class PasswordDialog(QDialog, Ui_PasswordDialog):
 
-  def __init__(self, parent = None):
+  passwordAvailable = pyqtSignal(QString)
+
+  def __init__(self, configDialog, parent = None):
     QDialog.__init__(self, parent)
+    self.configDialog = configDialog
+    self._password = ''
+    
     self.setupUi(self)
+    self.rememberTimeCombobox.setCurrentIndex(self.configDialog.rememberType())
+    self.rememberTimeSpinbox.setValue(self.configDialog.rememberTime())
+    self.rememberTimeSpinbox.setEnabled(self.rememberTimeCombobox.currentIndex() == 1) # "Remember for fixed time"
+    self.setFixedSize(self.sizeHint())
+    
+    self.rememberTimeCombobox.currentIndexChanged[int].connect(self.rememberTypeChanged)
+    self.rememberTimeSpinbox.valueChanged[int].connect(self.rememberTimeChanged)
+    self.buttonBox.accepted.connect(self.savePassword)
+
+  def savePassword(self):
+    self._password = self.passwordLineEdit.text()
+    self.passwordAvailable.emit(self.password())
+
+
+  def resetPassword(self):
+    self.passwordLineEdit.setText("")
+
+  def rememberTypeChanged(self, index):
+    self.configDialog.setRememberType(index)
+    self.rememberTimeSpinbox.setEnabled(index == 1) # "Remember for fixed time"
+
+  def rememberTimeChanged(self, value):
+    self.configDialog.setRememberTime(value)
+
+  def password(self):
+    return self._password
+    

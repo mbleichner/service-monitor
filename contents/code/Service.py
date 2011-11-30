@@ -114,40 +114,66 @@ class Service(QObject):
 
 
   def execute(self, which):
-    self.timer.stop()
+    
     command = getattr(self, which)
+
+    # kill old processes and create new one
     if which in ["startcommand", "stopcommand"]:
       self.killProcesses('startcommand', 'stopcommand', 'runningcheck')
-      proc = RootProcess(command, self.password)
-      proc.wrongPassword.connect(partial(self.wrongPassword.emit, which))
-      self.setRunningState("starting" if which == "startcommand" else "stopping")
+      proc = SudoBashProcess(command, self.password)
       self.lastCommand = which
     elif which in ["runningcheck", "installcheck"]:
       self.killProcesses(which)
-      proc = ShellProcess(command)
+      proc = BashProcess(command)
     self.processes[which] = proc
-    proc.finished.connect(partial(self.procFinished, which))
-    #print self.id, [x for x,y in self.processes.items() if y is not None]
-    proc.start()
 
+    # start process
+    proc.start(); proc.waitForStarted()
+
+    # check for startup errors
+    if proc.errorType() == QProcess.FailedToStart and isinstance(self, SudoBashProcess):
+      QMessageBox.warning(None, self.tr('Command failed to start'), QString(proc.errorMessage()))
+    if proc.errorType() == QProcess.FailedToStart and not isinstance(self, SudoBashProcess):
+      QMessageBox.warning(None, self.tr('Command failed to start'), self.tr("There was an error starting the command. Please check your installation."))
+    if proc.errorType() == SudoBashProcess.PasswordError:
+      self.wrongPassword.emit(which)
+    if proc.errorType() == SudoBashProcess.PermissionError:
+      QMessageBox.warning(None, self.tr('Sudo permission error'), QString(proc.errorMessage()))
+
+    # if everything went ok, mark state and connect slot
+    if proc.state() == QProcess.Running:
+      if which in ["startcommand", "stopcommand"]:
+        self.setRunningState("starting" if which == "startcommand" else "stopping")
+      proc.finished.connect(partial(self.procFinished, which))
+
+    # if startup failed, continue running checks
+    if proc.state() != QProcess.Running:
+      self.scheduleRunningCheck(which != "runningcheck")
+      
 
   def retryLastCommand(self):
     if not self.lastCommand: return
     self.execute(self.lastCommand)
-
+    
 
   def procFinished(self, which):
     proc = self.processes[which]
     if which == "installcheck":
-      self.setInstallState('installed' if (proc.exitCode() == 0 and proc.readAll().length() > 0) else 'missing')
-    if which == "runningcheck":
-      self.setRunningState('running' if (proc.exitCode() == 0 and proc.readAll().length() > 0) else 'stopped')
-    if which in ['startcommand', 'stopcommand']:
-      self.setRunningState('running' if (proc.exitCode() == 0 and proc.readAll().length() > 0) else 'stopped')
-      self.timer.timeout.emit()
-    if self.polling:
-      self.timer.start()
+      self.setInstallState('installed' if (proc.exitCode() == 0 and proc.readAllStandardOutput().length() > 0) else 'missing')
+    elif which == "runningcheck":
+      self.setRunningState('running' if (proc.exitCode() == 0 and proc.readAllStandardOutput().length() > 0) else 'stopped')
+    elif which in ['startcommand', 'stopcommand']:
+      self.setRunningState('running' if (proc.exitCode() == 0 and proc.readAllStandardOutput().length() > 0) else 'stopped')
+      errorOutput = QString(proc.readAllStandardError())
+      if errorOutput: QMessageBox.warning(None, self.tr('Error'), errorOutput)
+    self.scheduleRunningCheck(which != "runningcheck")
     self.killProcesses(which)
+
+
+  def scheduleRunningCheck(self, now = False):
+    if not self.polling: return
+    if now: self.timer.timeout.emit()
+    else:   self.timer.start()
 
 
   ## Sets a sleep time to be appended to all commands.
@@ -160,3 +186,5 @@ class Service(QObject):
       if self.processes[which] is not None:
         self.processes[which].close()
         self.processes[which] = None
+    if "runningcheck" in args:
+      self.timer.stop()
