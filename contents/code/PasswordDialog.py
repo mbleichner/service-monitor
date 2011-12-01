@@ -14,7 +14,7 @@ class PasswordDialog(QDialog, Ui_PasswordDialog):
     QDialog.__init__(self, parent)
     self.configDialog = configDialog
     self._password = ''
-    self.config = QSettings('KDE Plasmoid', 'Service Monitor') ##< [QSettings] Internal config object.
+    self.config = QSettings('plasma-desktop', 'service-monitor')
 
     self.setupUi(self)
     self.rememberTimeCombobox.setCurrentIndex(self.configDialog.rememberType())

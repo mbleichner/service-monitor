@@ -38,7 +38,7 @@ class ConfigDialog(KPageDialog):
     self.sources = {}       ##< [dict] Place for all xml sources, by ID.
     self.services = {}      ##< [dict] Place for all services, by ID. On collisions the priority is considered.
     self.editmode = False   ##< [bool] Indicates if editmode is on or off.
-    self.config = QSettings('KDE Plasmoid', 'Service Monitor') ##< [QSettings] Internal config object.
+    self.config = QSettings('plasma-desktop', 'service-monitor')
 
     # make sure the setting contain sane defaults
     self.setConfigDefaults()
