@@ -11,7 +11,6 @@ import generated.indicators_default_rc
 from generated.Password_ui import *
 
 from ConfigDialog import *
-from ShellProcess import *
 
 ## This is the plasmoid which can be placed on the desktop or in dock.
 # First the config dialog is initialised which loads all sources, services and configuration.
