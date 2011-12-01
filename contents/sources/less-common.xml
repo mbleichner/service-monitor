@@ -159,4 +159,13 @@
     <stopcommand>$SUDO service teamspeak-server stop &amp;> /dev/null</stopcommand>
   </service>
 
+  <service id="vsftp-daemon">
+    <name>VSFTP Daemon</name>
+    <description>Very Secure FTP Daemon - submitted by hgmtnd</description>
+    <installcheck>ls /usr/sbin/vsftpd</installcheck>
+    <runningcheck>pidof vsftpd</runningcheck>
+    <startcommand>$SUDO service vsftpd start &amp;> /dev/null</startcommand>
+    <stopcommand>$SUDO service vsftpd start &amp;> /dev/null</stopcommand>
+  </service>
+
 </services>

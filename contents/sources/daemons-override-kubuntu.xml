@@ -1,0 +1,19 @@
+<services>
+
+  <name>Daemons (Kubuntu-specific)</name>
+
+  <description>
+    Kubuntu uses upstart, so some services must be started differently than in other distributions.
+    The services in this file will override the default ones.
+  </description>
+
+  <service id="mysql-daemon-upstart" priority="2">
+    <name>MySQL Database</name>
+    <description></description>
+    <installcheck>ls /usr/sbin/mysqld</installcheck>
+    <runningcheck>pidof mysqld</runningcheck>
+    <startcommand>$SUDO start mysql</startcommand>
+    <stopcommand>$SUDO stop mysql</stopcommand>
+  </service>
+
+</services>

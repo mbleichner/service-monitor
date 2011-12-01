@@ -31,8 +31,8 @@
     <description>Shut down the system 1 hour delayed.</description>
     <installcheck>echo "always installed"</installcheck>
     <runningcheck>pidof shutdown</runningcheck>
-    <startcommand>$SUDO "shutdown -h 60"</startcommand>
-    <stopcommand>$SUDO "shutdown -c"</stopcommand>
+    <startcommand>$SUDO shutdown -h 60</startcommand>
+    <stopcommand>$SUDO shutdown -c</stopcommand>
   </service>
 
   <service id="swap-space">
@@ -40,8 +40,8 @@
     <description>Activate/deactivate all swap partitions (useful for flushing swapped data).</description>
     <installcheck>echo "always installed"</installcheck>
     <runningcheck>if [ $(cat /proc/swaps | wc --lines) != "1" ]; then echo "activated"; fi</runningcheck>
-    <startcommand>$SUDO "swapon -a"</startcommand>
-    <stopcommand>$SUDO "swapoff -a"</stopcommand>
+    <startcommand>$SUDO swapon -a</startcommand>
+    <stopcommand>$SUDO swapoff -a</stopcommand>
   </service>
 
   <service id="package-cache">
@@ -49,8 +49,8 @@
     <description>Update package cache, download upgradable packages, delete obsolete ones.</description>
     <installcheck>ls /usr/bin/aptitude</installcheck>
     <runningcheck>pidof aptitude</runningcheck>
-    <startcommand>$SUDO " bash -c 'aptitude update &amp;&amp; aptitude -y -d safe-upgrade &amp;&amp; aptitude autoclean' " &amp;</startcommand>
-    <stopcommand>$SUDO "killall aptitude"</stopcommand>
+    <startcommand>$SUDO bash -c 'aptitude update &amp;&amp; aptitude -y -d safe-upgrade &amp;&amp; aptitude autoclean'</startcommand>
+    <stopcommand>$SUDO killall aptitude</stopcommand>
   </service>
 
   <service id="kde-compositing">
@@ -69,6 +69,15 @@
     <runningcheck>pidof xbindkeys</runningcheck>
     <startcommand>xbindkeys &amp;</startcommand>
     <stopcommand>killall xbindkeys</stopcommand>
+  </service>
+
+  <service id="dpms">
+    <name>DPMS</name>
+    <description>Turn the screen off/on - submitted by Epimetheus11</description>
+    <installcheck>ls /usr/bin/xset</installcheck>
+    <runningcheck>xset q | grep "DPMS is Enabled"</runningcheck>
+    <startcommand>xset dpms force on</startcommand>
+    <stopcommand>xset dpms force off</stopcommand>
   </service>
 
 </services>

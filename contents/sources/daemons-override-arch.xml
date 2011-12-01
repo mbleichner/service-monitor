@@ -1,0 +1,19 @@
+<services>
+
+  <name>Daemons (Arch-specific)</name>
+
+  <description>
+    Some services must be started differently in Arch Linux. This file contains such services, which will
+    override the default ones.
+  </description>
+
+  <service id="apache2-daemon-arch" priority="2">
+    <name>Apache2 Webserver</name>
+    <description>The most commonly used web server - submitted by hunterm</description>
+    <installcheck>ls $INITDIR/httpd</installcheck>
+    <runningcheck>pidof httpd</runningcheck>
+    <startcommand>$SUDO $INITDIR/httpd start</startcommand>
+    <stopcommand>$SUDO $INITDIR/httpd stop</stopcommand>
+  </service>
+
+</services>
