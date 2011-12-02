@@ -30,7 +30,7 @@ for icontheme in 'indicators_default'; do
 done
 
 # TRANSLATIONS
-for lang in 'de' 'fr' 'es'; do
+for lang in 'de' 'fr' 'es' 'cs'; do
   pylupdate4 $PYLUPDATE *.py generated/*.py -ts translations/${lang}.ts
   lrelease translations/${lang}.ts -qm translations/${lang}.qm
 done
