@@ -46,7 +46,7 @@ class PasswordDialog(QDialog, Ui_PasswordDialog):
       self.forgetTimer.stop()
     if self.rememberType() == PasswordDialog.RememberForFixedTime:
       self.forgetTimer.start()
-    if self.rememberTime() == PasswordDialog.DoNotRemember:
+    if self.rememberType() == PasswordDialog.DoNotRemember:
       self.forgetPassword()
 
   def rememberTypeChanged(self, index):
