@@ -230,7 +230,8 @@ class ConfigDialog(KPageDialog):
         <tr><td>Running check:</td><td>&nbsp;</td><td>%4</td></tr>
         <tr><td>Start command:</td><td>&nbsp;</td><td>%5</td></tr>
         <tr><td>Stop command:</td><td>&nbsp;</td><td>%6</td></tr>
-        </table>''').arg(s.name).arg(s.description).arg(s.installcheck).arg(s.runningcheck).arg(s.startcommand).arg(s.stopcommand)
+        <tr><td>Root privileges:</td><td>&nbsp;</td><td>%7</td></tr>
+        </table>''').arg(s.name).arg(s.description).arg(s.installcheck).arg(s.runningcheck).arg(s.startcommand).arg(s.stopcommand).arg("Yes" if s.sudo else "No")
       )
 
 
@@ -431,6 +432,7 @@ class ConfigDialog(KPageDialog):
     self.customPage.runningCheckInput.setText(service.runningcheck)
     self.customPage.startCommandInput.setText(service.startcommand)
     self.customPage.stopCommandInput.setText(service.stopcommand)
+    self.customPage.sudoCheckbox.setCheckState(Qt.Checked if service.sudo else Qt.Unchecked)
 
 
   ## Writes data in line edits to selected custom service.
@@ -442,6 +444,7 @@ class ConfigDialog(KPageDialog):
     service.runningcheck = self.customPage.runningCheckInput.text()
     service.startcommand = self.customPage.startCommandInput.text()
     service.stopcommand  = self.customPage.stopCommandInput.text()
+    service.sudo         = self.customPage.sudoCheckbox.checkState() == Qt.Checked
 
 
   ## [slot] Deletes selected custom service (and repopulate all lists)
@@ -484,6 +487,7 @@ class ConfigDialog(KPageDialog):
     self.customPage.runningCheckInput.setEnabled(status)
     self.customPage.startCommandInput.setEnabled(status)
     self.customPage.stopCommandInput.setEnabled(status)
+    self.customPage.sudoCheckbox.setEnabled(status)
 
 
   ## [slot] Submits the data of the currently selected service via GET request to documentroot.net.

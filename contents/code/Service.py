@@ -31,7 +31,7 @@ class Service(QObject):
     self.runningcheck = ''
     self.startcommand = ''
     self.stopcommand = ''
-    self.sudo = 'no'
+    self.sudo = False
     self.processes = {'runningcheck': None, 'installcheck': None, 'startcommand': None, 'stopcommand': None}
     self.sleepTime = 0
     self.state = ('unknown', 'unknown')   # (Install-Status, Running-Status)
@@ -50,7 +50,7 @@ class Service(QObject):
     root = root.toElement()
     service = Service(parent)
     service.id = root.attribute('id')
-    service.sudo = root.attribute('sudo', 'no')
+    service.sudo = root.attribute('sudo', 'no') in ["yes", "true"]
     if not service.id: raise Exception('Service without ID')
     service.priority = root.attribute('priority')
     node = root.firstChild()
@@ -75,7 +75,7 @@ class Service(QObject):
   def saveToDomNode(self, doc):
     node = doc.createElement('service')
     node.setAttribute('id', self.id)
-    node.setAttribute('sudo', self.sudo)
+    node.setAttribute('sudo', "yes" if self.sudo else "no")
     node.appendChild(mkTextElement(doc, 'name',         self.name))
     node.appendChild(mkTextElement(doc, 'description',  self.description))
     node.appendChild(mkTextElement(doc, 'installcheck', self.installcheck))
@@ -124,7 +124,7 @@ class Service(QObject):
     proc = self.processes[which] = BashProcess()
     proc.setBashCommand(command)
     if which in ["startcommand", "stopcommand"]:
-      if self.sudo in ["yes", "true"]: proc.setSudoPassword(password)
+      if self.sudo: proc.setSudoPassword(password)
       self._lastCommand = which
       
     # start process
