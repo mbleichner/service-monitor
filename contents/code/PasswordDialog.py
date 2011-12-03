@@ -8,39 +8,70 @@ from generated.Password_ui import *
 
 class PasswordDialog(QDialog, Ui_PasswordDialog):
 
-  passwordAvailable = pyqtSignal(QString)
+  RememberForSession   = 0
+  RememberForFixedTime = 1
+  DoNotRemember        = 2
+
+  newPasswordAvailable = pyqtSignal(QString)
 
   def __init__(self, configDialog, parent = None):
     QDialog.__init__(self, parent)
-    self.configDialog = configDialog
     self._password = ''
+
     self.config = QSettings('plasma-desktop', 'service-monitor')
+    self.setConfigDefaults()
+
+    self.forgetTimer = QTimer()
+    self.forgetTimer.setSingleShot(True)
+    self.forgetTimer.timeout.connect(self.forgetPassword)
 
     self.setupUi(self)
-    self.rememberTimeCombobox.setCurrentIndex(self.configDialog.rememberType())
-    self.rememberTimeSpinbox.setValue(self.configDialog.rememberTime())
-    self.rememberTimeSpinbox.setEnabled(self.rememberTimeCombobox.currentIndex() == 1) # "Remember for fixed time"
-    self.setFixedSize(self.sizeHint())
+    self.passwordLineEdit.setFocus(Qt.PopupFocusReason)
 
     self.rememberTimeCombobox.currentIndexChanged[int].connect(self.rememberTypeChanged)
     self.rememberTimeSpinbox.valueChanged[int].connect(self.rememberTimeChanged)
-    self.buttonBox.accepted.connect(self.savePassword)
-
-  def savePassword(self):
+    self.buttonBox.accepted.connect(self.accepted)
+    
+    self.rememberTimeCombobox.setCurrentIndex(self.rememberType())
+    self.rememberTimeSpinbox.setValue(self.rememberTime())
+    
+  def setConfigDefaults(self):
+    if not self.config.contains('rememberType'): self.config.setValue('rememberType', 0)
+    if not self.config.contains('rememberTime'): self.config.setValue('rememberTime', 60)
+    
+  def accepted(self):
     self._password = self.passwordLineEdit.text()
-    self.passwordAvailable.emit(self.password())
-
-
-  def resetPassword(self):
-    self.passwordLineEdit.setText("")
+    self.newPasswordAvailable.emit(self._password)
+    if self.rememberType() == PasswordDialog.RememberForSession:
+      self.forgetTimer.stop()
+    if self.rememberType() == PasswordDialog.RememberForFixedTime:
+      self.forgetTimer.start()
+    if self.rememberTime() == PasswordDialog.DoNotRemember:
+      self.forgetPassword()
 
   def rememberTypeChanged(self, index):
-    self.configDialog.setRememberType(index)
-    self.rememberTimeSpinbox.setEnabled(index == 1) # "Remember for fixed time"
+    self.config.setValue('rememberType', index)
+    self.rememberTimeSpinbox.setEnabled(index == PasswordDialog.RememberForFixedTime)
 
-  def rememberTimeChanged(self, value):
-    self.configDialog.setRememberTime(value)
+  def rememberTimeChanged(self, minutes):
+    self.config.setValue('rememberTime', minutes)
+    self.forgetTimer.setInterval(minutes * 1000 * 60)
+
+  def rememberType(self):
+    return self.config.value('rememberType').toInt()[0]
+
+  def rememberTime(self):
+    return self.config.value('rememberTime').toInt()[0]
+
+  def forgetPassword(self):
+    self._password = ''
+    self.passwordLineEdit.setText('')
 
   def password(self):
     return self._password
-    
+
+  def setCommandInfo(self, command):
+    self.commandLabel.setText(command)
+    self.adjustSize()
+
+

@@ -31,12 +31,11 @@ class Service(QObject):
     self.runningcheck = ''
     self.startcommand = ''
     self.stopcommand = ''
-    self.password = ''
     self.processes = {'runningcheck': None, 'installcheck': None, 'startcommand': None, 'stopcommand': None}
     self.sleepTime = 0
     self.state = ('unknown', 'unknown')   # (Install-Status, Running-Status)
     self.polling = False
-    self.lastCommand = ''
+    self._lastCommand = ''
     self.timer = QTimer()
     self.timer.setSingleShot(True)
     self.timer.setInterval(4000)
@@ -83,10 +82,6 @@ class Service(QObject):
     return node
 
 
-  def setSudoPassword(self, password):
-    self.password = password
-
-
   def setPolling(self, flag, interval = None):
     self.polling = flag
     if self.polling:
@@ -113,7 +108,7 @@ class Service(QObject):
     self.setState( (installState, self.state[1]) )
 
 
-  def execute(self, which):
+  def execute(self, which, password = None):
 
     # kill old processes
     if which in ["startcommand", "stopcommand"]:
@@ -126,8 +121,8 @@ class Service(QObject):
     proc = self.processes[which] = BashProcess()
     proc.setBashCommand(command)
     if which in ["startcommand", "stopcommand"]:
-      proc.setSudoPassword(self.password)
-      self.lastCommand = which
+      proc.setSudoPassword(password)
+      self._lastCommand = which
       
     # start process
     proc.start(); proc.waitForStarted()
@@ -167,9 +162,13 @@ class Service(QObject):
     self.killProcesses(which)
 
 
-  def retryLastCommand(self):
-    if not self.lastCommand: return
-    self.execute(self.lastCommand)
+  def retryLastCommand(self, password):
+    if not self.lastCommand(): return
+    self.execute(self.lastCommand(), password)
+
+
+  def lastCommand(self):
+    return self._lastCommand if self._lastCommand else None
 
 
   def scheduleRunningCheck(self, now = False):

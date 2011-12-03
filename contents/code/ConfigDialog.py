@@ -108,8 +108,6 @@ class ConfigDialog(KPageDialog):
     if not self.config.contains('pollingInterval'): self.config.setValue('pollingInterval', 4.0)
     if not self.config.contains('sleepTime'):       self.config.setValue('sleepTime', 0.5)
     if not self.config.contains('activeSources'):   self.config.setValue('activeSources', QStringList() << "daemons-common.xml" << "tools-settings.xml")
-    if not self.config.contains('rememberType'):    self.config.setValue('rememberType', 0)
-    if not self.config.contains('rememberTime'):    self.config.setValue('rememberTime', 60)
 
 
   ## Parses all XML source files and loads containing services.
@@ -167,24 +165,6 @@ class ConfigDialog(KPageDialog):
 
   def indicatorTheme(self):
     return "default"
-
-
-  def rememberType(self):
-    return self.config.value('rememberType').toInt()[0]
-
-
-  def rememberTime(self):
-    return self.config.value('rememberTime').toInt()[0]
-
-
-  def setRememberType(self, index):
-    print "save type"
-    self.config.setValue('rememberType', index)
-
-
-  def setRememberTime(self, minutes):
-    print "save time"
-    self.config.setValue('rememberTime', minutes)
 
 
   def installStateIndicator(self, service):

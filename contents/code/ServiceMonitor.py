@@ -97,16 +97,15 @@ class ServiceMonitor(Applet):
 
   ## Triggered on wrongPassword signal. Retries the last command.
   def askPasswordAndRetry(self, service):
-    try: self.passwordDialog.passwordAvailable.disconnect()
-    except: pass
-    self.passwordDialog.resetPassword()
+    try: self.passwordDialog.newPasswordAvailable.disconnect()
+    except: pass # if no slots are connected
     self.passwordDialog.setWindowTitle(service.name)
+    self.passwordDialog.setCommandInfo(getattr(service, service.lastCommand()))
     self.passwordDialog.setVisible(True)
     def retry(pw):
       self.passwordDialog.setVisible(False)
-      service.setSudoPassword(pw)
-      QTimer.singleShot(0, service.retryLastCommand)
-    self.passwordDialog.passwordAvailable[QString].connect(retry)
+      QTimer.singleShot(0, partial(service.retryLastCommand, pw))
+    self.passwordDialog.newPasswordAvailable[QString].connect(retry)
 
 
   ## [slot] Create all widgets inside the main layout and set up the services for monitoring.
@@ -173,8 +172,7 @@ class ServiceMonitor(Applet):
       return
     if service.state[1] in ['running', 'starting']: command = "stopcommand"
     if service.state[1] in ['stopped', 'stopping']: command = "startcommand"
-    service.setSudoPassword(self.passwordDialog.password())
-    service.execute(command)
+    service.execute(command, self.passwordDialog.password())
     self.refreshStateIcon(service)
 
 
