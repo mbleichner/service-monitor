@@ -94,12 +94,12 @@
     <message>
         <location filename="ConfigDialog.py" line="483"/>
         <source>New Service, edit me</source>
-        <translation>Nová služba, upravte mě ;-)</translation>
+        <translation>Jsem nova sluzba, upravte me ;-)</translation>
     </message>
     <message>
         <location filename="ConfigDialog.py" line="484"/>
         <source>Enter a short, concise description here</source>
-        <translation>Zadejte stručný a jasný popis</translation>
+        <translation>Zadejte strucny a jasny popis</translation>
     </message>
     <message>
         <location filename="ConfigDialog.py" line="508"/>
@@ -114,52 +114,52 @@
     <message>
         <location filename="ConfigDialog.py" line="320"/>
         <source>Select source file</source>
-        <translation type="unfinished"></translation>
+        <translation>Vybrat zdrojový soubor</translation>
     </message>
     <message>
         <location filename="ConfigDialog.py" line="320"/>
         <source>Service definitions (*.xml)</source>
-        <translation type="unfinished"></translation>
+        <translation>Definice služeb (*.xml)</translation>
     </message>
     <message>
         <location filename="ConfigDialog.py" line="325"/>
         <source>Add source file</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat zdrojový soubor</translation>
     </message>
     <message>
         <location filename="ConfigDialog.py" line="325"/>
         <source>This will overwrite an existing file. Continue?</source>
-        <translation type="unfinished"></translation>
+        <translation>Tímto přepíšete existující soubor. Chcete pokračovat?</translation>
     </message>
     <message>
         <location filename="ConfigDialog.py" line="339"/>
         <source>Delete source file</source>
-        <translation type="unfinished"></translation>
+        <translation>Smazat zdrojový soubor</translation>
     </message>
     <message>
         <location filename="ConfigDialog.py" line="339"/>
         <source>Really delete the file?</source>
-        <translation type="unfinished"></translation>
+        <translation>Opravdu chcete smazat tento soubor?</translation>
     </message>
     <message>
         <location filename="ConfigDialog.py" line="352"/>
         <source>Search for new sources</source>
-        <translation type="unfinished"></translation>
+        <translation>Hledat nové zdroje</translation>
     </message>
     <message>
         <location filename="ConfigDialog.py" line="352"/>
         <source>This will open a page in your web browser where additional service definitions can be downloaded.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tato akce otevře ve webovém prohlížeči stránku, ze které si můžete stáhnout další definice služeb.</translation>
     </message>
     <message>
         <location filename="ConfigDialog.py" line="560"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>Upozornění</translation>
     </message>
     <message>
         <location filename="ConfigDialog.py" line="560"/>
         <source>Only alphanumeric characters are allowed in the variable name, so this will not work. Please edit.</source>
-        <translation type="unfinished"></translation>
+        <translation>Jméno proměnné může obsahovat jen alfanumerické znaky, takže tudy cesta nevede. Opravte to, prosím.</translation>
     </message>
 </context>
 <context>
@@ -337,7 +337,7 @@ budete zmíněni jako autor.definice. Prosíme, abyste odesílali výhradně fun
     <message>
         <location filename="Service.py" line="147"/>
         <source>The command produced the following error:</source>
-        <translation type="unfinished"></translation>
+        <translation>Příkaz vyvolal následující chybové hlášení:</translation>
     </message>
 </context>
 <context>
@@ -551,42 +551,42 @@ nebo gksudo), $INITDIR pak pro cestu k vašim init scriptům (obvykle /etc/init.
     <message>
         <location filename="Settings_ui.py" line="25"/>
         <source>Environment Variables</source>
-        <translation type="unfinished"></translation>
+        <translation>Proměnné prostředí</translation>
     </message>
     <message>
         <location filename="Settings_ui.py" line="42"/>
         <source>Variable name</source>
-        <translation type="unfinished"></translation>
+        <translation>Jméno proměnné</translation>
     </message>
     <message>
         <location filename="Settings_ui.py" line="45"/>
         <source>Value</source>
-        <translation type="unfinished"></translation>
+        <translation>Hodnota</translation>
     </message>
     <message>
         <location filename="Settings_ui.py" line="52"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat</translation>
     </message>
     <message>
         <location filename="Settings_ui.py" line="59"/>
         <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Odebrat</translation>
     </message>
     <message>
         <location filename="Settings_ui.py" line="70"/>
         <source>Settings</source>
-        <translation type="unfinished">Nastavení</translation>
+        <translation>Nastavení</translation>
     </message>
     <message>
         <location filename="Settings_ui.py" line="75"/>
         <source>Polling interval:</source>
-        <translation type="unfinished"></translation>
+        <translation>Interval kontroly služeb:</translation>
     </message>
     <message>
         <location filename="Settings_ui.py" line="87"/>
         <source>Append sleep to start/stop command:</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat prodlevu k příkazům spuštění/ukončení:</translation>
     </message>
 </context>
 <context>
@@ -617,12 +617,12 @@ definice na www.documentroot.net, přidat je do appletu a ihned je začít použ
     <message>
         <location filename="Sources_ui.py" line="38"/>
         <source>Add XML source file</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat zdrojový soubor XML</translation>
     </message>
     <message>
         <location filename="Sources_ui.py" line="45"/>
         <source>Remove selected file</source>
-        <translation type="unfinished"></translation>
+        <translation>Odebrat vybraný soubor</translation>
     </message>
 </context>
 </TS>
