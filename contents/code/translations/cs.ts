@@ -28,7 +28,7 @@
         <translation>Vlastní služby</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="246"/>
+        <location filename="ConfigDialog.py" line="226"/>
         <source>&lt;strong&gt;%1&lt;/strong&gt;&lt;br/&gt;
         %2&lt;br/&gt;
         &lt;table&gt;
@@ -47,69 +47,119 @@
         &lt;/table&gt;</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="328"/>
+        <location filename="ConfigDialog.py" line="308"/>
         <source>%1 (%2, %3 entries)</source>
         <translation>%1 (%2, %3 položek)</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="351"/>
+        <location filename="ConfigDialog.py" line="331"/>
         <source>Downloading...</source>
-        <translation>Stahování...</translation>
+        <translation type="unfinished">Stahování...</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="384"/>
+        <location filename="ConfigDialog.py" line="364"/>
         <source>Error - custom.xml is missing or has been damaged</source>
         <translation>Chyba - soubor custom.xml chybí, nebo byl poškozen</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="413"/>
+        <location filename="ConfigDialog.py" line="393"/>
         <source>Save changes</source>
         <translation>Uložit změny</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="414"/>
+        <location filename="ConfigDialog.py" line="394"/>
         <source>Cancel editing</source>
         <translation>Zrušit změny</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="438"/>
+        <location filename="ConfigDialog.py" line="418"/>
         <source>Edit selected</source>
         <translation>Upravit vybrané</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="439"/>
+        <location filename="ConfigDialog.py" line="419"/>
         <source>Remove selected</source>
         <translation>Odebrat vybrané</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="475"/>
+        <location filename="ConfigDialog.py" line="455"/>
         <source>Remove service</source>
         <translation>Odebrat službu</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="475"/>
+        <location filename="ConfigDialog.py" line="455"/>
         <source>Really delete the selected service?</source>
         <translation>Opravdu chcete smazat vybranou službu?</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="490"/>
+        <location filename="ConfigDialog.py" line="470"/>
         <source>New Service, edit me</source>
-        <translation>Nová služba, upravte mě ;-)</translation>
+        <translation>Jsem nova sluzba, upravte me ;-)</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="491"/>
+        <location filename="ConfigDialog.py" line="471"/>
         <source>Enter a short, concise description here</source>
-        <translation>Zadejte stručný a jasný popis</translation>
+        <translation>Zadejte strucny a jasny popis</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="512"/>
+        <location filename="ConfigDialog.py" line="492"/>
         <source>Upload service definition</source>
         <translation>Odeslat definici služby na internet</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="512"/>
+        <location filename="ConfigDialog.py" line="492"/>
         <source>This will open a page in your web browser where you can submit the selected service definition to the community.</source>
         <translation>Tímto otevřete v prohlížeči stránku, přes kterou můžete odeslat vybranou definici služby uživatelské komunitě.</translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="320"/>
+        <source>Select source file</source>
+        <translation type="obsolete">Vybrat zdrojový soubor</translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="320"/>
+        <source>Service definitions (*.xml)</source>
+        <translation type="obsolete">Definice služeb (*.xml)</translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="325"/>
+        <source>Add source file</source>
+        <translation type="obsolete">Přidat zdrojový soubor</translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="325"/>
+        <source>This will overwrite an existing file. Continue?</source>
+        <translation type="obsolete">Tímto přepíšete existující soubor. Chcete pokračovat?</translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="339"/>
+        <source>Delete source file</source>
+        <translation type="obsolete">Smazat zdrojový soubor</translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="339"/>
+        <source>Really delete the file?</source>
+        <translation type="obsolete">Opravdu chcete smazat tento soubor?</translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="352"/>
+        <source>Search for new sources</source>
+        <translation type="obsolete">Hledat nové zdroje</translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="352"/>
+        <source>This will open a page in your web browser where additional service definitions can be downloaded.</source>
+        <translation type="obsolete">Tato akce otevře ve webovém prohlížeči stránku, ze které si můžete stáhnout další definice služeb.</translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="560"/>
+        <source>Warning</source>
+        <translation type="obsolete">Upozornění</translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="560"/>
+        <source>Only alphanumeric characters are allowed in the variable name, so this will not work. Please edit.</source>
+        <translation type="obsolete">Jméno proměnné může obsahovat jen alfanumerické znaky, takže tudy cesta nevede. Opravte to, prosím.</translation>
     </message>
 </context>
 <context>
@@ -224,83 +274,88 @@ budete zmíněni jako autor.definice. Prosíme, abyste odesílali výhradně fun
     <message>
         <location filename="Password_ui.py" line="21"/>
         <source>Dialog</source>
-        <translation>Dialog</translation>
+        <translation type="unfinished">Dialog</translation>
     </message>
     <message>
         <location filename="Password_ui.py" line="31"/>
         <source>Please enter your sudo password.</source>
-        <translation>Zadejte, prosím, vaše heslo pro sudo.</translation>
+        <translation type="unfinished">Zadejte, prosím, vaše heslo pro sudo.</translation>
     </message>
     <message>
         <location filename="Password_ui.py" line="35"/>
         <source>The following command will be executed:</source>
-        <translation>Bude proveden následující příkaz:</translation>
+        <translation type="unfinished">Bude proveden následující příkaz:</translation>
     </message>
     <message>
         <location filename="Password_ui.py" line="42"/>
         <source>/etc/init.d/apache stop</source>
-        <translation>/etc/init.d/apache stop</translation>
+        <translation type="unfinished">/etc/init.d/apache stop</translation>
     </message>
     <message>
         <location filename="Password_ui.py" line="56"/>
         <source>Remember for this session</source>
-        <translation>Zapamatovat si pro toto sezení</translation>
+        <translation type="unfinished">Zapamatovat si pro toto sezení</translation>
     </message>
     <message>
         <location filename="Password_ui.py" line="58"/>
         <source>Remember for fixed time</source>
-        <translation>Zapamatovat si na stanovenou dobu</translation>
+        <translation type="unfinished">Zapamatovat si na stanovenou dobu</translation>
     </message>
     <message>
         <location filename="Password_ui.py" line="60"/>
         <source>Do not remember</source>
-        <translation>Napamatovat si</translation>
+        <translation type="unfinished">Napamatovat si</translation>
     </message>
     <message>
         <location filename="Password_ui.py" line="64"/>
         <source> min</source>
-        <translation> min</translation>
+        <translation type="unfinished"> min</translation>
     </message>
 </context>
 <context>
     <name>Service</name>
     <message>
-        <location filename="Service.py" line="139"/>
+        <location filename="Service.py" line="137"/>
         <source>Command failed to start</source>
-        <translation>Spuštění příkazu selhalo</translation>
+        <translation type="unfinished">Spuštění příkazu selhalo</translation>
     </message>
     <message>
-        <location filename="Service.py" line="139"/>
+        <location filename="Service.py" line="137"/>
         <source>There was an error starting the command. Please check your installation.</source>
-        <translation>Při spuštění příkazu se vyskytla chyba. Zkontrolujte, prosím, instalaci.</translation>
+        <translation type="unfinished">Při spuštění příkazu se vyskytla chyba. Zkontrolujte, prosím, instalaci.</translation>
     </message>
     <message>
-        <location filename="Service.py" line="143"/>
+        <location filename="Service.py" line="141"/>
         <source>Sudo permission error</source>
-        <translation>Chyba v oprávněních sudo</translation>
+        <translation type="unfinished">Chyba v oprávněních sudo</translation>
     </message>
     <message>
-        <location filename="Service.py" line="165"/>
+        <location filename="Service.py" line="163"/>
         <source>Error</source>
-        <translation>Chyba</translation>
+        <translation type="unfinished">Chyba</translation>
+    </message>
+    <message>
+        <location filename="Service.py" line="147"/>
+        <source>The command produced the following error:</source>
+        <translation type="obsolete">Příkaz vyvolal následující chybové hlášení:</translation>
     </message>
 </context>
 <context>
     <name>ServiceMonitor</name>
     <message>
-        <location filename="ServiceMonitor.py" line="144"/>
+        <location filename="ServiceMonitor.py" line="143"/>
         <source>&lt;b&gt;Thank you for downloading&lt;br/&gt;Service Monitor!&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;Right click to open the&lt;br/&gt;settings dialog.</source>
         <translation>&lt;b&gt;Díky za stažení&lt;b/&gt;Service Monitoru!&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;Pravým myšítkem otevřete&lt;br/&gt;dialog nastavení.</translation>
     </message>
     <message>
-        <location filename="ServiceMonitor.py" line="172"/>
+        <location filename="ServiceMonitor.py" line="171"/>
         <source>Error</source>
-        <translation>Chyba</translation>
+        <translation type="unfinished">Chyba</translation>
     </message>
     <message>
-        <location filename="ServiceMonitor.py" line="172"/>
+        <location filename="ServiceMonitor.py" line="171"/>
         <source>Service &quot;%1&quot; not installed. Aborting.</source>
-        <translation>Služba &quot;%1&quot; není nainstalována. Končím.</translation>
+        <translation type="unfinished">Služba &quot;%1&quot; není nainstalována. Končím.</translation>
     </message>
 </context>
 <context>
@@ -369,12 +424,12 @@ si vytvořit definici sami pod &quot;Vlastními službami&quot;.</translation>
     <message>
         <location filename="Settings_ui.py" line="30"/>
         <source>Service Monitor Settings</source>
-        <translation>Nastavení Service Monitoru</translation>
+        <translation type="unfinished">Nastavení Service Monitoru</translation>
     </message>
     <message>
         <location filename="Settings_ui.py" line="41"/>
         <source>Service polling interval:</source>
-        <translation>Interval kontroly služeb:</translation>
+        <translation type="unfinished">Interval kontroly služeb:</translation>
     </message>
     <message>
         <location filename="Settings_ui.py" line="50"/>
@@ -384,7 +439,7 @@ si vytvořit definici sami pod &quot;Vlastními službami&quot;.</translation>
     <message>
         <location filename="Settings_ui.py" line="63"/>
         <source>Start/stop command delay:</source>
-        <translation>Zpoždění spouštěcího/ukončovacího příkazu:</translation>
+        <translation type="unfinished">Zpoždění spouštěcího/ukončovacího příkazu:</translation>
     </message>
     <message>
         <location filename="Settings_ui.py" line="72"/>
@@ -396,91 +451,91 @@ stavu služby. Pokud se stavový indikátor přepne zpět na neaktivní po spuš
     <message>
         <location filename="Settings_ui.py" line="87"/>
         <source>Sudo password policy:</source>
-        <translation>Systémová politika hesla pro sudo:</translation>
+        <translation type="obsolete">Systémová politika hesla pro sudo:</translation>
     </message>
     <message>
         <location filename="Settings_ui.py" line="106"/>
         <source>Remember forever</source>
-        <translation>Pamatovat si navždy</translation>
+        <translation type="obsolete">Pamatovat si navždy</translation>
     </message>
     <message>
         <location filename="Settings_ui.py" line="108"/>
         <source>Remember for session</source>
-        <translation>Zapamatovat si pro toto sezení</translation>
+        <translation type="obsolete">Zapamatovat si pro toto sezení</translation>
     </message>
     <message>
         <location filename="Settings_ui.py" line="110"/>
         <source>Remember for fixed time</source>
-        <translation>Zapamatovat si na stanovenou dobu</translation>
+        <translation type="obsolete">Zapamatovat si na stanovenou dobu</translation>
     </message>
     <message>
         <location filename="Settings_ui.py" line="112"/>
         <source>Do not remember</source>
-        <translation>Napamatovat si</translation>
+        <translation type="obsolete">Napamatovat si</translation>
     </message>
     <message>
         <location filename="Settings_ui.py" line="126"/>
         <source> min</source>
-        <translation> min</translation>
+        <translation type="obsolete"> min</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="140"/>
+        <location filename="Settings_ui.py" line="88"/>
         <source>Sudo Configuration Helper</source>
-        <translation>Pomocník konfigurace sudo</translation>
+        <translation type="unfinished">Pomocník konfigurace sudo</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="152"/>
+        <location filename="Settings_ui.py" line="100"/>
         <source>Grant root access for</source>
-        <translation>Umožnit rootovský přístup pro</translation>
+        <translation type="unfinished">Umožnit rootovský přístup pro</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="168"/>
+        <location filename="Settings_ui.py" line="116"/>
         <source>&lt; please select an option &gt;</source>
-        <translation>&lt; vyberte si jednu možnost &gt;</translation>
+        <translation type="unfinished">&lt; vyberte si jednu možnost &gt;</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="170"/>
+        <location filename="Settings_ui.py" line="118"/>
         <source>every user in group sudoers with his own password</source>
-        <translation>každého uživatele ve skupině sudoers s jeho vlastním heslem</translation>
+        <translation type="unfinished">každého uživatele ve skupině sudoers s jeho vlastním heslem</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="172"/>
+        <location filename="Settings_ui.py" line="120"/>
         <source>every user in group sudoers with root password</source>
-        <translation>každého uživatele ve skupině sudoers s heslem roota</translation>
+        <translation type="unfinished">každého uživatele ve skupině sudoers s heslem roota</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="174"/>
+        <location filename="Settings_ui.py" line="122"/>
         <source>specific user with his own password</source>
-        <translation>vybraného uživatele s jeho vlastním heslem</translation>
+        <translation type="unfinished">vybraného uživatele s jeho vlastním heslem</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="176"/>
+        <location filename="Settings_ui.py" line="124"/>
         <source>specific user with root password</source>
-        <translation>vybraného uživatele s heslem roota</translation>
+        <translation type="unfinished">vybraného uživatele s heslem roota</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="191"/>
+        <location filename="Settings_ui.py" line="139"/>
         <source>This tool will help you configure sudo.
 
 It creates snippets for inclusion in the /etc/sudoers configuration file. Sudo allows fine-grained control, this tool will cover the most standard setups, but they will be sufficient. Simply choose the config that most suits your needs, append the generated snippet to your /etc/sudoers and use the button below to check configuration.</source>
-        <translation>Tento nástroj vám pomůže nakonfigurovat sudo.
+        <translation type="unfinished">Tento nástroj vám pomůže nakonfigurovat sudo.
 
 Vytvoří malý kód pro vložení do konfiguračního souboru /etc/sudoers. Sudo umožňuje velmi jemné nastavení. Tento nástroj pokryje většinu běžných nastavení, což bude stačit. Jednoduše si zvolte konfiguraci, která bude nejvíce vyhovovat vašim potřebám, připojte vygenerovaný kód k souboru /etc/sudoers a použijte tlačítko níže pro kontrolu konfigurace.</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="206"/>
+        <location filename="Settings_ui.py" line="154"/>
         <source>Check sudo configuration</source>
-        <translation>Zkontrolovat konfiguraci sudo</translation>
+        <translation type="unfinished">Zkontrolovat konfiguraci sudo</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="242"/>
+        <location filename="Settings_ui.py" line="190"/>
         <source>These settings influence behavior of the start stop commands. Use environment
 variables to customize paths and tools.</source>
         <translation>Tato nastavení ovlivňují chování spouštěcích a ukončovacích příkazů. K úpravě 
 cest a nástrojů použijte proměnné prostředí.</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="266"/>
+        <location filename="Settings_ui.py" line="214"/>
         <source>Environment variables are available in start/stop commands. Default variables are
 $SUDO for the sudo command to use (e.g. kdesudo or gksudo) and $INITDIR for
 the path to your init-scripts (usually /etc/init.d).</source>
@@ -489,9 +544,49 @@ Výchozí proměnné jsou $SUDO pro použití příkazu typu sudo (např. kdesud
 nebo gksudo), $INITDIR pak pro cestu k vašim init scriptům (obvykle /etc/init.d).</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="281"/>
+        <location filename="Settings_ui.py" line="229"/>
         <source>Environment variables</source>
         <translation>Proměnné prostředí</translation>
+    </message>
+    <message>
+        <location filename="Settings_ui.py" line="25"/>
+        <source>Environment Variables</source>
+        <translation type="obsolete">Proměnné prostředí</translation>
+    </message>
+    <message>
+        <location filename="Settings_ui.py" line="42"/>
+        <source>Variable name</source>
+        <translation type="obsolete">Jméno proměnné</translation>
+    </message>
+    <message>
+        <location filename="Settings_ui.py" line="45"/>
+        <source>Value</source>
+        <translation type="obsolete">Hodnota</translation>
+    </message>
+    <message>
+        <location filename="Settings_ui.py" line="52"/>
+        <source>Add</source>
+        <translation type="obsolete">Přidat</translation>
+    </message>
+    <message>
+        <location filename="Settings_ui.py" line="59"/>
+        <source>Remove</source>
+        <translation type="obsolete">Odebrat</translation>
+    </message>
+    <message>
+        <location filename="Settings_ui.py" line="70"/>
+        <source>Settings</source>
+        <translation type="obsolete">Nastavení</translation>
+    </message>
+    <message>
+        <location filename="Settings_ui.py" line="75"/>
+        <source>Polling interval:</source>
+        <translation type="obsolete">Interval kontroly služeb:</translation>
+    </message>
+    <message>
+        <location filename="Settings_ui.py" line="87"/>
+        <source>Append sleep to start/stop command:</source>
+        <translation type="obsolete">Přidat prodlevu k příkazům spuštění/ukončení:</translation>
     </message>
 </context>
 <context>
@@ -518,6 +613,16 @@ for updated definitions and then include them in the applet, so you can immediat
 use them.</source>
         <translation>Tento seznam obsahuje soubory s definicemi služeb. Můžete vyhledat aktualizované
 definice na www.documentroot.net, přidat je do appletu a ihned je začít používat.</translation>
+    </message>
+    <message>
+        <location filename="Sources_ui.py" line="38"/>
+        <source>Add XML source file</source>
+        <translation type="obsolete">Přidat zdrojový soubor XML</translation>
+    </message>
+    <message>
+        <location filename="Sources_ui.py" line="45"/>
+        <source>Remove selected file</source>
+        <translation type="obsolete">Odebrat vybraný soubor</translation>
     </message>
 </context>
 </TS>
