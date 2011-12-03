@@ -9,112 +9,112 @@
     Please note: Arch users have to set $INITDIR to "/etc/rc.d".
   </description>
 
-  <service id="cron-daemon">
+  <service id="cron-daemon" sudo="yes">
     <name>Cron Daemon</name>
     <description>Periodic command scheduler</description>
     <installcheck>ls /usr/sbin/cron</installcheck>
     <runningcheck>pidof cron</runningcheck>
-    <startcommand>$SUDO $INITDIR/cron start &amp;> /dev/null</startcommand>
-    <stopcommand>$SUDO $INITDIR/cron stop &amp;> /dev/null</stopcommand>
+    <startcommand>$INITDIR/cron start &amp;> /dev/null</startcommand>
+    <stopcommand>$INITDIR/cron stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="cups-daemon">
+  <service id="cups-daemon" sudo="yes">
     <name>CUPS Daemon</name>
     <description>The Common Unix Printing System daemon</description>
     <installcheck>ls /usr/sbin/cupsd</installcheck>
     <runningcheck>pidof cupsd</runningcheck>
-    <startcommand>$SUDO $INITDIR/cups start &amp;> /dev/null</startcommand>
-    <stopcommand>$SUDO $INITDIR/cups stop &amp;> /dev/null</stopcommand>
+    <startcommand>$INITDIR/cups start &amp;> /dev/null</startcommand>
+    <stopcommand>$INITDIR/cups stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="apache2-daemon">
+  <service id="apache2-daemon" sudo="yes">
     <name>Apache2 Webserver</name>
     <description>The most commonly used web server</description>
     <installcheck>ls /usr/sbin/apache2</installcheck>
     <runningcheck>pidof apache2</runningcheck>
-    <startcommand>$SUDO $INITDIR/apache2 start &amp;> /dev/null</startcommand>
-    <stopcommand>$SUDO $INITDIR/apache2 stop &amp;> /dev/null</stopcommand>
+    <startcommand>$INITDIR/apache2 start &amp;> /dev/null</startcommand>
+    <stopcommand>$INITDIR/apache2 stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="boinc-daemon">
+  <service id="boinc-daemon" sudo="yes">
     <name>BOINC Client</name>
     <description>Berkeley Open Infrastructure for Network Computing</description>
     <installcheck>ls $INITDIR/boinc-client</installcheck>
     <runningcheck>pidof boinc</runningcheck>
-    <startcommand>$SUDO $INITDIR/boinc-client start; sleep 1</startcommand>
-    <stopcommand>$SUDO $INITDIR/boinc-client stop; sleep 1</stopcommand>
+    <startcommand>$INITDIR/boinc-client start; sleep 1</startcommand>
+    <stopcommand>$INITDIR/boinc-client stop; sleep 1</stopcommand>
   </service>
 
-  <service id="mysql-daemon" priority="0">
+  <service id="mysql-daemon" priority="0" sudo="yes">
     <name>MySQL Database</name>
     <description>Database server, mainly used for PHP</description>
     <installcheck>ls $INITDIR/mysql</installcheck>
     <runningcheck>ps ax | grep "/usr/sbin/mysqld" | grep -v grep | grep -v akonadi</runningcheck>
-    <startcommand>$SUDO $INITDIR/mysql start &amp;> /dev/null</startcommand>
-    <stopcommand>$SUDO $INITDIR/mysql stop &amp;> /dev/null</stopcommand>
+    <startcommand>$INITDIR/mysql start &amp;> /dev/null</startcommand>
+    <stopcommand>$INITDIR/mysql stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="wicd-daemon">
+  <service id="wicd-daemon" sudo="yes">
     <name>WICD (Network manager)</name>
     <description>An alternative to Network Manager</description>
     <installcheck>ls $INITDIR/wicd</installcheck>
     <runningcheck>ps ax | grep wicd-daemon | grep -v grep</runningcheck>
-    <startcommand>$SUDO $INITDIR/wicd start &amp;> /dev/null</startcommand>
-    <stopcommand>$SUDO $INITDIR/wicd stop &amp;> /dev/null</stopcommand>
+    <startcommand>$INITDIR/wicd start &amp;> /dev/null</startcommand>
+    <stopcommand>$INITDIR/wicd stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="bluetooth-daemon">
+  <service id="bluetooth-daemon" sudo="yes">
     <name>Bluetooth</name>
     <description>The bluetooth daemon</description>
     <installcheck>ls $INITDIR/bluetooth</installcheck>
     <runningcheck>pidof bluetoothd</runningcheck>
-    <startcommand>$SUDO $INITDIR/bluetooth start &amp;> /dev/null</startcommand>
-    <stopcommand>$SUDO $INITDIR/bluetooth stop &amp;> /dev/null</stopcommand>
+    <startcommand>$INITDIR/bluetooth start &amp;> /dev/null</startcommand>
+    <stopcommand>$INITDIR/bluetooth stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="proftp-daemon">
+  <service id="proftp-daemon" sudo="yes">
     <name>ProFTP Server</name>
     <description>Powerful, highly configurable FTP server</description>
     <installcheck>ls $INITDIR/proftpd</installcheck>
     <runningcheck>$INITDIR/proftpd status</runningcheck>
-    <startcommand>$SUDO $INITDIR/proftpd start &amp;> /dev/null</startcommand>
-    <stopcommand>$SUDO $INITDIR/proftpd stop &amp;> /dev/null</stopcommand>
+    <startcommand>$INITDIR/proftpd start &amp;> /dev/null</startcommand>
+    <stopcommand>$INITDIR/proftpd stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="ssh-daemon">
+  <service id="ssh-daemon" sudo="yes">
     <name>SSH Server</name>
     <description>OpenSSH (Secure Shell) Server</description>
     <installcheck>ls $INITDIR/ssh</installcheck>
     <runningcheck>pidof sshd</runningcheck>
-    <startcommand>$SUDO $INITDIR/ssh start &amp;> /dev/null</startcommand>
-    <stopcommand>$SUDO $INITDIR/ssh stop &amp;> /dev/null</stopcommand>
+    <startcommand>$INITDIR/ssh start &amp;> /dev/null</startcommand>
+    <stopcommand>$INITDIR/ssh stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="ssh-daemon-2">
+  <service id="ssh-daemon-2" sudo="yes">
     <name>SSH Server (alternative)</name>
     <description>Use this definition if the other one does not work for you</description>
     <installcheck>ls $INITDIR/sshd</installcheck>
     <runningcheck>pidof sshd</runningcheck>
-    <startcommand>$SUDO $INITDIR/sshd start &amp;> /dev/null</startcommand>
-    <stopcommand>$SUDO $INITDIR/sshd stop &amp;> /dev/null</stopcommand>
+    <startcommand>$INITDIR/sshd start &amp;> /dev/null</startcommand>
+    <stopcommand>$INITDIR/sshd stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="samba-daemon">
+  <service id="samba-daemon" sudo="yes">
     <name>Samba Server</name>
     <description>SMB File Server</description>
     <installcheck>ls $INITDIR/samba</installcheck>
     <runningcheck>pidof smbd</runningcheck>
-    <startcommand>$SUDO $INITDIR/samba start &amp;> /dev/null</startcommand>
-    <stopcommand>$SUDO $INITDIR/samba stop &amp;> /dev/null</stopcommand>
+    <startcommand>$INITDIR/samba start &amp;> /dev/null</startcommand>
+    <stopcommand>$INITDIR/samba stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="postgresql-daemon">
+  <service id="postgresql-daemon" sudo="yes">
     <name>PostgreSQL Server</name>
     <description>PostgreSQL Database Server</description>
     <installcheck>ls $INITDIR/postgresql</installcheck>
     <runningcheck>pidof postgres</runningcheck>
-    <startcommand>$SUDO $INITDIR/postgresql start &amp;> /dev/null</startcommand>
-    <stopcommand>$SUDO $INITDIR/postgresql stop &amp;> /dev/null</stopcommand>
+    <startcommand>$INITDIR/postgresql start &amp;> /dev/null</startcommand>
+    <stopcommand>$INITDIR/postgresql stop &amp;> /dev/null</stopcommand>
   </service>
 
   <service id="akonadi-daemon">
@@ -135,31 +135,31 @@
     <stopcommand>/usr/bin/akonadictl stop; qdbus org.kde.NepomukServer /nepomukserver org.kde.NepomukServer.quit</stopcommand>
   </service>
 
-  <service id="tor-daemon">
+  <service id="tor-daemon" sudo="yes">
     <name>TOR Daemon</name>
     <description>The Onion Router anonimizing daemon - submitted by rysiek</description>
     <installcheck>ls /usr/bin/tor</installcheck>
     <runningcheck>pidof tor</runningcheck>
-    <startcommand>$SUDO $INITDIR/tor start &amp;> /dev/null</startcommand>
-    <stopcommand>$SUDO $INITDIR/tor stop &amp;> /dev/null</stopcommand>
+    <startcommand>$INITDIR/tor start &amp;> /dev/null</startcommand>
+    <stopcommand>$INITDIR/tor stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="avahi-daemon">
+  <service id="avahi-daemon" sudo="yes">
     <name>Avahi Daemon</name>
     <description>Avahi Network Discovery Daemon</description>
     <installcheck>ls $INITDIR/avahi-daemon</installcheck>
     <runningcheck>pidof avahi-daemon</runningcheck>
-    <startcommand>$SUDO $INITDIR/avahi-daemon start &amp;> /dev/null</startcommand>
-    <stopcommand>$SUDO $INITDIR/avahi-daemon stop &amp;> /dev/null</stopcommand>
+    <startcommand>$INITDIR/avahi-daemon start &amp;> /dev/null</startcommand>
+    <stopcommand>$INITDIR/avahi-daemon stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="privoxy-daemon">
+  <service id="privoxy-daemon" sudo="yes">
     <name>Privoxy</name>
     <description>Proxy for enhanced security and privacy - submitted by FreeInfo</description>
     <installcheck>ls $INITDIR/privoxy</installcheck>
     <runningcheck>pidof privoxy</runningcheck>
-    <startcommand>$SUDO $INITDIR/privoxy start &amp;> /dev/null</startcommand>
-    <stopcommand>$SUDO $INITDIR/privoxy stop &amp;> /dev/null</stopcommand>
+    <startcommand>$INITDIR/privoxy start &amp;> /dev/null</startcommand>
+    <stopcommand>$INITDIR/privoxy stop &amp;> /dev/null</stopcommand>
   </service>
 
 </services>

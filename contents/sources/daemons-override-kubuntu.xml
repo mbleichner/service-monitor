@@ -7,13 +7,13 @@
     The services in this file will override the default ones.
   </description>
 
-  <service id="mysql-daemon-upstart" priority="2">
+  <service id="mysql-daemon-upstart" priority="2" sudo="yes">
     <name>MySQL Database</name>
     <description></description>
     <installcheck>ls /usr/sbin/mysqld</installcheck>
     <runningcheck>pidof mysqld</runningcheck>
-    <startcommand>$SUDO start mysql</startcommand>
-    <stopcommand>$SUDO stop mysql</stopcommand>
+    <startcommand>start mysql</startcommand>
+    <stopcommand>stop mysql</stopcommand>
   </service>
 
 </services>

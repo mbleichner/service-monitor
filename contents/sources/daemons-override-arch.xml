@@ -7,13 +7,13 @@
     override the default ones.
   </description>
 
-  <service id="apache2-daemon-arch" priority="2">
+  <service id="apache2-daemon-arch" priority="2" sudo="yes">
     <name>Apache2 Webserver</name>
     <description>The most commonly used web server - submitted by hunterm</description>
     <installcheck>ls $INITDIR/httpd</installcheck>
     <runningcheck>pidof httpd</runningcheck>
-    <startcommand>$SUDO $INITDIR/httpd start</startcommand>
-    <stopcommand>$SUDO $INITDIR/httpd stop</stopcommand>
+    <startcommand>$INITDIR/httpd start</startcommand>
+    <stopcommand>$INITDIR/httpd stop</stopcommand>
   </service>
 
 </services>

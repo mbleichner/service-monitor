@@ -6,166 +6,166 @@
     Less common services/daemons or services specific to some systems.
   </description>
 
-  <service id="polipo-daemon">
+  <service id="polipo-daemon" sudo="yes">
     <name>Polipo Caching Proxy</name>
     <description>Polipo Caching Proxy Daemon - submitted by rysiek</description>
     <installcheck>ls $INITDIR/polipo</installcheck>
     <runningcheck>pidof polipo</runningcheck>
-    <startcommand>$SUDO $INITDIR/polipo start &amp;> /dev/null</startcommand>
-    <stopcommand>$SUDO $INITDIR/polipo stop &amp;> /dev/null</stopcommand>
+    <startcommand>$INITDIR/polipo start &amp;> /dev/null</startcommand>
+    <stopcommand>$INITDIR/polipo stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="nginx-daemon">
+  <service id="nginx-daemon" sudo="yes">
     <name>Nginx Webserver</name>
     <description>Lite web server</description>
     <installcheck>ls $INITDIR/nginx</installcheck>
     <runningcheck>$INITDIR/nginx status</runningcheck>
-    <startcommand>$SUDO $INITDIR/nginx start &amp;> /dev/null</startcommand>
-    <stopcommand>$SUDO $INITDIR/nginx stop &amp;> /dev/null</stopcommand>
+    <startcommand>$INITDIR/nginx start &amp;> /dev/null</startcommand>
+    <stopcommand>$INITDIR/nginx stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="mongodb-daemon">
+  <service id="mongodb-daemon" sudo="yes">
     <name>MongoDB</name>
     <description>A document-oriented database</description>
     <installcheck>ls /bin/mongod</installcheck>
     <runningcheck>pidof mongod</runningcheck>
-    <startcommand>$SUDO $INITDIR/mongodb start &amp;> /dev/null</startcommand>
-    <stopcommand>$SUDO $INITDIR/mongodb stop &amp;> /dev/null</stopcommand>
+    <startcommand>$INITDIR/mongodb start &amp;> /dev/null</startcommand>
+    <stopcommand>$INITDIR/mongodb stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="asus-oled-daemon">
+  <service id="asus-oled-daemon" sudo="yes">
     <name>Asus OLEDs</name>
     <description>OLED display control for ASUS laptops (http://asusg50oled.sourceforge.net)</description>
     <installcheck>ls $INITDIR/asusg50leds.sh</installcheck>
     <runningcheck>ps ax | grep leds.jar | grep -v grep</runningcheck>
-    <startcommand>$SUDO $INITDIR/asusg50leds.sh start &amp;> /dev/null</startcommand>
-    <stopcommand>$SUDO $INITDIR/asusg50leds.sh stop &amp;> /dev/null</stopcommand>
+    <startcommand>$INITDIR/asusg50leds.sh start &amp;> /dev/null</startcommand>
+    <stopcommand>$INITDIR/asusg50leds.sh stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="virtualbox-module">
+  <service id="virtualbox-module" sudo="yes">
     <name>Virtualbox</name>
     <description>VirtualBox module</description>
     <installcheck>ls /etc/vbox</installcheck>
     <runningcheck>lsmod | grep vboxdrv</runningcheck>
-    <startcommand>$SUDO modprobe vboxdrv</startcommand>
-    <stopcommand>$SUDO rmmod vboxdrv</stopcommand>
+    <startcommand>modprobe vboxdrv</startcommand>
+    <stopcommand>rmmod vboxdrv</stopcommand>
   </service>
 
-  <service id="oracle-daemon">
+  <service id="oracle-daemon" sudo="yes">
     <name>Oracle</name>
     <description>Oracle database Silicon Grifols - submitted by fquinto</description>
     <installcheck>ls /opt/oracle10g</installcheck>
     <runningcheck>pidof ora_smon_gtora</runningcheck>
-    <startcommand>$SUDO $INITDIR/oracle start &amp;> /dev/null</startcommand>
-    <stopcommand>$SUDO $INITDIR/oracle stop &amp;> /dev/null</stopcommand>
+    <startcommand>$INITDIR/oracle start &amp;> /dev/null</startcommand>
+    <stopcommand>$INITDIR/oracle stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="pureftp-daemon">
+  <service id="pureftp-daemon" sudo="yes">
     <name>Pure-FTPD</name>
     <description>Pure FTPD ftp service - submitted by Don3d</description>
     <installcheck>ls $INITDIR/pure-ftpd</installcheck>
     <runningcheck>pidof pure-ftpd</runningcheck>
-    <startcommand>$SUDO $INITDIR/pure-ftpd start 2>/dev/null</startcommand>
-    <stopcommand>$SUDO $INITDIR/pure-ftpd stop 2>/dev/null</stopcommand>
+    <startcommand>$INITDIR/pure-ftpd start 2>/dev/null</startcommand>
+    <stopcommand>$INITDIR/pure-ftpd stop 2>/dev/null</stopcommand>
   </service>
 
-  <service id="pcsc-daemon">
+  <service id="pcsc-daemon" sudo="yes">
     <name>PC/SC Daemon</name>
     <description>PC/SC Smart Card Daemon - submitted by Ingolf Rachwalski</description>
     <installcheck>ls /usr/sbin/pcscd</installcheck>
     <runningcheck>pidof pcscd</runningcheck>
-    <startcommand>$SUDO $INITDIR/pcscd start &amp;> /dev/null</startcommand>
-    <stopcommand>$SUDO $INITDIR/pcscd stop &amp;> /dev/null</stopcommand>
+    <startcommand>$INITDIR/pcscd start &amp;> /dev/null</startcommand>
+    <stopcommand>$INITDIR/pcscd stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="dhcp-daemon">
+  <service id="dhcp-daemon" sudo="yes">
     <name>DHCP Server</name>
     <description>Submitted by Wedra</description>
     <installcheck>ls /usr/sbin/dhcpd3</installcheck>
     <runningcheck>pidof dhcpd3</runningcheck>
-    <startcommand>$SUDO $INITDIR/dhcp3-server start &amp;> /dev/null</startcommand>
-    <stopcommand>$SUDO $INITDIR/dhcp3-server stop &amp;> /dev/null</stopcommand>
+    <startcommand>$INITDIR/dhcp3-server start &amp;> /dev/null</startcommand>
+    <stopcommand>$INITDIR/dhcp3-server stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="dnsmasq">
+  <service id="dnsmasq" sudo="yes">
     <name>DNS Masq</name>
     <description>Submitted by Wedra</description>
     <installcheck>ls /usr/sbin/dnsmasq</installcheck>
     <runningcheck>pidof dnsmasq</runningcheck>
-    <startcommand>$SUDO $INITDIR/dnsmasq start &amp;> /dev/null</startcommand>
-    <stopcommand>$SUDO $INITDIR/dnsmasq stop &amp;> /dev/null</stopcommand>
+    <startcommand>$INITDIR/dnsmasq start &amp;> /dev/null</startcommand>
+    <stopcommand>$INITDIR/dnsmasq stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="webmin">
+  <service id="webmin" sudo="yes">
     <name>Webmin</name>
     <description>Submitted by Wedra</description>
     <installcheck>ls $INITDIR/webmin</installcheck>
     <runningcheck>netstat -lnpt | grep \':10000 \'</runningcheck>
-    <startcommand>$SUDO $INITDIR/webmin start &amp;> /dev/null</startcommand>
-    <stopcommand>$SUDO $INITDIR/webmin stop &amp;> /dev/null</stopcommand>
+    <startcommand>$INITDIR/webmin start &amp;> /dev/null</startcommand>
+    <stopcommand>$INITDIR/webmin stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="oracle-xe-daemon">
+  <service id="oracle-xe-daemon" sudo="yes">
     <name>Oracle XE Daemon</name>
     <description>Submitted by Max</description>
     <installcheck>ls /usr/lib/oracle</installcheck>
     <runningcheck>pgrep oracle</runningcheck>
-    <startcommand>$SUDO $INITDIR/oracle-xe start &amp;> /dev/null</startcommand>
-    <stopcommand>$SUDO $INITDIR/oracle-xe stop &amp;> /dev/null</stopcommand>
+    <startcommand>$INITDIR/oracle-xe start &amp;> /dev/null</startcommand>
+    <stopcommand>$INITDIR/oracle-xe stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="g15-daemon">
+  <service id="g15-daemon" sudo="yes">
     <name>G15Daemon</name>
     <description>G15 Keyboard Daemon</description>
     <installcheck>ls $INITDIR/g15daemon</installcheck>
     <runningcheck>pidof g15daemon</runningcheck>
-    <startcommand>$SUDO $INITDIR/g15daemon start &amp;> /dev/null</startcommand>
-    <stopcommand>$SUDO $INITDIR/g15daemon stop &amp;> /dev/null</stopcommand>
+    <startcommand>$INITDIR/g15daemon start &amp;> /dev/null</startcommand>
+    <stopcommand>$INITDIR/g15daemon stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="acpi-daemon">
+  <service id="acpi-daemon" sudo="yes">
     <name>ACPI Daemon</name>
     <description>G15 Keyboard Daemon</description>
     <installcheck>ls $INITDIR/acpid</installcheck>
     <runningcheck>pidof acpid</runningcheck>
-    <startcommand>$SUDO $INITDIR/acpid start &amp;> /dev/null</startcommand>
-    <stopcommand>$SUDO $INITDIR/acpid stop &amp;> /dev/null</stopcommand>
+    <startcommand>$INITDIR/acpid start &amp;> /dev/null</startcommand>
+    <stopcommand>$INITDIR/acpid stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="mldonkey">
+  <service id="mldonkey" sudo="yes">
     <name>MLDonkey</name>
     <description>eDonkey/eMule P2P file sharing</description>
     <installcheck>ls $INITDIR/mldonkey</installcheck>
     <runningcheck>pidof mlnet</runningcheck>
-    <startcommand>$SUDO $INITDIR/mldonkey start &amp;> /dev/null</startcommand>
-    <stopcommand>$SUDO $INITDIR/mldonkey stop &amp;> /dev/null</stopcommand>
+    <startcommand>$INITDIR/mldonkey start &amp;> /dev/null</startcommand>
+    <stopcommand>$INITDIR/mldonkey stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="distcc-daemon">
+  <service id="distcc-daemon" sudo="yes">
     <name>distcc Daemon</name>
     <description>Distributed C/C++ Compiler</description>
     <installcheck>ls $INITDIR/distccd</installcheck>
     <runningcheck>pidof distccd</runningcheck>
-    <startcommand>$SUDO $INITDIR/distccd start &amp;> /dev/null</startcommand>
-    <stopcommand>$SUDO $INITDIR/distccd stop &amp;> /dev/null</stopcommand>
+    <startcommand>$INITDIR/distccd start &amp;> /dev/null</startcommand>
+    <stopcommand>$INITDIR/distccd stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="teamspeak-server">
+  <service id="teamspeak-server" sudo="yes">
     <name>Teamspeak Server</name>
     <description>Teamspeak VOIP Server - submitted by S. Bolin</description>
     <installcheck>ls /usr/bin/teamspeak-server</installcheck>
     <runningcheck>pidof teamspeak-server.real</runningcheck>
-    <startcommand>$SUDO service teamspeak-server start &amp;> /dev/null</startcommand>
-    <stopcommand>$SUDO service teamspeak-server stop &amp;> /dev/null</stopcommand>
+    <startcommand>service teamspeak-server start &amp;> /dev/null</startcommand>
+    <stopcommand>service teamspeak-server stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="vsftp-daemon">
+  <service id="vsftp-daemon" sudo="yes">
     <name>VSFTP Daemon</name>
     <description>Very Secure FTP Daemon - submitted by hgmtnd</description>
     <installcheck>ls /usr/sbin/vsftpd</installcheck>
     <runningcheck>pidof vsftpd</runningcheck>
-    <startcommand>$SUDO service vsftpd start &amp;> /dev/null</startcommand>
-    <stopcommand>$SUDO service vsftpd start &amp;> /dev/null</stopcommand>
+    <startcommand>service vsftpd start &amp;> /dev/null</startcommand>
+    <stopcommand>service vsftpd start &amp;> /dev/null</stopcommand>
   </service>
 
 </services>

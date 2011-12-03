@@ -17,40 +17,40 @@
     <stopcommand>xset s off -dpms</stopcommand>
   </service>
 
-  <service id="pc-speaker">
+  <service id="pc-speaker" sudo="yes">
     <name>PC Speaker</name>
     <description>Enable/disable the speaker system-wide. Root access is gained through $SUDO.</description>
     <installcheck>echo "always installed"</installcheck>
     <runningcheck>lsmod | grep pcspkr</runningcheck>
-    <startcommand>$SUDO modprobe pcspkr</startcommand>
-    <stopcommand>$SUDO rmmod pcspkr</stopcommand>
+    <startcommand>modprobe pcspkr</startcommand>
+    <stopcommand>rmmod pcspkr</stopcommand>
   </service>
 
-  <service id="shutdown-timer">
+  <service id="shutdown-timer" sudo="yes">
     <name>Shutdown Timer (1h)</name>
     <description>Shut down the system 1 hour delayed.</description>
     <installcheck>echo "always installed"</installcheck>
     <runningcheck>pidof shutdown</runningcheck>
-    <startcommand>$SUDO shutdown -h 60</startcommand>
-    <stopcommand>$SUDO shutdown -c</stopcommand>
+    <startcommand>shutdown -h 60</startcommand>
+    <stopcommand>shutdown -c</stopcommand>
   </service>
 
-  <service id="swap-space">
+  <service id="swap-space" sudo="yes">
     <name>Swap Space</name>
     <description>Activate/deactivate all swap partitions (useful for flushing swapped data).</description>
     <installcheck>echo "always installed"</installcheck>
     <runningcheck>if [ $(cat /proc/swaps | wc --lines) != "1" ]; then echo "activated"; fi</runningcheck>
-    <startcommand>$SUDO swapon -a</startcommand>
-    <stopcommand>$SUDO swapoff -a</stopcommand>
+    <startcommand>swapon -a</startcommand>
+    <stopcommand>swapoff -a</stopcommand>
   </service>
 
-  <service id="package-cache">
+  <service id="package-cache" sudo="yes">
     <name>Update Package Cache</name>
     <description>Update package cache, download upgradable packages, delete obsolete ones.</description>
     <installcheck>ls /usr/bin/aptitude</installcheck>
     <runningcheck>pidof aptitude</runningcheck>
-    <startcommand>$SUDO bash -c 'aptitude update &amp;&amp; aptitude -y -d safe-upgrade &amp;&amp; aptitude autoclean'</startcommand>
-    <stopcommand>$SUDO killall aptitude</stopcommand>
+    <startcommand>aptitude update &amp;&amp; aptitude -y -d safe-upgrade &amp;&amp; aptitude autoclean</startcommand>
+    <stopcommand>killall aptitude</stopcommand>
   </service>
 
   <service id="kde-compositing">
