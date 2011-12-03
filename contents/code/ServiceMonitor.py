@@ -101,6 +101,7 @@ class ServiceMonitor(Applet):
     except: pass # if no slots are connected
     self.passwordDialog.setWindowTitle(service.name)
     self.passwordDialog.setCommandInfo(getattr(service, service.lastCommand()))
+    self.passwordDialog.focusPasswordField()
     self.passwordDialog.setVisible(True)
     def retry(pw):
       self.passwordDialog.setVisible(False)

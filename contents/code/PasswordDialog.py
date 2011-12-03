@@ -26,7 +26,6 @@ class PasswordDialog(QDialog, Ui_PasswordDialog):
     self.forgetTimer.timeout.connect(self.forgetPassword)
 
     self.setupUi(self)
-    self.passwordLineEdit.setFocus(Qt.PopupFocusReason)
 
     self.rememberTimeCombobox.currentIndexChanged[int].connect(self.rememberTypeChanged)
     self.rememberTimeSpinbox.valueChanged[int].connect(self.rememberTimeChanged)
@@ -74,4 +73,5 @@ class PasswordDialog(QDialog, Ui_PasswordDialog):
     self.commandLabel.setText(command)
     self.adjustSize()
 
-
+  def focusPasswordField(self):
+    self.passwordLineEdit.setFocus(Qt.PopupFocusReason)
