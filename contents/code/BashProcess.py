@@ -26,8 +26,11 @@ class BashProcess(KProcess):
     return self._errorType if self._errorType is not None else KProcess.error(self)
 
   def setBashCommand(self, command):
-    command = command.replace('$INITDIR', '/etc/init.d')
+    command = command.replace('$INITDIR', self.guessInitDir())
     self._command = command
+
+  def guessInitDir(self):
+    return "/etc/rc.d" if QFile.exists("/etc/rc.d") else "/etc/init.d"
 
   def errorMessage(self):
     return self._errorTypeMessage
