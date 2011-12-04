@@ -28,7 +28,7 @@
         <translation>Vlastní služby</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="226"/>
+        <location filename="ConfigDialog.py" line="235"/>
         <source>&lt;strong&gt;%1&lt;/strong&gt;&lt;br/&gt;
         %2&lt;br/&gt;
         &lt;table&gt;
@@ -37,7 +37,7 @@
         &lt;tr&gt;&lt;td&gt;Start command:&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;%5&lt;/td&gt;&lt;/tr&gt;
         &lt;tr&gt;&lt;td&gt;Stop command:&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;%6&lt;/td&gt;&lt;/tr&gt;
         &lt;/table&gt;</source>
-        <translation>&lt;strong&gt;%1&lt;/strong&gt;&lt;br/&gt;
+        <translation type="obsolete">&lt;strong&gt;%1&lt;/strong&gt;&lt;br/&gt;
         %2&lt;br/&gt;
         &lt;table&gt;
         &lt;tr&gt;&lt;td&gt;Kontrola instalace:&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;%3&lt;/td&gt;&lt;/tr&gt;
@@ -47,67 +47,67 @@
         &lt;/table&gt;</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="308"/>
+        <location filename="ConfigDialog.py" line="309"/>
         <source>%1 (%2, %3 entries)</source>
         <translation>%1 (%2, %3 položek)</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="331"/>
+        <location filename="ConfigDialog.py" line="332"/>
         <source>Downloading...</source>
         <translation type="unfinished">Stahování...</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="364"/>
+        <location filename="ConfigDialog.py" line="365"/>
         <source>Error - custom.xml is missing or has been damaged</source>
         <translation>Chyba - soubor custom.xml chybí, nebo byl poškozen</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="393"/>
+        <location filename="ConfigDialog.py" line="394"/>
         <source>Save changes</source>
         <translation>Uložit změny</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="394"/>
+        <location filename="ConfigDialog.py" line="395"/>
         <source>Cancel editing</source>
-        <translation>Zrušit změny</translation>
+        <translation>Zahodit změny</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="418"/>
+        <location filename="ConfigDialog.py" line="419"/>
         <source>Edit selected</source>
         <translation>Upravit vybrané</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="419"/>
+        <location filename="ConfigDialog.py" line="420"/>
         <source>Remove selected</source>
         <translation>Odebrat vybrané</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="455"/>
+        <location filename="ConfigDialog.py" line="458"/>
         <source>Remove service</source>
         <translation>Odebrat službu</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="455"/>
+        <location filename="ConfigDialog.py" line="458"/>
         <source>Really delete the selected service?</source>
         <translation>Opravdu chcete smazat vybranou službu?</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="470"/>
+        <location filename="ConfigDialog.py" line="473"/>
         <source>New Service, edit me</source>
         <translation>Jsem nova sluzba, upravte me ;-)</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="471"/>
+        <location filename="ConfigDialog.py" line="474"/>
         <source>Enter a short, concise description here</source>
         <translation>Zadejte strucny a jasny popis</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="492"/>
+        <location filename="ConfigDialog.py" line="496"/>
         <source>Upload service definition</source>
         <translation>Odeslat definici služby na internet</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="492"/>
+        <location filename="ConfigDialog.py" line="496"/>
         <source>This will open a page in your web browser where you can submit the selected service definition to the community.</source>
         <translation>Tímto otevřete v prohlížeči stránku, přes kterou můžete odeslat vybranou definici služby uživatelské komunitě.</translation>
     </message>
@@ -159,7 +159,20 @@
     <message>
         <location filename="ConfigDialog.py" line="560"/>
         <source>Only alphanumeric characters are allowed in the variable name, so this will not work. Please edit.</source>
-        <translation type="obsolete">Jméno proměnné může obsahovat jen alfanumerické znaky, takže tudy cesta nevede. Opravte to, prosím.</translation>
+        <translation type="obsolete">Jméno proměnné může obsahovat jen alfanumerické znaky, takže tudy cesta nepovede. Opravte to, prosím.</translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="226"/>
+        <source>&lt;strong&gt;%1&lt;/strong&gt;&lt;br/&gt;
+        %2&lt;br/&gt;
+        &lt;table&gt;
+        &lt;tr&gt;&lt;td&gt;Install check:&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;%3&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;Running check:&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;%4&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;Start command:&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;%5&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;Stop command:&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;%6&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;Root privileges:&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;td&gt;%7&lt;/td&gt;&lt;/tr&gt;
+        &lt;/table&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -190,7 +203,7 @@
         <translation>Odeslat definici služby na internet</translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="249"/>
+        <location filename="Custom_ui.py" line="257"/>
         <source>Share with others</source>
         <translation>Sdílet s ostatními</translation>
     </message>
@@ -225,14 +238,14 @@
         <translation>Ukončovací příkaz:</translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="177"/>
+        <location filename="Custom_ui.py" line="180"/>
         <source>Here you can create and edit custom service definitions. Tailor them exactly to your
 needs and share useful definitions with other people!</source>
         <translation>Zde můžete vytvářet a upravovat vlastní definici služeb. Upravte si je libovolně podle
-svých potřeb a podělte se o užitečné definice s ostatními!</translation>
+svých potřeb a podělte se, prosím, o užitečné definice s ostatními!</translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="196"/>
+        <location filename="Custom_ui.py" line="199"/>
         <source>These fields take bash commands. For a check to succeed, it must producen on-empty
 output and return exit code 0.
 For example, to check if a file exists, you can use: ls /path/to/file</source>
@@ -241,7 +254,7 @@ a návratový kód 0.
 Pro kontrolu existence souboru můžete použít např.: ls /cesta/k_požadovanému/souboru</translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="215"/>
+        <location filename="Custom_ui.py" line="218"/>
         <source>Every command should terminate shortly after invocation. Unlike the earlier version, the
 desktop will no longer freeze if a command does not terminate, but Service Monitor will never
 know if the command succeeded. Use &quot;&amp;&quot; to start a process in background if necessary.</source>
@@ -250,23 +263,33 @@ grafické rozhraní odpovídat, pokud se proces neukončí. Service Monitor se p
 jestli příkaz uspěl. Pokud je to nezbytné, spusťte příkaz na pozadí pomocí koncového &quot;&amp;&quot;.</translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="233"/>
+        <location filename="Custom_ui.py" line="236"/>
         <source>Using this button, you can submit a service definition on www.documentroot.net, where
 they may be included in the official sources, so others can download it. If you wish, you
 will be mentioned as author of the submission. Please only submit working definitions!</source>
         <translation>Tímto tlačítkem můžete odeslat definici služeb na www.documentroot.net, kde může
 přidána do oficiálních zdrojů a ostatní si ji budou moci stahovat. Pokud si to budete přát,
-budete zmíněni jako autor.definice. Prosíme, abyste odesílali výhradně funkční definice služeb!</translation>
+budete zmíněni jako autor definice. Prosíme, abyste odesílali výhradně funkční definice služeb!</translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="247"/>
+        <location filename="Custom_ui.py" line="255"/>
         <source>Install/running checks</source>
         <translation>Kontroly instalací/běhu</translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="248"/>
+        <location filename="Custom_ui.py" line="256"/>
         <source>Start/stop commands</source>
         <translation>Spouštěcí/ukončovací příkazy</translation>
+    </message>
+    <message>
+        <location filename="Custom_ui.py" line="153"/>
+        <source>Root privileges:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Custom_ui.py" line="157"/>
+        <source>use sudo for start/stop commands</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -343,17 +366,17 @@ budete zmíněni jako autor.definice. Prosíme, abyste odesílali výhradně fun
 <context>
     <name>ServiceMonitor</name>
     <message>
-        <location filename="ServiceMonitor.py" line="143"/>
+        <location filename="ServiceMonitor.py" line="144"/>
         <source>&lt;b&gt;Thank you for downloading&lt;br/&gt;Service Monitor!&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;Right click to open the&lt;br/&gt;settings dialog.</source>
         <translation>&lt;b&gt;Díky za stažení&lt;b/&gt;Service Monitoru!&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;Pravým myšítkem otevřete&lt;br/&gt;dialog nastavení.</translation>
     </message>
     <message>
-        <location filename="ServiceMonitor.py" line="171"/>
+        <location filename="ServiceMonitor.py" line="172"/>
         <source>Error</source>
         <translation type="unfinished">Chyba</translation>
     </message>
     <message>
-        <location filename="ServiceMonitor.py" line="171"/>
+        <location filename="ServiceMonitor.py" line="172"/>
         <source>Service &quot;%1&quot; not installed. Aborting.</source>
         <translation type="unfinished">Služba &quot;%1&quot; není nainstalována. Končím.</translation>
     </message>
@@ -390,7 +413,7 @@ definičního souboru staženého z internetu (viz záložka zdrojů).</translat
         <source>This list shows all services to be monitored. Add items from the right-hand list and reorder
 them to your needs. Be aware that only services marked with a green dot will work.
 A red dot means the install check has failed, so the definition will not work.</source>
-        <translation>Seznamu obsahuje všechny služby, které můžete monitorovat. Přidejte je ze seznamu vpravo a
+        <translation>Seznam obsahuje všechny služby, které můžete monitorovat. Přidejte je ze seznamu vpravo a
 seřaďte podle vašich potřeb. Pamatujte, že monitoring funguje jen u zeleně označených služeb.
 Červená značka znamená, že kontrola instalace služby selhala a monitoring u ní nebude fungovat.</translation>
     </message>
@@ -434,7 +457,7 @@ si vytvořit definici sami pod &quot;Vlastními službami&quot;.</translation>
     <message>
         <location filename="Settings_ui.py" line="50"/>
         <source>Update service status every x seconds.</source>
-        <translation>Aktualizovat stav služeb každých x sekund.</translation>
+        <translation>Aktualizuje stav služeb každých x sekund.</translation>
     </message>
     <message>
         <location filename="Settings_ui.py" line="63"/>
@@ -539,7 +562,7 @@ cest a nástrojů použijte proměnné prostředí.</translation>
         <source>Environment variables are available in start/stop commands. Default variables are
 $SUDO for the sudo command to use (e.g. kdesudo or gksudo) and $INITDIR for
 the path to your init-scripts (usually /etc/init.d).</source>
-        <translation>Proměnné prostředí jsou dostupné v nastavení spouštěcích/ukončovacích příkazů.
+        <translation>Proměnné prostředí jsou použity v sekci spouštěcí/ukončovací příkazy.
 Výchozí proměnné jsou $SUDO pro použití příkazu typu sudo (např. kdesudo
 nebo gksudo), $INITDIR pak pro cestu k vašim init scriptům (obvykle /etc/init.d).</translation>
     </message>
