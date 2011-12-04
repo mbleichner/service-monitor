@@ -69,7 +69,7 @@
     <message>
         <location filename="ConfigDialog.py" line="402"/>
         <source>Cancel editing</source>
-        <translation>Zrušit změny</translation>
+        <translation>Zahodit změny</translation>
     </message>
     <message>
         <location filename="ConfigDialog.py" line="427"/>
@@ -159,7 +159,7 @@
     <message>
         <location filename="ConfigDialog.py" line="560"/>
         <source>Only alphanumeric characters are allowed in the variable name, so this will not work. Please edit.</source>
-        <translation>Jméno proměnné může obsahovat jen alfanumerické znaky, takže tudy cesta nevede. Opravte to, prosím.</translation>
+        <translation>Jméno proměnné může obsahovat jen alfanumerické znaky, takže tudy cesta nepovede. Opravte to, prosím.</translation>
     </message>
 </context>
 <context>
@@ -229,7 +229,7 @@
         <source>Here you can create and edit custom service definitions. Tailor them exactly to your
 needs and share useful definitions with other people!</source>
         <translation>Zde můžete vytvářet a upravovat vlastní definici služeb. Upravte si je libovolně podle
-svých potřeb a podělte se o užitečné definice s ostatními!</translation>
+svých potřeb a podělte se, prosím, o užitečné definice s ostatními!</translation>
     </message>
     <message>
         <location filename="Custom_ui.py" line="196"/>
@@ -256,7 +256,7 @@ they may be included in the official sources, so others can download it. If you 
 will be mentioned as author of the submission. Please only submit working definitions!</source>
         <translation>Tímto tlačítkem můžete odeslat definici služeb na www.documentroot.net, kde může
 přidána do oficiálních zdrojů a ostatní si ji budou moci stahovat. Pokud si to budete přát,
-budete zmíněni jako autor.definice. Prosíme, abyste odesílali výhradně funkční definice služeb!</translation>
+budete zmíněni jako autor definice. Prosíme, abyste odesílali výhradně funkční definice služeb!</translation>
     </message>
     <message>
         <location filename="Custom_ui.py" line="247"/>
@@ -390,7 +390,7 @@ definičního souboru staženého z internetu (viz záložka zdrojů).</translat
         <source>This list shows all services to be monitored. Add items from the right-hand list and reorder
 them to your needs. Be aware that only services marked with a green dot will work.
 A red dot means the install check has failed, so the definition will not work.</source>
-        <translation>Seznamu obsahuje všechny služby, které můžete monitorovat. Přidejte je ze seznamu vpravo a
+        <translation>Seznam obsahuje všechny služby, které můžete monitorovat. Přidejte je ze seznamu vpravo a
 seřaďte podle vašich potřeb. Pamatujte, že monitoring funguje jen u zeleně označených služeb.
 Červená značka znamená, že kontrola instalace služby selhala a monitoring u ní nebude fungovat.</translation>
     </message>
@@ -434,7 +434,7 @@ si vytvořit definici sami pod &quot;Vlastními službami&quot;.</translation>
     <message>
         <location filename="Settings_ui.py" line="79"/>
         <source>Update service status every x seconds.</source>
-        <translation>Aktualizovat stav služeb každých x sekund.</translation>
+        <translation>Aktualizuje stav služeb každých x sekund.</translation>
     </message>
     <message>
         <location filename="Settings_ui.py" line="63"/>
@@ -539,7 +539,7 @@ cest a nástrojů použijte proměnné prostředí.</translation>
         <source>Environment variables are available in start/stop commands. Default variables are
 $SUDO for the sudo command to use (e.g. kdesudo or gksudo) and $INITDIR for
 the path to your init-scripts (usually /etc/init.d).</source>
-        <translation>Proměnné prostředí jsou dostupné v nastavení spouštěcích/ukončovacích příkazů.
+        <translation>Proměnné prostředí jsou použity v sekci spouštěcí/ukončovací příkazy.
 Výchozí proměnné jsou $SUDO pro použití příkazu typu sudo (např. kdesudo
 nebo gksudo), $INITDIR pak pro cestu k vašim init scriptům (obvykle /etc/init.d).</translation>
     </message>
