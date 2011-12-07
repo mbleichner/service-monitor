@@ -26,13 +26,13 @@ done
 # ICONS
 pyrcc4 resources/icons/icons.qrc > generated/icons_rc.py
 
+# Remove comments from generated files
+for FILE in generated/*; do
+  sed -e '1p;/^#/d' -i $FILE
+done
+
 # TRANSLATIONS
 for lang in 'de' 'fr' 'es' 'cs'; do
   pylupdate4 $PYLUPDATE *.py generated/*.py -ts translations/${lang}.ts
   lrelease translations/${lang}.ts -qm translations/${lang}.qm
-done
-
-# Remove comments from generated files
-for FILE in generated/*; do
-  sed -e '1p;/^#/d' -i $FILE
 done
