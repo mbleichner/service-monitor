@@ -384,14 +384,14 @@ If the status immediatly flashes back to inactive when starting a service, incre
 Erhöhe diesen Wert, wenn der Status eines Dienstes beim Starten nochmal kurz auf inaktiv springt.</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="184"/>
+        <location filename="Settings_ui.py" line="201"/>
         <source>These settings influence behavior of the start stop commands. Use environment
 variables to customize paths and tools.</source>
         <translation>Diese Einstellungen beeinflussen das Verhalten der Start-/Stop-Kommandos.
 Setze systemspezifische Einstellungen mit Hilfe von Umgebungsvariablen.</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="208"/>
+        <location filename="Settings_ui.py" line="225"/>
         <source>Environment variables are available in start/stop commands. Default variables are
 $SUDO for the sudo command to use (e.g. kdesudo or gksudo) and $INITDIR for
 the path to your init-scripts (usually /etc/init.d).</source>
@@ -400,7 +400,7 @@ sind $SUDO für dein Lieblings-Sudo-Tool (z.B. kdesudo oder gksudo) und $INITDIR
 Verzeichnis, in dem die Init-Skripte liegen (normalerweise /etc/init.d).</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="223"/>
+        <location filename="Settings_ui.py" line="240"/>
         <source>Environment variables</source>
         <translation>Umgebungsvariablen</translation>
     </message>
@@ -420,50 +420,55 @@ Verzeichnis, in dem die Init-Skripte liegen (normalerweise /etc/init.d).</transl
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="82"/>
+        <location filename="Settings_ui.py" line="99"/>
         <source>Sudo Configuration Helper</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="94"/>
+        <location filename="Settings_ui.py" line="111"/>
         <source>Grant root access for</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="110"/>
+        <location filename="Settings_ui.py" line="127"/>
         <source>&lt; please select an option &gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="112"/>
+        <location filename="Settings_ui.py" line="129"/>
         <source>every user in group sudoers with his own password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="114"/>
+        <location filename="Settings_ui.py" line="131"/>
         <source>every user in group sudoers with root password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="116"/>
+        <location filename="Settings_ui.py" line="133"/>
         <source>specific user with his own password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="118"/>
+        <location filename="Settings_ui.py" line="135"/>
         <source>specific user with root password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="133"/>
+        <location filename="Settings_ui.py" line="150"/>
         <source>This tool will help you configure sudo.
 
 It creates snippets for inclusion in the /etc/sudoers configuration file. Sudo allows fine-grained control, this tool will cover the most standard setups, but they will be sufficient. Simply choose the config that most suits your needs, append the generated snippet to your /etc/sudoers and use the button below to check configuration.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="148"/>
+        <location filename="Settings_ui.py" line="165"/>
         <source>Check sudo configuration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Settings_ui.py" line="81"/>
+        <source>Indicator theme:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

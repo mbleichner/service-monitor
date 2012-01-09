@@ -88,8 +88,9 @@ class ConfigDialog(KPageDialog):
     self.customPage.shareButton.clicked.connect(self.uploadCustomService)
 
     # Connections für die SettingsPage
-    self.settingsPage.pollingIntervalSpinbox.valueChanged[float].connect(self.setPollingInterval)
-    self.settingsPage.sleepTimeSpinbox.valueChanged[float].connect(self.setSleepTime)
+    self.settingsPage.pollingIntervalSpinbox.valueChanged[float].connect(partial(self.saveConfigValue, 'pollingInterval'))
+    self.settingsPage.sleepTimeSpinbox.valueChanged[float].connect(partial(self.saveConfigValue, 'sleepTime'))
+    self.settingsPage.themeComboBox.currentIndexChanged[QString].connect(partial(self.saveConfigValue, 'indicatorTheme'))
 
     # Cleanup actions when closing the config dialog
     self.closeClicked.connect(self.stopEditmode)
@@ -164,7 +165,8 @@ class ConfigDialog(KPageDialog):
 
 
   def indicatorTheme(self):
-    return "default"
+    theme = self.config.value('indicatorTheme').toString()
+    return theme if theme and os.path.isdir(codedir + '/indicators/' + theme) else 'default'
 
 
   def installStateIndicator(self, service):
@@ -514,16 +516,17 @@ class ConfigDialog(KPageDialog):
     self.settingsPage.pollingIntervalSpinbox.setValue(self.config.value('pollingInterval').toDouble()[0])
     self.settingsPage.sleepTimeSpinbox.setValue(self.config.value('sleepTime').toDouble()[0])
 
+    themes = QStringList([fn for fn in os.listdir(codedir + "/indicators")])
+    themes.sort()
+    self.settingsPage.themeComboBox.blockSignals(True)
+    self.settingsPage.themeComboBox.clear()
+    self.settingsPage.themeComboBox.addItems(themes)
+    self.settingsPage.themeComboBox.setCurrentIndex(themes.indexOf(self.indicatorTheme()))
+    self.settingsPage.themeComboBox.blockSignals(False)
 
-  ## [slot] Save polling interval to internal config.
-  def setPollingInterval(self, newValue):
-    self.config.setValue('pollingInterval', newValue)
-    self.configurationChanged.emit()
 
-
-  ## [slot] Save sleep time to internal config.
-  def setSleepTime(self, newValue):
-    self.config.setValue('sleepTime', newValue)
+  def saveConfigValue(self, name, value):
+    self.config.setValue(name, value)
     self.configurationChanged.emit()
 
 
