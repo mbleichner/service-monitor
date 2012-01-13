@@ -36,6 +36,7 @@ class Service(QObject):
     self.sleepTime = 0
     self.state = ('unknown', 'unknown')   # (Install-Status, Running-Status)
     self.polling = False
+    self.reportErrors = True
     self._lastCommand = ''
     self.timer = QTimer()
     self.timer.setSingleShot(True)
@@ -93,6 +94,10 @@ class Service(QObject):
       self.execute("runningcheck")
     else:
       self.timer.stop()
+
+
+  def setErrorReporting(self, flag):
+    self.reportErrors = flag
 
 
   ## Shortcut for setting state and check if stateChanged() has to be emitted.
@@ -160,7 +165,8 @@ class Service(QObject):
     elif which in ['startcommand', 'stopcommand']:
       self.setRunningState('running' if (proc.exitCode() == 0 and proc.readAllStandardOutput().length() > 0) else 'stopped')
       errorOutput = QString(proc.readAllStandardError())
-      if errorOutput: QMessageBox.warning(None, self.tr('Error'), errorOutput)
+      if errorOutput and self.reportErrors:
+        QMessageBox.warning(None, self.tr('Error output'), errorOutput)
     self.scheduleRunningCheck(which != "runningcheck")
     self.killProcesses(which)
 

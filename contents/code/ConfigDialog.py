@@ -92,6 +92,7 @@ class ConfigDialog(KPageDialog):
     self.settingsPage.pollingIntervalSpinbox.valueChanged[float].connect(partial(self.saveConfigValue, 'pollingInterval'))
     self.settingsPage.sleepTimeSpinbox.valueChanged[float].connect(partial(self.saveConfigValue, 'sleepTime'))
     self.settingsPage.themeComboBox.currentIndexChanged[QString].connect(partial(self.saveConfigValue, 'indicatorTheme'))
+    self.settingsPage.suppressStdoutCheckBox.stateChanged[int].connect(partial(self.saveConfigValue, 'suppressStdout'))
     self.settingsPage.sudoHelperComboBox.currentIndexChanged[int].connect(self.showSudoSnippet)
     self.settingsPage.checkSudoButton.clicked.connect(self.checkSudo)
 
@@ -181,6 +182,10 @@ class ConfigDialog(KPageDialog):
 
   def runningStateIndicator(self, service):
     return QIcon("%s/indicators/%s/%s.png" % (codedir, self.indicatorTheme(), service.state[1]))
+
+
+  def suppressStdout(self):
+    return self.config.value('suppressStdout').toInt()[0] > 0
 
 
 # SERVICES PAGE ###########################################################################################################
@@ -521,6 +526,7 @@ class ConfigDialog(KPageDialog):
     self.settingsPage.pollingIntervalSpinbox.setValue(self.config.value('pollingInterval').toDouble()[0])
     self.settingsPage.sleepTimeSpinbox.setValue(self.config.value('sleepTime').toDouble()[0])
     self.settingsPage.usernameLabel.setText(getpass.getuser())
+    self.settingsPage.suppressStdoutCheckBox.setCheckState(self.config.value('suppressStdout').toInt()[0])
     themes = QStringList([fn for fn in os.listdir(codedir + "/indicators")])
     themes.sort()
     self.settingsPage.themeComboBox.blockSignals(True)

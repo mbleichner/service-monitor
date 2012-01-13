@@ -42,6 +42,9 @@
         <property name="text">
          <string>Service polling interval:</string>
         </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
        </widget>
       </item>
       <item row="0" column="1">
@@ -81,6 +84,9 @@
         </property>
         <property name="text">
          <string>Start/stop command delay:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
@@ -126,6 +132,9 @@ If the status immediatly flashes back to inactive when starting a service, incre
         <property name="text">
          <string>Indicator theme:</string>
         </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
        </widget>
       </item>
       <item row="2" column="1">
@@ -136,6 +145,40 @@ If the status immediatly flashes back to inactive when starting a service, incre
           <italic>false</italic>
           <bold>false</bold>
          </font>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_9">
+        <property name="font">
+         <font>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Supress stderr when starting/stopping services:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QCheckBox" name="suppressStdoutCheckBox">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="font">
+         <font>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>(use with caution)</string>
         </property>
        </widget>
       </item>
@@ -468,6 +511,7 @@ the path to your init-scripts (usually /etc/init.d).</string>
   <tabstop>pollingIntervalSpinbox</tabstop>
   <tabstop>sleepTimeSpinbox</tabstop>
   <tabstop>themeComboBox</tabstop>
+  <tabstop>suppressStdoutCheckBox</tabstop>
   <tabstop>sudoHelperComboBox</tabstop>
   <tabstop>sudoHelperTextarea</tabstop>
   <tabstop>passwordLineEdit</tabstop>

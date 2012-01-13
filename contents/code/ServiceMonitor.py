@@ -163,6 +163,7 @@ class ServiceMonitor(Applet):
       service.stateChanged.connect(partial(self.refreshStateIcon, service))
       service.wrongPassword[str].connect(partial(self.askPasswordAndRetry, service))
       service.setSleepTime(sleepTime)
+      service.setErrorReporting(not self.configDialog.suppressStdout())
       service.setPolling(True, interval)
 
 
