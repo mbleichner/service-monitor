@@ -28,67 +28,67 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="369"/>
+        <location filename="ConfigDialog.py" line="372"/>
         <source>Error - custom.xml is missing or has been damaged</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="423"/>
+        <location filename="ConfigDialog.py" line="426"/>
         <source>Edit selected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="424"/>
+        <location filename="ConfigDialog.py" line="427"/>
         <source>Remove selected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="398"/>
+        <location filename="ConfigDialog.py" line="401"/>
         <source>Save changes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="399"/>
+        <location filename="ConfigDialog.py" line="402"/>
         <source>Cancel editing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="462"/>
+        <location filename="ConfigDialog.py" line="465"/>
         <source>Remove service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="462"/>
+        <location filename="ConfigDialog.py" line="465"/>
         <source>Really delete the selected service?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="500"/>
+        <location filename="ConfigDialog.py" line="503"/>
         <source>Upload service definition</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="500"/>
+        <location filename="ConfigDialog.py" line="503"/>
         <source>This will open a page in your web browser where you can submit the selected service definition to the community.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="313"/>
+        <location filename="ConfigDialog.py" line="316"/>
         <source>%1 (%2, %3 entries)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="478"/>
+        <location filename="ConfigDialog.py" line="481"/>
         <source>Enter a short, concise description here</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="477"/>
+        <location filename="ConfigDialog.py" line="480"/>
         <source>New Service, edit me</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="230"/>
+        <location filename="ConfigDialog.py" line="233"/>
         <source>&lt;strong&gt;%1&lt;/strong&gt;&lt;br/&gt;
         %2&lt;br/&gt;
         &lt;table&gt;
@@ -101,50 +101,50 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="336"/>
+        <location filename="ConfigDialog.py" line="339"/>
         <source>Downloading...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="537"/>
-        <source># Paste this snippet into your /etc/sudoers file
-
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="ConfigDialog.py" line="556"/>
+        <location filename="ConfigDialog.py" line="563"/>
         <source>Command failed to start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="556"/>
+        <location filename="ConfigDialog.py" line="563"/>
         <source>There was an error starting the command. Please check your sudo installation.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="560"/>
+        <location filename="ConfigDialog.py" line="567"/>
         <source>Wrong password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="558"/>
+        <location filename="ConfigDialog.py" line="565"/>
         <source>Sudo permission error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="562"/>
+        <location filename="ConfigDialog.py" line="569"/>
         <source>Success</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="562"/>
+        <location filename="ConfigDialog.py" line="569"/>
         <source>Your installation seems to be working. Now try to start/stop some services in your list.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="560"/>
+        <location filename="ConfigDialog.py" line="567"/>
         <source>It seems you gave the wrong password. Try again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="543"/>
+        <source># copy-paste this snippet into your /etc/sudoers file:
+
+</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
