@@ -12,7 +12,6 @@ class Ui_Services(object):
     def setupUi(self, Services):
         Services.setObjectName(_fromUtf8("Services"))
         Services.resize(604, 427)
-        Services.setWindowTitle(QtGui.QApplication.translate("Services", "Dialog", None, QtGui.QApplication.UnicodeUTF8))
         self.verticalLayout_8 = QtGui.QVBoxLayout(Services)
         self.verticalLayout_8.setObjectName(_fromUtf8("verticalLayout_8"))
         self.horizontalLayout_2 = QtGui.QHBoxLayout()
@@ -25,7 +24,6 @@ class Ui_Services(object):
         sizePolicy.setVerticalStretch(1)
         sizePolicy.setHeightForWidth(self.activeServicesLabel.sizePolicy().hasHeightForWidth())
         self.activeServicesLabel.setSizePolicy(sizePolicy)
-        self.activeServicesLabel.setText(QtGui.QApplication.translate("Services", "Active Services", None, QtGui.QApplication.UnicodeUTF8))
         self.activeServicesLabel.setObjectName(_fromUtf8("activeServicesLabel"))
         self.verticalLayout_2.addWidget(self.activeServicesLabel)
         self.activeServicesList = QtGui.QListWidget(Services)
@@ -98,7 +96,6 @@ class Ui_Services(object):
         sizePolicy.setVerticalStretch(1)
         sizePolicy.setHeightForWidth(self.inactiveServicesLabel.sizePolicy().hasHeightForWidth())
         self.inactiveServicesLabel.setSizePolicy(sizePolicy)
-        self.inactiveServicesLabel.setText(QtGui.QApplication.translate("Services", "Available Services", None, QtGui.QApplication.UnicodeUTF8))
         self.inactiveServicesLabel.setObjectName(_fromUtf8("inactiveServicesLabel"))
         self.verticalLayout_3.addWidget(self.inactiveServicesLabel)
         self.inactiveServicesList = QtGui.QListWidget(Services)
@@ -167,9 +164,6 @@ class Ui_Services(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_2.sizePolicy().hasHeightForWidth())
         self.label_2.setSizePolicy(sizePolicy)
-        self.label_2.setText(QtGui.QApplication.translate("Services", "Add the services to be monitored to the list of active services. The icons show the install\n"
-"status of each service. If you find some service missing, you can add it either as custom\n"
-"service or through a source file downloaded from the internet (see the sources tab).", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.label_2.setObjectName(_fromUtf8("label_2"))
         self.verticalLayout_4.addWidget(self.label_2)
@@ -187,9 +181,6 @@ class Ui_Services(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
         self.label.setSizePolicy(sizePolicy)
-        self.label.setText(QtGui.QApplication.translate("Services", "This list shows all services to be monitored. Add items from the right-hand list and reorder\n"
-"them to your needs. Be aware that only services marked with a green dot will work.\n"
-"A red dot means the install check has failed, so the definition will not work.", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.label.setWordWrap(False)
         self.label.setObjectName(_fromUtf8("label"))
@@ -206,9 +197,6 @@ class Ui_Services(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_3.sizePolicy().hasHeightForWidth())
         self.label_3.setSizePolicy(sizePolicy)
-        self.label_3.setText(QtGui.QApplication.translate("Services", "The list of available services is loaded from your definition source files, which you can\n"
-"manage under the \"Sources\" tab. If a specific service is missing here, try looking for it\n"
-"in the sources tab or define it yourself under \"Custom Services\".", None, QtGui.QApplication.UnicodeUTF8))
         self.label_3.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.label_3.setObjectName(_fromUtf8("label_3"))
         self.verticalLayout_6.addWidget(self.label_3)
@@ -220,7 +208,19 @@ class Ui_Services(object):
         QtCore.QMetaObject.connectSlotsByName(Services)
 
     def retranslateUi(self, Services):
+        Services.setWindowTitle(QtGui.QApplication.translate("Services", "Dialog", None, QtGui.QApplication.UnicodeUTF8))
+        self.activeServicesLabel.setText(QtGui.QApplication.translate("Services", "Active Services", None, QtGui.QApplication.UnicodeUTF8))
+        self.inactiveServicesLabel.setText(QtGui.QApplication.translate("Services", "Available Services", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_2.setText(QtGui.QApplication.translate("Services", "Add the services to be monitored to the list of active services. The icons show the install\n"
+"status of each service. If you find some service missing, you can add it either as custom\n"
+"service or through a source file downloaded from the internet (see the sources tab).", None, QtGui.QApplication.UnicodeUTF8))
+        self.label.setText(QtGui.QApplication.translate("Services", "This list shows all services to be monitored. Add items from the right-hand list and reorder\n"
+"them to your needs. Be aware that only services marked with a green dot will work.\n"
+"A red dot means the install check has failed, so the definition will not work.", None, QtGui.QApplication.UnicodeUTF8))
         self.helpTabWidget.setTabText(self.helpTabWidget.indexOf(self.tab_1), QtGui.QApplication.translate("Services", "Active services", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_3.setText(QtGui.QApplication.translate("Services", "The list of available services is loaded from your definition source files, which you can\n"
+"manage under the \"Sources\" tab. If a specific service is missing here, try looking for it\n"
+"in the sources tab or define it yourself under \"Custom Services\".", None, QtGui.QApplication.UnicodeUTF8))
         self.helpTabWidget.setTabText(self.helpTabWidget.indexOf(self.tab_2), QtGui.QApplication.translate("Services", "Available services", None, QtGui.QApplication.UnicodeUTF8))
 
 import icons_rc

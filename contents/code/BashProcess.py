@@ -65,13 +65,13 @@ class BashProcess(KProcess):
       # start sudo, check if password prompt is present, then enter the password
       self.waitForReadyRead(); output = self.readAll()
       if not output.contains("password for"):
-        return self.spitError(QProcess.FailedToStart, "please check your sudo installation")
+        return self.spitError(QProcess.FailedToStart, "Please check your sudo installation")
       self.write("%s\n" % self._password)
 
       # wait for response and either issue an error or continue with normal process management
       self.waitForReadyRead(); output = self.readAll()
       if output.contains("try again"):
-        return self.spitError(BashProcess.PasswordError, "wrong sudo password")
+        return self.spitError(BashProcess.PasswordError, "Wrong sudo password")
       elif output.contains("not in the sudoers file"):
-        return self.spitError(BashProcess.PermissionError, "your user is not mentioned in the sudoers file")
+        return self.spitError(BashProcess.PermissionError, "Your user is not mentioned in the sudoers file")
 

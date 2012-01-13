@@ -131,14 +131,14 @@ class Service(QObject):
     proc.start(); proc.waitForStarted()
 
     # check for startup errors
-    if proc.errorType() == QProcess.FailedToStart and isinstance(self, BashProcess):
-      QMessageBox.warning(None, self.tr('Command failed to start'), QString(proc.errorMessage()))
-    if proc.errorType() == QProcess.FailedToStart and not isinstance(self, BashProcess):
-      QMessageBox.warning(None, self.tr('Command failed to start'), self.tr("There was an error starting the command. Please check your installation."))
-    if proc.errorType() == BashProcess.PasswordError:
+    if proc.errorType() == QProcess.FailedToStart and proc.errorMessage():
+      QMessageBox.critical(None, self.tr('Command failed to start'), QString(proc.errorMessage()))
+    elif proc.errorType() == QProcess.FailedToStart and not proc.errorMessage():
+      QMessageBox.critical(None, self.tr('Command failed to start'), self.tr("There was an error starting the command. Please check your installation."))
+    elif proc.errorType() == BashProcess.PermissionError:
+      QMessageBox.critical(None, self.tr('Sudo permission error'), QString(proc.errorMessage()))
+    elif proc.errorType() == BashProcess.PasswordError:
       self.wrongPassword.emit(which)
-    if proc.errorType() == BashProcess.PermissionError:
-      QMessageBox.warning(None, self.tr('Sudo permission error'), QString(proc.errorMessage()))
 
     # if everything went ok, mark state and connect slot
     if proc.state() == QProcess.Running:

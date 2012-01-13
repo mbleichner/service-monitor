@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>564</width>
-    <height>492</height>
+    <width>610</width>
+    <height>552</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -172,7 +172,7 @@ If the status immediatly flashes back to inactive when starting a service, incre
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="comboBox_2">
+         <widget class="QComboBox" name="sudoHelperComboBox">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -193,22 +193,22 @@ If the status immediatly flashes back to inactive when starting a service, incre
           </item>
           <item>
            <property name="text">
-            <string>every user in group sudoers with his own password</string>
+            <string>every user in group sudoers, ask for user password</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>every user in group sudoers with root password</string>
+            <string>every user in group sudoers, ask for root password</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>specific user with his own password</string>
+            <string>only me, ask for my own password</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>specific user with root password</string>
+            <string>only me, ask for root password</string>
            </property>
           </item>
          </widget>
@@ -216,7 +216,7 @@ If the status immediatly flashes back to inactive when starting a service, incre
        </layout>
       </item>
       <item>
-       <widget class="QPlainTextEdit" name="plainTextEdit">
+       <widget class="QPlainTextEdit" name="sudoHelperTextarea">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -226,7 +226,7 @@ If the status immediatly flashes back to inactive when starting a service, incre
         <property name="maximumSize">
          <size>
           <width>16777215</width>
-          <height>120</height>
+          <height>180</height>
          </size>
         </property>
         <property name="font">
@@ -239,12 +239,43 @@ If the status immediatly flashes back to inactive when starting a service, incre
         <property name="plainText">
          <string>This tool will help you configure sudo.
 
-It creates snippets for inclusion in the /etc/sudoers configuration file. Sudo allows fine-grained control, this tool will cover the most standard setups, but they will be sufficient. Simply choose the config that most suits your needs, append the generated snippet to your /etc/sudoers and use the button below to check configuration.</string>
+It creates snippets for inclusion in the /etc/sudoers configuration file. Sudo allows fine-grained control, this tool will cover the most standard setups, but they will be sufficient. Simply choose the config that most suits your needs, append the generated snippet to your /etc/sudoers and use the button below to check your configuration.
+
+Please note: sudo can be configured to work without asking for a password. As of now, Service Monitor is *not* compatible with this setting.
+Besides, it can be highly dangerous, so you shouldn't be using it anyway. </string>
         </property>
        </widget>
       </item>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <widget class="QLabel" name="label_8">
+          <property name="font">
+           <font>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Current user:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="usernameLabel">
+          <property name="font">
+           <font>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>User:</string>
+          </property>
+         </widget>
+        </item>
         <item>
          <spacer name="horizontalSpacer">
           <property name="font">
@@ -266,7 +297,41 @@ It creates snippets for inclusion in the /etc/sudoers configuration file. Sudo a
          </spacer>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QLabel" name="label_6">
+          <property name="font">
+           <font>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Password:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="passwordLineEdit">
+          <property name="echoMode">
+           <enum>QLineEdit::Password</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="checkSudoButton">
           <property name="font">
            <font>
             <weight>50</weight>
@@ -319,7 +384,7 @@ It creates snippets for inclusion in the /etc/sudoers configuration file. Sudo a
       </size>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="help">
       <property name="sizePolicy">
@@ -366,7 +431,7 @@ variables to customize paths and tools.</string>
        </sizepolicy>
       </property>
       <attribute name="title">
-       <string>Environment variables</string>
+       <string>Sudo </string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_5">
        <property name="margin">

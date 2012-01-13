@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import shutil, random, os, sys
+import shutil, random, os, sys, getpass
 from functools import *
 
 from PyQt4.QtCore import *
@@ -91,6 +91,11 @@ class ConfigDialog(KPageDialog):
     self.settingsPage.pollingIntervalSpinbox.valueChanged[float].connect(partial(self.saveConfigValue, 'pollingInterval'))
     self.settingsPage.sleepTimeSpinbox.valueChanged[float].connect(partial(self.saveConfigValue, 'sleepTime'))
     self.settingsPage.themeComboBox.currentIndexChanged[QString].connect(partial(self.saveConfigValue, 'indicatorTheme'))
+    self.settingsPage.sudoHelperComboBox.currentIndexChanged[int].connect(self.showSudoSnippet)
+    self.settingsPage.checkSudoButton.clicked.connect(self.checkSudo)
+
+    # Sonstige Initialisierungaufgaben...
+    self.settingsPage.sudoHelperDefaultText = self.settingsPage.sudoHelperTextarea.document().toPlainText()
 
     # Cleanup actions when closing the config dialog
     self.closeClicked.connect(self.stopEditmode)
@@ -210,7 +215,7 @@ class ConfigDialog(KPageDialog):
         if select == service.id: self.servicesPage.inactiveServicesList.setCurrentItem(item)
 
 
-  ## [slot] Updates the icon in the list for the service which has sent the stateChanged() signal.
+  ## Updates the icon in the list for the service which has sent the stateChanged() signal.
   def refreshIndicator(self, service):
     allItems = [self.servicesPage.activeServicesList.item(i) for i in range(self.servicesPage.activeServicesList.count())] + \
                [self.servicesPage.inactiveServicesList.item(i) for i in range(self.servicesPage.inactiveServicesList.count())]
@@ -219,7 +224,7 @@ class ConfigDialog(KPageDialog):
         item.setIcon(self.installStateIndicator(service))
 
 
-  ## [slot] Print info about the clicked service in the textarea.
+  ## Print info about the clicked service in the textarea.
   def showServiceInfo(self, item):
     if hasattr(item, 'source'):
       self.servicesPage.infoTextarea.document().setHtml(item.source.description)
@@ -237,7 +242,7 @@ class ConfigDialog(KPageDialog):
       )
 
 
-  ## [slot] Add selected service to the list of active services (then repopulate lists).
+  ## Add selected service to the list of active services (then repopulate lists).
   def activateService(self):
     '''Fügt einen Service zur Liste der aktiven hinzu und aktualisiert dann alles'''
     activeServicesIDs = self.config.value("activeServices").toStringList()
@@ -248,7 +253,7 @@ class ConfigDialog(KPageDialog):
     self.configurationChanged.emit()
 
 
-  ## [slot] Remove selected service to the list of active services (then repopulate lists).
+  ## Remove selected service to the list of active services (then repopulate lists).
   def deactivateService(self):
     activeServicesIDs = self.config.value("activeServices").toStringList()
     try: activeServicesIDs.removeAll( self.servicesPage.activeServicesList.currentItem().service.id )
@@ -286,16 +291,16 @@ class ConfigDialog(KPageDialog):
     self.configurationChanged.emit()
 
 
-  ## [slot] Calls self.sort('up')
+  ## Calls self.sort('up')
   def sortUp(self): self.sort('up')
 
-  ## [slot] Calls self.sort('down')
+  ## Calls self.sort('down')
   def sortDown(self): self.sort('down')
 
-  ## [slot] Calls self.sort('top')
+  ## Calls self.sort('top')
   def sortTop(self): self.sort('top')
 
-  ## [slot] Calls self.sort('bottom')
+  ## Calls self.sort('bottom')
   def sortBottom(self): self.sort('bottom')
 
 
@@ -350,7 +355,7 @@ class ConfigDialog(KPageDialog):
     QTimer.singleShot(1000, startDownload)
 
 
-  ## [slot] Shows information about the clicked source in the text area.
+  ## Shows information about the clicked source in the text area.
   def showSourceInfo(self, item):
     if not hasattr(item, 'source'): return
     self.sourcesPage.infoTextarea.document().setHtml(item.source.description)
@@ -375,7 +380,7 @@ class ConfigDialog(KPageDialog):
         self.customPage.serviceList.setCurrentItem(item)
 
 
-  ## [slot] Switches editmode on or off.
+  ## Switches editmode on or off.
   # @param save Save when disabling editmode?
   # When entering editmode, the list is disabled and the line edits are enabled and vice versa when editmode is left.
   # In editmode, the edit button becomes a save button and the remove button becomes a cancel button.
@@ -424,7 +429,7 @@ class ConfigDialog(KPageDialog):
     self.customPage.shareButton.setEnabled(True)
     self.customPage.serviceList.setEnabled(True)
 
-  ## [slot] Writes data of selected custom service to line edits.
+  ## Writes data of selected custom service to line edits.
   # Called as slot when a custom service in the list is clicked.
   def synchronizeLineEdits(self, x = None):
     service = self.customPage.serviceList.currentItem().service
@@ -449,7 +454,7 @@ class ConfigDialog(KPageDialog):
     service.sudo         = self.customPage.sudoCheckbox.checkState() == Qt.Checked
 
 
-  ## [slot] Deletes selected custom service (and repopulate all lists)
+  ## Deletes selected custom service (and repopulate all lists)
   # When in editmode, cancel without saving.
   def removeCustomService(self):
 
@@ -468,7 +473,7 @@ class ConfigDialog(KPageDialog):
         self.configurationChanged.emit()
 
 
-  ## [slot] Adds a new, empty service with random ID to custom.xml and reload the sources.
+  ## Adds a new, empty service with random ID to custom.xml and reload the sources.
   def addCustomService(self):
     service = Service()
     service.id = 'custom-%i' % random.randrange(1, 999999)
@@ -492,7 +497,7 @@ class ConfigDialog(KPageDialog):
     self.customPage.sudoCheckbox.setEnabled(status)
 
 
-  ## [slot] Submits the data of the currently selected service via GET request to documentroot.net.
+  ## Submits the data of the currently selected service via GET request to documentroot.net.
   def uploadCustomService(self):
     if not self.customPage.serviceList.currentItem(): return
     answer = QMessageBox.question(self, self.tr('Upload service definition'), self.tr('This will open a page in your web browser where you can submit the selected service definition to the community.'), QMessageBox.Ok | QMessageBox.Cancel)
@@ -515,7 +520,7 @@ class ConfigDialog(KPageDialog):
   def populateSettings(self):
     self.settingsPage.pollingIntervalSpinbox.setValue(self.config.value('pollingInterval').toDouble()[0])
     self.settingsPage.sleepTimeSpinbox.setValue(self.config.value('sleepTime').toDouble()[0])
-
+    self.settingsPage.usernameLabel.setText(getpass.getuser())
     themes = QStringList([fn for fn in os.listdir(codedir + "/indicators")])
     themes.sort()
     self.settingsPage.themeComboBox.blockSignals(True)
@@ -528,6 +533,40 @@ class ConfigDialog(KPageDialog):
   def saveConfigValue(self, name, value):
     self.config.setValue(name, value)
     self.configurationChanged.emit()
+
+
+  # Generates a sudoers config snippet and displays it in the text area
+  def showSudoSnippet(self, selected):
+    if selected == 0:
+      text = self.settingsPage.sudoHelperDefaultText
+    else:
+      text = self.tr("# copy-paste this snippet into your /etc/sudoers file:\n\n")
+      if selected in [2,4]:
+        text.append("Defaults rootpw\n")
+      if selected in [3,4]:
+        text.append("%s ALL=(ALL:ALL) ALL" % getpass.getuser())
+      else:
+        text.append(chr(37)).append("sudo ALL=(ALL:ALL) ALL")
+    self.settingsPage.sudoHelperTextarea.document().setPlainText(text)
+    
+
+  # executes a command to check sudo configuration
+  def checkSudo(self):
+    proc = BashProcess()
+    proc.setBashCommand('cat /etc/sudoers')
+    proc.setSudoPassword(self.settingsPage.passwordLineEdit.text())
+    proc.start()
+    proc.waitForStarted()
+    if proc.errorType() == QProcess.FailedToStart and proc.errorMessage():
+      QMessageBox.critical(None, self.tr('Command failed to start'), QString(proc.errorMessage()))
+    elif proc.errorType() == QProcess.FailedToStart and not isinstance(self, BashProcess):
+      QMessageBox.critical(None, self.tr('Command failed to start'), self.tr("There was an error starting the command. Please check your sudo installation."))
+    elif proc.errorType() == BashProcess.PermissionError:
+      QMessageBox.critical(None, self.tr('Sudo permission error'), QString(proc.errorMessage()))
+    elif proc.errorType() == BashProcess.PasswordError:
+      QMessageBox.warning(None, self.tr('Wrong password'), self.tr("It seems you gave the wrong password. Try again."))
+    else:
+      QMessageBox.information(None, self.tr('Success'), self.tr("Your installation seems to be working. Now try to start/stop some services in your list."))
 
 
 

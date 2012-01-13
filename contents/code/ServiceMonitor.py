@@ -109,7 +109,7 @@ class ServiceMonitor(Applet):
     self.passwordDialog.newPasswordAvailable[QString].connect(retry)
 
 
-  ## [slot] Create all widgets inside the main layout and set up the services for monitoring.
+  ## Create all widgets inside the main layout and set up the services for monitoring.
   # This function is called as slot whenever the configuration has changed.
   @pyqtSlot()
   def setupServicesAndWidgets(self):
@@ -166,7 +166,7 @@ class ServiceMonitor(Applet):
       service.setPolling(True, interval)
 
 
-  ## [slot] Starts or stops a service corresponding to the icon clicked.
+  ## Starts or stops a service corresponding to the icon clicked.
   def iconClicked(self, service):
     if service.state[0] == 'missing':
       QMessageBox.warning(None, self.tr("Error"), self.tr('Service "%1" not installed. Aborting.').arg(service.id))
@@ -183,7 +183,7 @@ class ServiceMonitor(Applet):
     self.widgets[service.id]['status'].setIcon(icon)
 
 
-  ## [slot] Shows/hides popup dialog.
+  ## Shows/hides popup dialog.
   @pyqtSlot()
   def togglePopup(self):
     if self.popup.isVisible():

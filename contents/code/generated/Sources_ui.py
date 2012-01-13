@@ -12,7 +12,6 @@ class Ui_Sources(object):
     def setupUi(self, Sources):
         Sources.setObjectName(_fromUtf8("Sources"))
         Sources.resize(604, 435)
-        Sources.setWindowTitle(QtGui.QApplication.translate("Sources", "Dialog", None, QtGui.QApplication.UnicodeUTF8))
         self.verticalLayout_5 = QtGui.QVBoxLayout(Sources)
         self.verticalLayout_5.setObjectName(_fromUtf8("verticalLayout_5"))
         self.horizontalLayout = QtGui.QHBoxLayout()
@@ -20,8 +19,6 @@ class Ui_Sources(object):
         spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem)
         self.searchButton = QtGui.QPushButton(Sources)
-        self.searchButton.setToolTip(QtGui.QApplication.translate("Sources", "Look for new XML files on the internet", None, QtGui.QApplication.UnicodeUTF8))
-        self.searchButton.setText(QtGui.QApplication.translate("Sources", "Search for new source files", None, QtGui.QApplication.UnicodeUTF8))
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(_fromUtf8(":/search.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.searchButton.setIcon(icon)
@@ -75,9 +72,6 @@ class Ui_Sources(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_2.sizePolicy().hasHeightForWidth())
         self.label_2.setSizePolicy(sizePolicy)
-        self.label_2.setText(QtGui.QApplication.translate("Sources", "This list holds files containing service definitions. You can search www.documentroot.net\n"
-"for updated definitions and then include them in the applet, so you can immediately\n"
-"use them.", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.label_2.setObjectName(_fromUtf8("label_2"))
         self.verticalLayout_2.addWidget(self.label_2)
@@ -91,6 +85,11 @@ class Ui_Sources(object):
         QtCore.QMetaObject.connectSlotsByName(Sources)
 
     def retranslateUi(self, Sources):
-        pass
+        Sources.setWindowTitle(QtGui.QApplication.translate("Sources", "Dialog", None, QtGui.QApplication.UnicodeUTF8))
+        self.searchButton.setToolTip(QtGui.QApplication.translate("Sources", "Look for new XML files on the internet", None, QtGui.QApplication.UnicodeUTF8))
+        self.searchButton.setText(QtGui.QApplication.translate("Sources", "Search for new source files", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_2.setText(QtGui.QApplication.translate("Sources", "This list holds files containing service definitions. You can search www.documentroot.net\n"
+"for updated definitions and then include them in the applet, so you can immediately\n"
+"use them.", None, QtGui.QApplication.UnicodeUTF8))
 
 import icons_rc
