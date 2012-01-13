@@ -73,6 +73,7 @@ class ConfigDialog(KPageDialog):
     self.servicesPage.sortDownButton.clicked.connect(self.sortDown)
     self.servicesPage.sortTopButton.clicked.connect(self.sortTop)
     self.servicesPage.sortBottomButton.clicked.connect(self.sortBottom)
+    self.servicesPage.hideUnavailableCheckBox.stateChanged.connect(self.refreshIndicatorsAndVisibility)
 
     # Connections für die SourcesPage
     self.sourcesPage.searchButton.clicked.connect(self.downloadSources)
@@ -128,7 +129,7 @@ class ConfigDialog(KPageDialog):
       for service in source.services:
         if not self.services.has_key(service.id) or self.services[service.id].priority <= service.priority:
           self.services[service.id] = service
-          service.stateChanged.connect(partial(self.refreshIndicator, service))
+          service.stateChanged.connect(self.refreshIndicatorsAndVisibility)
           service.overridden = False
         else:
           service.overridden = True
@@ -197,7 +198,6 @@ class ConfigDialog(KPageDialog):
       item = QListWidgetItem(service.name)
       item.service = service
       self.servicesPage.activeServicesList.addItem(item)
-      item.setIcon(self.installStateIndicator(service))
       if select == service.id: self.servicesPage.activeServicesList.setCurrentItem(item)
     for source in activeSources:
       filename = source.filename
@@ -211,17 +211,17 @@ class ConfigDialog(KPageDialog):
         item = QListWidgetItem(service.name)
         item.service = service
         self.servicesPage.inactiveServicesList.addItem(item)
-        item.setIcon(self.installStateIndicator(service))
         if select == service.id: self.servicesPage.inactiveServicesList.setCurrentItem(item)
+    self.refreshIndicatorsAndVisibility()
 
 
-  ## Updates the icon in the list for the service which has sent the stateChanged() signal.
-  def refreshIndicator(self, service):
-    allItems = [self.servicesPage.activeServicesList.item(i) for i in range(self.servicesPage.activeServicesList.count())] + \
-               [self.servicesPage.inactiveServicesList.item(i) for i in range(self.servicesPage.inactiveServicesList.count())]
-    for item in allItems:
-      if hasattr(item, "service") and item.service == service:
-        item.setIcon(self.installStateIndicator(service))
+  def refreshIndicatorsAndVisibility(self):
+    activeItems    = [self.servicesPage.activeServicesList.item(i) for i in range(self.servicesPage.activeServicesList.count()) if hasattr(self.servicesPage.activeServicesList.item(i), "service")]
+    inactiveItems  = [self.servicesPage.inactiveServicesList.item(i) for i in range(self.servicesPage.inactiveServicesList.count()) if hasattr(self.servicesPage.inactiveServicesList.item(i), "service")]
+    for item in activeItems + inactiveItems:
+      item.setIcon(self.installStateIndicator(item.service))
+    for item in inactiveItems:
+      item.setHidden(self.servicesPage.hideUnavailableCheckBox.checkState() == Qt.Checked and item.service.state[0] == 'missing')
 
 
   ## Print info about the clicked service in the textarea.

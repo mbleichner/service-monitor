@@ -354,22 +354,22 @@ Um z.B. die Existenz einer Datei zu prüfen, kann man &quot;ls /pfad/zur/datei&q
 <context>
     <name>Services</name>
     <message>
-        <location filename="Services_ui.py" line="220"/>
+        <location filename="Services_ui.py" line="227"/>
         <source>Dialog</source>
         <translation>Dialog</translation>
     </message>
     <message>
-        <location filename="Services_ui.py" line="221"/>
+        <location filename="Services_ui.py" line="228"/>
         <source>Active Services</source>
         <translation>Überwachte Dienste</translation>
     </message>
     <message>
-        <location filename="Services_ui.py" line="222"/>
+        <location filename="Services_ui.py" line="229"/>
         <source>Available Services</source>
         <translation>Verfügbare Dienste</translation>
     </message>
     <message>
-        <location filename="Services_ui.py" line="223"/>
+        <location filename="Services_ui.py" line="231"/>
         <source>Add the services to be monitored to the list of active services. The icons show the install
 status of each service. If you find some service missing, you can add it either as custom
 service or through a source file downloaded from the internet (see the sources tab).</source>
@@ -378,7 +378,7 @@ zeigen an, ob der jeweilige Dienst installiert ist. Falls due einen bestimmten D
 kannst du ihn entweder selbst anlegen oder im Internet nach aktualisierten Definitionen suchen.</translation>
     </message>
     <message>
-        <location filename="Services_ui.py" line="226"/>
+        <location filename="Services_ui.py" line="234"/>
         <source>This list shows all services to be monitored. Add items from the right-hand list and reorder
 them to your needs. Be aware that only services marked with a green dot will work.
 A red dot means the install check has failed, so the definition will not work.</source>
@@ -387,7 +387,7 @@ Liste hinzu und ordne sie nach Belieben an. Achtung: nur grün markierte Dienste
 funktionieren - ein roter Punkt bedeutet, dass der Install-Check fehlgeschlagen ist.</translation>
     </message>
     <message>
-        <location filename="Services_ui.py" line="230"/>
+        <location filename="Services_ui.py" line="238"/>
         <source>The list of available services is loaded from your definition source files, which you can
 manage under the &quot;Sources&quot; tab. If a specific service is missing here, try looking for it
 in the sources tab or define it yourself under &quot;Custom Services&quot;.</source>
@@ -396,14 +396,19 @@ im Tab &quot;Quellen&quot; verwaltet werden können. Wenn ein bestimmter Dienst 
 zunächst dort oder definiere ihn unter &quot;Eigene Dienste&quot; selbst.</translation>
     </message>
     <message>
-        <location filename="Services_ui.py" line="229"/>
+        <location filename="Services_ui.py" line="237"/>
         <source>Active services</source>
         <translation>Überwachte Dienste</translation>
     </message>
     <message>
-        <location filename="Services_ui.py" line="233"/>
+        <location filename="Services_ui.py" line="241"/>
         <source>Available services</source>
         <translation>Verfügbare Dienste</translation>
+    </message>
+    <message>
+        <location filename="Services_ui.py" line="230"/>
+        <source>Hide unavailable services</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

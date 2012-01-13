@@ -11,7 +11,7 @@ except AttributeError:
 class Ui_Services(object):
     def setupUi(self, Services):
         Services.setObjectName(_fromUtf8("Services"))
-        Services.resize(604, 427)
+        Services.resize(604, 508)
         self.verticalLayout_8 = QtGui.QVBoxLayout(Services)
         self.verticalLayout_8.setObjectName(_fromUtf8("verticalLayout_8"))
         self.horizontalLayout_2 = QtGui.QHBoxLayout()
@@ -106,6 +106,11 @@ class Ui_Services(object):
         self.inactiveServicesList.setSizePolicy(sizePolicy)
         self.inactiveServicesList.setObjectName(_fromUtf8("inactiveServicesList"))
         self.verticalLayout_3.addWidget(self.inactiveServicesList)
+        self.hideUnavailableCheckBox = QtGui.QCheckBox(Services)
+        self.hideUnavailableCheckBox.setMinimumSize(QtCore.QSize(0, 25))
+        self.hideUnavailableCheckBox.setMaximumSize(QtCore.QSize(16777215, 25))
+        self.hideUnavailableCheckBox.setObjectName(_fromUtf8("hideUnavailableCheckBox"))
+        self.verticalLayout_3.addWidget(self.hideUnavailableCheckBox)
         self.horizontalLayout_2.addLayout(self.verticalLayout_3)
         self.verticalLayout_8.addLayout(self.horizontalLayout_2)
         self.line = QtGui.QFrame(Services)
@@ -120,11 +125,12 @@ class Ui_Services(object):
         self.verticalLayout_8.addWidget(self.line)
         self.infoTextarea = QtGui.QTextEdit(Services)
         self.infoTextarea.setEnabled(True)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Maximum)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.infoTextarea.sizePolicy().hasHeightForWidth())
         self.infoTextarea.setSizePolicy(sizePolicy)
+        self.infoTextarea.setMaximumSize(QtCore.QSize(16777215, 130))
         self.infoTextarea.setStyleSheet(_fromUtf8(""))
         self.infoTextarea.setFrameShadow(QtGui.QFrame.Sunken)
         self.infoTextarea.setReadOnly(True)
@@ -213,13 +219,15 @@ class Ui_Services(object):
         Services.setTabOrder(self.sortTopButton, self.sortUpButton)
         Services.setTabOrder(self.sortUpButton, self.sortDownButton)
         Services.setTabOrder(self.sortDownButton, self.sortBottomButton)
-        Services.setTabOrder(self.sortBottomButton, self.infoTextarea)
+        Services.setTabOrder(self.sortBottomButton, self.hideUnavailableCheckBox)
+        Services.setTabOrder(self.hideUnavailableCheckBox, self.infoTextarea)
         Services.setTabOrder(self.infoTextarea, self.helpTabWidget)
 
     def retranslateUi(self, Services):
         Services.setWindowTitle(QtGui.QApplication.translate("Services", "Dialog", None, QtGui.QApplication.UnicodeUTF8))
         self.activeServicesLabel.setText(QtGui.QApplication.translate("Services", "Active Services", None, QtGui.QApplication.UnicodeUTF8))
         self.inactiveServicesLabel.setText(QtGui.QApplication.translate("Services", "Available Services", None, QtGui.QApplication.UnicodeUTF8))
+        self.hideUnavailableCheckBox.setText(QtGui.QApplication.translate("Services", "Hide unavailable services", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setText(QtGui.QApplication.translate("Services", "Add the services to be monitored to the list of active services. The icons show the install\n"
 "status of each service. If you find some service missing, you can add it either as custom\n"
 "service or through a source file downloaded from the internet (see the sources tab).", None, QtGui.QApplication.UnicodeUTF8))

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>604</width>
-    <height>427</height>
+    <height>508</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -171,6 +171,25 @@
          </property>
         </widget>
        </item>
+       <item>
+        <widget class="QCheckBox" name="hideUnavailableCheckBox">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>25</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>25</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Hide unavailable services</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </item>
     </layout>
@@ -194,10 +213,16 @@
       <bool>true</bool>
      </property>
      <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>130</height>
+      </size>
      </property>
      <property name="styleSheet">
       <string notr="true"/>
@@ -351,6 +376,7 @@ in the sources tab or define it yourself under &quot;Custom Services&quot;.</str
   <tabstop>sortUpButton</tabstop>
   <tabstop>sortDownButton</tabstop>
   <tabstop>sortBottomButton</tabstop>
+  <tabstop>hideUnavailableCheckBox</tabstop>
   <tabstop>infoTextarea</tabstop>
   <tabstop>helpTabWidget</tabstop>
  </tabstops>

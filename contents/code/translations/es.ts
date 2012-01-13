@@ -360,22 +360,22 @@ Por ejemplo, para comprobar que un fichero existe, puedes utilizar: ls /ruta/al/
 <context>
     <name>Services</name>
     <message>
-        <location filename="Services_ui.py" line="220"/>
+        <location filename="Services_ui.py" line="227"/>
         <source>Dialog</source>
         <translation type="unfinished">Diálogo</translation>
     </message>
     <message>
-        <location filename="Services_ui.py" line="221"/>
+        <location filename="Services_ui.py" line="228"/>
         <source>Active Services</source>
         <translation type="unfinished">Servicios Activos</translation>
     </message>
     <message>
-        <location filename="Services_ui.py" line="222"/>
+        <location filename="Services_ui.py" line="229"/>
         <source>Available Services</source>
         <translation type="unfinished">Servicios Disponibles</translation>
     </message>
     <message>
-        <location filename="Services_ui.py" line="223"/>
+        <location filename="Services_ui.py" line="231"/>
         <source>Add the services to be monitored to the list of active services. The icons show the install
 status of each service. If you find some service missing, you can add it either as custom
 service or through a source file downloaded from the internet (see the sources tab).</source>
@@ -384,7 +384,7 @@ el estado de instalación de cada servicio. Si notas que falta algún servicio, 
 servicio personalizado o a través de un fichero fuente descargado de internet (mira la pestaña de fuentes).</translation>
     </message>
     <message>
-        <location filename="Services_ui.py" line="226"/>
+        <location filename="Services_ui.py" line="234"/>
         <source>This list shows all services to be monitored. Add items from the right-hand list and reorder
 them to your needs. Be aware that only services marked with a green dot will work.
 A red dot means the install check has failed, so the definition will not work.</source>
@@ -393,7 +393,7 @@ reordénalas a tu gusto. Ten en cuenta que sólo los servicios marcados con un p
 Un punto rojo significa que el chequeo de instalación ha fallado, así es que la definición no funcionará.</translation>
     </message>
     <message>
-        <location filename="Services_ui.py" line="230"/>
+        <location filename="Services_ui.py" line="238"/>
         <source>The list of available services is loaded from your definition source files, which you can
 manage under the &quot;Sources&quot; tab. If a specific service is missing here, try looking for it
 in the sources tab or define it yourself under &quot;Custom Services&quot;.</source>
@@ -402,14 +402,19 @@ gestionar en la pestaña &quot;Fuentes&quot;. Si falta algún servicio específi
 de fuentes o defínelo tú mismo en &quot;Servicios Personalizados&quot;.</translation>
     </message>
     <message>
-        <location filename="Services_ui.py" line="229"/>
+        <location filename="Services_ui.py" line="237"/>
         <source>Active services</source>
         <translation type="unfinished">Servicios activos</translation>
     </message>
     <message>
-        <location filename="Services_ui.py" line="233"/>
+        <location filename="Services_ui.py" line="241"/>
         <source>Available services</source>
         <translation type="unfinished">Servicios disponibles</translation>
+    </message>
+    <message>
+        <location filename="Services_ui.py" line="230"/>
+        <source>Hide unavailable services</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
