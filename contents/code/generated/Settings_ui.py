@@ -241,6 +241,13 @@ class Ui_Settings(object):
         self.retranslateUi(Settings)
         self.helpTabWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(Settings)
+        Settings.setTabOrder(self.pollingIntervalSpinbox, self.sleepTimeSpinbox)
+        Settings.setTabOrder(self.sleepTimeSpinbox, self.themeComboBox)
+        Settings.setTabOrder(self.themeComboBox, self.sudoHelperComboBox)
+        Settings.setTabOrder(self.sudoHelperComboBox, self.sudoHelperTextarea)
+        Settings.setTabOrder(self.sudoHelperTextarea, self.passwordLineEdit)
+        Settings.setTabOrder(self.passwordLineEdit, self.checkSudoButton)
+        Settings.setTabOrder(self.checkSudoButton, self.helpTabWidget)
 
     def retranslateUi(self, Settings):
         Settings.setWindowTitle(QtGui.QApplication.translate("Settings", "Dialog", None, QtGui.QApplication.UnicodeUTF8))

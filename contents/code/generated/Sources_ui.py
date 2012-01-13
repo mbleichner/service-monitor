@@ -83,6 +83,9 @@ class Ui_Sources(object):
         self.retranslateUi(Sources)
         self.helpTabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(Sources)
+        Sources.setTabOrder(self.searchButton, self.sourceList)
+        Sources.setTabOrder(self.sourceList, self.infoTextarea)
+        Sources.setTabOrder(self.infoTextarea, self.helpTabWidget)
 
     def retranslateUi(self, Sources):
         Sources.setWindowTitle(QtGui.QApplication.translate("Sources", "Dialog", None, QtGui.QApplication.UnicodeUTF8))

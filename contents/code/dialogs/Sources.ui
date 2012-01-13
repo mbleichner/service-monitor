@@ -137,6 +137,12 @@ use them.</string>
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>searchButton</tabstop>
+  <tabstop>sourceList</tabstop>
+  <tabstop>infoTextarea</tabstop>
+  <tabstop>helpTabWidget</tabstop>
+ </tabstops>
  <resources>
   <include location="../resources/icons/icons.qrc"/>
  </resources>

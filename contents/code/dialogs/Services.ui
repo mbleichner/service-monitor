@@ -342,6 +342,18 @@ in the sources tab or define it yourself under &quot;Custom Services&quot;.</str
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>activeServicesList</tabstop>
+  <tabstop>inactiveServicesList</tabstop>
+  <tabstop>activateButton</tabstop>
+  <tabstop>deactivateButton</tabstop>
+  <tabstop>sortTopButton</tabstop>
+  <tabstop>sortUpButton</tabstop>
+  <tabstop>sortDownButton</tabstop>
+  <tabstop>sortBottomButton</tabstop>
+  <tabstop>infoTextarea</tabstop>
+  <tabstop>helpTabWidget</tabstop>
+ </tabstops>
  <resources>
   <include location="../resources/icons/icons.qrc"/>
  </resources>

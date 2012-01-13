@@ -380,6 +380,21 @@ will be mentioned as author of the submission. Please only submit working defini
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>serviceList</tabstop>
+  <tabstop>addButton</tabstop>
+  <tabstop>editButton</tabstop>
+  <tabstop>removeButton</tabstop>
+  <tabstop>shareButton</tabstop>
+  <tabstop>serviceNameInput</tabstop>
+  <tabstop>descriptionInput</tabstop>
+  <tabstop>installCheckInput</tabstop>
+  <tabstop>runningCheckInput</tabstop>
+  <tabstop>startCommandInput</tabstop>
+  <tabstop>stopCommandInput</tabstop>
+  <tabstop>sudoCheckbox</tabstop>
+  <tabstop>helpTabWidget</tabstop>
+ </tabstops>
  <resources>
   <include location="../resources/icons/icons.qrc"/>
  </resources>

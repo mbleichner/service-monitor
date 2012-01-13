@@ -464,6 +464,16 @@ the path to your init-scripts (usually /etc/init.d).</string>
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>pollingIntervalSpinbox</tabstop>
+  <tabstop>sleepTimeSpinbox</tabstop>
+  <tabstop>themeComboBox</tabstop>
+  <tabstop>sudoHelperComboBox</tabstop>
+  <tabstop>sudoHelperTextarea</tabstop>
+  <tabstop>passwordLineEdit</tabstop>
+  <tabstop>checkSudoButton</tabstop>
+  <tabstop>helpTabWidget</tabstop>
+ </tabstops>
  <resources>
   <include location="../resources/icons/icons.qrc"/>
  </resources>

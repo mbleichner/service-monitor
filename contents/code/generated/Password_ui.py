@@ -72,6 +72,9 @@ class Ui_PasswordDialog(object):
         QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("accepted()")), PasswordDialog.accept)
         QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("rejected()")), PasswordDialog.reject)
         QtCore.QMetaObject.connectSlotsByName(PasswordDialog)
+        PasswordDialog.setTabOrder(self.passwordLineEdit, self.rememberTimeCombobox)
+        PasswordDialog.setTabOrder(self.rememberTimeCombobox, self.rememberTimeSpinbox)
+        PasswordDialog.setTabOrder(self.rememberTimeSpinbox, self.buttonBox)
 
     def retranslateUi(self, PasswordDialog):
         PasswordDialog.setWindowTitle(QtGui.QApplication.translate("PasswordDialog", "Dialog", None, QtGui.QApplication.UnicodeUTF8))

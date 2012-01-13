@@ -206,6 +206,15 @@ class Ui_Services(object):
         self.retranslateUi(Services)
         self.helpTabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(Services)
+        Services.setTabOrder(self.activeServicesList, self.inactiveServicesList)
+        Services.setTabOrder(self.inactiveServicesList, self.activateButton)
+        Services.setTabOrder(self.activateButton, self.deactivateButton)
+        Services.setTabOrder(self.deactivateButton, self.sortTopButton)
+        Services.setTabOrder(self.sortTopButton, self.sortUpButton)
+        Services.setTabOrder(self.sortUpButton, self.sortDownButton)
+        Services.setTabOrder(self.sortDownButton, self.sortBottomButton)
+        Services.setTabOrder(self.sortBottomButton, self.infoTextarea)
+        Services.setTabOrder(self.infoTextarea, self.helpTabWidget)
 
     def retranslateUi(self, Services):
         Services.setWindowTitle(QtGui.QApplication.translate("Services", "Dialog", None, QtGui.QApplication.UnicodeUTF8))

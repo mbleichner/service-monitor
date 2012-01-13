@@ -219,6 +219,18 @@ class Ui_Custom(object):
         self.retranslateUi(Custom)
         self.helpTabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(Custom)
+        Custom.setTabOrder(self.serviceList, self.addButton)
+        Custom.setTabOrder(self.addButton, self.editButton)
+        Custom.setTabOrder(self.editButton, self.removeButton)
+        Custom.setTabOrder(self.removeButton, self.shareButton)
+        Custom.setTabOrder(self.shareButton, self.serviceNameInput)
+        Custom.setTabOrder(self.serviceNameInput, self.descriptionInput)
+        Custom.setTabOrder(self.descriptionInput, self.installCheckInput)
+        Custom.setTabOrder(self.installCheckInput, self.runningCheckInput)
+        Custom.setTabOrder(self.runningCheckInput, self.startCommandInput)
+        Custom.setTabOrder(self.startCommandInput, self.stopCommandInput)
+        Custom.setTabOrder(self.stopCommandInput, self.sudoCheckbox)
+        Custom.setTabOrder(self.sudoCheckbox, self.helpTabWidget)
 
     def retranslateUi(self, Custom):
         Custom.setWindowTitle(QtGui.QApplication.translate("Custom", "Dialog", None, QtGui.QApplication.UnicodeUTF8))
