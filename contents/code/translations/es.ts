@@ -1,94 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="2.0">
 <context>
+    <name>About</name>
+    <message>
+        <location filename="About_ui.py" line="48"/>
+        <source>Dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="About_ui.py" line="49"/>
+        <source>Service Monitor 2.0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="About_ui.py" line="50"/>
+        <source>by Manuel Bleichner</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="About_ui.py" line="51"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;DejaVu Sans&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;For bug reports and feature requests, please use GitHib:&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://github.com/mbleichner/service-monitor/issues&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;https://github.com/mbleichner/service-monitor/issues&lt;/span&gt;&lt;/a&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;You can also contact me directly if you encounter problems:&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;mailto:mbleichner@gmail.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;mbleichner@gmail.com&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;If you like this widget, please vote for it on &lt;a href=&quot;http://kde-look.org/content/show.php/Service+Monitor?content=125203&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;kde-look&lt;/span&gt;&lt;/a&gt; or send me an e-mail :)&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;If you are interested in helping me with development, have a look at the project page on &lt;a href=&quot;https://github.com/mbleichner/service-monitor&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;GitHub&lt;/span&gt;&lt;/a&gt;. Feel free to fork, submit issues or post comments.&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Manuel&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ConfigDialog</name>
     <message>
-        <location filename="ConfigDialog.py" line="51"/>
+        <location filename="ConfigDialog.py" line="52"/>
         <source>Service Monitor Configuration</source>
         <translation type="unfinished">Configuración de Service Monitor</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="56"/>
+        <location filename="ConfigDialog.py" line="58"/>
         <source>Activate Services</source>
         <translation type="unfinished">Activar Servicios</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="57"/>
+        <location filename="ConfigDialog.py" line="59"/>
         <source>Settings</source>
         <translation type="unfinished">Preferencias</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="58"/>
+        <location filename="ConfigDialog.py" line="60"/>
         <source>Manage Sources</source>
         <translation type="unfinished">Gestionar Fuentes</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="59"/>
+        <location filename="ConfigDialog.py" line="61"/>
         <source>Custom Services</source>
         <translation type="unfinished">Servicios Personalizados</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="373"/>
+        <location filename="ConfigDialog.py" line="380"/>
         <source>Error - custom.xml is missing or has been damaged</source>
         <translation type="unfinished">Error - el fichero custom.xml no se encuentra o está dañado</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="427"/>
+        <location filename="ConfigDialog.py" line="434"/>
         <source>Edit selected</source>
         <translation type="unfinished">Modificar seleccionado</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="428"/>
+        <location filename="ConfigDialog.py" line="435"/>
         <source>Remove selected</source>
         <translation type="unfinished">Eliminar seleccionado</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="402"/>
+        <location filename="ConfigDialog.py" line="409"/>
         <source>Save changes</source>
         <translation type="unfinished">Guardar cambios</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="403"/>
+        <location filename="ConfigDialog.py" line="410"/>
         <source>Cancel editing</source>
         <translation type="unfinished">Cancelar edición</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="466"/>
+        <location filename="ConfigDialog.py" line="473"/>
         <source>Remove service</source>
         <translation type="unfinished">Eliminar servicio</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="466"/>
+        <location filename="ConfigDialog.py" line="473"/>
         <source>Really delete the selected service?</source>
         <translation type="unfinished">Esto borrará el servicio seleccionado. ¿Estás seguro?</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="504"/>
+        <location filename="ConfigDialog.py" line="511"/>
         <source>Upload service definition</source>
         <translation type="unfinished">Subir definión del servicio</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="504"/>
+        <location filename="ConfigDialog.py" line="511"/>
         <source>This will open a page in your web browser where you can submit the selected service definition to the community.</source>
         <translation type="unfinished">Esto abrirá una página web en tu navegador, donde podrás subir la definición del servicio seleccionado a la comunidad.</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="317"/>
+        <location filename="ConfigDialog.py" line="324"/>
         <source>%1 (%2, %3 entries)</source>
         <translation type="unfinished">%1 (%2, %3 entradas)</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="482"/>
+        <location filename="ConfigDialog.py" line="489"/>
         <source>Enter a short, concise description here</source>
         <translation type="unfinished">Introduce una descripción corta y concisa aquí</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="481"/>
+        <location filename="ConfigDialog.py" line="488"/>
         <source>New Service, edit me</source>
         <translation type="unfinished">Servicio nuevo, edítame</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="234"/>
+        <location filename="ConfigDialog.py" line="241"/>
         <source>&lt;strong&gt;%1&lt;/strong&gt;&lt;br/&gt;
         %2&lt;br/&gt;
         &lt;table&gt;
@@ -109,50 +148,55 @@
 (sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)&lt;/table&gt;</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="340"/>
+        <location filename="ConfigDialog.py" line="347"/>
         <source>Downloading...</source>
         <translation type="unfinished">Descargando...</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="544"/>
+        <location filename="ConfigDialog.py" line="552"/>
         <source># copy-paste this snippet into your /etc/sudoers file:
 
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="564"/>
+        <location filename="ConfigDialog.py" line="572"/>
         <source>Command failed to start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="564"/>
+        <location filename="ConfigDialog.py" line="572"/>
         <source>There was an error starting the command. Please check your sudo installation.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="566"/>
+        <location filename="ConfigDialog.py" line="574"/>
         <source>Sudo permission error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="568"/>
+        <location filename="ConfigDialog.py" line="576"/>
         <source>Wrong password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="568"/>
+        <location filename="ConfigDialog.py" line="576"/>
         <source>It seems you gave the wrong password. Try again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="570"/>
+        <location filename="ConfigDialog.py" line="578"/>
         <source>Success</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="570"/>
+        <location filename="ConfigDialog.py" line="578"/>
         <source>Your installation seems to be working. Now try to start/stop some services in your list.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="62"/>
+        <source>About</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -319,24 +363,29 @@ Por ejemplo, para comprobar que un fichero existe, puedes utilizar: ls /ruta/al/
 <context>
     <name>Service</name>
     <message>
-        <location filename="Service.py" line="137"/>
+        <location filename="Service.py" line="142"/>
         <source>Command failed to start</source>
         <translation type="unfinished">El comando falló al arrancar</translation>
     </message>
     <message>
-        <location filename="Service.py" line="137"/>
+        <location filename="Service.py" line="142"/>
         <source>There was an error starting the command. Please check your installation.</source>
         <translation type="unfinished">Ocurrió un error al lanzar el comando. Por favor, comprueba tu instalación.</translation>
     </message>
     <message>
-        <location filename="Service.py" line="139"/>
+        <location filename="Service.py" line="144"/>
         <source>Sudo permission error</source>
         <translation type="unfinished">Error en el permiso de sudo</translation>
     </message>
     <message>
         <location filename="Service.py" line="163"/>
         <source>Error</source>
-        <translation type="unfinished">Error</translation>
+        <translation type="obsolete">Error</translation>
+    </message>
+    <message>
+        <location filename="Service.py" line="169"/>
+        <source>Error output</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -347,12 +396,12 @@ Por ejemplo, para comprobar que un fichero existe, puedes utilizar: ls /ruta/al/
         <translation type="unfinished">&lt;b&gt;¡Gracias por descargar&lt;br/&gt;Service Monitor!&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;Haz click con el botón derecho para abrir el diálogo de preferencias.</translation>
     </message>
     <message>
-        <location filename="ServiceMonitor.py" line="172"/>
+        <location filename="ServiceMonitor.py" line="173"/>
         <source>Error</source>
         <translation type="unfinished">Error</translation>
     </message>
     <message>
-        <location filename="ServiceMonitor.py" line="172"/>
+        <location filename="ServiceMonitor.py" line="173"/>
         <source>Service &quot;%1&quot; not installed. Aborting.</source>
         <translation type="unfinished">El servicio &quot;%1&quot; no está instalado. Abortando.</translation>
     </message>

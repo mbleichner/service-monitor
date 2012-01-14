@@ -11,6 +11,7 @@ from generated.Services_ui import *
 from generated.Custom_ui import *
 from generated.Sources_ui import *
 from generated.Settings_ui import *
+from generated.About_ui import *
 
 from Source import *
 from Service import *
@@ -53,10 +54,12 @@ class ConfigDialog(KPageDialog):
     self.servicesPage = ServicesPage(self)
     self.sourcesPage = SourcesPage(self)
     self.customPage = CustomPage(self)
+    self.aboutPage = AboutPage(self)
     self.addPage(self.servicesPage, self.tr("Activate Services")).setIcon(KIcon("run-build-configure"))
     self.addPage(self.settingsPage, self.tr("Settings")).setIcon(KIcon("configure"))
     self.addPage(self.sourcesPage, self.tr("Manage Sources")).setIcon(KIcon("document-new"))
     self.addPage(self.customPage, self.tr("Custom Services")).setIcon(KIcon("edit-rename"))
+    self.addPage(self.aboutPage, self.tr("About")).setIcon(KIcon("help-about"))
 
     # When opening a page, populate the corresponding widgets
     self.servicesPage.show.connect(chain(self.execInstallChecks, self.populateServiceLists))
@@ -604,5 +607,9 @@ class SettingsPage(CustomWidget, Ui_Settings):
     QWidget.__init__(self)
     self.setupUi(self)
 
+class AboutPage(CustomWidget, Ui_About):
+  def __init__(self, configDialog):
+    QWidget.__init__(self)
+    self.setupUi(self)
 
 
