@@ -3,26 +3,20 @@
 <context>
     <name>About</name>
     <message>
-        <location filename="About_ui.py" line="48"/>
+        <location filename="About_ui.py" line="34"/>
         <source>Dialog</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="About_ui.py" line="49"/>
-        <source>Service Monitor 2.0</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="About_ui.py" line="50"/>
-        <source>by Manuel Bleichner</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="About_ui.py" line="51"/>
+        <location filename="About_ui.py" line="35"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;DejaVu Sans&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:20pt; font-weight:600;&quot;&gt;Service Monitor 2.0&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#585858;&quot;&gt;- by Manuel Bleichner -&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;For bug reports and feature requests, please use GitHib:&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;https://github.com/mbleichner/service-monitor/issues&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;https://github.com/mbleichner/service-monitor/issues&lt;/span&gt;&lt;/a&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
@@ -35,7 +29,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;If you are interested in helping me with development, have a look at the project page on &lt;a href=&quot;https://github.com/mbleichner/service-monitor&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;GitHub&lt;/span&gt;&lt;/a&gt;. Feel free to fork, submit issues or post comments.&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Manuel&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;- Manuel&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -72,42 +66,42 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="434"/>
+        <location filename="ConfigDialog.py" line="444"/>
         <source>Edit selected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="435"/>
+        <location filename="ConfigDialog.py" line="445"/>
         <source>Remove selected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="409"/>
+        <location filename="ConfigDialog.py" line="419"/>
         <source>Save changes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="410"/>
+        <location filename="ConfigDialog.py" line="420"/>
         <source>Cancel editing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="473"/>
+        <location filename="ConfigDialog.py" line="483"/>
         <source>Remove service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="473"/>
+        <location filename="ConfigDialog.py" line="483"/>
         <source>Really delete the selected service?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="511"/>
+        <location filename="ConfigDialog.py" line="521"/>
         <source>Upload service definition</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="511"/>
+        <location filename="ConfigDialog.py" line="521"/>
         <source>This will open a page in your web browser where you can submit the selected service definition to the community.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -117,12 +111,12 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="489"/>
+        <location filename="ConfigDialog.py" line="499"/>
         <source>Enter a short, concise description here</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="488"/>
+        <location filename="ConfigDialog.py" line="498"/>
         <source>New Service, edit me</source>
         <translation type="unfinished"></translation>
     </message>
@@ -145,42 +139,42 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="572"/>
+        <location filename="ConfigDialog.py" line="582"/>
         <source>Command failed to start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="572"/>
+        <location filename="ConfigDialog.py" line="582"/>
         <source>There was an error starting the command. Please check your sudo installation.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="576"/>
+        <location filename="ConfigDialog.py" line="586"/>
         <source>Wrong password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="574"/>
+        <location filename="ConfigDialog.py" line="584"/>
         <source>Sudo permission error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="578"/>
+        <location filename="ConfigDialog.py" line="588"/>
         <source>Success</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="578"/>
+        <location filename="ConfigDialog.py" line="588"/>
         <source>Your installation seems to be working. Now try to start/stop some services in your list.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="576"/>
+        <location filename="ConfigDialog.py" line="586"/>
         <source>It seems you gave the wrong password. Try again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="552"/>
+        <location filename="ConfigDialog.py" line="562"/>
         <source># copy-paste this snippet into your /etc/sudoers file:
 
 </source>
@@ -191,114 +185,129 @@ p, li { white-space: pre-wrap; }
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="ConfigDialog.py" line="392"/>
+        <source>Copy existing</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Custom</name>
     <message>
-        <location filename="Custom_ui.py" line="236"/>
+        <location filename="Custom_ui.py" line="247"/>
         <source>Dialog</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="237"/>
-        <source>Add custom service</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Custom_ui.py" line="238"/>
-        <source>Edit selected</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Custom_ui.py" line="239"/>
-        <source>Remove selected</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Custom_ui.py" line="240"/>
+        <location filename="Custom_ui.py" line="252"/>
         <source>Upload service definition for other people</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="263"/>
+        <location filename="Custom_ui.py" line="275"/>
         <source>Share with others</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="242"/>
+        <location filename="Custom_ui.py" line="254"/>
         <source>Service Name:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="243"/>
+        <location filename="Custom_ui.py" line="255"/>
         <source>Short description:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="244"/>
+        <location filename="Custom_ui.py" line="256"/>
         <source>Install check:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="245"/>
+        <location filename="Custom_ui.py" line="257"/>
         <source>Running check:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="246"/>
+        <location filename="Custom_ui.py" line="258"/>
         <source>Start command:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="247"/>
+        <location filename="Custom_ui.py" line="259"/>
         <source>Stop command:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="250"/>
+        <location filename="Custom_ui.py" line="262"/>
         <source>Here you can create and edit custom service definitions. Tailor them exactly to your
 needs and share useful definitions with other people!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="256"/>
+        <location filename="Custom_ui.py" line="268"/>
         <source>Every command should terminate shortly after invocation. Unlike the earlier version, the
 desktop will no longer freeze if a command does not terminate, but Service Monitor will never
 know if the command succeeded. Use &quot;&amp;&quot; to start a process in background if necessary.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="260"/>
+        <location filename="Custom_ui.py" line="272"/>
         <source>Using this button, you can submit a service definition on www.documentroot.net, where
 they may be included in the official sources, so others can download it. If you wish, you
 will be mentioned as author of the submission. Please only submit working definitions!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="252"/>
+        <location filename="Custom_ui.py" line="264"/>
         <source>These fields take bash commands. For a check to succeed, it must producen on-empty
 output and return exit code 0.
 For example, to check if a file exists, you can use: ls /path/to/file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="255"/>
+        <location filename="Custom_ui.py" line="267"/>
         <source>Install/running checks</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="259"/>
+        <location filename="Custom_ui.py" line="271"/>
         <source>Start/stop commands</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="248"/>
+        <location filename="Custom_ui.py" line="260"/>
         <source>Root privileges:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="249"/>
+        <location filename="Custom_ui.py" line="261"/>
         <source>use sudo for start/stop commands</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Custom_ui.py" line="248"/>
+        <source>Create</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Custom_ui.py" line="249"/>
+        <source>Copy existing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Custom_ui.py" line="250"/>
+        <source>Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Custom_ui.py" line="251"/>
+        <source>Delete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Custom_ui.py" line="253"/>
+        <source>Share</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

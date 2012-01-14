@@ -13,72 +13,106 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout_3">
-   <item row="0" column="0" colspan="4">
-    <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="0" rowspan="3">
-      <widget class="QListWidget" name="serviceList"/>
+  <layout class="QVBoxLayout" name="verticalLayout_5">
+   <item>
+    <widget class="QListWidget" name="serviceList"/>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="addButton">
+       <property name="text">
+        <string>Create</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../resources/icons/icons.qrc">
+         <normaloff>:/plus.png</normaloff>:/plus.png</iconset>
+       </property>
+      </widget>
      </item>
-     <item row="3" column="0">
-      <widget class="Line" name="line_3">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
+     <item>
+      <widget class="QComboBox" name="copyComboBox">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="sizeAdjustPolicy">
+        <enum>QComboBox::AdjustToMinimumContentsLengthWithIcon</enum>
+       </property>
+       <property name="duplicatesEnabled">
+        <bool>true</bool>
+       </property>
+       <item>
+        <property name="text">
+         <string>Copy existing</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../resources/icons/icons.qrc">
+          <normaloff>:/plus.png</normaloff>:/plus.png</iconset>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="editButton">
+       <property name="text">
+        <string>Edit</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../resources/icons/icons.qrc">
+         <normaloff>:/edit.png</normaloff>:/edit.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="removeButton">
+       <property name="text">
+        <string>Delete</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../resources/icons/icons.qrc">
+         <normaloff>:/minus.png</normaloff>:/minus.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="shareButton">
+       <property name="toolTip">
+        <string>Upload service definition for other people</string>
+       </property>
+       <property name="text">
+        <string>Share</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../resources/icons/icons.qrc">
+         <normaloff>:/internet.png</normaloff>:/internet.png</iconset>
        </property>
       </widget>
      </item>
     </layout>
    </item>
-   <item row="1" column="0">
-    <widget class="QPushButton" name="addButton">
-     <property name="text">
-      <string>Add custom service</string>
-     </property>
-     <property name="icon">
-      <iconset resource="../resources/icons/icons.qrc">
-       <normaloff>:/plus.png</normaloff>:/plus.png</iconset>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1">
-    <widget class="QPushButton" name="editButton">
-     <property name="text">
-      <string>Edit selected</string>
-     </property>
-     <property name="icon">
-      <iconset resource="../resources/icons/icons.qrc">
-       <normaloff>:/edit.png</normaloff>:/edit.png</iconset>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="2">
-    <widget class="QPushButton" name="removeButton">
-     <property name="text">
-      <string>Remove selected</string>
-     </property>
-     <property name="icon">
-      <iconset resource="../resources/icons/icons.qrc">
-       <normaloff>:/minus.png</normaloff>:/minus.png</iconset>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="3">
-    <widget class="QPushButton" name="shareButton">
-     <property name="toolTip">
-      <string>Upload service definition for other people</string>
-     </property>
-     <property name="text">
-      <string>Share with others</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0" colspan="4">
+   <item>
     <widget class="Line" name="line_2">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
     </widget>
    </item>
-   <item row="3" column="0" colspan="4">
+   <item>
     <layout class="QGridLayout" name="gridLayout_2">
      <item row="0" column="0">
       <widget class="QLabel" name="serviceNameLabel">
@@ -234,7 +268,14 @@
      </item>
     </layout>
    </item>
-   <item row="5" column="0" colspan="4">
+   <item>
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QTabWidget" name="helpTabWidget">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
@@ -371,18 +412,12 @@ will be mentioned as author of the submission. Please only submit working defini
      </widget>
     </widget>
    </item>
-   <item row="4" column="0">
-    <widget class="Line" name="line">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-   </item>
   </layout>
  </widget>
  <tabstops>
   <tabstop>serviceList</tabstop>
   <tabstop>addButton</tabstop>
+  <tabstop>copyComboBox</tabstop>
   <tabstop>editButton</tabstop>
   <tabstop>removeButton</tabstop>
   <tabstop>shareButton</tabstop>

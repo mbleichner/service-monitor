@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import shutil, random, os, sys, getpass
+import shutil, random, os, sys, getpass, copy
 from functools import *
 
 from PyQt4.QtCore import *
@@ -90,6 +90,7 @@ class ConfigDialog(KPageDialog):
     self.customPage.removeButton.clicked.connect(self.removeCustomService)
     self.customPage.addButton.clicked.connect(self.addCustomService)
     self.customPage.shareButton.clicked.connect(self.uploadCustomService)
+    self.customPage.copyComboBox.currentIndexChanged.connect(self.copyService)
 
     # Connections für die SettingsPage
     self.settingsPage.pollingIntervalSpinbox.valueChanged[float].connect(partial(self.saveConfigValue, 'pollingInterval'))
@@ -386,6 +387,17 @@ class ConfigDialog(KPageDialog):
       self.customPage.serviceList.addItem(item)
       if select == service.id:
         self.customPage.serviceList.setCurrentItem(item)
+        
+    self.customPage.copyComboBox.clear()
+    self.customPage.copyComboBox.view().setSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
+    self.customPage.copyComboBox.addItem(QIcon(':internet.png'), self.tr("Copy existing"))
+    self.customPage.copyComboBox.addItem("")
+    
+    for source in self.sources.values():
+      self.customPage.copyComboBox.addItem(source.name)
+      for service in source.services:
+        self.customPage.copyComboBox.addItem("  " + service.name, QString(source.filename + "|" + service.id))
+      self.customPage.copyComboBox.addItem("")
 
 
   ## Switches editmode on or off.
@@ -406,11 +418,12 @@ class ConfigDialog(KPageDialog):
     # Widget-Status anpassen
     self.setLineEditsEnabled(True)
     self.synchronizeLineEdits()
-    self.customPage.editButton.setText(self.tr('Save changes'))
-    self.customPage.removeButton.setText(self.tr('Cancel editing'))
+    self.customPage.editButton.setText(self.tr('Save'))
+    self.customPage.removeButton.setText(self.tr('Cancel'))
     self.customPage.addButton.setEnabled(False)
     self.customPage.shareButton.setEnabled(False)
     self.customPage.serviceList.setEnabled(False)
+    self.customPage.copyComboBox.setEnabled(False)
       
   def stopEditmode(self, save = True):
     if not self.customPage.serviceList.currentItem(): return
@@ -431,11 +444,12 @@ class ConfigDialog(KPageDialog):
     self.editmode = False
 
     # Widget-Status anpassen
-    self.customPage.editButton.setText(self.tr('Edit selected'))
-    self.customPage.removeButton.setText(self.tr('Remove selected'))
+    self.customPage.editButton.setText(self.tr('Edit'))
+    self.customPage.removeButton.setText(self.tr('Remove'))
     self.customPage.addButton.setEnabled(True)
     self.customPage.shareButton.setEnabled(True)
     self.customPage.serviceList.setEnabled(True)
+    self.customPage.copyComboBox.setEnabled(True)
 
   ## Writes data of selected custom service to line edits.
   # Called as slot when a custom service in the list is clicked.
@@ -489,7 +503,7 @@ class ConfigDialog(KPageDialog):
     service.description = self.tr('Enter a short, concise description here')
     self.sources[QString('custom.xml')].services.append(service)
     self.sources[QString('custom.xml')].writeBack()
-    self.readSources()
+    #self.readSources()
     self.populateCustomList(service.id)
     self.synchronizeLineEdits() # Triggert nicht automatisch
 
@@ -520,6 +534,24 @@ class ConfigDialog(KPageDialog):
     url.addQueryItem('stopcommand', item.service.stopcommand)
     QDesktopServices.openUrl(url)
 
+
+  def copyService(self):
+    index = self.customPage.copyComboBox.currentIndex()
+    data = self.customPage.copyComboBox.itemData(index).toString()
+    if index == -1 or len(data.split("|")) != 2:
+      return
+    (sourceFilename, serviceId) = data.split("|")
+    matches = [s for s in self.sources[sourceFilename].services if s.id == serviceId]
+    if len(matches) != 1:
+      return
+    service = copy.deepcopy(matches[0])
+    self.sources[QString("custom.xml")].services.append(service)
+    service.id = 'custom-%i' % random.randrange(1, 999999)
+    self.sources[QString("custom.xml")].writeBack()
+    #self.readSources()
+    self.populateCustomList(service.id)
+    self.synchronizeLineEdits() # Triggert nicht automatisch
+    
 
 # SETTINGS PAGE ###########################################################################################################
 

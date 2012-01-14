@@ -20,7 +20,7 @@ class Ui_Sources(object):
         self.horizontalLayout.addItem(spacerItem)
         self.searchButton = QtGui.QPushButton(Sources)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(_fromUtf8(":/search.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(_fromUtf8(":/internet.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.searchButton.setIcon(icon)
         self.searchButton.setObjectName(_fromUtf8("searchButton"))
         self.horizontalLayout.addWidget(self.searchButton)
