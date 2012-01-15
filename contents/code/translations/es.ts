@@ -61,67 +61,67 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished">Servicios Personalizados</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="380"/>
+        <location filename="ConfigDialog.py" line="381"/>
         <source>Error - custom.xml is missing or has been damaged</source>
         <translation type="unfinished">Error - el fichero custom.xml no se encuentra o está dañado</translation>
     </message>
     <message>
         <location filename="ConfigDialog.py" line="444"/>
         <source>Edit selected</source>
-        <translation type="unfinished">Modificar seleccionado</translation>
+        <translation type="obsolete">Modificar seleccionado</translation>
     </message>
     <message>
         <location filename="ConfigDialog.py" line="445"/>
         <source>Remove selected</source>
-        <translation type="unfinished">Eliminar seleccionado</translation>
+        <translation type="obsolete">Eliminar seleccionado</translation>
     </message>
     <message>
         <location filename="ConfigDialog.py" line="419"/>
         <source>Save changes</source>
-        <translation type="unfinished">Guardar cambios</translation>
+        <translation type="obsolete">Guardar cambios</translation>
     </message>
     <message>
         <location filename="ConfigDialog.py" line="420"/>
         <source>Cancel editing</source>
-        <translation type="unfinished">Cancelar edición</translation>
+        <translation type="obsolete">Cancelar edición</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="483"/>
+        <location filename="ConfigDialog.py" line="486"/>
         <source>Remove service</source>
         <translation type="unfinished">Eliminar servicio</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="483"/>
+        <location filename="ConfigDialog.py" line="486"/>
         <source>Really delete the selected service?</source>
         <translation type="unfinished">Esto borrará el servicio seleccionado. ¿Estás seguro?</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="521"/>
+        <location filename="ConfigDialog.py" line="524"/>
         <source>Upload service definition</source>
         <translation type="unfinished">Subir definión del servicio</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="521"/>
+        <location filename="ConfigDialog.py" line="524"/>
         <source>This will open a page in your web browser where you can submit the selected service definition to the community.</source>
         <translation type="unfinished">Esto abrirá una página web en tu navegador, donde podrás subir la definición del servicio seleccionado a la comunidad.</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="324"/>
+        <location filename="ConfigDialog.py" line="325"/>
         <source>%1 (%2, %3 entries)</source>
         <translation type="unfinished">%1 (%2, %3 entradas)</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="499"/>
+        <location filename="ConfigDialog.py" line="502"/>
         <source>Enter a short, concise description here</source>
         <translation type="unfinished">Introduce una descripción corta y concisa aquí</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="498"/>
+        <location filename="ConfigDialog.py" line="501"/>
         <source>New Service, edit me</source>
         <translation type="unfinished">Servicio nuevo, edítame</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="241"/>
+        <location filename="ConfigDialog.py" line="242"/>
         <source>&lt;strong&gt;%1&lt;/strong&gt;&lt;br/&gt;
         %2&lt;br/&gt;
         &lt;table&gt;
@@ -142,49 +142,49 @@ p, li { white-space: pre-wrap; }
 (sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)&lt;/table&gt;</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="347"/>
+        <location filename="ConfigDialog.py" line="348"/>
         <source>Downloading...</source>
         <translation type="unfinished">Descargando...</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="562"/>
+        <location filename="ConfigDialog.py" line="583"/>
         <source># copy-paste this snippet into your /etc/sudoers file:
 
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="582"/>
+        <location filename="ConfigDialog.py" line="603"/>
         <source>Command failed to start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="582"/>
+        <location filename="ConfigDialog.py" line="603"/>
         <source>There was an error starting the command. Please check your sudo installation.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="584"/>
+        <location filename="ConfigDialog.py" line="605"/>
         <source>Sudo permission error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="586"/>
+        <location filename="ConfigDialog.py" line="607"/>
         <source>Wrong password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="586"/>
+        <location filename="ConfigDialog.py" line="607"/>
         <source>It seems you gave the wrong password. Try again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="588"/>
+        <location filename="ConfigDialog.py" line="609"/>
         <source>Success</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="588"/>
+        <location filename="ConfigDialog.py" line="609"/>
         <source>Your installation seems to be working. Now try to start/stop some services in your list.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -194,15 +194,35 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="392"/>
+        <location filename="ConfigDialog.py" line="393"/>
         <source>Copy existing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="420"/>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="421"/>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="446"/>
+        <source>Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="447"/>
+        <source>Remove</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>Custom</name>
     <message>
-        <location filename="Custom_ui.py" line="247"/>
+        <location filename="Custom_ui.py" line="248"/>
         <source>Dialog</source>
         <translation type="unfinished">Diálogo</translation>
     </message>
@@ -222,54 +242,54 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">Eliminar seleccionado</translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="252"/>
+        <location filename="Custom_ui.py" line="253"/>
         <source>Upload service definition for other people</source>
         <translation type="unfinished">Sube la definición del servicio para otra gente</translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="275"/>
+        <location filename="Custom_ui.py" line="276"/>
         <source>Share with others</source>
         <translation type="unfinished">Comparte con otros</translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="254"/>
+        <location filename="Custom_ui.py" line="255"/>
         <source>Service Name:</source>
         <translation type="unfinished">Nombre del Servicio:</translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="255"/>
+        <location filename="Custom_ui.py" line="256"/>
         <source>Short description:</source>
         <translation type="unfinished">Descripción corta:</translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="256"/>
+        <location filename="Custom_ui.py" line="257"/>
         <source>Install check:</source>
         <translation type="unfinished">Chequeo de instalación:</translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="257"/>
+        <location filename="Custom_ui.py" line="258"/>
         <source>Running check:</source>
         <translation type="unfinished">Chequeo de ejecución:</translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="258"/>
+        <location filename="Custom_ui.py" line="259"/>
         <source>Start command:</source>
         <translation type="unfinished">Órden de arranque:</translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="259"/>
+        <location filename="Custom_ui.py" line="260"/>
         <source>Stop command:</source>
         <translation type="unfinished">Órden de parada:</translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="262"/>
+        <location filename="Custom_ui.py" line="263"/>
         <source>Here you can create and edit custom service definitions. Tailor them exactly to your
 needs and share useful definitions with other people!</source>
         <translation type="unfinished">Aquí puedes crear y editar definiciones de servicios personalizadas. ¡Adáptalas exáctamente a
 tus necesidades y comparte definiciones útiles con otra gente!</translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="268"/>
+        <location filename="Custom_ui.py" line="269"/>
         <source>Every command should terminate shortly after invocation. Unlike the earlier version, the
 desktop will no longer freeze if a command does not terminate, but Service Monitor will never
 know if the command succeeded. Use &quot;&amp;&quot; to start a process in background if necessary.</source>
@@ -278,7 +298,7 @@ el escritorio ya no se congelára si una orden no terminase, pero Service Monito
 tuvo éxito. Emplea &quot;&amp;&quot; para arrancar un proceso en segundo plano si es necesario.</translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="272"/>
+        <location filename="Custom_ui.py" line="273"/>
         <source>Using this button, you can submit a service definition on www.documentroot.net, where
 they may be included in the official sources, so others can download it. If you wish, you
 will be mentioned as author of the submission. Please only submit working definitions!</source>
@@ -287,7 +307,7 @@ donde pueden incluirlo en las fuentes oficiales, para que otros puedan descargar
 puedes ser mencionado como autor del envío. ¡Por favor, envía sólo definiciones que funcionen!</translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="264"/>
+        <location filename="Custom_ui.py" line="265"/>
         <source>These fields take bash commands. For a check to succeed, it must producen on-empty
 output and return exit code 0.
 For example, to check if a file exists, you can use: ls /path/to/file</source>
@@ -296,47 +316,47 @@ una salida NO vacía y devolver un código de salida 0.
 Por ejemplo, para comprobar que un fichero existe, puedes utilizar: ls /ruta/al/fichero</translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="267"/>
+        <location filename="Custom_ui.py" line="268"/>
         <source>Install/running checks</source>
         <translation type="unfinished">Comprobaciones de instalación/ejecución</translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="271"/>
+        <location filename="Custom_ui.py" line="272"/>
         <source>Start/stop commands</source>
         <translation type="unfinished">Órdenes de arranque/parada</translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="260"/>
+        <location filename="Custom_ui.py" line="261"/>
         <source>Root privileges:</source>
         <translation type="unfinished">Privilegios de root:</translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="261"/>
+        <location filename="Custom_ui.py" line="262"/>
         <source>use sudo for start/stop commands</source>
         <translation type="unfinished">utiliza sudo para órdenes de arranque/parada</translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="248"/>
+        <location filename="Custom_ui.py" line="249"/>
         <source>Create</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="249"/>
+        <location filename="Custom_ui.py" line="250"/>
         <source>Copy existing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="250"/>
+        <location filename="Custom_ui.py" line="251"/>
         <source>Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="251"/>
+        <location filename="Custom_ui.py" line="252"/>
         <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Custom_ui.py" line="253"/>
+        <location filename="Custom_ui.py" line="254"/>
         <source>Share</source>
         <translation type="unfinished"></translation>
     </message>
@@ -433,22 +453,22 @@ Por ejemplo, para comprobar que un fichero existe, puedes utilizar: ls /ruta/al/
 <context>
     <name>Services</name>
     <message>
-        <location filename="Services_ui.py" line="227"/>
+        <location filename="Services_ui.py" line="223"/>
         <source>Dialog</source>
         <translation type="unfinished">Diálogo</translation>
     </message>
     <message>
-        <location filename="Services_ui.py" line="228"/>
+        <location filename="Services_ui.py" line="224"/>
         <source>Active Services</source>
         <translation type="unfinished">Servicios Activos</translation>
     </message>
     <message>
-        <location filename="Services_ui.py" line="229"/>
+        <location filename="Services_ui.py" line="225"/>
         <source>Available Services</source>
         <translation type="unfinished">Servicios Disponibles</translation>
     </message>
     <message>
-        <location filename="Services_ui.py" line="231"/>
+        <location filename="Services_ui.py" line="227"/>
         <source>Add the services to be monitored to the list of active services. The icons show the install
 status of each service. If you find some service missing, you can add it either as custom
 service or through a source file downloaded from the internet (see the sources tab).</source>
@@ -457,7 +477,7 @@ el estado de instalación de cada servicio. Si notas que falta algún servicio, 
 servicio personalizado o a través de un fichero fuente descargado de internet (mira la pestaña de fuentes).</translation>
     </message>
     <message>
-        <location filename="Services_ui.py" line="234"/>
+        <location filename="Services_ui.py" line="230"/>
         <source>This list shows all services to be monitored. Add items from the right-hand list and reorder
 them to your needs. Be aware that only services marked with a green dot will work.
 A red dot means the install check has failed, so the definition will not work.</source>
@@ -466,7 +486,7 @@ reordénalas a tu gusto. Ten en cuenta que sólo los servicios marcados con un p
 Un punto rojo significa que el chequeo de instalación ha fallado, así es que la definición no funcionará.</translation>
     </message>
     <message>
-        <location filename="Services_ui.py" line="238"/>
+        <location filename="Services_ui.py" line="234"/>
         <source>The list of available services is loaded from your definition source files, which you can
 manage under the &quot;Sources&quot; tab. If a specific service is missing here, try looking for it
 in the sources tab or define it yourself under &quot;Custom Services&quot;.</source>
@@ -475,17 +495,17 @@ gestionar en la pestaña &quot;Fuentes&quot;. Si falta algún servicio específi
 de fuentes o defínelo tú mismo en &quot;Servicios Personalizados&quot;.</translation>
     </message>
     <message>
-        <location filename="Services_ui.py" line="237"/>
+        <location filename="Services_ui.py" line="233"/>
         <source>Active services</source>
         <translation type="unfinished">Servicios activos</translation>
     </message>
     <message>
-        <location filename="Services_ui.py" line="241"/>
+        <location filename="Services_ui.py" line="237"/>
         <source>Available services</source>
         <translation type="unfinished">Servicios disponibles</translation>
     </message>
     <message>
-        <location filename="Services_ui.py" line="230"/>
+        <location filename="Services_ui.py" line="226"/>
         <source>Hide unavailable services</source>
         <translation type="unfinished"></translation>
     </message>
@@ -514,7 +534,7 @@ cuando arrancas un servicio, aumenta este valor.</translation>
         <location filename="Settings_ui.py" line="302"/>
         <source>These settings influence behavior of the start stop commands. Use environment
 variables to customize paths and tools.</source>
-        <translation type="unfinished">Estas preferencias influyen en el comportamiento de las órdenes de arranque y parada.
+        <translation type="obsolete">Estas preferencias influyen en el comportamiento de las órdenes de arranque y parada.
 Utiliza variables de entorno para personalizar rutas y herramientas.</translation>
     </message>
     <message>
@@ -522,7 +542,7 @@ Utiliza variables de entorno para personalizar rutas y herramientas.</translatio
         <source>Environment variables are available in start/stop commands. Default variables are
 $SUDO for the sudo command to use (e.g. kdesudo or gksudo) and $INITDIR for
 the path to your init-scripts (usually /etc/init.d).</source>
-        <translation type="unfinished">Las variables de entorno están disponibles para las órdenes de arranque/parada. Variables por defecto
+        <translation type="obsolete">Las variables de entorno están disponibles para las órdenes de arranque/parada. Variables por defecto
 son $SUDO para utilizar la orden sudo (p.e. kdesudo o gksudo) y $INITDIR para la ruta a tus
 init-scripts (habitualmente /etc/init.d).</translation>
     </message>
@@ -547,7 +567,7 @@ init-scripts (habitualmente /etc/init.d).</translation>
         <translation type="unfinished">Retrasa de órdenesd de arranque/parada:</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="285"/>
+        <location filename="Settings_ui.py" line="305"/>
         <source>Sudo Configuration Helper</source>
         <translation type="unfinished">Ayudante de Configuración de Sudo</translation>
     </message>
@@ -591,7 +611,7 @@ It creates snippets for inclusion in the /etc/sudoers configuration file. Sudo a
 Crea snippets para incluir en el fichero de configuración /etc/sudoers. Sudo permite un control muy fino, esta herramienta cubrirá las configuraciones más habituales, pero será suficiente. Simplemente, elige la configuración que mejor se adapta a tus necesidades, añade el snippet generado a tu /etc/sudoers y utiliza el botón de abajo para comprobar la configuración.</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="301"/>
+        <location filename="Settings_ui.py" line="298"/>
         <source>Check sudo configuration</source>
         <translation type="unfinished">Comprobar la configuración de sudo</translation>
     </message>
@@ -621,33 +641,18 @@ Crea snippets para incluir en el fichero de configuración /etc/sudoers. Sudo pe
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="292"/>
-        <source>This tool will help you configure sudo.
-
-It creates snippets for inclusion in the /etc/sudoers configuration file. Sudo allows fine-grained control, this tool will cover the most standard setups, but they will be sufficient. Simply choose the config that most suits your needs, append the generated snippet to your /etc/sudoers and use the button below to check your configuration.
-
-Please note: sudo can be configured to work without asking for a password. As of now, Service Monitor is *not* compatible with this setting.
-Besides, it can be highly dangerous, so you shouldn&apos;t be using it anyway. </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Settings_ui.py" line="298"/>
+        <location filename="Settings_ui.py" line="295"/>
         <source>Current user:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="299"/>
+        <location filename="Settings_ui.py" line="296"/>
         <source>User:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="300"/>
+        <location filename="Settings_ui.py" line="297"/>
         <source>Password:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Settings_ui.py" line="307"/>
-        <source>Sudo </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -658,6 +663,27 @@ Besides, it can be highly dangerous, so you shouldn&apos;t be using it anyway. <
     <message>
         <location filename="Settings_ui.py" line="284"/>
         <source>(use with caution)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Settings_ui.py" line="292"/>
+        <source>This tool will help you configure sudo.
+
+It creates snippets for inclusion in the /etc/sudoers configuration file. Sudo allows fine-grained control, this tool will cover the most standard setups, but they will be sufficient. Simply choose the config that most suits your needs, append the generated snippet to your /etc/sudoers and use the button below to check your configuration.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Settings_ui.py" line="302"/>
+        <source>Please note: sudo can be configured to work without asking for a password. As of now, Service
+Monitor is *not* compatible with this setting.
+Besides, it can be highly dangerous, so you shouldn&apos;t be using it anyway. </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Settings_ui.py" line="299"/>
+        <source>These settings influence general behavior fine-tune them to your needs.
+Since Service Monitor uses &quot;sudo&quot; to gain root privileges, make sure you have a working
+confiuration. If not, you can use the configuration helper to generate configuration snippets.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

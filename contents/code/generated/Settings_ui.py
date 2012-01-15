@@ -11,7 +11,7 @@ except AttributeError:
 class Ui_Settings(object):
     def setupUi(self, Settings):
         Settings.setObjectName(_fromUtf8("Settings"))
-        Settings.resize(610, 552)
+        Settings.resize(647, 512)
         self.verticalLayout_2 = QtGui.QVBoxLayout(Settings)
         self.verticalLayout_2.setObjectName(_fromUtf8("verticalLayout_2"))
         self.groupBox_2 = QtGui.QGroupBox(Settings)
@@ -147,7 +147,7 @@ class Ui_Settings(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.sudoHelperTextarea.sizePolicy().hasHeightForWidth())
         self.sudoHelperTextarea.setSizePolicy(sizePolicy)
-        self.sudoHelperTextarea.setMaximumSize(QtCore.QSize(16777215, 180))
+        self.sudoHelperTextarea.setMaximumSize(QtCore.QSize(16777215, 120))
         font = QtGui.QFont()
         font.setBold(False)
         font.setItalic(False)
@@ -260,7 +260,7 @@ class Ui_Settings(object):
         self.verticalLayout_2.addWidget(self.helpTabWidget)
 
         self.retranslateUi(Settings)
-        self.helpTabWidget.setCurrentIndex(1)
+        self.helpTabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(Settings)
         Settings.setTabOrder(self.pollingIntervalSpinbox, self.sleepTimeSpinbox)
         Settings.setTabOrder(self.sleepTimeSpinbox, self.themeComboBox)
@@ -291,19 +291,17 @@ class Ui_Settings(object):
         self.sudoHelperComboBox.setItemText(4, QtGui.QApplication.translate("Settings", "only me, ask for root password", None, QtGui.QApplication.UnicodeUTF8))
         self.sudoHelperTextarea.setPlainText(QtGui.QApplication.translate("Settings", "This tool will help you configure sudo.\n"
 "\n"
-"It creates snippets for inclusion in the /etc/sudoers configuration file. Sudo allows fine-grained control, this tool will cover the most standard setups, but they will be sufficient. Simply choose the config that most suits your needs, append the generated snippet to your /etc/sudoers and use the button below to check your configuration.\n"
-"\n"
-"Please note: sudo can be configured to work without asking for a password. As of now, Service Monitor is *not* compatible with this setting.\n"
-"Besides, it can be highly dangerous, so you shouldn\'t be using it anyway. ", None, QtGui.QApplication.UnicodeUTF8))
+"It creates snippets for inclusion in the /etc/sudoers configuration file. Sudo allows fine-grained control, this tool will cover the most standard setups, but they will be sufficient. Simply choose the config that most suits your needs, append the generated snippet to your /etc/sudoers and use the button below to check your configuration.", None, QtGui.QApplication.UnicodeUTF8))
         self.label_8.setText(QtGui.QApplication.translate("Settings", "Current user:", None, QtGui.QApplication.UnicodeUTF8))
         self.usernameLabel.setText(QtGui.QApplication.translate("Settings", "User:", None, QtGui.QApplication.UnicodeUTF8))
         self.label_6.setText(QtGui.QApplication.translate("Settings", "Password:", None, QtGui.QApplication.UnicodeUTF8))
         self.checkSudoButton.setText(QtGui.QApplication.translate("Settings", "Check sudo configuration", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_4.setText(QtGui.QApplication.translate("Settings", "These settings influence behavior of the start stop commands. Use environment\n"
-"variables to customize paths and tools.", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_5.setText(QtGui.QApplication.translate("Settings", "Environment variables are available in start/stop commands. Default variables are\n"
-"$SUDO for the sudo command to use (e.g. kdesudo or gksudo) and $INITDIR for\n"
-"the path to your init-scripts (usually /etc/init.d).", None, QtGui.QApplication.UnicodeUTF8))
-        self.helpTabWidget.setTabText(self.helpTabWidget.indexOf(self.tab_1), QtGui.QApplication.translate("Settings", "Sudo ", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_4.setText(QtGui.QApplication.translate("Settings", "These settings influence general behavior fine-tune them to your needs.\n"
+"Since Service Monitor uses \"sudo\" to gain root privileges, make sure you have a working\n"
+"confiuration. If not, you can use the configuration helper to generate configuration snippets.", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_5.setText(QtGui.QApplication.translate("Settings", "Please note: sudo can be configured to work without asking for a password. As of now, Service\n"
+"Monitor is *not* compatible with this setting.\n"
+"Besides, it can be highly dangerous, so you shouldn\'t be using it anyway. ", None, QtGui.QApplication.UnicodeUTF8))
+        self.helpTabWidget.setTabText(self.helpTabWidget.indexOf(self.tab_1), QtGui.QApplication.translate("Settings", "Sudo Configuration Helper", None, QtGui.QApplication.UnicodeUTF8))
 
 import icons_rc

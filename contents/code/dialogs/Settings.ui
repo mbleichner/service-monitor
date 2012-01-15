@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>610</width>
-    <height>552</height>
+    <width>647</width>
+    <height>512</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -269,7 +269,7 @@ If the status immediatly flashes back to inactive when starting a service, incre
         <property name="maximumSize">
          <size>
           <width>16777215</width>
-          <height>180</height>
+          <height>120</height>
          </size>
         </property>
         <property name="font">
@@ -282,10 +282,7 @@ If the status immediatly flashes back to inactive when starting a service, incre
         <property name="plainText">
          <string>This tool will help you configure sudo.
 
-It creates snippets for inclusion in the /etc/sudoers configuration file. Sudo allows fine-grained control, this tool will cover the most standard setups, but they will be sufficient. Simply choose the config that most suits your needs, append the generated snippet to your /etc/sudoers and use the button below to check your configuration.
-
-Please note: sudo can be configured to work without asking for a password. As of now, Service Monitor is *not* compatible with this setting.
-Besides, it can be highly dangerous, so you shouldn't be using it anyway. </string>
+It creates snippets for inclusion in the /etc/sudoers configuration file. Sudo allows fine-grained control, this tool will cover the most standard setups, but they will be sufficient. Simply choose the config that most suits your needs, append the generated snippet to your /etc/sudoers and use the button below to check your configuration.</string>
         </property>
        </widget>
       </item>
@@ -427,7 +424,7 @@ Besides, it can be highly dangerous, so you shouldn't be using it anyway. </stri
       </size>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="help">
       <property name="sizePolicy">
@@ -456,8 +453,9 @@ Besides, it can be highly dangerous, so you shouldn't be using it anyway. </stri
           </sizepolicy>
          </property>
          <property name="text">
-          <string>These settings influence behavior of the start stop commands. Use environment
-variables to customize paths and tools.</string>
+          <string>These settings influence general behavior fine-tune them to your needs.
+Since Service Monitor uses &quot;sudo&quot; to gain root privileges, make sure you have a working
+confiuration. If not, you can use the configuration helper to generate configuration snippets.</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -474,7 +472,7 @@ variables to customize paths and tools.</string>
        </sizepolicy>
       </property>
       <attribute name="title">
-       <string>Sudo </string>
+       <string>Sudo Configuration Helper</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_5">
        <property name="margin">
@@ -489,9 +487,9 @@ variables to customize paths and tools.</string>
           </sizepolicy>
          </property>
          <property name="text">
-          <string>Environment variables are available in start/stop commands. Default variables are
-$SUDO for the sudo command to use (e.g. kdesudo or gksudo) and $INITDIR for
-the path to your init-scripts (usually /etc/init.d).</string>
+          <string>Please note: sudo can be configured to work without asking for a password. As of now, Service
+Monitor is *not* compatible with this setting.
+Besides, it can be highly dangerous, so you shouldn't be using it anyway. </string>
          </property>
          <property name="alignment">
           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>

@@ -341,7 +341,7 @@ class ConfigDialog(KPageDialog):
 
 
   def downloadSources(self):
-    self.url = QUrl("http://www.documentroot.net/service-monitor/sources.tar.gz")
+    self.url = QUrl("http://www.documentroot.net/service-monitor/sources-2.0.tar.gz")
     self.man = QNetworkAccessManager()
     self.req = QNetworkRequest(self.url)
     oldText = self.sourcesPage.searchButton.text()
@@ -392,8 +392,7 @@ class ConfigDialog(KPageDialog):
     self.customPage.copyComboBox.view().setSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
     self.customPage.copyComboBox.addItem(QIcon(':internet.png'), self.tr("Copy existing"))
     self.customPage.copyComboBox.addItem("")
-    
-    for source in self.sources.values():
+    for source in self.activeSources():
       self.customPage.copyComboBox.addItem(source.name)
       for service in source.services:
         self.customPage.copyComboBox.addItem("  " + service.name, QString(source.filename + "|" + service.id))
