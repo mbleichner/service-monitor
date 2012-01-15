@@ -328,7 +328,7 @@ class ConfigDialog(KPageDialog):
       self.sourcesPage.sourceList.addItem(item)
     self.sourcesPage.updateComboBox.clear()
     self.sourcesPage.updateComboBox.addItem("from www.documentroot.net", QString("http://www.documentroot.net/service-monitor/sources-2.0.tar.gz"))
-    #self.sourcesPage.updateComboBox.addItem("from www.github.com", QString("xx"))
+    self.sourcesPage.updateComboBox.addItem("from www.github.com", QString("https://github.com/mbleichner/service-monitor-sources/tarball/2.0"))
     if len(self.sources) > 0:
       lastmod = max([QFileInfo(sourcedir + "/" + s.filename).created() for s in self.sources.values()])
       self.sourcesPage.lastUpdateLabel.setText(lastmod.toString(Qt.SystemLocaleShortDate))
@@ -354,15 +354,21 @@ class ConfigDialog(KPageDialog):
     if index == -1:
       return
     url = QUrl(self.sourcesPage.updateComboBox.itemData(index).toString())
-    self.req = QNetworkRequest(url)
+    print "starting update from %s" % url.toString()
     self.man = QNetworkAccessManager()
     oldText = self.sourcesPage.searchButton.text()
     self.sourcesPage.searchButton.setText(self.tr("Updating"))
     self.sourcesPage.searchButton.setEnabled(False)
     def startDownload():
-      self.res = self.man.get(self.req)
+      self.res = self.man.get(QNetworkRequest(url))
       self.res.finished.connect(finished)
     def finished():
+      redirect = self.res.attribute(QNetworkRequest.RedirectionTargetAttribute).toString()
+      if redirect:
+        print "following redirect to %s" % redirect
+        self.res = self.man.get(QNetworkRequest(QUrl(redirect)))
+        self.res.finished.connect(finished)
+        return
       if self.res.error() != QNetworkReply.NoError:
         errorMessage = "There was an error. Try again or choose another server."
         if self.res.error() == QNetworkReply.ConnectionRefusedError:       errorMessage = self.tr("Connection refused by the server. Usually this menas that the server is temporarily offline.")
@@ -378,12 +384,17 @@ class ConfigDialog(KPageDialog):
         f.open(QIODevice.WriteOnly)
         f.write(self.res.readAll())
         f.close()
-        if QProcess.execute("/bin/tar", QStringList() << "xfz" << f.fileName() << "-C" << sourcedir) == 0:
-          QMessageBox.information(self, self.tr('Update successful'), self.tr('Your source files have been updated.'))
+        print "received file, unpacking..."
+        exitcode = QProcess.execute("/bin/tar", QStringList() << "xfz" << f.fileName() << "-C" << sourcedir << "--strip-components=1")
+        f.remove()
+        if exitcode == 0:
+          self.readSources()
+          self.populateSourceList()
+          print "update finished."
+          QMessageBox.information(self, self.tr('Update successful'), self.tr('Update successful.'))
         else:
-          QMessageBox.critical(self, self.tr('Update failed'), self.tr('There was an error updating the sources. Try another update server.'))
-        self.readSources()
-        self.populateSourceList()
+          QMessageBox.critical(self, self.tr('Update failed'), self.tr('The file could be downloaded, but there was an error unpacking it. Maybe it is corrupted.'))
+          print "update failed."
       self.sourcesPage.searchButton.setText(oldText)
       self.sourcesPage.searchButton.setEnabled(True)
     QTimer.singleShot(1000, startDownload)
