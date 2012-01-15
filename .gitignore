@@ -1,2 +1,4 @@
 doxygen
 *.py[co]
+
+contents/sources/upload.sh
