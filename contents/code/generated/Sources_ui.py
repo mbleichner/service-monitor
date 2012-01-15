@@ -39,6 +39,8 @@ class Ui_Sources(object):
         self.updateComboBox.setEditable(True)
         self.updateComboBox.setSizeAdjustPolicy(QtGui.QComboBox.AdjustToContents)
         self.updateComboBox.setObjectName(_fromUtf8("updateComboBox"))
+        self.updateComboBox.addItem(_fromUtf8(""))
+        self.updateComboBox.addItem(_fromUtf8(""))
         self.horizontalLayout.addWidget(self.updateComboBox)
         self.searchButton = QtGui.QPushButton(Sources)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Fixed)
@@ -153,6 +155,8 @@ class Ui_Sources(object):
     def retranslateUi(self, Sources):
         Sources.setWindowTitle(QtGui.QApplication.translate("Sources", "Dialog", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("Sources", "Online Update:", None, QtGui.QApplication.UnicodeUTF8))
+        self.updateComboBox.setItemText(0, QtGui.QApplication.translate("Sources", "from www.documentroot.net", None, QtGui.QApplication.UnicodeUTF8))
+        self.updateComboBox.setItemText(1, QtGui.QApplication.translate("Sources", "from www.github.com", None, QtGui.QApplication.UnicodeUTF8))
         self.searchButton.setToolTip(QtGui.QApplication.translate("Sources", "Look for new XML files on the internet", None, QtGui.QApplication.UnicodeUTF8))
         self.searchButton.setText(QtGui.QApplication.translate("Sources", "Update", None, QtGui.QApplication.UnicodeUTF8))
         self.label_3.setText(QtGui.QApplication.translate("Sources", "Last update:", None, QtGui.QApplication.UnicodeUTF8))

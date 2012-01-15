@@ -326,9 +326,8 @@ class ConfigDialog(KPageDialog):
       item.source = source
       item.setCheckState(Qt.Checked if source in activeSources else Qt.Unchecked)
       self.sourcesPage.sourceList.addItem(item)
-    self.sourcesPage.updateComboBox.clear()
-    self.sourcesPage.updateComboBox.addItem("from www.documentroot.net", QString("http://www.documentroot.net/service-monitor/sources-2.0.tar.gz"))
-    self.sourcesPage.updateComboBox.addItem("from www.github.com", QString("https://github.com/mbleichner/service-monitor-sources/tarball/2.0"))
+    self.sourcesPage.updateComboBox.setItemData(0, QString("http://www.documentroot.net/service-monitor/sources-2.0.tar.gz"))
+    self.sourcesPage.updateComboBox.setItemData(1, QString("https://github.com/mbleichner/service-monitor-sources/tarball/2.0"))
     if len(self.sources) > 0:
       lastmod = max([QFileInfo(sourcedir + "/" + s.filename).created() for s in self.sources.values()])
       self.sourcesPage.lastUpdateLabel.setText(lastmod.toString(Qt.SystemLocaleShortDate))
