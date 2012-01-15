@@ -326,6 +326,15 @@ class ConfigDialog(KPageDialog):
       item.source = source
       item.setCheckState(Qt.Checked if source in activeSources else Qt.Unchecked)
       self.sourcesPage.sourceList.addItem(item)
+    self.sourcesPage.updateComboBox.clear()
+    self.sourcesPage.updateComboBox.addItem("from www.documentroot.net", QString("http://www.documentroot.net/service-monitor/sources-2.0.tar.gz"))
+    #self.sourcesPage.updateComboBox.addItem("from www.github.com", QString("xx"))
+    if len(self.sources) > 0:
+      lastmod = max([QFileInfo(sourcedir + "/" + s.filename).created() for s in self.sources.values()])
+      self.sourcesPage.lastUpdateLabel.setText(lastmod.toString(Qt.SystemLocaleShortDate))
+    else:
+      self.sourcesPage.lastUpdateLabel.setText("unknown")
+      
 
 
   def saveActiveSources(self, item):
@@ -341,26 +350,42 @@ class ConfigDialog(KPageDialog):
 
 
   def downloadSources(self):
-    self.url = QUrl("http://www.documentroot.net/service-monitor/sources-2.0.tar.gz")
+    index = self.sourcesPage.updateComboBox.currentIndex()
+    if index == -1:
+      return
+    url = QUrl(self.sourcesPage.updateComboBox.itemData(index).toString())
+    self.req = QNetworkRequest(url)
     self.man = QNetworkAccessManager()
-    self.req = QNetworkRequest(self.url)
     oldText = self.sourcesPage.searchButton.text()
-    self.sourcesPage.searchButton.setText(self.tr("Downloading..."))
+    self.sourcesPage.searchButton.setText(self.tr("Updating"))
     self.sourcesPage.searchButton.setEnabled(False)
     def startDownload():
       self.res = self.man.get(self.req)
       self.res.finished.connect(finished)
     def finished():
-      f = QFile("/tmp/sources.tar.gz")
-      f.open(QIODevice.WriteOnly)
-      f.write(self.res.readAll())
-      f.close()
-      QProcess.execute("/bin/tar", QStringList() << "xfz" << f.fileName() << "-C" << sourcedir)
-      self.readSources()
-      self.populateSourceList()
-      self.sourcesPage.searchButton.setText("Download successful")
-      QTimer.singleShot(1500, partial(self.sourcesPage.searchButton.setText, oldText))
-      QTimer.singleShot(1500, partial(self.sourcesPage.searchButton.setEnabled, True))
+      if self.res.error() != QNetworkReply.NoError:
+        errorMessage = "There was an error. Try again or choose another server."
+        if self.res.error() == QNetworkReply.ConnectionRefusedError:       errorMessage = self.tr("Connection refused by the server. Usually this menas that the server is temporarily offline.")
+        if self.res.error() == QNetworkReply.RemoteHostClosedError:        errorMessage = self.tr("The remote host closed the connection prematurely. Try again.")
+        if self.res.error() == QNetworkReply.HostNotFoundError:            errorMessage = self.tr("The update server could not be found. Are you online?")
+        if self.res.error() == QNetworkReply.TimeoutError:                 errorMessage = self.tr("The request timed out. Probably the server is under heavy load and you should try again later.")
+        if self.res.error() == QNetworkReply.TemporaryNetworkFailureError: errorMessage = self.tr("Network error. Please check your connectron and try again.")
+        if self.res.error() == QNetworkReply.ContentAccessDenied:          errorMessage = self.tr("Server access denied. Write me a mail if this happens and try another server.")
+        if self.res.error() == QNetworkReply.ContentNotFoundError:         errorMessage = self.tr("File not found. Write me a mail if this happens and try another server.")
+        QMessageBox.critical(self, "Connection failed", errorMessage)
+      else:
+        f = QFile("/tmp/sources.tar.gz")
+        f.open(QIODevice.WriteOnly)
+        f.write(self.res.readAll())
+        f.close()
+        if QProcess.execute("/bin/tar", QStringList() << "xfz" << f.fileName() << "-C" << sourcedir) == 0:
+          QMessageBox.information(self, self.tr('Update successful'), self.tr('Your source files have been updated.'))
+        else:
+          QMessageBox.critical(self, self.tr('Update failed'), self.tr('There was an error updating the sources. Try another update server.'))
+        self.readSources()
+        self.populateSourceList()
+      self.sourcesPage.searchButton.setText(oldText)
+      self.sourcesPage.searchButton.setEnabled(True)
     QTimer.singleShot(1000, startDownload)
 
 
@@ -390,7 +415,7 @@ class ConfigDialog(KPageDialog):
         
     self.customPage.copyComboBox.clear()
     self.customPage.copyComboBox.view().setSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
-    self.customPage.copyComboBox.addItem(QIcon(':internet.png'), self.tr("Copy existing"))
+    self.customPage.copyComboBox.addItem(QIcon(':plus.png'), self.tr("Copy existing"))
     self.customPage.copyComboBox.addItem("")
     for source in self.activeSources():
       self.customPage.copyComboBox.addItem(source.name)
@@ -547,9 +572,9 @@ class ConfigDialog(KPageDialog):
     self.sources[QString("custom.xml")].services.append(service)
     service.id = 'custom-%i' % random.randrange(1, 999999)
     self.sources[QString("custom.xml")].writeBack()
-    #self.readSources()
     self.populateCustomList(service.id)
-    self.synchronizeLineEdits() # Triggert nicht automatisch
+    self.synchronizeLineEdits()
+    self.customPage.copyComboBox.setCurrentIndex(0)
     
 
 # SETTINGS PAGE ###########################################################################################################

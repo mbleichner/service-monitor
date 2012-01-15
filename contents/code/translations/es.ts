@@ -61,7 +61,7 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished">Servicios Personalizados</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="381"/>
+        <location filename="ConfigDialog.py" line="406"/>
         <source>Error - custom.xml is missing or has been damaged</source>
         <translation type="unfinished">Error - el fichero custom.xml no se encuentra o está dañado</translation>
     </message>
@@ -86,22 +86,22 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">Cancelar edición</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="486"/>
+        <location filename="ConfigDialog.py" line="511"/>
         <source>Remove service</source>
         <translation type="unfinished">Eliminar servicio</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="486"/>
+        <location filename="ConfigDialog.py" line="511"/>
         <source>Really delete the selected service?</source>
         <translation type="unfinished">Esto borrará el servicio seleccionado. ¿Estás seguro?</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="524"/>
+        <location filename="ConfigDialog.py" line="549"/>
         <source>Upload service definition</source>
         <translation type="unfinished">Subir definión del servicio</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="524"/>
+        <location filename="ConfigDialog.py" line="549"/>
         <source>This will open a page in your web browser where you can submit the selected service definition to the community.</source>
         <translation type="unfinished">Esto abrirá una página web en tu navegador, donde podrás subir la definición del servicio seleccionado a la comunidad.</translation>
     </message>
@@ -111,12 +111,12 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished">%1 (%2, %3 entradas)</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="502"/>
+        <location filename="ConfigDialog.py" line="527"/>
         <source>Enter a short, concise description here</source>
         <translation type="unfinished">Introduce una descripción corta y concisa aquí</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="501"/>
+        <location filename="ConfigDialog.py" line="526"/>
         <source>New Service, edit me</source>
         <translation type="unfinished">Servicio nuevo, edítame</translation>
     </message>
@@ -142,49 +142,49 @@ p, li { white-space: pre-wrap; }
 (sp)(sp)(sp)(sp)(sp)(sp)(sp)(sp)&lt;/table&gt;</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="348"/>
+        <location filename="ConfigDialog.py" line="351"/>
         <source>Downloading...</source>
-        <translation type="unfinished">Descargando...</translation>
+        <translation type="obsolete">Descargando...</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="583"/>
+        <location filename="ConfigDialog.py" line="608"/>
         <source># copy-paste this snippet into your /etc/sudoers file:
 
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="603"/>
+        <location filename="ConfigDialog.py" line="628"/>
         <source>Command failed to start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="603"/>
+        <location filename="ConfigDialog.py" line="628"/>
         <source>There was an error starting the command. Please check your sudo installation.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="605"/>
+        <location filename="ConfigDialog.py" line="630"/>
         <source>Sudo permission error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="607"/>
+        <location filename="ConfigDialog.py" line="632"/>
         <source>Wrong password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="607"/>
+        <location filename="ConfigDialog.py" line="632"/>
         <source>It seems you gave the wrong password. Try again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="609"/>
+        <location filename="ConfigDialog.py" line="634"/>
         <source>Success</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="609"/>
+        <location filename="ConfigDialog.py" line="634"/>
         <source>Your installation seems to be working. Now try to start/stop some services in your list.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -194,28 +194,88 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="393"/>
+        <location filename="ConfigDialog.py" line="418"/>
         <source>Copy existing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="420"/>
+        <location filename="ConfigDialog.py" line="445"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="421"/>
+        <location filename="ConfigDialog.py" line="446"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="446"/>
+        <location filename="ConfigDialog.py" line="471"/>
         <source>Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="447"/>
+        <location filename="ConfigDialog.py" line="472"/>
         <source>Remove</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="360"/>
+        <source>Updating</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="368"/>
+        <source>Connection refused by the server. Usually this menas that the server is temporarily offline.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="369"/>
+        <source>The remote host closed the connection prematurely. Try again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="370"/>
+        <source>The update server could not be found. Are you online?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="371"/>
+        <source>The request timed out. Probably the server is under heavy load and you should try again later.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="372"/>
+        <source>Network error. Please check your connectron and try again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="373"/>
+        <source>Server access denied. Write me a mail if this happens and try another server.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="374"/>
+        <source>File not found. Write me a mail if this happens and try another server.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="382"/>
+        <source>Update successful</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="382"/>
+        <source>Your source files have been updated.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="384"/>
+        <source>Update failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="384"/>
+        <source>There was an error updating the sources. Try another update server.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -690,27 +750,42 @@ confiuration. If not, you can use the configuration helper to generate configura
 <context>
     <name>Sources</name>
     <message>
-        <location filename="Sources_ui.py" line="91"/>
+        <location filename="Sources_ui.py" line="154"/>
         <source>Dialog</source>
         <translation type="unfinished">Diálogo</translation>
     </message>
     <message>
-        <location filename="Sources_ui.py" line="92"/>
+        <location filename="Sources_ui.py" line="156"/>
         <source>Look for new XML files on the internet</source>
         <translation type="unfinished">Buscando nuevos ficheros XML en internet</translation>
     </message>
     <message>
         <location filename="Sources_ui.py" line="93"/>
         <source>Search for new source files</source>
-        <translation type="unfinished">Buscar nuevos ficheros de fuentes</translation>
+        <translation type="obsolete">Buscar nuevos ficheros de fuentes</translation>
     </message>
     <message>
-        <location filename="Sources_ui.py" line="94"/>
+        <location filename="Sources_ui.py" line="159"/>
         <source>This list holds files containing service definitions. You can search www.documentroot.net
 for updated definitions and then include them in the applet, so you can immediately
 use them.</source>
         <translation type="unfinished">Esta lista mantiene los ficheros de las definiciones de servicios. Puedes buscar en www.documentroot.net
 definiciones actualizadas e incluirlas en el applet, para utilizarlas de manera inmediata.</translation>
+    </message>
+    <message>
+        <location filename="Sources_ui.py" line="155"/>
+        <source>Online Update:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Sources_ui.py" line="157"/>
+        <source>Update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Sources_ui.py" line="158"/>
+        <source>Last update:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
