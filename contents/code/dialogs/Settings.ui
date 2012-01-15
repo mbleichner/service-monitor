@@ -177,6 +177,10 @@ If the status immediatly flashes back to inactive when starting a service, incre
           <bold>false</bold>
          </font>
         </property>
+        <property name="toolTip">
+         <string>Disables warnings when start/stop commands produce error output. Check this option
+if you experience annoying error output being produced by some commands.</string>
+        </property>
         <property name="text">
          <string>(use with caution)</string>
         </property>

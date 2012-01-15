@@ -6,12 +6,15 @@ from PyQt4.QtGui import *
 
 from generated.Password_ui import *
 
+
+## A dialog which asks the user for his sudo password and can store it for a given time.
 class PasswordDialog(QDialog, Ui_PasswordDialog):
 
   RememberForSession   = 0
   RememberForFixedTime = 1
   DoNotRemember        = 2
 
+  ## This signal is triggered whenever the user entered a password and confirmed the dialog.
   newPasswordAvailable = pyqtSignal(QString)
 
   def __init__(self, configDialog, parent = None):

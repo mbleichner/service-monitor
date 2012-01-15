@@ -281,6 +281,8 @@ class Ui_Settings(object):
 "If the status immediatly flashes back to inactive when starting a service, increase this value.", None, QtGui.QApplication.UnicodeUTF8))
         self.label_3.setText(QtGui.QApplication.translate("Settings", "Indicator theme:", None, QtGui.QApplication.UnicodeUTF8))
         self.label_9.setText(QtGui.QApplication.translate("Settings", "Supress stderr when starting/stopping services:", None, QtGui.QApplication.UnicodeUTF8))
+        self.suppressStdoutCheckBox.setToolTip(QtGui.QApplication.translate("Settings", "Disables warnings when start/stop commands produce error output. Check this option\n"
+"if you experience annoying error output being produced by some commands.", None, QtGui.QApplication.UnicodeUTF8))
         self.suppressStdoutCheckBox.setText(QtGui.QApplication.translate("Settings", "(use with caution)", None, QtGui.QApplication.UnicodeUTF8))
         self.groupBox.setTitle(QtGui.QApplication.translate("Settings", "Sudo Configuration Helper", None, QtGui.QApplication.UnicodeUTF8))
         self.label_7.setText(QtGui.QApplication.translate("Settings", "Grant root access for", None, QtGui.QApplication.UnicodeUTF8))

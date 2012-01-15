@@ -4,6 +4,11 @@ from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 from PyKDE4.kdecore import *
 
+
+## Allows execution of bash scripts with possibility to use sudo.
+## If sudo should be used, simply set the password via setSudoPassword().
+## Commands can contain the $INITDIR variable, which is replaced by /etc/init.d or
+## /etc/rc.d, depending on the distribution.
 class BashProcess(KProcess):
   
   PasswordError      = 11
@@ -42,6 +47,9 @@ class BashProcess(KProcess):
     self.close()
     self.error.emit(self.errorType())
 
+
+  ## Starts the process. If using sudo, it will immediately return an error, if something concerning sudo went wrong.
+  ## If no error occured (or sudo isn't) used, the process will be detached and the finished() signal can be used.
   def start(self):
 
     # setup program
@@ -57,13 +65,14 @@ class BashProcess(KProcess):
     self.setProcessChannelMode(QProcess.SeparateChannels)
     KProcess.start(self)
 
-    if self._password is not None:
+    if self.usesSudo():
 
       # listen on stderr, since sudo prints everything there
       self.setReadChannel(QProcess.StandardError)
 
       # start sudo, check if password prompt is present, then enter the password
-      self.waitForReadyRead(); output = self.readAll()
+      self.waitForReadyRead()
+      output = self.readAll()
       if not output.contains("password for"):
         return self.spitError(QProcess.FailedToStart, "Please check your sudo installation")
       self.write("%s\n" % self._password)

@@ -22,23 +22,24 @@ codedir     = contentsdir + "/code"
 sourcedir   = contentsdir + "/sources"
 
 ## A KPageDialog for accessing and manipulating settings.
-#
-# This dialog consists of 4 pages: services, sources, settings and custom services,
-# which are made in Qt Designer and simply provide the widgets. All the logic
-# is contained in this class here.
-#
-# Whenever the configuration is changed, the signal configurationChanged() is emitted.
-# This signal tells the ServiceMonitor class to re-setup its widgets and monitoring.
+##
+## This dialog consists of 4 pages: services, sources, settings and custom services,
+## which are made in Qt Designer and simply provide the widgets. All the logic
+## is contained in this class here.
+##
+## Whenever the configuration is changed, the signal configurationChanged() is emitted.
+## This signal tells the ServiceMonitor class to re-setup its widgets and monitoring.
 class ConfigDialog(KPageDialog):
 
+  ## This signal is triggered whenever a configuration value changed.
   configurationChanged = pyqtSignal()
 
   ## Sets up pages, widgets and connections and loads the source files.
   def __init__(self, parent = None):
     KPageDialog.__init__(self)
-    self.sources = {}       ##< [dict] Place for all xml sources, by ID.
-    self.services = {}      ##< [dict] Place for all services, by ID. On collisions the priority is considered.
-    self.editmode = False   ##< [bool] Indicates if editmode is on or off.
+    self.sources = {}       # Place for all xml sources, by ID.
+    self.services = {}      # Place for all services, by ID. On collisions the priority is considered.
+    self.editmode = False   # Indicates if editmode is on or off.
     self.config = QSettings('plasma-desktop', 'service-monitor')
 
     # make sure the setting contain sane defaults
@@ -79,7 +80,7 @@ class ConfigDialog(KPageDialog):
     self.servicesPage.hideUnavailableCheckBox.stateChanged.connect(self.refreshIndicatorsAndVisibility)
 
     # Connections für die SourcesPage
-    self.sourcesPage.searchButton.clicked.connect(self.downloadSources)
+    self.sourcesPage.searchButton.clicked.connect(self.performUpdate)
     self.sourcesPage.sourceList.itemClicked[QListWidgetItem].connect(self.showSourceInfo)
     self.sourcesPage.sourceList.itemChanged[QListWidgetItem].connect(self.saveActiveSources)
 
@@ -100,15 +101,15 @@ class ConfigDialog(KPageDialog):
     self.settingsPage.sudoHelperComboBox.currentIndexChanged[int].connect(self.showSudoSnippet)
     self.settingsPage.checkSudoButton.clicked.connect(self.checkSudo)
 
-    # Sonstige Initialisierungaufgaben...
-    self.settingsPage.sudoHelperDefaultText = self.settingsPage.sudoHelperTextarea.document().toPlainText()
-
     # Cleanup actions when closing the config dialog
     self.closeClicked.connect(self.stopEditmode)
 
+    # Sonstige Initialisierungaufgaben...
+    self.settingsPage.sudoHelperDefaultText = self.settingsPage.sudoHelperTextarea.document().toPlainText()
     self.execInstallChecks()
 
 
+  ## Executes install checks for all services.
   def execInstallChecks(self):
     for source in self.activeSources():
       for service in source.services:
@@ -145,14 +146,14 @@ class ConfigDialog(KPageDialog):
 
 
   ## Returns a list of all services.
-  # On ID collisions only the one with higher priority is contained in the list.
+  ## On ID collisions only the one with higher priority is contained in the list.
   def allServices(self):
     return self.services.values()
 
 
   ## Returns the list of active services.
-  # This function may return fewer services than the config file contains because there might be temporarily unavailable services.
-  # Such services will not be removed from the config, as they might be available again later.
+  ## This function may return fewer services than the config file contains because there might be temporarily unavailable services.
+  ## Such services will not be removed from the config, as they might be available again later.
   def activeServices(self):
     activeServicesIDs = self.config.value('activeServices').toStringList()
     activeSourcesIDs = [s.filename for s in self.activeSources()]
@@ -175,19 +176,23 @@ class ConfigDialog(KPageDialog):
     return self.config.value('sleepTime').toDouble()[0]
 
 
+  ## Returns the name of the theme for the state indicator icons.
   def indicatorTheme(self):
     theme = self.config.value('indicatorTheme').toString()
     return theme if theme and os.path.isdir(codedir + '/indicators/' + theme) else 'default'
 
 
+  ## Returns the install state icon for the given service.
   def installStateIndicator(self, service):
     return QIcon("%s/indicators/%s/%s.png" % (codedir, self.indicatorTheme(), service.state[0]))
 
 
+  ## Returns the running state icon for the given service.
   def runningStateIndicator(self, service):
     return QIcon("%s/indicators/%s/%s.png" % (codedir, self.indicatorTheme(), service.state[1]))
 
 
+  ## Returns the value of the "suppress stdout" setting.
   def suppressStdout(self):
     return self.config.value('suppressStdout').toInt()[0] > 0
 
@@ -196,8 +201,8 @@ class ConfigDialog(KPageDialog):
 
 
   ## Populates both lists in the services page.
-  # The right list can theoretically contain multiple services with the same ID.
-  # When this happens, only the one with higher priority (or the one parsed later) is displayed.
+  ## The right list can theoretically contain multiple services with the same ID.
+  ## When this happens, only the one with higher priority (or the one parsed later) is displayed.
   def populateServiceLists(self, select = None):
     activeServices = self.activeServices()
     activeSources = self.activeSources()
@@ -224,6 +229,7 @@ class ConfigDialog(KPageDialog):
     self.refreshIndicatorsAndVisibility()
 
 
+  ## Iterates over service lists and sets the indicator and visibility.
   def refreshIndicatorsAndVisibility(self):
     activeItems    = [self.servicesPage.activeServicesList.item(i) for i in range(self.servicesPage.activeServicesList.count()) if hasattr(self.servicesPage.activeServicesList.item(i), "service")]
     inactiveItems  = [self.servicesPage.inactiveServicesList.item(i) for i in range(self.servicesPage.inactiveServicesList.count()) if hasattr(self.servicesPage.inactiveServicesList.item(i), "service")]
@@ -273,7 +279,7 @@ class ConfigDialog(KPageDialog):
 
 
   ## Called when clicking one of the sort buttons
-  #  @param direction identifies the clicked button
+  ## @param direction identifies the clicked button
   def sort(self, direction):
     if not self.servicesPage.activeServicesList.currentItem(): return
 
@@ -326,8 +332,6 @@ class ConfigDialog(KPageDialog):
       item.source = source
       item.setCheckState(Qt.Checked if source in activeSources else Qt.Unchecked)
       self.sourcesPage.sourceList.addItem(item)
-    self.sourcesPage.updateComboBox.setItemData(0, QString("http://www.documentroot.net/service-monitor/sources-2.0.tar.gz"))
-    self.sourcesPage.updateComboBox.setItemData(1, QString("https://github.com/mbleichner/service-monitor-sources/tarball/2.0"))
     if len(self.sources) > 0:
       lastmod = max([QFileInfo(sourcedir + "/" + s.filename).created() for s in self.sources.values()])
       self.sourcesPage.lastUpdateLabel.setText(lastmod.toString(Qt.SystemLocaleShortDate))
@@ -335,7 +339,7 @@ class ConfigDialog(KPageDialog):
       self.sourcesPage.lastUpdateLabel.setText("unknown")
       
 
-
+  ## Called when a checkbox is changed in the sources list. Removes or adds a source to the list of active sources in the config file.
   def saveActiveSources(self, item):
     activeSourcesIDs = self.config.value('activeSources').toStringList()
     if item.checkState() == Qt.Checked:
@@ -348,11 +352,13 @@ class ConfigDialog(KPageDialog):
     self.configurationChanged.emit()
 
 
-  def downloadSources(self):
+  ## Updates the sources from the selected server.
+  def performUpdate(self):
     index = self.sourcesPage.updateComboBox.currentIndex()
     if index == -1:
       return
-    url = QUrl(self.sourcesPage.updateComboBox.itemData(index).toString())
+    if index == 0: QUrl("http://www.documentroot.net/service-monitor/sources-2.0.tar.gz")
+    if index == 1: QUrl("https://github.com/mbleichner/service-monitor-sources/tarball/2.0")
     print "starting update from %s" % url.toString()
     self.man = QNetworkAccessManager()
     oldText = self.sourcesPage.searchButton.text()
@@ -409,7 +415,7 @@ class ConfigDialog(KPageDialog):
 
 
   ## Populates list of custom services from custom.xml source file.
-  # @param select automatically select service with given id
+  ## @param select automatically select service with given id
   def populateCustomList(self, select = None):
     self.customPage.serviceList.clear()
     if not self.sources.has_key(QString('custom.xml')):
@@ -435,15 +441,16 @@ class ConfigDialog(KPageDialog):
 
 
   ## Switches editmode on or off.
-  # @param save Save when disabling editmode?
-  # When entering editmode, the list is disabled and the line edits are enabled and vice versa when editmode is left.
-  # In editmode, the edit button becomes a save button and the remove button becomes a cancel button.
+  ## @param save Save when disabling editmode?
+  ## When entering editmode, the list is disabled and the line edits are enabled and vice versa when editmode is left.
+  ## In editmode, the edit button becomes a save button and the remove button becomes a cancel button.
   def toggleEditmode(self, save = True):
     if self.editmode:
       self.stopEditmode()
     else:
       self.startEditmode()
 
+  ## Starts edit mode for the selected service. Disables and relabels buttons.
   def startEditmode(self):
     item = self.customPage.serviceList.currentItem()
     if not item: return
@@ -458,7 +465,9 @@ class ConfigDialog(KPageDialog):
     self.customPage.shareButton.setEnabled(False)
     self.customPage.serviceList.setEnabled(False)
     self.customPage.copyComboBox.setEnabled(False)
-      
+
+
+  ## Quits edit mode. The save parameter determines if the definition should be written back to the source file.
   def stopEditmode(self, save = True):
     if not self.customPage.serviceList.currentItem(): return
       
@@ -569,6 +578,7 @@ class ConfigDialog(KPageDialog):
     QDesktopServices.openUrl(url)
 
 
+  ## Copies the selected service and adds it as a custom service
   def copyService(self):
     index = self.customPage.copyComboBox.currentIndex()
     data = self.customPage.copyComboBox.itemData(index).toString()
@@ -585,7 +595,8 @@ class ConfigDialog(KPageDialog):
     self.populateCustomList(service.id)
     self.synchronizeLineEdits()
     self.customPage.copyComboBox.setCurrentIndex(0)
-    
+
+
 
 # SETTINGS PAGE ###########################################################################################################
 
@@ -605,12 +616,13 @@ class ConfigDialog(KPageDialog):
     self.settingsPage.themeComboBox.blockSignals(False)
 
 
+  ## Saves a value under the given name in the configuration file
   def saveConfigValue(self, name, value):
     self.config.setValue(name, value)
     self.configurationChanged.emit()
 
 
-  # Generates a sudoers config snippet and displays it in the text area
+  ## Generates /etc/sudoers snippets
   def showSudoSnippet(self, selected):
     if selected == 0:
       text = self.settingsPage.sudoHelperDefaultText
@@ -625,17 +637,18 @@ class ConfigDialog(KPageDialog):
     self.settingsPage.sudoHelperTextarea.document().setPlainText(text)
     
 
-  # executes a command to check sudo configuration
+  ## Executes a command to check sudo configuration and gives hints on errors
   def checkSudo(self):
+    if not self.settingsPage.passwordLineEdit.text():
+      QMessageBox.warning(None, self.tr('Enter password'), self.tr("Please enter your password."))
+      return
     proc = BashProcess()
     proc.setBashCommand('cat /etc/sudoers')
     proc.setSudoPassword(self.settingsPage.passwordLineEdit.text())
     proc.start()
     proc.waitForStarted()
-    if proc.errorType() == QProcess.FailedToStart and proc.errorMessage():
-      QMessageBox.critical(None, self.tr('Command failed to start'), QString(proc.errorMessage()))
-    elif proc.errorType() == QProcess.FailedToStart and not isinstance(self, BashProcess):
-      QMessageBox.critical(None, self.tr('Command failed to start'), self.tr("There was an error starting the command. Please check your sudo installation."))
+    if proc.errorType() == QProcess.FailedToStart:
+      QMessageBox.critical(None, self.tr('Command failed to start'), self.tr("Sudo configuration error. Verify that sudo is installed correctly and read the help text at the bottom for hints."))
     elif proc.errorType() == BashProcess.PermissionError:
       QMessageBox.critical(None, self.tr('Sudo permission error'), QString(proc.errorMessage()))
     elif proc.errorType() == BashProcess.PasswordError:
@@ -648,31 +661,38 @@ class ConfigDialog(KPageDialog):
 
 ################################################################################################################
 
+
+## A widget which emits a signal "show".
 class CustomWidget(QWidget):
   show = pyqtSignal()
   def showEvent(self, event):
     self.emit(SIGNAL("show()"))
 
+## The "Sources" tab in the settings dialog (only the widgets, logic is contained in ConfigDialog)
 class SourcesPage(CustomWidget, Ui_Sources):
   def __init__(self, configDialog):
     QWidget.__init__(self)
     self.setupUi(self)
 
+## The "Services" tab in the settings dialog (only the widgets, logic is contained in ConfigDialog)
 class ServicesPage(CustomWidget, Ui_Services):
   def __init__(self, configDialog):
     QWidget.__init__(self)
     self.setupUi(self)
 
+## The "Custom Sources" tab in the settings dialog (only the widgets, logic is contained in ConfigDialog)
 class CustomPage(CustomWidget, Ui_Custom):
   def __init__(self, configDialog):
     QWidget.__init__(self)
     self.setupUi(self)
 
+## The "Settings" tab in the settings dialog (only the widgets, logic is contained in ConfigDialog)
 class SettingsPage(CustomWidget, Ui_Settings):
   def __init__(self, configDialog):
     QWidget.__init__(self)
     self.setupUi(self)
 
+## The "About" tab in the settings dialog (only the widgets, logic is contained in ConfigDialog)
 class AboutPage(CustomWidget, Ui_About):
   def __init__(self, configDialog):
     QWidget.__init__(self)
