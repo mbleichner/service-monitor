@@ -146,6 +146,7 @@ class Ui_Custom(object):
         self.sudoLabel.setObjectName(_fromUtf8("sudoLabel"))
         self.gridLayout_2.addWidget(self.sudoLabel, 6, 0, 1, 1)
         self.sudoCheckbox = QtGui.QCheckBox(Custom)
+        self.sudoCheckbox.setEnabled(False)
         self.sudoCheckbox.setObjectName(_fromUtf8("sudoCheckbox"))
         self.gridLayout_2.addWidget(self.sudoCheckbox, 6, 1, 1, 1)
         self.verticalLayout_5.addLayout(self.gridLayout_2)

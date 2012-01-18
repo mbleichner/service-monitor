@@ -450,6 +450,7 @@ class ConfigDialog(KPageDialog):
     else:
       self.startEditmode()
 
+
   ## Starts edit mode for the selected service. Disables and relabels buttons.
   def startEditmode(self):
     item = self.customPage.serviceList.currentItem()
@@ -493,6 +494,7 @@ class ConfigDialog(KPageDialog):
     self.customPage.shareButton.setEnabled(True)
     self.customPage.serviceList.setEnabled(True)
     self.customPage.copyComboBox.setEnabled(True)
+    
 
   ## Writes data of selected custom service to line edits.
   # Called as slot when a custom service in the list is clicked.

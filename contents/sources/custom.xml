@@ -1,7 +1,7 @@
 <services>
   <name>Custom Services</name>
   <description>You can set up custom services which appear in this section. Use the "custom services" page in the configuration dialog.</description>
-  <service id="custom-352520" sudo="no">
+  <service id="custom-352520" sudo="yes">
     <name>Demo Service</name>
     <description>This is a demo service showing a configuration example</description>
     <installcheck>ls /path/to/executable</installcheck>
