@@ -1,20 +1,12 @@
 <services>
   <name>Custom Services</name>
   <description>You can set up custom services which appear in this section. Use the "custom services" page in the configuration dialog.</description>
-  <service id="custom-352520">
+  <service id="custom-352520" sudo="no">
     <name>Demo Service</name>
     <description>This is a demo service showing a configuration example</description>
     <installcheck>ls /path/to/executable</installcheck>
     <runningcheck>pidof executable</runningcheck>
     <startcommand>/path/to/executable &amp;</startcommand>
     <stopcommand>killall executable</stopcommand>
-  </service>
-  <service id="custom-768925">
-    <name>Neue Definition, bearbeite mich</name>
-    <description>Gib hier eine kurze Beschreibung ein</description>
-    <installcheck></installcheck>
-    <runningcheck></runningcheck>
-    <startcommand></startcommand>
-    <stopcommand></stopcommand>
   </service>
 </services>
