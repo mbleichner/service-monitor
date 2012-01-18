@@ -357,8 +357,8 @@ class ConfigDialog(KPageDialog):
     index = self.sourcesPage.updateComboBox.currentIndex()
     if index == -1:
       return
-    if index == 0: QUrl("http://www.documentroot.net/service-monitor/sources-2.0.tar.gz")
-    if index == 1: QUrl("https://github.com/mbleichner/service-monitor-sources/tarball/2.0")
+    if index == 0: url = QUrl("http://www.documentroot.net/service-monitor/sources-2.0.tar.gz")
+    else:          url = QUrl("https://github.com/mbleichner/service-monitor-sources/tarball/2.0")
     print "starting update from %s" % url.toString()
     self.man = QNetworkAccessManager()
     oldText = self.sourcesPage.searchButton.text()

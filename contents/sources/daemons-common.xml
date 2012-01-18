@@ -3,10 +3,8 @@
   <name>Common Daemons</name>
 
   <description>
-    The most commonly used Unix system daemons. Starting and stopping is done via sudo, so make sure it is installed and configured.
-    Also, the environment variables $SUDO (your preferred sudo command) and $INITDIR (path to your init scripts) must be set.
-    The definitions are based on Debian, but should work for most distributions.
-    Please note: Arch users have to set $INITDIR to "/etc/rc.d".
+    The most commonly used Unix system daemons. Starting and stopping is done via sudo, so make sure it is installed and configured correctly.
+    Since not all services work on every distribution, look through the list for a file that fits your specific system and activate it.
   </description>
 
   <service id="cron-daemon" sudo="yes">
