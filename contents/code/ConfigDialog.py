@@ -376,11 +376,11 @@ class ConfigDialog(KPageDialog):
         return
       if self.res.error() != QNetworkReply.NoError:
         errorMessage = "There was an error. Try again or choose another server."
-        if self.res.error() == QNetworkReply.ConnectionRefusedError:       errorMessage = self.tr("Connection refused by the server. Usually this menas that the server is temporarily offline.")
+        if self.res.error() == QNetworkReply.ConnectionRefusedError:       errorMessage = self.tr("Connection refused by the server. Usually this means that the server is temporarily offline.")
         if self.res.error() == QNetworkReply.RemoteHostClosedError:        errorMessage = self.tr("The remote host closed the connection prematurely. Try again.")
         if self.res.error() == QNetworkReply.HostNotFoundError:            errorMessage = self.tr("The update server could not be found. Are you online?")
         if self.res.error() == QNetworkReply.TimeoutError:                 errorMessage = self.tr("The request timed out. Probably the server is under heavy load and you should try again later.")
-        if self.res.error() == QNetworkReply.TemporaryNetworkFailureError: errorMessage = self.tr("Network error. Please check your connectron and try again.")
+        if self.res.error() == QNetworkReply.TemporaryNetworkFailureError: errorMessage = self.tr("Network error. Please check your connection and try again.")
         if self.res.error() == QNetworkReply.ContentAccessDenied:          errorMessage = self.tr("Server access denied. Write me a mail if this happens and try another server.")
         if self.res.error() == QNetworkReply.ContentNotFoundError:         errorMessage = self.tr("File not found. Write me a mail if this happens and try another server.")
         QMessageBox.critical(self, "Connection failed", errorMessage)

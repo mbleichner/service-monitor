@@ -459,7 +459,7 @@ It creates snippets for inclusion in the /etc/sudoers configuration file. Sudo a
          <property name="text">
           <string>These settings influence general behavior fine-tune them to your needs.
 Since Service Monitor uses &quot;sudo&quot; to gain root privileges, make sure you have a working
-confiuration. If not, you can use the configuration helper to generate configuration snippets.</string>
+configuration. If not, you can use the configuration helper to generate configuration snippets.</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
