@@ -548,7 +548,7 @@ class ConfigDialog(KPageDialog):
     service.description = self.tr('Enter a short, concise description here')
     self.sources[QString('custom.xml')].services.append(service)
     self.sources[QString('custom.xml')].writeBack()
-    #self.readSources()
+    self.readSources()
     self.populateCustomList(service.id)
     self.synchronizeLineEdits() # Triggert nicht automatisch
 
@@ -594,6 +594,7 @@ class ConfigDialog(KPageDialog):
     self.sources[QString("custom.xml")].services.append(service)
     service.id = 'custom-%i' % random.randrange(1, 999999)
     self.sources[QString("custom.xml")].writeBack()
+    self.readSources()
     self.populateCustomList(service.id)
     self.synchronizeLineEdits()
     self.customPage.copyComboBox.setCurrentIndex(0)
