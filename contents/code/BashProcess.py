@@ -17,7 +17,7 @@ class BashProcess(KProcess):
   def __init__(self, parent = None):
     KProcess.__init__(self, parent)
     self._errorType = None
-    self._errorTypeMessage = None
+    self._errorMessage = None
     self._password = None
     self._command = ''
 
@@ -38,11 +38,11 @@ class BashProcess(KProcess):
     return "/etc/rc.d" if QFile.exists("/etc/rc.d") else "/etc/init.d"
 
   def errorMessage(self):
-    return self._errorTypeMessage
+    return self._errorMessage
 
   def spitError(self, code, msg):
     self._errorType = code
-    self._errorTypeMessage = msg
+    self._errorMessage = msg
     self.terminate()
     self.close()
     self.error.emit(self.errorType())
@@ -57,7 +57,7 @@ class BashProcess(KProcess):
     # Ohne den Parameter hängt start() sonst so lange, bis das Hauptkommando ferig ist oder eine Ausgabe produziert.
     program = QStringList()
     if self.usesSudo():
-      program << "/usr/bin/sudo" << "-kS" << "-D 8"
+      program << "/usr/bin/sudo" << "-kS" << "-D 8" << "-p" << "enter sudo password: "
     program << "/bin/bash" << "-c" << self._command
     
     # start program
@@ -73,7 +73,7 @@ class BashProcess(KProcess):
       # start sudo, check if password prompt is present, then enter the password
       self.waitForReadyRead()
       output = self.readAll()
-      if not output.contains("password for"):
+      if not output.contains("enter sudo password:"):
         return self.spitError(QProcess.FailedToStart, "Please check your sudo installation")
       self.write("%s\n" % self._password)
 
