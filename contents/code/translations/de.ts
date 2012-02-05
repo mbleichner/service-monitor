@@ -489,28 +489,33 @@ Um z.B. die Existenz einer Datei zu prüfen, kann man &quot;ls /pfad/zur/datei&q
 <context>
     <name>ServiceMonitor</name>
     <message>
-        <location filename="ServiceMonitor.py" line="134"/>
+        <location filename="ServiceMonitor.py" line="136"/>
         <source>&lt;b&gt;Thank you for downloading&lt;br/&gt;Service Monitor!&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;Right click to open the&lt;br/&gt;settings dialog.</source>
         <translation>&lt;b&gt;Danke fürs Installieren von&lt;br/&gt;Service Monitor!&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;Öffne die Einstellungen&lt;br/&gt;mit einem Rechtsklick.</translation>
     </message>
     <message>
-        <location filename="ServiceMonitor.py" line="184"/>
+        <location filename="ServiceMonitor.py" line="196"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ServiceMonitor.py" line="184"/>
+        <location filename="ServiceMonitor.py" line="196"/>
         <source>Service &quot;%1&quot; not installed. Aborting.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ServiceMonitor.py" line="201"/>
+        <location filename="ServiceMonitor.py" line="213"/>
         <source>%1 has been stopped.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ServiceMonitor.py" line="199"/>
+        <location filename="ServiceMonitor.py" line="211"/>
         <source>%1 is now running.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ServiceMonitor.py" line="138"/>
+        <source>Right click to add services.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -752,18 +757,18 @@ configuration. If not, you can use the configuration helper to generate configur
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="Settings_ui.py" line="352"/>
+        <source>Behavior when put into panel:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="Settings_ui.py" line="350"/>
-        <source>display services in panel</source>
+        <source>display icons directly inside the panel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Settings_ui.py" line="351"/>
-        <source>use popup</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="Settings_ui.py" line="352"/>
-        <source>Behavior when put into panel:</source>
+        <source>display service list in a popup window</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -40,8 +40,8 @@ class ConfigDialog(KPageDialog):
     self.sources = {}       # Place for all xml sources, by ID.
     self.services = {}      # Place for all services, by ID. On collisions the priority is considered.
     self.editmode = False   # Indicates if editmode is on or off.
+    self.cache = {}         # Cache for various things, currently only icons
     self.config = QSettings('plasma-desktop', 'service-monitor')
-    self.cache = {}
 
     # make sure the setting contain sane defaults
     self.setConfigDefaults()

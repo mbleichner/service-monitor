@@ -274,12 +274,12 @@ if you experience annoying error output being produced by some commands.</string
         </property>
         <item>
          <property name="text">
-          <string>display services in panel</string>
+          <string>display icons directly inside the panel</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>use popup</string>
+          <string>display service list in a popup window</string>
          </property>
         </item>
        </widget>

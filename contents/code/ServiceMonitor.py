@@ -48,6 +48,7 @@ class ServiceMonitor(Applet):
 
     # remove old contents on successive calls
     deleteContentsRecursively(self.applet.layout())
+    deleteContentsRecursively(self.mainLayout)
 
     # determine mode
     if self.formFactor() == Plasma.Planar:
@@ -115,8 +116,8 @@ class ServiceMonitor(Applet):
         self.widgets[service.id] = { 'name': nameLabel, 'status': statusIcon }
         nameLabel.setText(u'<strong>%s</strong>' % service.name)
         nameLabel.nativeWidget().setWordWrap(False)
-        statusIcon.setMinimumHeight(22)
-        statusIcon.setMaximumHeight(22)
+        statusIcon.setMinimumSize(20, 20)
+        statusIcon.setMaximumSize(20, 20)
         statusIcon.setSizePolicy(QSizePolicy.Maximum, QSizePolicy.Maximum)
         self.refreshStateIcon(service)
         if self.mode == 'icons' and self.formFactor() == Plasma.Vertical:
@@ -131,9 +132,20 @@ class ServiceMonitor(Applet):
     # Falls keine Services eingerichtet: Einleitungstext anzeigen
     if not activeServices:
       self.widgets['intro'] = Plasma.Label()
-      self.widgets['intro'].setText(self.tr('<b>Thank you for downloading<br/>Service Monitor!</b><br/><br/>Right click to open the<br/>settings dialog.'))
+      if self.mode != 'icons':
+        self.widgets['intro'].setText(self.tr('<b>Thank you for downloading<br/>Service Monitor!</b><br/><br/>Right click to open the<br/>settings dialog.'))
+      else:
+        self.widgets['intro'].setText(self.tr('Right click to add services.'))
+        self.widgets['intro'].setMinimumSize(self.widgets['intro'].preferredSize())
+      self.widgets['intro'].setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
       self.mainLayout.addItem(self.widgets['intro'], 0, 0)
 
+    # in icons mode, squeeze as much as possible
+    if self.mode == 'icons' and self.formFactor() == Plasma.Horizontal:
+      self.mainLayout.setMaximumWidth(self.mainLayout.minimumWidth())
+    elif self.mode == 'icons' and self.formFactor() == Plasma.Vertical:
+      self.mainLayout.setMaximumHeight(self.mainLayout.minimumHeight())
+      
     # Hier ist das Layout eingerichtet - aktivieren
     self.mainLayout.activate()
 
