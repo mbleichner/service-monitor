@@ -189,13 +189,12 @@ class ServiceMonitor(Applet):
     # send a KNotify notification if the change wasn't issued by the user
     if self.configDialog.useKNotify() and service.state[1] in ["running", "stopped"] and reason == 'polling':
       if service.state[1] == "running":
-        message = self.tr("%1 has been started.").arg(service.name)
+        message = self.tr("%1 is now running.").arg(service.name)
       else:
         message = self.tr("%1 has been stopped.").arg(service.name)
-      print message, reason
       byteArray = QByteArray()
       buffer = QBuffer(byteArray)
-      QIcon(':/panel-icon.png').pixmap(QSize(32, 32)).toImage().save(buffer, "PNG")
+      icon.pixmap(QSize(32, 32)).toImage().rgbSwapped().save(buffer, "XPM") # KNotify seems to expect a BGR file
       knotify = dbus.SessionBus().get_object("org.kde.knotify", "/Notify")
       knotify.event("warning", "kde", [], "Service state changed", str(message), byteArray, [], 0, 0, dbus_interface="org.kde.KNotify")
 

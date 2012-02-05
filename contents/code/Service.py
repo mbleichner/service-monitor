@@ -182,7 +182,6 @@ class Service(QObject):
 
   def retryLastCommand(self, password):
     if not self.lastCommand(): return
-    print "retrying..."
     self.execute(self.lastCommand(), 'requested', password)
 
 
