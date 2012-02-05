@@ -55,7 +55,7 @@ class Service(QObject):
     service = Service(parent)
     service.id = root.attribute('id')
     if root.attribute('icon'):
-      service.icon = KIcon(root.attribute('icon'))
+      service.icon = root.attribute('icon')
     service.sudo = root.attribute('sudo', 'no') in ["yes", "true"]
     if not service.id: raise Exception('Service without ID')
     service.priority = root.attribute('priority')

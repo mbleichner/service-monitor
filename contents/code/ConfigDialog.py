@@ -140,7 +140,7 @@ class ConfigDialog(KPageDialog):
       for service in source.services:
         if not self.services.has_key(service.id) or self.services[service.id].priority <= service.priority:
           self.services[service.id] = service
-          service.installStateChanged.connect(self.refreshIndicatorsAndVisibility)
+          service.installStateChanged.connect(partial(self.refreshIndicatorsAndVisibility, service))
           service.overridden = False
         else:
           service.overridden = True
@@ -184,27 +184,29 @@ class ConfigDialog(KPageDialog):
   ## Returns the name of the theme for the state indicator icons.
   def indicatorTheme(self):
     theme = self.config.value('indicatorTheme').toString()
-    return theme if theme and os.path.isdir(codedir + '/indicators/' + theme) else 'default'
+    return theme if theme and os.path.isdir(codedir + '/resources/indicators/' + theme) else 'default'
+
+
+  def serviceIcon(self, service):
+    if service.icon is not None and QFile.exists('%s/resources/services/%s.png' % (codedir, service.icon)):
+      return QIcon('%s/resources/services/%s.png' % (codedir, service.icon))
+    return KIcon(service.icon) if service.icon is not None else QIcon(':/panel-icon.png')
 
 
   ## Returns the install state icon for the given service.
   def installStateIndicator(self, service):
-    indicator = QIcon("%s/indicators/%s/%s.png" % (codedir, self.indicatorTheme(), service.state[0]))
-    if False:
-      base = service.icon if service.icon is not None else QIcon(':/panel-icon.png')
-      return combineIcons(base, indicator)
-    else:
-      return indicator
+    icon = self.serviceIcon(service)
+    indicator = QIcon("%s/resources/indicators/%s/%s.png" % (codedir, self.indicatorTheme(), service.state[0]))
+    sat = {'installed': 1, 'unknown': 0.5, 'missing': 0}[service.state[0]]
+    return combineIcons(changeSaturation(icon, sat), indicator)
 
 
   ## Returns the running state icon for the given service.
   def runningStateIndicator(self, service):
-    indicator = QIcon("%s/indicators/%s/%s.png" % (codedir, self.indicatorTheme(), service.state[1]))
-    if False:
-      base = service.icon if service.icon is not None else QIcon(':/panel-icon.png')
-      return combineIcons(base, indicator)
-    else:
-      return indicator
+    icon = self.serviceIcon(service)
+    indicator = QIcon("%s/resources/indicators/%s/%s.png" % (codedir, self.indicatorTheme(), service.state[1]))
+    sat = {'running': 1, 'starting': 0.5, 'stopping': 0.5, 'unknown': 0, 'stopped': 0}[service.state[1]]
+    return combineIcons(changeSaturation(icon, sat), indicator)
 
 
   ## Returns the value of the "suppress stdout" setting.
@@ -250,11 +252,12 @@ class ConfigDialog(KPageDialog):
 
 
   ## Iterates over service lists and sets the indicator and visibility.
-  def refreshIndicatorsAndVisibility(self):
+  def refreshIndicatorsAndVisibility(self, service = None):
     activeItems    = [self.servicesPage.activeServicesList.item(i) for i in range(self.servicesPage.activeServicesList.count()) if hasattr(self.servicesPage.activeServicesList.item(i), "service")]
     inactiveItems  = [self.servicesPage.inactiveServicesList.item(i) for i in range(self.servicesPage.inactiveServicesList.count()) if hasattr(self.servicesPage.inactiveServicesList.item(i), "service")]
     for item in activeItems + inactiveItems:
-      item.setIcon(self.installStateIndicator(item.service))
+      if service is None or item.service == service:
+        item.setIcon(self.installStateIndicator(item.service))
     for item in inactiveItems:
       item.setHidden(self.servicesPage.hideUnavailableCheckBox.checkState() == Qt.Checked and item.service.state[0] == 'missing')
 
@@ -631,7 +634,7 @@ class ConfigDialog(KPageDialog):
     self.settingsPage.usernameLabel.setText(getpass.getuser())
     self.settingsPage.suppressStdoutCheckBox.setCheckState(self.config.value('suppressStdout').toInt()[0])
     self.settingsPage.kNotifyCheckBox.setCheckState(self.config.value('useKNotify').toInt()[0])
-    themes = QStringList([fn for fn in os.listdir(codedir + "/indicators")])
+    themes = QStringList([fn for fn in os.listdir(codedir + "/resources/indicators")])
     themes.sort()
     self.settingsPage.themeComboBox.blockSignals(True)
     self.settingsPage.themeComboBox.clear()

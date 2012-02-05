@@ -17,7 +17,7 @@
     <stopcommand>xset s off -dpms</stopcommand>
   </service>
 
-  <service id="pc-speaker" sudo="yes">
+  <service id="pc-speaker" sudo="yes" icon="speaker">
     <name>PC Speaker</name>
     <description>Enable/disable the speaker system-wide. Root access is gained through $SUDO.</description>
     <installcheck>echo "always installed"</installcheck>
@@ -26,7 +26,7 @@
     <stopcommand>rmmod pcspkr</stopcommand>
   </service>
 
-  <service id="shutdown-timer" sudo="yes">
+  <service id="shutdown-timer" sudo="yes" icon="system-shutdown">
     <name>Shutdown Timer (1h)</name>
     <description>Shut down the system 1 hour delayed.</description>
     <installcheck>echo "always installed"</installcheck>
@@ -35,7 +35,7 @@
     <stopcommand>shutdown -c</stopcommand>
   </service>
 
-  <service id="swap-space" sudo="yes">
+  <service id="swap-space" sudo="yes" icon="drive-harddisk">
     <name>Swap Space</name>
     <description>Activate/deactivate all swap partitions (useful for flushing swapped data).</description>
     <installcheck>echo "always installed"</installcheck>
@@ -71,7 +71,7 @@
     <stopcommand>killall xbindkeys</stopcommand>
   </service>
 
-  <service id="dpms">
+  <service id="dpms" icon="jameica-icon">
     <name>DPMS</name>
     <description>Turn the screen off/on - submitted by Epimetheus11</description>
     <installcheck>ls /usr/bin/xset</installcheck>

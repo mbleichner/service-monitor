@@ -25,10 +25,11 @@ def combineIcons(base, overlay):
   overlay = overlay.pixmap(12, 12).toImage()
 
   # Basisbild etwas abdunkeln
+  f = 0.85
   for x in range(20):
     for y in range(20):
       p = int2rgba(base.pixel(x, y))
-      base.setPixel(x, y, rgba2int(p[0]*0.8, p[1]*0.8, p[2]*0.8, p[3]))
+      base.setPixel(x, y, rgba2int(p[0]*f, p[1]*f, p[2]*f, p[3]))
 
   # Overlay darüber zeichnen
   for x in range(12):
@@ -44,6 +45,20 @@ def combineIcons(base, overlay):
   return QIcon(QPixmap.fromImage(base))
 
 
+def changeSaturation(icon, f):
+  if f == 1: return QIcon(icon)
+  icon = icon.pixmap(20, 20).toImage()
+  for x in range(20):
+    for y in range(20):
+      p = int2rgba(icon.pixel(x, y))
+      v = (p[0] + p[1] + p[2]) / 3
+      r = f*p[0] + (1-f)*v
+      g = f*p[1] + (1-f)*v
+      b = f*p[2] + (1-f)*v
+      icon.setPixel(x, y, rgba2int(r, g, b, p[3]))
+  return QIcon(QPixmap.fromImage(icon))
+
+
 def rgba2int(r,g,b,a):
   return int(a) * 16**6 + int(r) * 16**4 + int(g) * 16**2 + int(b) * 16**0
 
@@ -51,4 +66,3 @@ def rgba2int(r,g,b,a):
 def int2rgba(n):
   n = int(n)
   return ( (n / 16**4) % 16**2, (n / 16**2) % 16**2, (n / 16**0) % 16**2, (n / 16**6) % 16**2 )
-

@@ -7,7 +7,7 @@
     Since not all services work on every distribution, look through the list for a file that fits your specific system and activate it.
   </description>
 
-  <service id="cron-daemon" sudo="yes">
+  <service id="cron-daemon" sudo="yes" icon="clock">
     <name>Cron Daemon</name>
     <description>Periodic command scheduler</description>
     <installcheck>ls /usr/sbin/cron</installcheck>
@@ -16,7 +16,7 @@
     <stopcommand>$INITDIR/cron stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="cups-daemon" sudo="yes">
+  <service id="cups-daemon" sudo="yes" icon="printer">
     <name>CUPS Daemon</name>
     <description>The Common Unix Printing System daemon</description>
     <installcheck>ls /usr/sbin/cupsd</installcheck>
@@ -25,7 +25,7 @@
     <stopcommand>$INITDIR/cups stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="apache2-daemon" sudo="yes" icon="akonadi">
+  <service id="apache2-daemon" sudo="yes" icon="applications-internet">
     <name>Apache2 Webserver</name>
     <description>The most commonly used web server</description>
     <installcheck>ls /usr/sbin/apache2</installcheck>
@@ -43,7 +43,7 @@
     <stopcommand>$INITDIR/boinc-client stop; sleep 1</stopcommand>
   </service>
 
-  <service id="mysql-daemon" priority="0" sudo="yes">
+  <service id="mysql-daemon" priority="0" sudo="yes" icon="server-database">
     <name>MySQL Database</name>
     <description>Database server, mainly used for PHP</description>
     <installcheck>ls $INITDIR/mysql</installcheck>
@@ -52,7 +52,7 @@
     <stopcommand>$INITDIR/mysql stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="wicd-daemon" sudo="yes">
+  <service id="wicd-daemon" sudo="yes" icon="network-wireless">
     <name>WICD (Network manager)</name>
     <description>An alternative to Network Manager</description>
     <installcheck>ls $INITDIR/wicd</installcheck>
@@ -61,7 +61,7 @@
     <stopcommand>$INITDIR/wicd stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="bluetooth-daemon" sudo="yes">
+  <service id="bluetooth-daemon" sudo="yes" icon="preferences-system-bluetooth">
     <name>Bluetooth</name>
     <description>The bluetooth daemon</description>
     <installcheck>ls $INITDIR/bluetooth</installcheck>
@@ -70,7 +70,7 @@
     <stopcommand>$INITDIR/bluetooth stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="proftp-daemon" sudo="yes">
+  <service id="proftp-daemon" sudo="yes" icon="network-workgroup">
     <name>ProFTP Server</name>
     <description>Powerful, highly configurable FTP server</description>
     <installcheck>ls $INITDIR/proftpd</installcheck>
@@ -79,7 +79,7 @@
     <stopcommand>$INITDIR/proftpd stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="ssh-daemon" sudo="yes">
+  <service id="ssh-daemon" sudo="yes" icon="utilities-terminal">
     <name>SSH Server</name>
     <description>OpenSSH (Secure Shell) Server</description>
     <installcheck>ls $INITDIR/ssh</installcheck>
@@ -88,7 +88,7 @@
     <stopcommand>$INITDIR/ssh stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="ssh-daemon-2" sudo="yes">
+  <service id="ssh-daemon-2" sudo="yes" icon="utilities-terminal">
     <name>SSH Server (alternative)</name>
     <description>Use this definition if the other one does not work for you</description>
     <installcheck>ls $INITDIR/sshd</installcheck>
@@ -97,7 +97,7 @@
     <stopcommand>$INITDIR/sshd stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="samba-daemon" sudo="yes">
+  <service id="samba-daemon" sudo="yes" icon="network-server">
     <name>Samba Server</name>
     <description>SMB File Server</description>
     <installcheck>ls $INITDIR/samba</installcheck>
@@ -106,7 +106,7 @@
     <stopcommand>$INITDIR/samba stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="postgresql-daemon" sudo="yes">
+  <service id="postgresql-daemon" sudo="yes" icon="server-database">
     <name>PostgreSQL Server</name>
     <description>PostgreSQL Database Server</description>
     <installcheck>ls $INITDIR/postgresql</installcheck>
@@ -115,7 +115,7 @@
     <stopcommand>$INITDIR/postgresql stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="akonadi-daemon">
+  <service id="akonadi-daemon" icon="akonadi">
     <name>Akonadi Services</name>
     <description>Akonadi Personal Information Management</description>
     <installcheck>ls /usr/bin/akonadictl</installcheck>
@@ -124,7 +124,7 @@
     <stopcommand>/usr/bin/akonadictl stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="nepomuk-daemon">
+  <service id="nepomuk-daemon" icon="nepomuk">
     <name>Nepomuk</name>
     <description>Nepomuk Desktop Search Services</description>
     <installcheck>ls /usr/bin/nepomukserver</installcheck>
