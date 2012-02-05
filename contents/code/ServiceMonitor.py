@@ -154,15 +154,17 @@ class ServiceMonitor(Applet):
       self.container.adjustSize()
       self.scene.setSceneRect(self.container.geometry())
 
-    # Alle Polling-Prozesse anhalten
+    # Alle Polling-Prozesse anhalten und alte Connections trennen
     for service in self.configDialog.allServices():
       service.setPolling(False)
+      try: service.runningStateChanged.disconnect()
+      except: pass
 
     # Aktive Prozesse neu einrichten und Polling starten
     interval = self.configDialog.pollingInterval()
     sleepTime = self.configDialog.sleepTime()
     for service in activeServices:
-      service.stateChanged.connect(partial(self.refreshStateIcon, service))
+      service.runningStateChanged.connect(partial(self.refreshStateIcon, service))
       service.wrongPassword[str].connect(partial(self.askPasswordAndRetry, service))
       service.setSleepTime(sleepTime)
       service.setErrorReporting(not self.configDialog.suppressStdout())
@@ -184,12 +186,13 @@ class ServiceMonitor(Applet):
     icon = self.configDialog.runningStateIndicator(service)
     self.widgets[service.id]['status'].setIcon(icon)
 
-    # send a notification if the change wasn't issued by the user
-    if service.state[1] in ["running", "stopped"] and reason == 'polling':
-      if service.state[1] == ["running"]:
+    # send a KNotify notification if the change wasn't issued by the user
+    if self.configDialog.useKNotify() and service.state[1] in ["running", "stopped"] and reason == 'polling':
+      if service.state[1] == "running":
         message = self.tr("%1 has been started.").arg(service.name)
       else:
         message = self.tr("%1 has been stopped.").arg(service.name)
+      print message, reason
       byteArray = QByteArray()
       buffer = QBuffer(byteArray)
       QIcon(':/panel-icon.png').pixmap(QSize(32, 32)).toImage().save(buffer, "PNG")

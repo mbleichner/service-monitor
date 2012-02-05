@@ -148,7 +148,7 @@ If the status immediatly flashes back to inactive when starting a service, incre
         </property>
        </widget>
       </item>
-      <item row="3" column="0">
+      <item row="4" column="0">
        <widget class="QLabel" name="label_9">
         <property name="font">
          <font>
@@ -165,7 +165,7 @@ If the status immediatly flashes back to inactive when starting a service, incre
         </property>
        </widget>
       </item>
-      <item row="3" column="1">
+      <item row="4" column="1">
        <widget class="QCheckBox" name="suppressStdoutCheckBox">
         <property name="enabled">
          <bool>true</bool>
@@ -183,6 +183,37 @@ if you experience annoying error output being produced by some commands.</string
         </property>
         <property name="text">
          <string>(use with caution)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QCheckBox" name="kNotifyCheckBox">
+        <property name="font">
+         <font>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_10">
+        <property name="font">
+         <font>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Report external state changes through KNotify:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>

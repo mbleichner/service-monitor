@@ -15,7 +15,8 @@ from functions import *
 # signal is emitted.
 class Service(QObject):
 
-  stateChanged = pyqtSignal(str)
+  runningStateChanged = pyqtSignal(str)
+  installStateChanged = pyqtSignal(str)
   wrongPassword = pyqtSignal(str)
 
   def __init__(self, parent = None):
@@ -105,8 +106,10 @@ class Service(QObject):
   def setState(self, newState, reason):
     oldState = self.state
     self.state = newState
-    if newState != oldState:
-      self.stateChanged.emit(reason)
+    if newState[0] != oldState[0]:
+      self.installStateChanged.emit(reason)
+    if newState[1] != oldState[1]:
+      self.runningStateChanged.emit(reason)
 
 
   def setRunningState(self, runningState, reason):
@@ -132,7 +135,7 @@ class Service(QObject):
     command = getattr(self, which)
     proc = self.processes[which] = BashProcess()
     if which in ["startcommand", "stopcommand"]:
-      proc.setBashCommand("sleep %.1f; %s" % (self.sleepTime, command))
+      proc.setBashCommand("%s\nsleep %.1f" % (command, self.sleepTime))
     else:
       proc.setBashCommand(command)
     if which in ["startcommand", "stopcommand"]:
@@ -159,7 +162,7 @@ class Service(QObject):
       proc.finished.connect(partial(self.finished, which, reason))
 
     # if startup failed, issue state check
-    if proc.state() != QProcess.Running:
+    else:
       self.execute('runningcheck', reason)
     
 
@@ -170,7 +173,6 @@ class Service(QObject):
     elif which == "runningcheck":
       self.setRunningState('running' if (proc.exitCode() == 0 and proc.readAllStandardOutput().length() > 0) else 'stopped', reason)
     elif which in ['startcommand', 'stopcommand']:
-      self.setRunningState('running' if (proc.exitCode() == 0 and proc.readAllStandardOutput().length() > 0) else 'stopped', reason)
       errorOutput = QString(proc.readAllStandardError())
       if errorOutput and self.reportErrors:
         QMessageBox.warning(None, self.tr('Error output'), errorOutput)
@@ -180,6 +182,7 @@ class Service(QObject):
 
   def retryLastCommand(self, password):
     if not self.lastCommand(): return
+    print "retrying..."
     self.execute(self.lastCommand(), 'requested', password)
 
 

@@ -62,10 +62,12 @@ class ConfigDialog(KPageDialog):
     self.addPage(self.customPage, self.tr("Custom Services")).setIcon(KIcon("edit-rename"))
     self.addPage(self.aboutPage, self.tr("About")).setIcon(KIcon("help-about"))
 
-    # When opening a page, populate the corresponding widgets
+    # Settings page does not depend on other pages, load it directly
+    self.populateSettings()
+
+    # When opening one of the other pages, populate the corresponding widgets dynamically
     self.servicesPage.show.connect(chain(self.execInstallChecks, self.populateServiceLists))
     self.sourcesPage.show.connect(self.populateSourceList)
-    self.settingsPage.show.connect(self.populateSettings)
     self.customPage.show.connect(self.populateCustomList)
     
     # Connections für die ServicesPage
@@ -98,6 +100,7 @@ class ConfigDialog(KPageDialog):
     self.settingsPage.sleepTimeSpinbox.valueChanged[float].connect(partial(self.saveConfigValue, 'sleepTime'))
     self.settingsPage.themeComboBox.currentIndexChanged[QString].connect(partial(self.saveConfigValue, 'indicatorTheme'))
     self.settingsPage.suppressStdoutCheckBox.stateChanged[int].connect(partial(self.saveConfigValue, 'suppressStdout'))
+    self.settingsPage.kNotifyCheckBox.stateChanged[int].connect(partial(self.saveConfigValue, 'useKNotify'))
     self.settingsPage.sudoHelperComboBox.currentIndexChanged[int].connect(self.showSudoSnippet)
     self.settingsPage.checkSudoButton.clicked.connect(self.checkSudo)
 
@@ -118,6 +121,8 @@ class ConfigDialog(KPageDialog):
 
   ## Initialize the internal QSettings object with sensible default values
   def setConfigDefaults(self):
+    if not self.config.contains('suppressStdout'):  self.config.setValue('suppressStdout', 0)
+    if not self.config.contains('useKNotify'):      self.config.setValue('useKNotify', 1)
     if not self.config.contains('pollingInterval'): self.config.setValue('pollingInterval', 4.0)
     if not self.config.contains('sleepTime'):       self.config.setValue('sleepTime', 0.5)
     if not self.config.contains('activeSources'):   self.config.setValue('activeSources', QStringList() << "daemons-common.xml" << "tools-settings.xml")
@@ -135,7 +140,7 @@ class ConfigDialog(KPageDialog):
       for service in source.services:
         if not self.services.has_key(service.id) or self.services[service.id].priority <= service.priority:
           self.services[service.id] = service
-          service.stateChanged.connect(self.refreshIndicatorsAndVisibility)
+          service.installStateChanged.connect(self.refreshIndicatorsAndVisibility)
           service.overridden = False
         else:
           service.overridden = True
@@ -195,6 +200,11 @@ class ConfigDialog(KPageDialog):
   ## Returns the value of the "suppress stdout" setting.
   def suppressStdout(self):
     return self.config.value('suppressStdout').toInt()[0] > 0
+
+
+  ## Returns the value of the "suppress stdout" setting.
+  def useKNotify(self):
+    return self.config.value('useKNotify').toInt()[0] > 0
 
 
 # SERVICES PAGE ###########################################################################################################
@@ -610,6 +620,7 @@ class ConfigDialog(KPageDialog):
     self.settingsPage.sleepTimeSpinbox.setValue(self.config.value('sleepTime').toDouble()[0])
     self.settingsPage.usernameLabel.setText(getpass.getuser())
     self.settingsPage.suppressStdoutCheckBox.setCheckState(self.config.value('suppressStdout').toInt()[0])
+    self.settingsPage.kNotifyCheckBox.setCheckState(self.config.value('useKNotify').toInt()[0])
     themes = QStringList([fn for fn in os.listdir(codedir + "/indicators")])
     themes.sort()
     self.settingsPage.themeComboBox.blockSignals(True)
