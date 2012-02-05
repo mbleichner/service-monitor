@@ -23,15 +23,6 @@ def mkTextElement(doc, tagName, textData):
 def combineIcons(base, overlay):
   base = base.pixmap(20, 20).toImage()
   overlay = overlay.pixmap(12, 12).toImage()
-
-  # Basisbild etwas abdunkeln
-  f = 0.85
-  for x in range(20):
-    for y in range(20):
-      p = int2rgba(base.pixel(x, y))
-      base.setPixel(x, y, rgba2int(p[0]*f, p[1]*f, p[2]*f, p[3]))
-
-  # Overlay darüber zeichnen
   for x in range(12):
     for y in range(12):
       p1 = int2rgba(base.pixel(8+x,8+y))

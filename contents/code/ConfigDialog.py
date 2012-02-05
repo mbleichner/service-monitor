@@ -99,6 +99,7 @@ class ConfigDialog(KPageDialog):
     # Connections für die SettingsPage
     self.settingsPage.pollingIntervalSpinbox.valueChanged[float].connect(partial(self.saveConfigValue, 'pollingInterval'))
     self.settingsPage.sleepTimeSpinbox.valueChanged[float].connect(partial(self.saveConfigValue, 'sleepTime'))
+    self.settingsPage.iconStyleComboBox.currentIndexChanged[int].connect(partial(self.saveConfigValue, 'iconStyle'))
     self.settingsPage.themeComboBox.currentIndexChanged[QString].connect(partial(self.saveConfigValue, 'indicatorTheme'))
     self.settingsPage.suppressStdoutCheckBox.stateChanged[int].connect(partial(self.saveConfigValue, 'suppressStdout'))
     self.settingsPage.kNotifyCheckBox.stateChanged[int].connect(partial(self.saveConfigValue, 'useKNotify'))
@@ -122,6 +123,7 @@ class ConfigDialog(KPageDialog):
 
   ## Initialize the internal QSettings object with sensible default values
   def setConfigDefaults(self):
+    if not self.config.contains('iconStyle'):       self.config.setValue('iconStyle', 2)
     if not self.config.contains('suppressStdout'):  self.config.setValue('suppressStdout', 0)
     if not self.config.contains('useKNotify'):      self.config.setValue('useKNotify', 1)
     if not self.config.contains('pollingInterval'): self.config.setValue('pollingInterval', 4.0)
@@ -182,6 +184,11 @@ class ConfigDialog(KPageDialog):
     return self.config.value('sleepTime').toDouble()[0]
 
 
+  ## Returns the sleep time from the settings page.
+  def iconStyle(self):
+    return self.config.value('iconStyle').toInt()[0]
+
+
   ## Returns the name of the theme for the state indicator icons.
   def indicatorTheme(self):
     theme = self.config.value('indicatorTheme').toString()
@@ -196,23 +203,37 @@ class ConfigDialog(KPageDialog):
 
   ## Returns the install state icon for the given service.
   def installStateIndicator(self, service):
-    key = ('icon', service.icon, service.state)
+    style = self.iconStyle()
+    theme = self.indicatorTheme()
+    key = ('icon', style, theme, service.icon, service.state)
     if not self.cache.has_key(key):
+      indicator = QIcon("%s/indicators/%s/%s.png" % (codedir, theme, service.state[0]))
       icon = self.serviceIcon(service)
-      indicator = QIcon("%s/indicators/%s/%s.png" % (codedir, self.indicatorTheme(), service.state[0]))
       sat = {'installed': 1, 'unknown': 0.5, 'missing': 0}[service.state[0]]
-      self.cache[key] = combineIcons(changeSaturation(icon, sat), indicator)
+      if style == 0:
+        self.cache[key] = indicator
+      elif style == 1:
+        self.cache[key] = combineIcons(changeSaturation(icon, sat), indicator)
+      else:
+        self.cache[key] = changeSaturation(icon, sat)
     return self.cache[key]
 
 
   ## Returns the running state icon for the given service.
   def runningStateIndicator(self, service):
-    key = ('icon', service.icon, service.state)
+    style = self.iconStyle()
+    theme = self.indicatorTheme()
+    key = ('icon', style, theme, service.icon, service.state)
     if not self.cache.has_key(key):
+      indicator = QIcon("%s/indicators/%s/%s.png" % (codedir, theme, service.state[1]))
       icon = self.serviceIcon(service)
-      indicator = QIcon("%s/indicators/%s/%s.png" % (codedir, self.indicatorTheme(), service.state[1]))
       sat = {'running': 1, 'starting': 0.5, 'stopping': 0.5, 'unknown': 0, 'stopped': 0}[service.state[1]]
-      self.cache[key] = combineIcons(changeSaturation(icon, sat), indicator)
+      if style == 0:
+        self.cache[key] = indicator
+      elif style == 1:
+        self.cache[key] = changeSaturation(icon, sat)
+      else:
+        self.cache[key] = combineIcons(changeSaturation(icon, sat), indicator)
     return self.cache[key]
 
 
@@ -636,6 +657,7 @@ class ConfigDialog(KPageDialog):
 
   ## Populates everything in the settings frame (currently only polling time and sleep time).
   def populateSettings(self):
+    self.settingsPage.iconStyleComboBox.setCurrentIndex(self.config.value('iconStyle').toInt()[0])
     self.settingsPage.pollingIntervalSpinbox.setValue(self.config.value('pollingInterval').toDouble()[0])
     self.settingsPage.sleepTimeSpinbox.setValue(self.config.value('sleepTime').toDouble()[0])
     self.settingsPage.usernameLabel.setText(getpass.getuser())
