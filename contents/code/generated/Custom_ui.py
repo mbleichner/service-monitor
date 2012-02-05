@@ -11,10 +11,11 @@ except AttributeError:
 class Ui_Custom(object):
     def setupUi(self, Custom):
         Custom.setObjectName(_fromUtf8("Custom"))
-        Custom.resize(614, 509)
+        Custom.resize(615, 509)
         self.verticalLayout_5 = QtGui.QVBoxLayout(Custom)
         self.verticalLayout_5.setObjectName(_fromUtf8("verticalLayout_5"))
         self.serviceList = QtGui.QListWidget(Custom)
+        self.serviceList.setEnabled(True)
         self.serviceList.setObjectName(_fromUtf8("serviceList"))
         self.verticalLayout_5.addWidget(self.serviceList)
         self.horizontalLayout = QtGui.QHBoxLayout()

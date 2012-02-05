@@ -11,6 +11,7 @@ except AttributeError:
 class Ui_Settings(object):
     def setupUi(self, Settings):
         Settings.setObjectName(_fromUtf8("Settings"))
+        Settings.setEnabled(True)
         Settings.resize(647, 512)
         self.verticalLayout_2 = QtGui.QVBoxLayout(Settings)
         self.verticalLayout_2.setObjectName(_fromUtf8("verticalLayout_2"))

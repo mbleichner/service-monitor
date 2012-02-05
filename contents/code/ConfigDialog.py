@@ -185,12 +185,12 @@ class ConfigDialog(KPageDialog):
   ## Returns the name of the theme for the state indicator icons.
   def indicatorTheme(self):
     theme = self.config.value('indicatorTheme').toString()
-    return theme if theme and os.path.isdir(codedir + '/resources/indicators/' + theme) else 'default'
+    return theme if theme and os.path.isdir(codedir + '/indicators/' + theme) else 'default'
 
 
   def serviceIcon(self, service):
-    if service.icon is not None and QFile.exists('%s/resources/services/%s.png' % (codedir, service.icon)):
-      return QIcon('%s/resources/services/%s.png' % (codedir, service.icon))
+    if service.icon is not None and QFile.exists('%s/icons/%s.png' % (sourcedir, service.icon)):
+      return QIcon('%s/icons/%s.png' % (sourcedir, service.icon))
     return KIcon(service.icon) if service.icon is not None else QIcon(':/panel-icon.png')
 
 
@@ -199,7 +199,7 @@ class ConfigDialog(KPageDialog):
     key = ('icon', service.icon, service.state)
     if not self.cache.has_key(key):
       icon = self.serviceIcon(service)
-      indicator = QIcon("%s/resources/indicators/%s/%s.png" % (codedir, self.indicatorTheme(), service.state[0]))
+      indicator = QIcon("%s/indicators/%s/%s.png" % (codedir, self.indicatorTheme(), service.state[0]))
       sat = {'installed': 1, 'unknown': 0.5, 'missing': 0}[service.state[0]]
       self.cache[key] = combineIcons(changeSaturation(icon, sat), indicator)
     return self.cache[key]
@@ -210,7 +210,7 @@ class ConfigDialog(KPageDialog):
     key = ('icon', service.icon, service.state)
     if not self.cache.has_key(key):
       icon = self.serviceIcon(service)
-      indicator = QIcon("%s/resources/indicators/%s/%s.png" % (codedir, self.indicatorTheme(), service.state[1]))
+      indicator = QIcon("%s/indicators/%s/%s.png" % (codedir, self.indicatorTheme(), service.state[1]))
       sat = {'running': 1, 'starting': 0.5, 'stopping': 0.5, 'unknown': 0, 'stopped': 0}[service.state[1]]
       self.cache[key] = combineIcons(changeSaturation(icon, sat), indicator)
     return self.cache[key]
@@ -641,7 +641,7 @@ class ConfigDialog(KPageDialog):
     self.settingsPage.usernameLabel.setText(getpass.getuser())
     self.settingsPage.suppressStdoutCheckBox.setCheckState(self.config.value('suppressStdout').toInt()[0])
     self.settingsPage.kNotifyCheckBox.setCheckState(self.config.value('useKNotify').toInt()[0])
-    themes = QStringList([fn for fn in os.listdir(codedir + "/resources/indicators")])
+    themes = QStringList([fn for fn in os.listdir(codedir + "/indicators")])
     themes.sort()
     self.settingsPage.themeComboBox.blockSignals(True)
     self.settingsPage.themeComboBox.clear()

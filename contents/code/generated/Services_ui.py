@@ -11,6 +11,7 @@ except AttributeError:
 class Ui_Services(object):
     def setupUi(self, Services):
         Services.setObjectName(_fromUtf8("Services"))
+        Services.setEnabled(True)
         Services.resize(604, 508)
         self.verticalLayout = QtGui.QVBoxLayout(Services)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))

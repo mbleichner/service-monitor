@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>Sources</class>
  <widget class="QDialog" name="Sources">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -103,7 +106,7 @@
         <string>Update</string>
        </property>
        <property name="icon">
-        <iconset resource="../resources/icons/icons.qrc">
+        <iconset resource="../icons/icons.qrc">
          <normaloff>:/internet.png</normaloff>:/internet.png</iconset>
        </property>
       </widget>
@@ -235,7 +238,7 @@ p, li { white-space: pre-wrap; }
        </sizepolicy>
       </property>
       <attribute name="icon">
-       <iconset resource="../resources/icons/icons.qrc">
+       <iconset resource="../icons/icons.qrc">
         <normaloff>:/help.png</normaloff>:/help.png</iconset>
       </attribute>
       <attribute name="title">
@@ -276,7 +279,7 @@ use them.</string>
   <tabstop>helpTabWidget</tabstop>
  </tabstops>
  <resources>
-  <include location="../resources/icons/icons.qrc"/>
+  <include location="../icons/icons.qrc"/>
  </resources>
  <connections/>
 </ui>

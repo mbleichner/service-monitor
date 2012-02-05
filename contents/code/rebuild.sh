@@ -24,7 +24,7 @@ for dialog in 'Services' 'Settings' 'Custom' 'Sources' 'Password' 'About'; do
 done
 
 # ICONS
-pyrcc4 resources/icons/icons.qrc > generated/icons_rc.py
+pyrcc4 icons/icons.qrc > generated/icons_rc.py
 
 # Remove comments from generated files
 for FILE in generated/*; do

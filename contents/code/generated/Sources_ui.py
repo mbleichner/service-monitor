@@ -11,6 +11,7 @@ except AttributeError:
 class Ui_Sources(object):
     def setupUi(self, Sources):
         Sources.setObjectName(_fromUtf8("Sources"))
+        Sources.setEnabled(True)
         Sources.resize(658, 543)
         self.verticalLayout = QtGui.QVBoxLayout(Sources)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))

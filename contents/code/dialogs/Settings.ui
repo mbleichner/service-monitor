@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>Settings</class>
  <widget class="QDialog" name="Settings">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -469,7 +472,7 @@ It creates snippets for inclusion in the /etc/sudoers configuration file. Sudo a
        </sizepolicy>
       </property>
       <attribute name="icon">
-       <iconset resource="../resources/icons/icons.qrc">
+       <iconset resource="../icons/icons.qrc">
         <normaloff>:/help.png</normaloff>:/help.png</iconset>
       </attribute>
       <attribute name="title">
@@ -552,7 +555,7 @@ Besides, it can be highly dangerous, so you shouldn't be using it anyway. </stri
   <tabstop>helpTabWidget</tabstop>
  </tabstops>
  <resources>
-  <include location="../resources/icons/icons.qrc"/>
+  <include location="../icons/icons.qrc"/>
  </resources>
  <connections/>
 </ui>
