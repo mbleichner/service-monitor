@@ -204,6 +204,7 @@ class ServiceMonitor(Applet):
   def refreshStateIcon(self, service, reason = ''):
     icon = self.configDialog.runningStateIndicator(service)
     self.widgets[service.id]['status'].setIcon(icon)
+    self.widgets[service.id]['status'].setToolTip("%s\nStatus: %s" % (service.name, service.state[1]))
 
     # send a KNotify notification if the change wasn't issued by the user
     if self.configDialog.useKNotify() and service.state[1] in ["running", "stopped"] and reason == 'polling':
