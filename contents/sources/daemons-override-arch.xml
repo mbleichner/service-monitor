@@ -7,7 +7,7 @@
     override the default ones.
   </description>
 
-  <service id="apache2-daemon-arch" priority="2" sudo="yes">
+  <service id="apache2-daemon-arch" priority="2" sudo="yes" icon="apache">
     <name>Apache2 Webserver</name>
     <description>The most commonly used web server - submitted by hunterm</description>
     <installcheck>ls $INITDIR/httpd</installcheck>

@@ -7,7 +7,7 @@
     Since not all services work on every distribution, look through the list for a file that fits your specific system and activate it.
   </description>
 
-  <service id="cron-daemon" sudo="yes" icon="clock">
+  <service id="cron-daemon" sudo="yes" icon="kalarm">
     <name>Cron Daemon</name>
     <description>Periodic command scheduler</description>
     <installcheck>ls /usr/sbin/cron</installcheck>
@@ -25,7 +25,7 @@
     <stopcommand>$INITDIR/cups stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="apache2-daemon" sudo="yes" icon="applications-internet">
+  <service id="apache2-daemon" sudo="yes" icon="apache">
     <name>Apache2 Webserver</name>
     <description>The most commonly used web server</description>
     <installcheck>ls /usr/sbin/apache2</installcheck>
@@ -34,7 +34,7 @@
     <stopcommand>$INITDIR/apache2 stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="boinc-daemon" sudo="yes">
+  <service id="boinc-daemon" sudo="yes" icon="boinc">
     <name>BOINC Client</name>
     <description>Berkeley Open Infrastructure for Network Computing</description>
     <installcheck>ls $INITDIR/boinc-client</installcheck>
@@ -43,7 +43,7 @@
     <stopcommand>$INITDIR/boinc-client stop; sleep 1</stopcommand>
   </service>
 
-  <service id="mysql-daemon" priority="0" sudo="yes" icon="server-database">
+  <service id="mysql-daemon" priority="0" sudo="yes" icon="repository">
     <name>MySQL Database</name>
     <description>Database server, mainly used for PHP</description>
     <installcheck>ls $INITDIR/mysql</installcheck>
@@ -106,7 +106,7 @@
     <stopcommand>$INITDIR/samba stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="postgresql-daemon" sudo="yes" icon="server-database">
+  <service id="postgresql-daemon" sudo="yes" icon="repository">
     <name>PostgreSQL Server</name>
     <description>PostgreSQL Database Server</description>
     <installcheck>ls $INITDIR/postgresql</installcheck>
@@ -133,7 +133,7 @@
     <stopcommand>/usr/bin/akonadictl stop; qdbus org.kde.NepomukServer /nepomukserver org.kde.NepomukServer.quit</stopcommand>
   </service>
 
-  <service id="tor-daemon" sudo="yes">
+  <service id="tor-daemon" sudo="yes" icon="document-encrypt">
     <name>TOR Daemon</name>
     <description>The Onion Router anonimizing daemon - submitted by rysiek</description>
     <installcheck>ls /usr/bin/tor</installcheck>
@@ -142,7 +142,7 @@
     <stopcommand>$INITDIR/tor stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="avahi-daemon" sudo="yes">
+  <service id="avahi-daemon" sudo="yes" icon="network-wired-activated">
     <name>Avahi Daemon</name>
     <description>Avahi Network Discovery Daemon</description>
     <installcheck>ls $INITDIR/avahi-daemon</installcheck>
@@ -151,7 +151,7 @@
     <stopcommand>$INITDIR/avahi-daemon stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="privoxy-daemon" sudo="yes">
+  <service id="privoxy-daemon" sudo="yes" icon="document-encrypt">
     <name>Privoxy</name>
     <description>Proxy for enhanced security and privacy - submitted by FreeInfo</description>
     <installcheck>ls $INITDIR/privoxy</installcheck>

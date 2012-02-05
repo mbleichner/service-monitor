@@ -7,7 +7,7 @@
     The services in this file will override the default ones.
   </description>
 
-  <service id="mysql-daemon-upstart" priority="2" sudo="yes">
+  <service id="mysql-daemon-upstart" priority="2" sudo="yes" icon="repository">
     <name>MySQL Database</name>
     <description></description>
     <installcheck>ls /usr/sbin/mysqld</installcheck>

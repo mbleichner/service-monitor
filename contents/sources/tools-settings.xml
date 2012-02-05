@@ -8,7 +8,7 @@
     Most commands need root privileges which are gained through sudo (kdesudo/gksudo).
   </description>
 
-  <service id="x-screensaver">
+  <service id="x-screensaver" icon="preferences-desktop-screensaver">
     <name>Screensaver</name>
     <description>Enable/disable the X screensaver</description>
     <installcheck>ls /usr/bin/xset</installcheck>
@@ -35,7 +35,7 @@
     <stopcommand>shutdown -c</stopcommand>
   </service>
 
-  <service id="swap-space" sudo="yes" icon="drive-harddisk">
+  <service id="swap-space" sudo="yes" icon="office-chart-pie">
     <name>Swap Space</name>
     <description>Activate/deactivate all swap partitions (useful for flushing swapped data).</description>
     <installcheck>echo "always installed"</installcheck>
@@ -44,7 +44,7 @@
     <stopcommand>swapoff -a</stopcommand>
   </service>
 
-  <service id="package-cache" sudo="yes">
+  <service id="package-cache" sudo="yes" icon="system-software-update">
     <name>Update Package Cache</name>
     <description>Update package cache, download upgradable packages, delete obsolete ones.</description>
     <installcheck>ls /usr/bin/aptitude</installcheck>
@@ -53,7 +53,7 @@
     <stopcommand>killall aptitude</stopcommand>
   </service>
 
-  <service id="kde-compositing">
+  <service id="kde-compositing" icon="video-display">
     <name>Compositing</name>
     <description>KDE4 Compositing effects - submitted by Lord Spectre</description>
     <installcheck>qdbus org.kde.kwin | grep KWin</installcheck>
@@ -62,7 +62,7 @@
     <stopcommand>qdbus org.kde.kwin /KWin toggleCompositing; sleep 0.5</stopcommand>
   </service>
 
-  <service id="xbindkeys">
+  <service id="xbindkeys" icon="preferences-desktop-keyboard">
     <name>Xbindkeys</name>
     <description>Map commands to keyboard or mouse buttons - submitted by Scoolasse</description>
     <installcheck>ls /usr/bin/xbindkeys</installcheck>
@@ -71,7 +71,7 @@
     <stopcommand>killall xbindkeys</stopcommand>
   </service>
 
-  <service id="dpms" icon="jameica-icon">
+  <service id="dpms" icon="video-display">
     <name>DPMS</name>
     <description>Turn the screen off/on - submitted by Epimetheus11</description>
     <installcheck>ls /usr/bin/xset</installcheck>
