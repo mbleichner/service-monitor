@@ -33,107 +33,77 @@ class ServiceMonitor(Applet):
     
 
   def init(self):
-
-    # Konfig-Dialog einrichten
     self.setHasConfigurationInterface(True)
+    
     self.configDialog = ConfigDialog(self)
-    self.configDialog.configurationChanged.connect(self.setupServicesAndWidgets)
-
-    # Passwort-Dialog
+    self.configDialog.configurationChanged.connect(self.setupUi)
     self.passwordDialog = PasswordDialog(self.configDialog)
 
-    # Benutzeroberfläche einrichten
-    if self.formFactor() == Plasma.Planar:
-      self.mode = 'desktop'
-      self.setupAppletUi()
-    else:
-      self.mode = 'popup'
-      self.setupPopupUi()
-      
-    QTimer.singleShot(0, self.mainLayout.invalidate) # seems to be necessary only on start
-
-    # Widgets im Main-Layout erzeugen, Timer starten
-    self.setupServicesAndWidgets()
+    # set up layout and widgets
+    self.setupUi()
     
 
-
   ## Sets up all widgets in a popup which can be opened when clicking the applet.
-  def setupPopupUi(self):
-    self.mode = 'popup'
+  def setupUi(self):
 
-    # QGraphicsView initialisieren, in das alles gezeichnet wird
-    self.scene = QGraphicsScene()
-    self.view = QGraphicsView()
-    self.view.setScene(self.scene)
-    self.view.setFrameStyle(QFrame.NoFrame)
-    self.view.setStyleSheet('background-color: transparent;')
-    self.view.setAlignment(Qt.AlignHCenter | Qt.AlignTop)
-    self.view.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-    self.view.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
+    # remove old contents on successive calls
+    deleteContentsRecursively(self.applet.layout())
 
-    # Layout-Container-Widget erzeugen und in die Szene einfügen
-    self.container = QGraphicsWidget()
-    self.mainLayout = QGraphicsGridLayout()
-    self.container.setLayout(self.mainLayout)
-    self.scene.addItem(self.container)
-    self.mainLayout.setPreferredWidth(270)
+    # determine mode
+    if self.formFactor() == Plasma.Planar:
+      self.mode = 'desktop'
+    elif self.configDialog.panelBehavior() == 0:
+      self.mode = 'icons'
+    else:
+      self.mode = 'popup'
 
-    # Popup erzeugen
-    self.popup = Plasma.Dialog()
-    self.popup.setWindowFlags(Qt.Popup)
-    self.popupLayout = QVBoxLayout()
-    self.popup.setLayout(self.popupLayout)
-    self.popupLayout.addWidget(self.view)
-    self.popup.resize(250, 300)
+    if self.mode == 'popup':
 
-    # Im Applet ein Icon anzeigen
-    self.icon = Plasma.IconWidget(KIcon(":/panel-icon.png"), "")
-    self.iconLayout = QGraphicsLinearLayout()
-    self.iconLayout.addItem(self.icon)
-    self.setAspectRatioMode(Plasma.ConstrainedSquare)
-    self.applet.setLayout(self.iconLayout)
-    self.icon.clicked.connect(self.togglePopup)
+      # QGraphicsView initialisieren, in das alles gezeichnet wird
+      self.scene = QGraphicsScene()
+      self.view = QGraphicsView()
+      self.view.setScene(self.scene)
+      self.view.setFrameStyle(QFrame.NoFrame)
+      self.view.setStyleSheet('background-color: transparent;')
+      self.view.setAlignment(Qt.AlignHCenter | Qt.AlignTop)
+      self.view.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+      self.view.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
 
+      # Layout-Container-Widget erzeugen und in die Szene einfügen
+      self.container = QGraphicsWidget()
+      self.mainLayout = QGraphicsGridLayout()
+      self.container.setLayout(self.mainLayout)
+      self.scene.addItem(self.container)
+      self.mainLayout.setPreferredWidth(270)
 
-  ## Sets up all widgets directly in the main applet.
-  def setupAppletUi(self):
-    self.verticalLayout = QGraphicsLinearLayout(Qt.Vertical)
-    self.setLayout(self.verticalLayout)
-    self.mainLayout = QGraphicsGridLayout()
-    self.verticalLayout.addItem(self.mainLayout)
-    self.verticalLayout.addStretch(1)
-    self.applet.setAspectRatioMode(Plasma.IgnoreAspectRatio)
+      # Popup erzeugen
+      self.popup = Plasma.Dialog()
+      self.popup.setWindowFlags(Qt.Popup)
+      self.popupLayout = QVBoxLayout()
+      self.popup.setLayout(self.popupLayout)
+      self.popupLayout.addWidget(self.view)
+      self.popup.resize(250, 300)
 
+      # Im Applet ein Icon anzeigen
+      self.icon = Plasma.IconWidget(KIcon(":/panel-icon.png"), "")
+      self.iconLayout = QGraphicsLinearLayout()
+      self.iconLayout.addItem(self.icon)
+      self.setAspectRatioMode(Plasma.ConstrainedSquare)
+      self.applet.setLayout(self.iconLayout)
+      self.icon.clicked.connect(self.togglePopup)
 
-  ## Open the config dialog; called by plasma.
-  def showConfigurationInterface(self):
-    self.configDialog.show()
+    elif self.mode in ['desktop', 'icons']:
 
+      # Set up all widgets directly in the main applet.
+      self.verticalLayout = QGraphicsLinearLayout(Qt.Vertical)
+      self.applet.setLayout(self.verticalLayout)
+      self.mainLayout = QGraphicsGridLayout()
+      self.verticalLayout.addItem(self.mainLayout)
+      self.verticalLayout.addStretch(1)
+      self.applet.setAspectRatioMode(Plasma.IgnoreAspectRatio)
 
-  ## Triggered on wrongPassword signal. Retries the last command.
-  def askPasswordAndRetry(self, service):
-    try: self.passwordDialog.newPasswordAvailable.disconnect()
-    except: pass # if no slots are connected
-    self.passwordDialog.setWindowTitle(service.name)
-    self.passwordDialog.setCommandInfo(getattr(service, service.lastCommand()))
-    self.passwordDialog.focusPasswordField()
-    self.passwordDialog.setVisible(True)
-    def retry(pw):
-      self.passwordDialog.setVisible(False)
-      QTimer.singleShot(0, partial(service.retryLastCommand, pw))
-    self.passwordDialog.newPasswordAvailable[QString].connect(retry)
-
-
-  ## Create all widgets inside the main layout and set up the services for monitoring.
-  # This function is called as slot whenever the configuration has changed.
-  @pyqtSlot()
-  def setupServicesAndWidgets(self):
-
-    # Alte Widgets löschen und Szene leeren
-    while self.mainLayout.count():
-      self.mainLayout.itemAt(0).graphicsItem().deleteLater()
-      self.mainLayout.removeAt(0)
-    self.widgets = {}
+    # this seems to be necessary to avoid display bugs
+    QTimer.singleShot(0, self.mainLayout.invalidate)
 
     activeServices = self.configDialog.activeServices()
 
@@ -149,7 +119,9 @@ class ServiceMonitor(Applet):
         statusIcon.setMaximumHeight(22)
         statusIcon.setSizePolicy(QSizePolicy.Maximum, QSizePolicy.Maximum)
         self.refreshStateIcon(service)
-        if self.mode == 'icons':
+        if self.mode == 'icons' and self.formFactor() == Plasma.Vertical:
+          self.mainLayout.addItem(statusIcon, i, 0)
+        elif self.mode == 'icons' and self.formFactor() == Plasma.Horizontal:
           self.mainLayout.addItem(statusIcon, 0, i)
         else:
           self.mainLayout.addItem(statusIcon, i, 0)
@@ -185,6 +157,25 @@ class ServiceMonitor(Applet):
       service.setSleepTime(sleepTime)
       service.setErrorReporting(not self.configDialog.suppressStdout())
       service.setPolling(True, interval)
+
+
+  ## Triggered on wrongPassword signal. Retries the last command.
+  def askPasswordAndRetry(self, service):
+    try: self.passwordDialog.newPasswordAvailable.disconnect()
+    except: pass # if no slots are connected
+    self.passwordDialog.setWindowTitle(service.name)
+    self.passwordDialog.setCommandInfo(getattr(service, service.lastCommand()))
+    self.passwordDialog.focusPasswordField()
+    self.passwordDialog.setVisible(True)
+    def retry(pw):
+      self.passwordDialog.setVisible(False)
+      QTimer.singleShot(0, partial(service.retryLastCommand, pw))
+    self.passwordDialog.newPasswordAvailable[QString].connect(retry)
+    
+
+  ## Open the config dialog; called by plasma.
+  def showConfigurationInterface(self):
+    self.configDialog.show()
 
 
   ## Starts or stops a service corresponding to the icon clicked.

@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>647</width>
-    <height>512</height>
+    <height>539</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -33,7 +33,7 @@
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
      </property>
      <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="0">
+      <item row="1" column="0">
        <widget class="QLabel" name="label">
         <property name="font">
          <font>
@@ -50,7 +50,7 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="1">
+      <item row="1" column="1">
        <widget class="QDoubleSpinBox" name="pollingIntervalSpinbox">
         <property name="font">
          <font>
@@ -76,7 +76,7 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="0">
+      <item row="2" column="0">
        <widget class="QLabel" name="label_2">
         <property name="font">
          <font>
@@ -93,7 +93,7 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="1">
+      <item row="2" column="1">
        <widget class="QDoubleSpinBox" name="sleepTimeSpinbox">
         <property name="font">
          <font>
@@ -123,7 +123,7 @@ If the status immediatly flashes back to inactive when starting a service, incre
         </property>
        </widget>
       </item>
-      <item row="3" column="0">
+      <item row="4" column="0">
        <widget class="QLabel" name="label_3">
         <property name="font">
          <font>
@@ -140,7 +140,7 @@ If the status immediatly flashes back to inactive when starting a service, incre
         </property>
        </widget>
       </item>
-      <item row="3" column="1">
+      <item row="4" column="1">
        <widget class="QComboBox" name="themeComboBox">
         <property name="font">
          <font>
@@ -151,7 +151,7 @@ If the status immediatly flashes back to inactive when starting a service, incre
         </property>
        </widget>
       </item>
-      <item row="5" column="0">
+      <item row="6" column="0">
        <widget class="QLabel" name="label_9">
         <property name="font">
          <font>
@@ -168,7 +168,7 @@ If the status immediatly flashes back to inactive when starting a service, incre
         </property>
        </widget>
       </item>
-      <item row="5" column="1">
+      <item row="6" column="1">
        <widget class="QCheckBox" name="suppressStdoutCheckBox">
         <property name="enabled">
          <bool>true</bool>
@@ -189,7 +189,7 @@ if you experience annoying error output being produced by some commands.</string
         </property>
        </widget>
       </item>
-      <item row="4" column="1">
+      <item row="5" column="1">
        <widget class="QCheckBox" name="kNotifyCheckBox">
         <property name="font">
          <font>
@@ -203,7 +203,7 @@ if you experience annoying error output being produced by some commands.</string
         </property>
        </widget>
       </item>
-      <item row="4" column="0">
+      <item row="5" column="0">
        <widget class="QLabel" name="label_10">
         <property name="font">
          <font>
@@ -220,7 +220,7 @@ if you experience annoying error output being produced by some commands.</string
         </property>
        </widget>
       </item>
-      <item row="2" column="1">
+      <item row="3" column="1">
        <widget class="QComboBox" name="iconStyleComboBox">
         <property name="font">
          <font>
@@ -246,7 +246,7 @@ if you experience annoying error output being produced by some commands.</string
         </item>
        </widget>
       </item>
-      <item row="2" column="0">
+      <item row="3" column="0">
        <widget class="QLabel" name="label_11">
         <property name="font">
          <font>
@@ -257,6 +257,44 @@ if you experience annoying error output being produced by some commands.</string
         </property>
         <property name="text">
          <string>Service icon style:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="panelBehaviorComboBox">
+        <property name="font">
+         <font>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <item>
+         <property name="text">
+          <string>display services in panel</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>use popup</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_12">
+        <property name="font">
+         <font>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Behavior when put into panel:</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>

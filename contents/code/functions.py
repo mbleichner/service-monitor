@@ -57,3 +57,17 @@ def rgba2int(r,g,b,a):
 def int2rgba(n):
   n = int(n)
   return ( (n / 16**4) % 16**2, (n / 16**2) % 16**2, (n / 16**0) % 16**2, (n / 16**6) % 16**2 )
+
+
+## Delete contents of a QGraphicsItem recursively
+def deleteContentsRecursively(item):
+  if item is None:
+    return
+  elif item.isLayout():
+    while item.count():
+      deleteContentsRecursively(item.itemAt(0))
+      item.removeAt(0)
+  else:
+    item.deleteLater()
+
+    

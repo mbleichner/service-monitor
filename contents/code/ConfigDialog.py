@@ -97,6 +97,7 @@ class ConfigDialog(KPageDialog):
     self.customPage.copyComboBox.currentIndexChanged.connect(self.copyService)
 
     # Connections für die SettingsPage
+    self.settingsPage.panelBehaviorComboBox.currentIndexChanged[int].connect(partial(self.saveConfigValue, 'panelBehavior'))
     self.settingsPage.pollingIntervalSpinbox.valueChanged[float].connect(partial(self.saveConfigValue, 'pollingInterval'))
     self.settingsPage.sleepTimeSpinbox.valueChanged[float].connect(partial(self.saveConfigValue, 'sleepTime'))
     self.settingsPage.iconStyleComboBox.currentIndexChanged[int].connect(partial(self.saveConfigValue, 'iconStyle'))
@@ -123,6 +124,7 @@ class ConfigDialog(KPageDialog):
 
   ## Initialize the internal QSettings object with sensible default values
   def setConfigDefaults(self):
+    if not self.config.contains('panelBehavior'):   self.config.setValue('panelBehavior', 0)
     if not self.config.contains('iconStyle'):       self.config.setValue('iconStyle', 2)
     if not self.config.contains('suppressStdout'):  self.config.setValue('suppressStdout', 0)
     if not self.config.contains('useKNotify'):      self.config.setValue('useKNotify', 1)
@@ -242,7 +244,10 @@ class ConfigDialog(KPageDialog):
     return self.config.value('suppressStdout').toInt()[0] > 0
 
 
-  ## Returns the value of the "suppress stdout" setting.
+  def panelBehavior(self):
+    return self.config.value('panelBehavior').toInt()[0]
+
+
   def useKNotify(self):
     return self.config.value('useKNotify').toInt()[0] > 0
 
