@@ -207,7 +207,7 @@ class ConfigDialog(KPageDialog):
   def installStateIndicator(self, service):
     style = self.iconStyle()
     theme = self.indicatorTheme()
-    key = ('icon', style, theme, service.icon, service.state)
+    key = ('icon', 'installstate', style, theme, service.icon, service.state)
     if not self.cache.has_key(key):
       indicator = QIcon("%s/indicators/%s/%s.png" % (codedir, theme, service.state[0]))
       icon = self.serviceIcon(service)
@@ -225,7 +225,7 @@ class ConfigDialog(KPageDialog):
   def runningStateIndicator(self, service):
     style = self.iconStyle()
     theme = self.indicatorTheme()
-    key = ('icon', style, theme, service.icon, service.state)
+    key = ('icon', 'runningstate', style, theme, service.icon, service.state)
     if not self.cache.has_key(key):
       indicator = QIcon("%s/indicators/%s/%s.png" % (codedir, theme, service.state[1]))
       icon = self.serviceIcon(service)
