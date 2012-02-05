@@ -15,7 +15,7 @@ from functions import *
 # signal is emitted.
 class Service(QObject):
 
-  stateChanged = pyqtSignal()
+  stateChanged = pyqtSignal(str)
   wrongPassword = pyqtSignal(str)
 
   def __init__(self, parent = None):
@@ -32,16 +32,16 @@ class Service(QObject):
     self.startcommand = ''
     self.stopcommand = ''
     self.sudo = False
-    self.processes = {'runningcheck': None, 'installcheck': None, 'startcommand': None, 'stopcommand': None}
+    self.processes = {'runningcheck': QProcess(), 'installcheck': QProcess(), 'startcommand': QProcess(), 'stopcommand': QProcess()}
     self.sleepTime = 0
     self.state = ('unknown', 'unknown')   # (Install-Status, Running-Status)
     self.polling = False
     self.reportErrors = True
     self._lastCommand = ''
     self.timer = QTimer()
-    self.timer.setSingleShot(True)
+    self.timer.setSingleShot(False)
     self.timer.setInterval(4000)
-    self.timer.timeout.connect(partial(self.execute, "runningcheck"))
+    self.timer.timeout.connect(partial(self.execute, 'runningcheck', 'polling'))
 
 
   ## [static] Creates a new service object from a DOM node.
@@ -89,9 +89,10 @@ class Service(QObject):
   def setPolling(self, flag, interval = None):
     self.polling = flag
     if self.polling:
-      if interval: self.timer.setInterval(interval*1000)
+      if interval:
+        self.timer.setInterval(interval*1000)
       self.timer.start()
-      self.execute("runningcheck")
+      self.execute("runningcheck", 'initial-polling')
     else:
       self.timer.stop()
 
@@ -101,22 +102,25 @@ class Service(QObject):
 
 
   ## Shortcut for setting state and check if stateChanged() has to be emitted.
-  def setState(self, newState):
+  def setState(self, newState, reason):
     oldState = self.state
     self.state = newState
     if newState != oldState:
-      self.emit(SIGNAL('stateChanged()'))
+      self.stateChanged.emit(reason)
 
 
-  def setRunningState(self, runningState):
-    self.setState( (self.state[0], runningState) )
+  def setRunningState(self, runningState, reason):
+    self.setState( (self.state[0], runningState), reason )
 
 
-  def setInstallState(self, installState):
-    self.setState( (installState, self.state[1]) )
+  def setInstallState(self, installState, reason):
+    self.setState( (installState, self.state[1]), reason )
 
 
-  def execute(self, which, password = None):
+  def execute(self, which, reason = 'requested', password = None):
+
+    if which == 'runningcheck' and (self.processes['startcommand'].state() == QProcess.Running or self.processes['stopcommand'].state() == QProcess.Running):
+      return
 
     # kill old processes
     if which in ["startcommand", "stopcommand"]:
@@ -127,7 +131,10 @@ class Service(QObject):
     # create new process
     command = getattr(self, which)
     proc = self.processes[which] = BashProcess()
-    proc.setBashCommand(command)
+    if which in ["startcommand", "stopcommand"]:
+      proc.setBashCommand("sleep %.1f; %s" % (self.sleepTime, command))
+    else:
+      proc.setBashCommand(command)
     if which in ["startcommand", "stopcommand"]:
       if self.sudo: proc.setSudoPassword(password)
       self._lastCommand = which
@@ -148,42 +155,36 @@ class Service(QObject):
     # if everything went ok, mark state and connect slot
     if proc.state() == QProcess.Running:
       if which in ["startcommand", "stopcommand"]:
-        self.setRunningState("starting" if which == "startcommand" else "stopping")
-      proc.finished.connect(partial(self.finished, which))
+        self.setRunningState("starting" if which == "startcommand" else "stopping", reason)
+      proc.finished.connect(partial(self.finished, which, reason))
 
-    # if startup failed, continue running checks
+    # if startup failed, issue state check
     if proc.state() != QProcess.Running:
-      self.scheduleRunningCheck(which != "runningcheck")
+      self.execute('runningcheck', reason)
     
 
-  def finished(self, which):
+  def finished(self, which, reason):
     proc = self.processes[which]
     if which == "installcheck":
-      self.setInstallState('installed' if (proc.exitCode() == 0 and proc.readAllStandardOutput().length() > 0) else 'missing')
+      self.setInstallState('installed' if (proc.exitCode() == 0 and proc.readAllStandardOutput().length() > 0) else 'missing', reason)
     elif which == "runningcheck":
-      self.setRunningState('running' if (proc.exitCode() == 0 and proc.readAllStandardOutput().length() > 0) else 'stopped')
+      self.setRunningState('running' if (proc.exitCode() == 0 and proc.readAllStandardOutput().length() > 0) else 'stopped', reason)
     elif which in ['startcommand', 'stopcommand']:
-      self.setRunningState('running' if (proc.exitCode() == 0 and proc.readAllStandardOutput().length() > 0) else 'stopped')
+      self.setRunningState('running' if (proc.exitCode() == 0 and proc.readAllStandardOutput().length() > 0) else 'stopped', reason)
       errorOutput = QString(proc.readAllStandardError())
       if errorOutput and self.reportErrors:
         QMessageBox.warning(None, self.tr('Error output'), errorOutput)
-    self.scheduleRunningCheck(which != "runningcheck")
+      self.execute('runningcheck', reason)
     self.killProcesses(which)
 
 
   def retryLastCommand(self, password):
     if not self.lastCommand(): return
-    self.execute(self.lastCommand(), password)
+    self.execute(self.lastCommand(), 'requested', password)
 
 
   def lastCommand(self):
     return self._lastCommand if self._lastCommand else None
-
-
-  def scheduleRunningCheck(self, now = False):
-    if not self.polling: return
-    if now: self.timer.timeout.emit()
-    else:   self.timer.start()
 
 
   ## Sets a sleep time to be appended to all commands.
@@ -195,6 +196,3 @@ class Service(QObject):
     for which in args:
       if self.processes[which] is not None:
         self.processes[which].close()
-        self.processes[which] = None
-    if "runningcheck" in args:
-      self.timer.stop()

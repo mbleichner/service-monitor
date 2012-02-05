@@ -113,7 +113,7 @@ class ConfigDialog(KPageDialog):
   def execInstallChecks(self):
     for source in self.activeSources():
       for service in source.services:
-        service.execute("installcheck")
+        service.execute('installcheck', 'init-installstate')
 
 
   ## Initialize the internal QSettings object with sensible default values

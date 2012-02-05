@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import sys, dbus
+
 from functools import *
 
 from PyQt4.QtCore import *
@@ -174,14 +176,25 @@ class ServiceMonitor(Applet):
       return
     if service.state[1] in ['running', 'starting']: command = "stopcommand"
     if service.state[1] in ['stopped', 'stopping']: command = "startcommand"
-    service.execute(command, self.passwordDialog.password())
-    self.refreshStateIcon(service)
+    service.execute(command, 'requested', self.passwordDialog.password())
 
 
   ## Updates the icon corresponding to the service argument.
-  def refreshStateIcon(self, service):
+  def refreshStateIcon(self, service, reason = ''):
     icon = self.configDialog.runningStateIndicator(service)
     self.widgets[service.id]['status'].setIcon(icon)
+
+    # send a notification if the change wasn't issued by the user
+    if service.state[1] in ["running", "stopped"] and reason == 'polling':
+      if service.state[1] == ["running"]:
+        message = self.tr("%1 has been started.").arg(service.name)
+      else:
+        message = self.tr("%1 has been stopped.").arg(service.name)
+      byteArray = QByteArray()
+      buffer = QBuffer(byteArray)
+      QIcon(':/panel-icon.png').pixmap(QSize(32, 32)).toImage().save(buffer, "PNG")
+      knotify = dbus.SessionBus().get_object("org.kde.knotify", "/Notify")
+      knotify.event("warning", "kde", [], "Service state changed", str(message), byteArray, [], 0, 0, dbus_interface="org.kde.KNotify")
 
 
   ## Shows/hides popup dialog.
