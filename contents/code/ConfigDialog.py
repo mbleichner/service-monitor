@@ -189,12 +189,22 @@ class ConfigDialog(KPageDialog):
 
   ## Returns the install state icon for the given service.
   def installStateIndicator(self, service):
-    return QIcon("%s/indicators/%s/%s.png" % (codedir, self.indicatorTheme(), service.state[0]))
+    indicator = QIcon("%s/indicators/%s/%s.png" % (codedir, self.indicatorTheme(), service.state[0]))
+    if False:
+      base = service.icon if service.icon is not None else QIcon(':/panel-icon.png')
+      return combineIcons(base, indicator)
+    else:
+      return indicator
 
 
   ## Returns the running state icon for the given service.
   def runningStateIndicator(self, service):
-    return QIcon("%s/indicators/%s/%s.png" % (codedir, self.indicatorTheme(), service.state[1]))
+    indicator = QIcon("%s/indicators/%s/%s.png" % (codedir, self.indicatorTheme(), service.state[1]))
+    if False:
+      base = service.icon if service.icon is not None else QIcon(':/panel-icon.png')
+      return combineIcons(base, indicator)
+    else:
+      return indicator
 
 
   ## Returns the value of the "suppress stdout" setting.

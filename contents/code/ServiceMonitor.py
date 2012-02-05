@@ -194,7 +194,7 @@ class ServiceMonitor(Applet):
         message = self.tr("%1 has been stopped.").arg(service.name)
       byteArray = QByteArray()
       buffer = QBuffer(byteArray)
-      icon.pixmap(QSize(32, 32)).toImage().rgbSwapped().save(buffer, "XPM") # KNotify seems to expect a BGR file
+      icon.pixmap(QSize(32, 32)).toImage().rgbSwapped().save(buffer, "PNG") # KNotify seems to expect a BGR file
       knotify = dbus.SessionBus().get_object("org.kde.knotify", "/Notify")
       knotify.event("warning", "kde", [], "Service state changed", str(message), byteArray, [], 0, 0, dbus_interface="org.kde.KNotify")
 

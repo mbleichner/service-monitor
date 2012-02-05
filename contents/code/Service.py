@@ -3,6 +3,7 @@
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 from PyQt4.QtXml import *
+from PyKDE4.kdeui import *
 
 from BashProcess import *
 from time import *
@@ -33,6 +34,7 @@ class Service(QObject):
     self.startcommand = ''
     self.stopcommand = ''
     self.sudo = False
+    self.icon = None
     self.processes = {'runningcheck': QProcess(), 'installcheck': QProcess(), 'startcommand': QProcess(), 'stopcommand': QProcess()}
     self.sleepTime = 0
     self.state = ('unknown', 'unknown')   # (Install-Status, Running-Status)
@@ -52,6 +54,8 @@ class Service(QObject):
     root = root.toElement()
     service = Service(parent)
     service.id = root.attribute('id')
+    if root.attribute('icon'):
+      service.icon = KIcon(root.attribute('icon'))
     service.sudo = root.attribute('sudo', 'no') in ["yes", "true"]
     if not service.id: raise Exception('Service without ID')
     service.priority = root.attribute('priority')

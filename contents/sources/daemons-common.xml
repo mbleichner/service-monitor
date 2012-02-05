@@ -25,7 +25,7 @@
     <stopcommand>$INITDIR/cups stop &amp;> /dev/null</stopcommand>
   </service>
 
-  <service id="apache2-daemon" sudo="yes">
+  <service id="apache2-daemon" sudo="yes" icon="akonadi">
     <name>Apache2 Webserver</name>
     <description>The most commonly used web server</description>
     <installcheck>ls /usr/sbin/apache2</installcheck>
