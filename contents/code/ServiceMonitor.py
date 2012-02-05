@@ -14,6 +14,12 @@ from generated.Password_ui import *
 from ConfigDialog import *
 from PasswordDialog import *
 
+
+contentsdir = os.path.dirname(os.path.dirname(__file__))
+codedir     = contentsdir + "/code"
+sourcedir   = contentsdir + "/sources"
+
+
 ## This is the plasmoid which can be placed on the desktop or in dock.
 # First the config dialog is initialised which loads all sources, services and configuration.
 # Then the applet gets the list of active services from the config, draws all widgets and sets up monitoring.
@@ -37,7 +43,13 @@ class ServiceMonitor(Applet):
     self.passwordDialog = PasswordDialog(self.configDialog)
 
     # Benutzeroberfläche einrichten
-    self.setupAppletUi() if self.formFactor() == Plasma.Planar else self.setupPopupUi()
+    if self.formFactor() == Plasma.Planar:
+      self.mode = 'desktop'
+      self.setupAppletUi()
+    else:
+      self.mode = 'popup'
+      self.setupPopupUi()
+      
     QTimer.singleShot(0, self.mainLayout.invalidate) # seems to be necessary only on start
 
     # Widgets im Main-Layout erzeugen, Timer starten
@@ -47,6 +59,7 @@ class ServiceMonitor(Applet):
 
   ## Sets up all widgets in a popup which can be opened when clicking the applet.
   def setupPopupUi(self):
+    self.mode = 'popup'
 
     # QGraphicsView initialisieren, in das alles gezeichnet wird
     self.scene = QGraphicsScene()
@@ -136,8 +149,11 @@ class ServiceMonitor(Applet):
         statusIcon.setMaximumHeight(22)
         statusIcon.setSizePolicy(QSizePolicy.Maximum, QSizePolicy.Maximum)
         self.refreshStateIcon(service)
-        self.mainLayout.addItem(statusIcon, i, 0)
-        self.mainLayout.addItem(nameLabel, i, 1)
+        if self.mode == 'icons':
+          self.mainLayout.addItem(statusIcon, 0, i)
+        else:
+          self.mainLayout.addItem(statusIcon, i, 0)
+          self.mainLayout.addItem(nameLabel, i, 1)
         statusIcon.clicked.connect(partial(self.iconClicked, service))
 
     # Falls keine Services eingerichtet: Einleitungstext anzeigen
@@ -192,11 +208,20 @@ class ServiceMonitor(Applet):
         message = self.tr("%1 is now running.").arg(service.name)
       else:
         message = self.tr("%1 has been stopped.").arg(service.name)
-      byteArray = QByteArray()
-      buffer = QBuffer(byteArray)
-      icon.pixmap(QSize(32, 32)).toImage().rgbSwapped().save(buffer, "PNG") # KNotify seems to expect a BGR file
-      knotify = dbus.SessionBus().get_object("org.kde.knotify", "/Notify")
-      knotify.event("warning", "kde", [], "Service state changed", str(message), byteArray, [], 0, 0, dbus_interface="org.kde.KNotify")
+      self.knotify(icon, message)
+
+
+  ## The call to knotify must be made from an external script, because python allows no self-connections
+  def knotify(self, icon, message):
+    byteArray = QByteArray()
+    buffer = QBuffer(byteArray)
+    icon.pixmap(QSize(32, 32)).toImage().rgbSwapped().save(buffer, "PNG") # KNotify seems to expect a BGR file
+    tmp = file('icon.png', 'w')
+    tmp.write(byteArray.data())
+    tmp.close()
+    self.knotifyProcess = KProcess()
+    self.knotifyProcess.setProgram(QStringList() << "/usr/bin/python" << ("%s/KNotify.py" % codedir) << message)
+    self.knotifyProcess.start()
 
 
   ## Shows/hides popup dialog.
