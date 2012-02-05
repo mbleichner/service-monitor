@@ -41,6 +41,7 @@ class ConfigDialog(KPageDialog):
     self.services = {}      # Place for all services, by ID. On collisions the priority is considered.
     self.editmode = False   # Indicates if editmode is on or off.
     self.config = QSettings('plasma-desktop', 'service-monitor')
+    self.cache = {}
 
     # make sure the setting contain sane defaults
     self.setConfigDefaults()
@@ -195,18 +196,24 @@ class ConfigDialog(KPageDialog):
 
   ## Returns the install state icon for the given service.
   def installStateIndicator(self, service):
-    icon = self.serviceIcon(service)
-    indicator = QIcon("%s/resources/indicators/%s/%s.png" % (codedir, self.indicatorTheme(), service.state[0]))
-    sat = {'installed': 1, 'unknown': 0.5, 'missing': 0}[service.state[0]]
-    return combineIcons(changeSaturation(icon, sat), indicator)
+    key = ('icon', service.icon, service.state)
+    if not self.cache.has_key(key):
+      icon = self.serviceIcon(service)
+      indicator = QIcon("%s/resources/indicators/%s/%s.png" % (codedir, self.indicatorTheme(), service.state[0]))
+      sat = {'installed': 1, 'unknown': 0.5, 'missing': 0}[service.state[0]]
+      self.cache[key] = combineIcons(changeSaturation(icon, sat), indicator)
+    return self.cache[key]
 
 
   ## Returns the running state icon for the given service.
   def runningStateIndicator(self, service):
-    icon = self.serviceIcon(service)
-    indicator = QIcon("%s/resources/indicators/%s/%s.png" % (codedir, self.indicatorTheme(), service.state[1]))
-    sat = {'running': 1, 'starting': 0.5, 'stopping': 0.5, 'unknown': 0, 'stopped': 0}[service.state[1]]
-    return combineIcons(changeSaturation(icon, sat), indicator)
+    key = ('icon', service.icon, service.state)
+    if not self.cache.has_key(key):
+      icon = self.serviceIcon(service)
+      indicator = QIcon("%s/resources/indicators/%s/%s.png" % (codedir, self.indicatorTheme(), service.state[1]))
+      sat = {'running': 1, 'starting': 0.5, 'stopping': 0.5, 'unknown': 0, 'stopped': 0}[service.state[1]]
+      self.cache[key] = combineIcons(changeSaturation(icon, sat), indicator)
+    return self.cache[key]
 
 
   ## Returns the value of the "suppress stdout" setting.
