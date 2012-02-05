@@ -215,9 +215,9 @@ class ConfigDialog(KPageDialog):
       if style == 0:
         self.cache[key] = indicator
       elif style == 1:
-        self.cache[key] = combineIcons(changeSaturation(icon, sat), indicator)
-      else:
         self.cache[key] = changeSaturation(icon, sat)
+      else:
+        self.cache[key] = combineIcons(changeSaturation(icon, sat), indicator)
     return self.cache[key]
 
 
