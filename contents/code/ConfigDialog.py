@@ -456,8 +456,10 @@ class ConfigDialog(KPageDialog):
         exitcode = QProcess.execute("/bin/tar", QStringList() << "xfz" << f.fileName() << "-C" << sourcedir << "--strip-components=1")
         f.remove()
         if exitcode == 0:
+          self.cache.clear()
           self.readSources()
           self.populateSourceList()
+          self.configurationChanged.emit()
           print "update finished."
           QMessageBox.information(self, self.tr('Update successful'), self.tr('Update successful.'))
         else:
