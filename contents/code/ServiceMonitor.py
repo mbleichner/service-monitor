@@ -116,8 +116,8 @@ class ServiceMonitor(Applet):
         self.widgets[service.id] = { 'name': nameLabel, 'status': statusIcon }
         nameLabel.setText(u'<strong>%s</strong>' % service.name)
         nameLabel.nativeWidget().setWordWrap(False)
-        statusIcon.setMinimumSize(20, 20)
-        statusIcon.setMaximumSize(20, 20)
+        statusIcon.setMinimumSize(22, 22)
+        statusIcon.setMaximumSize(22, 22)
         statusIcon.setSizePolicy(QSizePolicy.Maximum, QSizePolicy.Maximum)
         self.refreshStateIcon(service)
         if self.mode == 'icons' and self.formFactor() == Plasma.Vertical:

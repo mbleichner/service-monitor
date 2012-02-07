@@ -21,26 +21,26 @@ def mkTextElement(doc, tagName, textData):
 
 ## Lays one icon over the other one, respecting alpha channels
 def combineIcons(base, overlay):
-  base = base.pixmap(20, 20).toImage()
-  overlay = overlay.pixmap(12, 12).toImage()
-  for x in range(12):
-    for y in range(12):
-      p1 = int2rgba(base.pixel(8+x,8+y))
+  base = base.pixmap(22, 22).toImage()
+  overlay = overlay.pixmap(13, 13).toImage()
+  for x in range(13):
+    for y in range(13):
+      p1 = int2rgba(base.pixel(9+x,9+y))
       p2 = int2rgba(overlay.pixel(x,y))
       alpha = p2[3] / 255.0
       r = int( alpha * p2[0] + (1-alpha) * p1[0] )
       g = int( alpha * p2[1] + (1-alpha) * p1[1] )
       b = int( alpha * p2[2] + (1-alpha) * p1[2] )
       a = max( p1[3], p2[3] )
-      base.setPixel(8+x, 8+y, rgba2int(r,g,b,a))
+      base.setPixel(9+x, 9+y, rgba2int(r,g,b,a))
   return QIcon(QPixmap.fromImage(base))
 
 
 def changeSaturation(icon, f):
   if f == 1: return QIcon(icon)
-  icon = icon.pixmap(20, 20).toImage()
-  for x in range(20):
-    for y in range(20):
+  icon = icon.pixmap(22, 22).toImage()
+  for x in range(22):
+    for y in range(22):
       p = int2rgba(icon.pixel(x, y))
       v = (p[0] + p[1] + p[2]) / 3
       r = f*p[0] + (1-f)*v

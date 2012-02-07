@@ -263,6 +263,10 @@ class ConfigDialog(KPageDialog):
     activeSources = self.activeSources()
     self.servicesPage.activeServicesList.clear()
     self.servicesPage.inactiveServicesList.clear()
+    self.servicesPage.activeServicesList.setSpacing(1)
+    self.servicesPage.inactiveServicesList.setSpacing(1)
+    self.servicesPage.activeServicesList.setIconSize(QSize(22,22))
+    self.servicesPage.inactiveServicesList.setIconSize(QSize(22,22))
     for service in activeServices:
       item = QListWidgetItem(service.name)
       item.service = service
@@ -274,6 +278,9 @@ class ConfigDialog(KPageDialog):
       if len(servicesToShow) == 0: continue
       item = QListWidgetItem(source.name if source.name else source.filename)
       item.source = source
+      item.setBackground(QBrush(QColor(50, 50, 50)))
+      item.setSizeHint(QSize(100, 20))
+      item.setForeground(QBrush(QColor(255, 255, 255)))
       font = item.font(); font.setBold(True); item.setFont(font)
       self.servicesPage.inactiveServicesList.addItem(item)
       for service in servicesToShow:
