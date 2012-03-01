@@ -12,7 +12,7 @@ class Ui_Settings(object):
     def setupUi(self, Settings):
         Settings.setObjectName(_fromUtf8("Settings"))
         Settings.setEnabled(True)
-        Settings.resize(647, 539)
+        Settings.resize(647, 566)
         self.verticalLayout_2 = QtGui.QVBoxLayout(Settings)
         self.verticalLayout_2.setObjectName(_fromUtf8("verticalLayout_2"))
         self.groupBox_2 = QtGui.QGroupBox(Settings)
@@ -364,7 +364,7 @@ class Ui_Settings(object):
         self.usernameLabel.setText(QtGui.QApplication.translate("Settings", "User:", None, QtGui.QApplication.UnicodeUTF8))
         self.label_6.setText(QtGui.QApplication.translate("Settings", "Password:", None, QtGui.QApplication.UnicodeUTF8))
         self.checkSudoButton.setText(QtGui.QApplication.translate("Settings", "Check sudo configuration", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_4.setText(QtGui.QApplication.translate("Settings", "These settings influence general behavior fine-tune them to your needs.\n"
+        self.label_4.setText(QtGui.QApplication.translate("Settings", "These settings influence general behavior. Fine-tune them to your needs.\n"
 "Since Service Monitor uses \"sudo\" to gain root privileges, make sure you have a working\n"
 "configuration. If not, you can use the configuration helper to generate configuration snippets.", None, QtGui.QApplication.UnicodeUTF8))
         self.label_5.setText(QtGui.QApplication.translate("Settings", "Please note: sudo can be configured to work without asking for a password. As of now, Service\n"

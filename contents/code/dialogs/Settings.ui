@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>647</width>
-    <height>539</height>
+    <height>566</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -572,7 +572,7 @@ It creates snippets for inclusion in the /etc/sudoers configuration file. Sudo a
           </sizepolicy>
          </property>
          <property name="text">
-          <string>These settings influence general behavior fine-tune them to your needs.
+          <string>These settings influence general behavior. Fine-tune them to your needs.
 Since Service Monitor uses &quot;sudo&quot; to gain root privileges, make sure you have a working
 configuration. If not, you can use the configuration helper to generate configuration snippets.</string>
          </property>

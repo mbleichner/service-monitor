@@ -151,9 +151,9 @@ class Service(QObject):
 
     # check for startup errors
     if proc.errorType() == QProcess.FailedToStart and proc.errorMessage():
-      QMessageBox.critical(None, self.tr('Command failed to start'), QString(proc.errorMessage()))
+      QMessageBox.critical(None, self.tr('Process failed to start'), QString(proc.errorMessage()))
     elif proc.errorType() == QProcess.FailedToStart and not proc.errorMessage():
-      QMessageBox.critical(None, self.tr('Command failed to start'), self.tr("There was an error starting the command. Please check your installation."))
+      QMessageBox.critical(None, self.tr('Process failed to start'), self.tr("There was an error starting the process. Please check your installation."))
     elif proc.errorType() == BashProcess.PermissionError:
       QMessageBox.critical(None, self.tr('Sudo permission error'), QString(proc.errorMessage()))
     elif proc.errorType() == BashProcess.PasswordError:

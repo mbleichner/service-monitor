@@ -61,72 +61,47 @@ p, li { white-space: pre-wrap; }
         <translation>Vlastní služby</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="387"/>
+        <location filename="ConfigDialog.py" line="394"/>
         <source>%1 (%2, %3 entries)</source>
         <translation>%1 (%2, %3 položek)</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="351"/>
-        <source>Downloading...</source>
-        <translation type="obsolete">Stahování...</translation>
-    </message>
-    <message>
-        <location filename="ConfigDialog.py" line="478"/>
+        <location filename="ConfigDialog.py" line="487"/>
         <source>Error - custom.xml is missing or has been damaged</source>
         <translation>Chyba - soubor custom.xml chybí, nebo byl poškozen</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="419"/>
-        <source>Save changes</source>
-        <translation type="obsolete">Uložit změny</translation>
-    </message>
-    <message>
-        <location filename="ConfigDialog.py" line="420"/>
-        <source>Cancel editing</source>
-        <translation type="obsolete">Zahodit změny</translation>
-    </message>
-    <message>
-        <location filename="ConfigDialog.py" line="444"/>
-        <source>Edit selected</source>
-        <translation type="obsolete">Upravit vybrané</translation>
-    </message>
-    <message>
-        <location filename="ConfigDialog.py" line="445"/>
-        <source>Remove selected</source>
-        <translation type="obsolete">Odebrat vybrané</translation>
-    </message>
-    <message>
-        <location filename="ConfigDialog.py" line="588"/>
+        <location filename="ConfigDialog.py" line="597"/>
         <source>Remove service</source>
         <translation>Odebrat službu</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="588"/>
+        <location filename="ConfigDialog.py" line="597"/>
         <source>Really delete the selected service?</source>
         <translation>Opravdu chcete smazat vybranou službu?</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="603"/>
+        <location filename="ConfigDialog.py" line="612"/>
         <source>New Service, edit me</source>
         <translation>Jsem nova sluzba, upravte me ;-)</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="604"/>
+        <location filename="ConfigDialog.py" line="613"/>
         <source>Enter a short, concise description here</source>
         <translation>Zadejte strucny a jasny popis</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="626"/>
+        <location filename="ConfigDialog.py" line="635"/>
         <source>Upload service definition</source>
         <translation>Odeslat definici služby na internet</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="626"/>
+        <location filename="ConfigDialog.py" line="635"/>
         <source>This will open a page in your web browser where you can submit the selected service definition to the community.</source>
         <translation>Tímto otevřete v prohlížeči stránku, přes kterou můžete odeslat vybranou definici služby uživatelské komunitě.</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="304"/>
+        <location filename="ConfigDialog.py" line="311"/>
         <source>&lt;strong&gt;%1&lt;/strong&gt;&lt;br/&gt;
         %2&lt;br/&gt;
         &lt;table&gt;
@@ -139,37 +114,32 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="712"/>
-        <source>Command failed to start</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="ConfigDialog.py" line="716"/>
+        <location filename="ConfigDialog.py" line="725"/>
         <source>Wrong password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="714"/>
+        <location filename="ConfigDialog.py" line="723"/>
         <source>Sudo permission error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="718"/>
+        <location filename="ConfigDialog.py" line="727"/>
         <source>Success</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="718"/>
+        <location filename="ConfigDialog.py" line="727"/>
         <source>Your installation seems to be working. Now try to start/stop some services in your list.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="716"/>
+        <location filename="ConfigDialog.py" line="725"/>
         <source>It seems you gave the wrong password. Try again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="691"/>
+        <location filename="ConfigDialog.py" line="700"/>
         <source># copy-paste this snippet into your /etc/sudoers file:
 
 </source>
@@ -181,103 +151,108 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="490"/>
+        <location filename="ConfigDialog.py" line="499"/>
         <source>Copy existing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="519"/>
+        <location filename="ConfigDialog.py" line="528"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="520"/>
+        <location filename="ConfigDialog.py" line="529"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="547"/>
+        <location filename="ConfigDialog.py" line="556"/>
         <source>Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="548"/>
+        <location filename="ConfigDialog.py" line="557"/>
         <source>Remove</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="421"/>
+        <location filename="ConfigDialog.py" line="428"/>
         <source>Updating</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="436"/>
+        <location filename="ConfigDialog.py" line="443"/>
         <source>The remote host closed the connection prematurely. Try again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="437"/>
+        <location filename="ConfigDialog.py" line="444"/>
         <source>The update server could not be found. Are you online?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="438"/>
+        <location filename="ConfigDialog.py" line="445"/>
         <source>The request timed out. Probably the server is under heavy load and you should try again later.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="440"/>
+        <location filename="ConfigDialog.py" line="447"/>
         <source>Server access denied. Write me a mail if this happens and try another server.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="441"/>
+        <location filename="ConfigDialog.py" line="448"/>
         <source>File not found. Write me a mail if this happens and try another server.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="455"/>
+        <location filename="ConfigDialog.py" line="464"/>
         <source>Update successful</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="457"/>
+        <location filename="ConfigDialog.py" line="466"/>
         <source>Update failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="455"/>
+        <location filename="ConfigDialog.py" line="464"/>
         <source>Update successful.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="457"/>
+        <location filename="ConfigDialog.py" line="466"/>
         <source>The file could be downloaded, but there was an error unpacking it. Maybe it is corrupted.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="704"/>
+        <location filename="ConfigDialog.py" line="713"/>
         <source>Enter password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="704"/>
+        <location filename="ConfigDialog.py" line="713"/>
         <source>Please enter your password.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="712"/>
+        <location filename="ConfigDialog.py" line="721"/>
         <source>Sudo configuration error. Verify that sudo is installed correctly and read the help text at the bottom for hints.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="435"/>
+        <location filename="ConfigDialog.py" line="442"/>
         <source>Connection refused by the server. Usually this means that the server is temporarily offline.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="439"/>
+        <location filename="ConfigDialog.py" line="446"/>
         <source>Network error. Please check your connection and try again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="721"/>
+        <source>Process failed to start</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -287,21 +262,6 @@ p, li { white-space: pre-wrap; }
         <location filename="Custom_ui.py" line="250"/>
         <source>Dialog</source>
         <translation></translation>
-    </message>
-    <message>
-        <location filename="Custom_ui.py" line="237"/>
-        <source>Add custom service</source>
-        <translation type="obsolete">Přidat vlastní službu</translation>
-    </message>
-    <message>
-        <location filename="Custom_ui.py" line="238"/>
-        <source>Edit selected</source>
-        <translation type="obsolete">Upravit vybrané</translation>
-    </message>
-    <message>
-        <location filename="Custom_ui.py" line="239"/>
-        <source>Remove selected</source>
-        <translation type="obsolete">Odebrat vybrané</translation>
     </message>
     <message>
         <location filename="Custom_ui.py" line="255"/>
@@ -469,28 +429,23 @@ budete zmíněni jako autor definice. Prosíme, abyste odesílali výhradně fun
 <context>
     <name>Service</name>
     <message>
-        <location filename="Service.py" line="156"/>
-        <source>Command failed to start</source>
-        <translation type="unfinished">Spuštění příkazu selhalo</translation>
-    </message>
-    <message>
-        <location filename="Service.py" line="156"/>
-        <source>There was an error starting the command. Please check your installation.</source>
-        <translation type="unfinished">Při spuštění příkazu se vyskytla chyba. Zkontrolujte, prosím, instalaci.</translation>
-    </message>
-    <message>
         <location filename="Service.py" line="158"/>
         <source>Sudo permission error</source>
         <translation type="unfinished">Chyba v oprávněních sudo</translation>
     </message>
     <message>
-        <location filename="Service.py" line="163"/>
-        <source>Error</source>
-        <translation type="obsolete">Chyba</translation>
-    </message>
-    <message>
         <location filename="Service.py" line="182"/>
         <source>Error output</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Service.py" line="156"/>
+        <source>Process failed to start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Service.py" line="156"/>
+        <source>There was an error starting the process. Please check your installation.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -512,12 +467,12 @@ budete zmíněni jako autor definice. Prosíme, abyste odesílali výhradně fun
         <translation type="unfinished">Služba &quot;%1&quot; není nainstalována. Končím.</translation>
     </message>
     <message>
-        <location filename="ServiceMonitor.py" line="213"/>
+        <location filename="ServiceMonitor.py" line="214"/>
         <source>%1 has been stopped.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ServiceMonitor.py" line="211"/>
+        <location filename="ServiceMonitor.py" line="212"/>
         <source>%1 is now running.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -638,59 +593,9 @@ stavu služby. Pokud se stavový indikátor přepne zpět na neaktivní po spuš
         <translation type="unfinished">&lt; vyberte si jednu možnost &gt;</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="255"/>
-        <source>every user in group sudoers with his own password</source>
-        <translation type="obsolete">každého uživatele ve skupině sudoers s jeho vlastním heslem</translation>
-    </message>
-    <message>
-        <location filename="Settings_ui.py" line="256"/>
-        <source>every user in group sudoers with root password</source>
-        <translation type="obsolete">každého uživatele ve skupině sudoers s heslem roota</translation>
-    </message>
-    <message>
-        <location filename="Settings_ui.py" line="257"/>
-        <source>specific user with his own password</source>
-        <translation type="obsolete">vybraného uživatele s jeho vlastním heslem</translation>
-    </message>
-    <message>
-        <location filename="Settings_ui.py" line="258"/>
-        <source>specific user with root password</source>
-        <translation type="obsolete">vybraného uživatele s heslem roota</translation>
-    </message>
-    <message>
-        <location filename="Settings_ui.py" line="259"/>
-        <source>This tool will help you configure sudo.
-
-It creates snippets for inclusion in the /etc/sudoers configuration file. Sudo allows fine-grained control, this tool will cover the most standard setups, but they will be sufficient. Simply choose the config that most suits your needs, append the generated snippet to your /etc/sudoers and use the button below to check configuration.</source>
-        <translation type="obsolete">Tento nástroj vám pomůže nakonfigurovat sudo.
-
-Vytvoří malý kód pro vložení do konfiguračního souboru /etc/sudoers. Sudo umožňuje velmi jemné nastavení. Tento nástroj pokryje většinu běžných nastavení, což bude stačit. Jednoduše si zvolte konfiguraci, která bude nejvíce vyhovovat vašim potřebám, připojte vygenerovaný kód k souboru /etc/sudoers a použijte tlačítko níže pro kontrolu konfigurace.</translation>
-    </message>
-    <message>
         <location filename="Settings_ui.py" line="366"/>
         <source>Check sudo configuration</source>
         <translation type="unfinished">Zkontrolovat konfiguraci sudo</translation>
-    </message>
-    <message>
-        <location filename="Settings_ui.py" line="302"/>
-        <source>These settings influence behavior of the start stop commands. Use environment
-variables to customize paths and tools.</source>
-        <translation type="obsolete">Tato nastavení ovlivňují chování spouštěcích a ukončovacích příkazů. K úpravě 
-cest a nástrojů použijte proměnné prostředí.</translation>
-    </message>
-    <message>
-        <location filename="Settings_ui.py" line="304"/>
-        <source>Environment variables are available in start/stop commands. Default variables are
-$SUDO for the sudo command to use (e.g. kdesudo or gksudo) and $INITDIR for
-the path to your init-scripts (usually /etc/init.d).</source>
-        <translation type="obsolete">Proměnné prostředí jsou použity v sekci spouštěcí/ukončovací příkazy.
-Výchozí proměnné jsou $SUDO pro použití příkazu typu sudo (např. kdesudo
-nebo gksudo), $INITDIR pak pro cestu k vašim init scriptům (obvykle /etc/init.d).</translation>
-    </message>
-    <message>
-        <location filename="Settings_ui.py" line="271"/>
-        <source>Environment variables</source>
-        <translation type="obsolete">Proměnné prostředí</translation>
     </message>
     <message>
         <location filename="Settings_ui.py" line="340"/>
@@ -768,13 +673,6 @@ if you experience annoying error output being produced by some commands.</source
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="367"/>
-        <source>These settings influence general behavior fine-tune them to your needs.
-Since Service Monitor uses &quot;sudo&quot; to gain root privileges, make sure you have a working
-configuration. If not, you can use the configuration helper to generate configuration snippets.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="Settings_ui.py" line="346"/>
         <source>only state indicators</source>
         <translation type="unfinished"></translation>
@@ -809,6 +707,13 @@ configuration. If not, you can use the configuration helper to generate configur
         <source>display service list in a popup window</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="Settings_ui.py" line="367"/>
+        <source>These settings influence general behavior. Fine-tune them to your needs.
+Since Service Monitor uses &quot;sudo&quot; to gain root privileges, make sure you have a working
+configuration. If not, you can use the configuration helper to generate configuration snippets.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Sources</name>
@@ -821,11 +726,6 @@ configuration. If not, you can use the configuration helper to generate configur
         <location filename="Sources_ui.py" line="161"/>
         <source>Look for new XML files on the internet</source>
         <translation>Hledat nové soubory XML na internetu</translation>
-    </message>
-    <message>
-        <location filename="Sources_ui.py" line="93"/>
-        <source>Search for new source files</source>
-        <translation type="obsolete">Vyhledat nové soubory zdrojů</translation>
     </message>
     <message>
         <location filename="Sources_ui.py" line="164"/>
