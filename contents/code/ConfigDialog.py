@@ -125,11 +125,12 @@ class ConfigDialog(KPageDialog):
   ## Initialize the internal QSettings object with sensible default values
   def setConfigDefaults(self):
     if not self.config.contains('panelBehavior'):   self.config.setValue('panelBehavior', 0)
-    if not self.config.contains('iconStyle'):       self.config.setValue('iconStyle', 2)
     if not self.config.contains('suppressStdout'):  self.config.setValue('suppressStdout', 0)
-    if not self.config.contains('useKNotify'):      self.config.setValue('useKNotify', 1)
+    if not self.config.contains('useKNotify'):      self.config.setValue('useKNotify', Qt.Checked)
     if not self.config.contains('pollingInterval'): self.config.setValue('pollingInterval', 4.0)
     if not self.config.contains('sleepTime'):       self.config.setValue('sleepTime', 0.5)
+    if not self.config.contains('indicatorTheme'):  self.config.setValue('indicatorTheme', 'plusminus')
+    if not self.config.contains('iconStyle'):       self.config.setValue('iconStyle', 2)
     if not self.config.contains('activeSources'):   self.config.setValue('activeSources', QStringList() << "daemons-common.xml" << "tools-settings.xml")
 
 
