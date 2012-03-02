@@ -421,8 +421,8 @@ class ConfigDialog(KPageDialog):
     index = self.sourcesPage.updateComboBox.currentIndex()
     if index == -1:
       return
-    if index == 0: url = QUrl("http://www.documentroot.net/service-monitor/sources-2.0.tar.gz")
-    else:          url = QUrl("https://github.com/mbleichner/service-monitor-sources/tarball/2.0")
+    if index == 0: url = QUrl("http://www.documentroot.net/service-monitor/service-monitor-master.tar.gz")
+    else:          url = QUrl("https://github.com/mbleichner/service-monitor/tarball/master")
     print "starting update from %s" % url.toString()
     self.man = QNetworkAccessManager()
     oldText = self.sourcesPage.searchButton.text()
@@ -454,7 +454,7 @@ class ConfigDialog(KPageDialog):
         f.write(self.res.readAll())
         f.close()
         print "received file, unpacking..."
-        exitcode = QProcess.execute("/bin/tar", QStringList() << "xfz" << f.fileName() << "-C" << sourcedir << "--strip-components=1")
+        exitcode = QProcess.execute("/bin/tar", QStringList() << "xfz" << f.fileName() << "-C" << sourcedir << "--no-anchored" << "sources" << "--strip-components=3")
         f.remove()
         if exitcode == 0:
           self.cache.clear()
@@ -468,7 +468,7 @@ class ConfigDialog(KPageDialog):
           print "update failed."
       self.sourcesPage.searchButton.setText(oldText)
       self.sourcesPage.searchButton.setEnabled(True)
-    QTimer.singleShot(1000, startDownload)
+    QTimer.singleShot(0, startDownload)
 
 
   ## Shows information about the clicked source in the text area.
