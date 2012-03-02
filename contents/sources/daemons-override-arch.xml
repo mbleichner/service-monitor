@@ -11,7 +11,7 @@
     <name>Apache2 Webserver</name>
     <description>The most commonly used web server - submitted by hunterm</description>
     <installcheck>ls $INITDIR/httpd</installcheck>
-    <runningcheck>pidof httpd</runningcheck>
+    <runningcheck>ps ax | grep httpd | grep -v grep</runningcheck>
     <startcommand>$INITDIR/httpd start</startcommand>
     <stopcommand>$INITDIR/httpd stop</stopcommand>
   </service>
