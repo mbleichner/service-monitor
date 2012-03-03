@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 
 
@@ -67,7 +68,7 @@ def deleteContentsRecursively(item):
     while item.count():
       deleteContentsRecursively(item.itemAt(0))
       item.removeAt(0)
-  else:
+  elif isinstance(item, QObject):
     item.deleteLater()
 
     
