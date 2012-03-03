@@ -580,17 +580,17 @@ l&apos;onglet des listes de services ou définissez-le vous même via les &quot;
 <context>
     <name>Settings</name>
     <message>
-        <location filename="Settings_ui.py" line="333"/>
+        <location filename="Settings_ui.py" line="336"/>
         <source>Dialog</source>
         <translation>Dialogue</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="336"/>
+        <location filename="Settings_ui.py" line="339"/>
         <source>Update service status every x seconds.</source>
         <translation>Vérifier le statut du service toutes les x secondes.</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="338"/>
+        <location filename="Settings_ui.py" line="341"/>
         <source>Wait x seconds after execution of start/stop commands before rechecking service status.
 If the status immediatly flashes back to inactive when starting a service, increase this value.</source>
         <translation>Attendre x secondes après l&apos;exécution des commandes d&apos;arrêt / démarrage
@@ -598,92 +598,92 @@ avant de revérifier l&apos;état du service. Si le statut revient aussitôt à 
 augmentez la valeur.</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="334"/>
+        <location filename="Settings_ui.py" line="337"/>
         <source>Service Monitor Settings</source>
         <translation>Options de Service Monitor</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="335"/>
+        <location filename="Settings_ui.py" line="338"/>
         <source>Service polling interval:</source>
         <translation>Intervalle de rafraîchissement :</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="337"/>
+        <location filename="Settings_ui.py" line="340"/>
         <source>Start/stop command delay:</source>
         <translation>Intervalle entre les commandes d&apos;arrêt / démarrage :</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="373"/>
+        <location filename="Settings_ui.py" line="376"/>
         <source>Sudo Configuration Helper</source>
         <translation>Aide à la configuration de sudo</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="354"/>
+        <location filename="Settings_ui.py" line="357"/>
         <source>Grant root access for</source>
         <translation>Attribuer les autorisations root pour</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="355"/>
+        <location filename="Settings_ui.py" line="358"/>
         <source>&lt; please select an option &gt;</source>
         <translation>&lt; veuillez choisir une option &gt;</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="366"/>
+        <location filename="Settings_ui.py" line="369"/>
         <source>Check sudo configuration</source>
         <translation>Vérifier la configuration de sudo</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="340"/>
+        <location filename="Settings_ui.py" line="343"/>
         <source>Indicator theme:</source>
         <translation>Thème des indicateurs :</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="365"/>
+        <location filename="Settings_ui.py" line="368"/>
         <source>Password:</source>
         <translation>Mot de passe :</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="364"/>
+        <location filename="Settings_ui.py" line="367"/>
         <source>User:</source>
         <translation>Utilisateur :</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="356"/>
+        <location filename="Settings_ui.py" line="359"/>
         <source>every user in group sudoers, ask for user password</source>
         <translation>les utilisateurs du groupe sudoers, avec demande du mot de passe</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="357"/>
+        <location filename="Settings_ui.py" line="360"/>
         <source>every user in group sudoers, ask for root password</source>
         <translation>les utilisateurs du groupe sudoers, avec demande du mot de passe root</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="358"/>
+        <location filename="Settings_ui.py" line="361"/>
         <source>only me, ask for my own password</source>
         <translation>moi uniquement, en demandant mon mot de passe</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="359"/>
+        <location filename="Settings_ui.py" line="362"/>
         <source>only me, ask for root password</source>
         <translation>moi uniquement, en demandant le mot de passe root</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="363"/>
+        <location filename="Settings_ui.py" line="366"/>
         <source>Current user:</source>
         <translation>Utilisateur courant :</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="341"/>
+        <location filename="Settings_ui.py" line="344"/>
         <source>Supress stderr when starting/stopping services:</source>
         <translation>Supprimer stderr lors de l&apos;arrêt / démarrage des services :</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="344"/>
+        <location filename="Settings_ui.py" line="347"/>
         <source>(use with caution)</source>
         <translation>(utiliser avec précaution)</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="360"/>
+        <location filename="Settings_ui.py" line="363"/>
         <source>This tool will help you configure sudo.
 
 It creates snippets for inclusion in the /etc/sudoers configuration file. Sudo allows fine-grained control, this tool will cover the most standard setups, but they will be sufficient. Simply choose the config that most suits your needs, append the generated snippet to your /etc/sudoers and use the button below to check your configuration.</source>
@@ -692,7 +692,7 @@ It creates snippets for inclusion in the /etc/sudoers configuration file. Sudo a
 Il crée un extrait de code à incorporer dans le fichier de configuration /etc/sudoers. Sudo autorise finement les contrôles, cet outil couvre la plupart des installations, mais n&apos;est pas forcément exhaustif. Choisissez simplement la configuration qui correspond le plus à vos besoins, ajoutez l&apos;extrait de code à /etc/sudoers et utilisez le bouton ci-dessous pour vérifier votre configuration.</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="370"/>
+        <location filename="Settings_ui.py" line="373"/>
         <source>Please note: sudo can be configured to work without asking for a password. As of now, Service
 Monitor is *not* compatible with this setting.
 Besides, it can be highly dangerous, so you shouldn&apos;t be using it anyway. </source>
@@ -701,54 +701,54 @@ Actuellement Service Monitor n&apos;est *pas* compatible avec ce paramétrage.
 De plus, cela peut être dangereux et vous ne devriez pas l&apos;utiliser de toute façon.</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="342"/>
+        <location filename="Settings_ui.py" line="345"/>
         <source>Disables warnings when start/stop commands produce error output. Check this option
 if you experience annoying error output being produced by some commands.</source>
         <translation>Désactive les avertissements lorsque les commandes d&apos;arrêt / démarrage produisent des erreurs.
 Cochez cette option si vous rencontrez des messages d&apos;erreurs intempestifs générés par certains programmes.</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="345"/>
+        <location filename="Settings_ui.py" line="348"/>
         <source>Report external state changes through KNotify:</source>
         <translation>Indiquer les changements d&apos;état via KNotify :</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="346"/>
+        <location filename="Settings_ui.py" line="349"/>
         <source>only state indicators</source>
         <translation>uniquement les indicateurs d&apos;état</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="347"/>
+        <location filename="Settings_ui.py" line="350"/>
         <source>only icons</source>
         <translation>uniquement les icônes</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="348"/>
+        <location filename="Settings_ui.py" line="351"/>
         <source>combined</source>
         <translation>combiné</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="349"/>
+        <location filename="Settings_ui.py" line="352"/>
         <source>Service icon style:</source>
         <translation>Style des icônes de service :</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="350"/>
+        <location filename="Settings_ui.py" line="353"/>
         <source>display icons directly inside the panel</source>
         <translation>afficher les icônes directement dans le panneau</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="351"/>
+        <location filename="Settings_ui.py" line="354"/>
         <source>display service list in a popup window</source>
         <translation>afficher la liste des services dans une fenêtre popup</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="352"/>
+        <location filename="Settings_ui.py" line="355"/>
         <source>Behavior when put into panel:</source>
         <translation>Comportement lorsqu&apos;inséré dans le tableau de bord :</translation>
     </message>
     <message>
-        <location filename="Settings_ui.py" line="367"/>
+        <location filename="Settings_ui.py" line="370"/>
         <source>These settings influence general behavior. Fine-tune them to your needs.
 Since Service Monitor uses &quot;sudo&quot; to gain root privileges, make sure you have a working
 configuration. If not, you can use the configuration helper to generate configuration snippets.</source>

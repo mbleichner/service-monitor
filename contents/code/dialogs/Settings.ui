@@ -625,9 +625,12 @@ Besides, it can be highly dangerous, so you shouldn't be using it anyway. </stri
   </layout>
  </widget>
  <tabstops>
+  <tabstop>panelBehaviorComboBox</tabstop>
   <tabstop>pollingIntervalSpinbox</tabstop>
   <tabstop>sleepTimeSpinbox</tabstop>
+  <tabstop>iconStyleComboBox</tabstop>
   <tabstop>themeComboBox</tabstop>
+  <tabstop>kNotifyCheckBox</tabstop>
   <tabstop>suppressStdoutCheckBox</tabstop>
   <tabstop>sudoHelperComboBox</tabstop>
   <tabstop>sudoHelperTextarea</tabstop>
