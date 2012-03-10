@@ -76,12 +76,12 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished">Esto borrará el servicio seleccionado. ¿Estás seguro?</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="636"/>
+        <location filename="ConfigDialog.py" line="635"/>
         <source>Upload service definition</source>
         <translation type="unfinished">Subir definión del servicio</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="636"/>
+        <location filename="ConfigDialog.py" line="635"/>
         <source>This will open a page in your web browser where you can submit the selected service definition to the community.</source>
         <translation type="unfinished">Esto abrirá una página web en tu navegador, donde podrás subir la definición del servicio seleccionado a la comunidad.</translation>
     </message>
@@ -91,12 +91,12 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished">%1 (%2, %3 entradas)</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="614"/>
+        <location filename="ConfigDialog.py" line="613"/>
         <source>Enter a short, concise description here</source>
         <translation type="unfinished">Introduce una descripción corta y concisa aquí</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="613"/>
+        <location filename="ConfigDialog.py" line="612"/>
         <source>New Service, edit me</source>
         <translation type="unfinished">Servicio nuevo, edítame</translation>
     </message>
@@ -261,6 +261,16 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="ConfigDialog.py" line="722"/>
         <source>Process failed to start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="312"/>
+        <source>Yes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="312"/>
+        <source>No</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -437,22 +447,22 @@ Por ejemplo, para comprobar que un fichero existe, puedes utilizar: ls /ruta/al/
 <context>
     <name>Service</name>
     <message>
-        <location filename="Service.py" line="158"/>
+        <location filename="Service.py" line="160"/>
         <source>Sudo permission error</source>
         <translation type="unfinished">Error en el permiso de sudo</translation>
     </message>
     <message>
-        <location filename="Service.py" line="182"/>
+        <location filename="Service.py" line="184"/>
         <source>Error output</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Service.py" line="156"/>
+        <location filename="Service.py" line="158"/>
         <source>Process failed to start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Service.py" line="156"/>
+        <location filename="Service.py" line="158"/>
         <source>There was an error starting the process. Please check your installation.</source>
         <translation type="unfinished"></translation>
     </message>

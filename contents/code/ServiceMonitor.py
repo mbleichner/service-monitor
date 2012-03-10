@@ -118,7 +118,8 @@ class ServiceMonitor(Applet):
         nameLabel.nativeWidget().setWordWrap(False)
         statusIcon.setMinimumSize(22, 22)
         statusIcon.setMaximumSize(22, 22)
-        statusIcon.setSizePolicy(QSizePolicy.Maximum, QSizePolicy.Maximum)
+        nameLabel.setMinimumHeight(22)
+        nameLabel.setMaximumHeight(22)
         self.refreshStateIcon(service)
         if self.mode == 'icons' and self.formFactor() == Plasma.Vertical:
           self.mainLayout.addItem(statusIcon, i, 0)
@@ -136,7 +137,7 @@ class ServiceMonitor(Applet):
         self.widgets['intro'].setText(self.tr('<b>Thank you for downloading<br/>Service Monitor!</b><br/><br/>Right click to open the<br/>settings dialog.'))
       else:
         self.widgets['intro'].setText(self.tr('Right click to add services.'))
-        self.widgets['intro'].setMinimumSize(self.widgets['intro'].preferredSize())
+        self.widgets['intro'].setMinimumWidth(180)
       self.widgets['intro'].setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
       self.mainLayout.addItem(self.widgets['intro'], 0, 0)
 

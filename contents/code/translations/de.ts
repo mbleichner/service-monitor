@@ -76,12 +76,12 @@ p, li { white-space: pre-wrap; }
         <translation>Ausgewählten Eintrag wirklich löschen?</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="636"/>
+        <location filename="ConfigDialog.py" line="635"/>
         <source>Upload service definition</source>
         <translation>Definition im Internet zur Verfügung stellen</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="636"/>
+        <location filename="ConfigDialog.py" line="635"/>
         <source>This will open a page in your web browser where you can submit the selected service definition to the community.</source>
         <translation>Dies wird eine Webseite öffnen, auf der du die Definition hochladen kannst.</translation>
     </message>
@@ -91,12 +91,12 @@ p, li { white-space: pre-wrap; }
         <translation>%1 (%2, %3 Einträge)</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="614"/>
+        <location filename="ConfigDialog.py" line="613"/>
         <source>Enter a short, concise description here</source>
         <translation>Gib hier eine kurze Beschreibung ein</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="613"/>
+        <location filename="ConfigDialog.py" line="612"/>
         <source>New Service, edit me</source>
         <translation>Neue Definition, bearbeite mich</translation>
     </message>
@@ -158,7 +158,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="ConfigDialog.py" line="64"/>
         <source>About</source>
-        <translation>Über</translation>
+        <translation>About</translation>
     </message>
     <message>
         <location filename="ConfigDialog.py" line="500"/>
@@ -264,6 +264,16 @@ p, li { white-space: pre-wrap; }
         <location filename="ConfigDialog.py" line="722"/>
         <source>Process failed to start</source>
         <translation>Fehler beim Starten des Prozesses</translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="312"/>
+        <source>Yes</source>
+        <translation>Ja</translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="312"/>
+        <source>No</source>
+        <translation>Nein</translation>
     </message>
 </context>
 <context>
@@ -441,22 +451,22 @@ Um z.B. die Existenz einer Datei zu prüfen, kann man &quot;ls /pfad/zur/datei&q
 <context>
     <name>Service</name>
     <message>
-        <location filename="Service.py" line="158"/>
+        <location filename="Service.py" line="160"/>
         <source>Sudo permission error</source>
         <translation>Sudo-Konfigurations-Fehler</translation>
     </message>
     <message>
-        <location filename="Service.py" line="182"/>
+        <location filename="Service.py" line="184"/>
         <source>Error output</source>
         <translation>Fehlerausgabe</translation>
     </message>
     <message>
-        <location filename="Service.py" line="156"/>
+        <location filename="Service.py" line="158"/>
         <source>Process failed to start</source>
         <translation>Fehler beim Starten des Prozesses</translation>
     </message>
     <message>
-        <location filename="Service.py" line="156"/>
+        <location filename="Service.py" line="158"/>
         <source>There was an error starting the process. Please check your installation.</source>
         <translation>Der Prozess konnte nicht gestartet werden. Bitte prüfe deine Installation.</translation>
     </message>
@@ -491,7 +501,7 @@ Um z.B. die Existenz einer Datei zu prüfen, kann man &quot;ls /pfad/zur/datei&q
     <message>
         <location filename="ServiceMonitor.py" line="138"/>
         <source>Right click to add services.</source>
-        <translation>Rechtsklick, um Dienste hinzuzufügen.</translation>
+        <translation>Rechtsklicken, um Dienste hinzuzufügen.</translation>
     </message>
 </context>
 <context>

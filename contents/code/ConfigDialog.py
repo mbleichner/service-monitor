@@ -317,7 +317,7 @@ class ConfigDialog(KPageDialog):
         <tr><td>Start command:</td><td>&nbsp;</td><td>%5</td></tr>
         <tr><td>Stop command:</td><td>&nbsp;</td><td>%6</td></tr>
         <tr><td>Root privileges:</td><td>&nbsp;</td><td>%7</td></tr>
-        </table>''').arg(s.name).arg(s.description).arg(s.installcheck).arg(s.runningcheck).arg(s.startcommand).arg(s.stopcommand).arg("Yes" if s.sudo else "No")
+        </table>''').arg(s.name).arg(s.description).arg(s.installcheck).arg(s.runningcheck).arg(s.startcommand).arg(s.stopcommand).arg(self.tr("Yes") if s.sudo else self.tr("No"))
       )
 
 
@@ -600,10 +600,9 @@ class ConfigDialog(KPageDialog):
       item = self.customPage.serviceList.currentItem()
       self.sources[QString('custom.xml')].services.remove(item.service)
       self.sources[QString('custom.xml')].writeBack()
+      self.readSources() # update self.services
       self.populateCustomList()
-      if item.service in self.activeServices():
-        self.activeServices.remove(item.service)
-        self.configurationChanged.emit()
+      self.configurationChanged.emit()
 
 
   ## Adds a new, empty service with random ID to custom.xml and reload the sources.

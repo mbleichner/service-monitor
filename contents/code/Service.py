@@ -80,8 +80,10 @@ class Service(QObject):
   ## Outputs a DOM node containing all data of this service.
   def saveToDomNode(self, doc):
     node = doc.createElement('service')
-    node.setAttribute('id', self.id)
-    node.setAttribute('sudo', "yes" if self.sudo else "no")
+    node.setAttribute('id',       self.id)
+    node.setAttribute('icon',     self.icon if self.icon else "")
+    node.setAttribute('priority', self.priority if self.priority else 0)
+    node.setAttribute('sudo',     "yes" if self.sudo else "no")
     node.appendChild(mkTextElement(doc, 'name',         self.name))
     node.appendChild(mkTextElement(doc, 'description',  self.description))
     node.appendChild(mkTextElement(doc, 'installcheck', self.installcheck))

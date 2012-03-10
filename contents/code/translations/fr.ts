@@ -97,12 +97,12 @@ p, li { white-space: pre-wrap; }
         <translation>Voulez-vous vraiment supprimer ce service ?</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="636"/>
+        <location filename="ConfigDialog.py" line="635"/>
         <source>Upload service definition</source>
         <translation>Envoi de la définition du service</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="636"/>
+        <location filename="ConfigDialog.py" line="635"/>
         <source>This will open a page in your web browser where you can submit the selected service definition to the community.</source>
         <translation>Une page s&apos;affichera dans votre navigateur web où vous pourrez envoyer la définition du service sélectionné à la communauté.</translation>
     </message>
@@ -112,12 +112,12 @@ p, li { white-space: pre-wrap; }
         <translation>%1 (%2, %3 entrées)</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="614"/>
+        <location filename="ConfigDialog.py" line="613"/>
         <source>Enter a short, concise description here</source>
         <translation>Donnez une courte description du service</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="613"/>
+        <location filename="ConfigDialog.py" line="612"/>
         <source>New Service, edit me</source>
         <translation>Nouveau service, éditez-moi</translation>
     </message>
@@ -285,6 +285,16 @@ p, li { white-space: pre-wrap; }
         <location filename="ConfigDialog.py" line="722"/>
         <source>Process failed to start</source>
         <translation>Échec de lancement du processus</translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="312"/>
+        <source>Yes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="312"/>
+        <source>No</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -462,22 +472,22 @@ Par exemple, pour vérifier si un fichier existe, vous pouvez utiliser ls /chemi
 <context>
     <name>Service</name>
     <message>
-        <location filename="Service.py" line="158"/>
+        <location filename="Service.py" line="160"/>
         <source>Sudo permission error</source>
         <translation>Erreur de permission pour sudo</translation>
     </message>
     <message>
-        <location filename="Service.py" line="182"/>
+        <location filename="Service.py" line="184"/>
         <source>Error output</source>
         <translation>Erreur de sortie</translation>
     </message>
     <message>
-        <location filename="Service.py" line="156"/>
+        <location filename="Service.py" line="158"/>
         <source>Process failed to start</source>
         <translation>Échec du lancement du processus</translation>
     </message>
     <message>
-        <location filename="Service.py" line="156"/>
+        <location filename="Service.py" line="158"/>
         <source>There was an error starting the process. Please check your installation.</source>
         <translation>Une erreur s&apos;est produite au lancement du processus. Veuillez vérifier votre installation.</translation>
     </message>

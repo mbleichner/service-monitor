@@ -81,22 +81,22 @@ p, li { white-space: pre-wrap; }
         <translation>Opravdu chcete smazat vybranou službu?</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="613"/>
+        <location filename="ConfigDialog.py" line="612"/>
         <source>New Service, edit me</source>
         <translation>Jsem nova sluzba, upravte me ;-)</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="614"/>
+        <location filename="ConfigDialog.py" line="613"/>
         <source>Enter a short, concise description here</source>
         <translation>Zadejte strucny a jasny popis</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="636"/>
+        <location filename="ConfigDialog.py" line="635"/>
         <source>Upload service definition</source>
         <translation>Odeslat definici služby na internet</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="636"/>
+        <location filename="ConfigDialog.py" line="635"/>
         <source>This will open a page in your web browser where you can submit the selected service definition to the community.</source>
         <translation>Tímto otevřete v prohlížeči stránku, přes kterou můžete odeslat vybranou definici služby uživatelské komunitě.</translation>
     </message>
@@ -253,6 +253,16 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="ConfigDialog.py" line="722"/>
         <source>Process failed to start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="312"/>
+        <source>Yes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ConfigDialog.py" line="312"/>
+        <source>No</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -429,22 +439,22 @@ budete zmíněni jako autor definice. Prosíme, abyste odesílali výhradně fun
 <context>
     <name>Service</name>
     <message>
-        <location filename="Service.py" line="158"/>
+        <location filename="Service.py" line="160"/>
         <source>Sudo permission error</source>
         <translation type="unfinished">Chyba v oprávněních sudo</translation>
     </message>
     <message>
-        <location filename="Service.py" line="182"/>
+        <location filename="Service.py" line="184"/>
         <source>Error output</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Service.py" line="156"/>
+        <location filename="Service.py" line="158"/>
         <source>Process failed to start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Service.py" line="156"/>
+        <location filename="Service.py" line="158"/>
         <source>There was an error starting the process. Please check your installation.</source>
         <translation type="unfinished"></translation>
     </message>
