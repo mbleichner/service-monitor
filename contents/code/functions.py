@@ -37,6 +37,7 @@ def combineIcons(base, overlay):
   return QIcon(QPixmap.fromImage(base))
 
 
+## Reduces saturation of the given QIcon
 def changeSaturation(icon, f):
   if f == 1: return QIcon(icon)
   icon = icon.pixmap(22, 22).toImage()
@@ -51,10 +52,12 @@ def changeSaturation(icon, f):
   return QIcon(QPixmap.fromImage(icon))
 
 
+## Convenience method.
 def rgba2int(r,g,b,a):
   return int(a) * 16**6 + int(r) * 16**4 + int(g) * 16**2 + int(b) * 16**0
 
 
+## Convenience method.
 def int2rgba(n):
   n = int(n)
   return ( (n / 16**4) % 16**2, (n / 16**2) % 16**2, (n / 16**0) % 16**2, (n / 16**6) % 16**2 )

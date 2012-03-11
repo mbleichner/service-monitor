@@ -1,6 +1,11 @@
 # -*- coding: utf-8 -*-
 import os
 
+## @mainpage
+## <p>For a description of Service Monitor, see http://kde-look.org/content/show.php/Service+Monitor?content=125203</p>
+##
+## <p>Development repository is hosted on GitHub: https://github.com/mbleichner/service-monitor</p>
+
 from ServiceMonitor import *
 
 codedir = os.path.dirname(__file__)

@@ -21,25 +21,32 @@ class BashProcess(KProcess):
     self._password = None
     self._command = ''
 
+  ## Sets the password which is forwarded to sudo.
   def setSudoPassword(self, pw):
     self._password = pw
 
+  ## Returns true if sudo should be used to execute the command.
   def usesSudo(self):
     return self._password is not None
 
+  ## Returns the type of the last error.
   def errorType(self):
     return self._errorType if self._errorType is not None else KProcess.error(self)
 
+  ## Sets the command to be executed. It may contain the variable $INITDIR, which will be replaced according to guessInitDir().
   def setBashCommand(self, command):
     command = command.replace('$INITDIR', self.guessInitDir())
     self._command = command
 
+  ## Returns either /etc/init.d or /etc/rc.d (e.g. on Arch systems).
   def guessInitDir(self):
     return "/etc/rc.d" if QFile.exists("/etc/rc.d") else "/etc/init.d"
 
+  ## Returns the human-readable message of the last error.
   def errorMessage(self):
     return self._errorMessage
 
+  ## [internal] Convenience method.
   def spitError(self, code, msg):
     self._errorType = code
     self._errorMessage = msg
@@ -48,8 +55,8 @@ class BashProcess(KProcess):
     self.error.emit(self.errorType())
 
 
-  ## Starts the process. If using sudo, it will immediately return an error, if something concerning sudo went wrong.
-  ## If no error occured (or sudo isn't) used, the process will be detached and the finished() signal can be used.
+  ## Starts the process. If we are using sudo and there is a sudo error (e.g. password or misconfiguration), it will immediately fail.
+  ## If no error occured (or sudo isn't used), the process will be detached and the finished() signal can be used to get notified.
   def start(self):
 
     # setup program

@@ -36,11 +36,15 @@ class PasswordDialog(QDialog, Ui_PasswordDialog):
     
     self.rememberTimeCombobox.setCurrentIndex(self.rememberType())
     self.rememberTimeSpinbox.setValue(self.rememberTime())
-    
+
+
+  ## Sets sensible default configuration values.
   def setConfigDefaults(self):
     if not self.config.contains('rememberType'): self.config.setValue('rememberType', 0)
     if not self.config.contains('rememberTime'): self.config.setValue('rememberTime', 60)
-    
+
+
+  ## Called when the user hits OK. Emits a signal to notify the main widget.
   def accepted(self):
     self._password = self.passwordLineEdit.text()
     self.newPasswordAvailable.emit(self._password)
@@ -51,30 +55,46 @@ class PasswordDialog(QDialog, Ui_PasswordDialog):
     if self.rememberType() == PasswordDialog.DoNotRemember:
       self.forgetPassword()
 
+
+  ## Saves value to config file. 
   def rememberTypeChanged(self, index):
     self.config.setValue('rememberType', index)
     self.rememberTimeSpinbox.setEnabled(index == PasswordDialog.RememberForFixedTime)
 
+
+  ## Saves value to config file. 
   def rememberTimeChanged(self, minutes):
     self.config.setValue('rememberTime', minutes)
     self.forgetTimer.setInterval(minutes * 1000 * 60)
 
+
+  ## Gets the configuration value for the combo box.
   def rememberType(self):
     return self.config.value('rememberType').toInt()[0]
 
+
+  ## Gets the configuration value for the spin box.
   def rememberTime(self):
     return self.config.value('rememberTime').toInt()[0]
 
+
+  ## Called when the forget timer triggers. Deletes the cached password.
   def forgetPassword(self):
     self._password = ''
     self.passwordLineEdit.setText('')
 
+
+  ## Return the password given by the user.
   def password(self):
     return self._password
 
+
+  ## Sets the command to be executed as an information for the user.
   def setCommandInfo(self, command):
     self.commandLabel.setText(command)
     self.adjustSize()
 
+
+  ## Sets the cursor into the password field.
   def focusPasswordField(self):
     self.passwordLineEdit.setFocus(Qt.PopupFocusReason)

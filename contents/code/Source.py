@@ -43,6 +43,7 @@ class Source(QObject):
     file.close()
 
 
+  ## Writes all services back to the xml file.
   def writeBack(self):
     doc = QDomDocument()
     root = doc.createElement('services')

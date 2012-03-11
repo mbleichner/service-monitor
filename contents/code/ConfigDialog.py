@@ -197,7 +197,7 @@ class ConfigDialog(KPageDialog):
     theme = self.config.value('indicatorTheme').toString()
     return theme if theme and os.path.isdir(codedir + '/indicators/' + theme) else 'default'
 
-
+  ## Returns a QIcon for the given service.
   def serviceIcon(self, service):
     if service.icon is not None and QFile.exists('%s/icons/%s.png' % (sourcedir, service.icon)):
       return QIcon('%s/icons/%s.png' % (sourcedir, service.icon))
@@ -245,10 +245,12 @@ class ConfigDialog(KPageDialog):
     return self.config.value('suppressStdout').toInt()[0] > 0
 
 
+  ## Returns the value of the "behavior when put into panel" setting.
   def panelBehavior(self):
     return self.config.value('panelBehavior').toInt()[0]
 
 
+  ## Returns the value of the "use KNotify" setting.
   def useKNotify(self):
     return self.config.value('useKNotify').toInt()[0] > 0
 
@@ -323,7 +325,6 @@ class ConfigDialog(KPageDialog):
 
   ## Add selected service to the list of active services (then repopulate lists).
   def activateService(self):
-    '''Fügt einen Service zur Liste der aktiven hinzu und aktualisiert dann alles'''
     activeServicesIDs = self.config.value("activeServices").toStringList()
     try: activeServicesIDs << self.servicesPage.inactiveServicesList.currentItem().service.id
     except: return
@@ -564,7 +565,7 @@ class ConfigDialog(KPageDialog):
     
 
   ## Writes data of selected custom service to line edits.
-  # Called as slot when a custom service in the list is clicked.
+  ## Called as slot when a custom service in the list is clicked.
   def synchronizeLineEdits(self, x = None):
     service = self.customPage.serviceList.currentItem().service
     self.customPage.serviceNameInput.setText(service.name)
@@ -588,8 +589,8 @@ class ConfigDialog(KPageDialog):
     service.sudo         = self.customPage.sudoCheckbox.checkState() == Qt.Checked
 
 
-  ## Deletes selected custom service (and repopulate all lists)
-  # When in editmode, cancel without saving.
+  ## Deletes selected custom service (and repopulate all lists).
+  ## When in editmode, cancel without saving.
   def removeCustomService(self):
 
     if self.editmode: # cancel editing

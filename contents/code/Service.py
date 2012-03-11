@@ -93,6 +93,7 @@ class Service(QObject):
     return node
 
 
+  ## Activates or deactivates state polling.
   def setPolling(self, flag, interval = None):
     self.polling = flag
     if self.polling:
@@ -104,6 +105,7 @@ class Service(QObject):
       self.timer.stop()
 
 
+  ## If set to false, error output on start/stop commands will not be reported though a message box.
   def setErrorReporting(self, flag):
     self.reportErrors = flag
 
@@ -118,14 +120,18 @@ class Service(QObject):
       self.runningStateChanged.emit(reason)
 
 
+  ## Convenience method for updateing the state,
   def setRunningState(self, runningState, reason):
     self.setState( (self.state[0], runningState), reason )
 
 
+  ## Convenience method for updateing the state,
   def setInstallState(self, installState, reason):
     self.setState( (installState, self.state[1]), reason )
 
 
+  ## Initiates execution of a command or check.
+  ## @param reason refelcts the reason for the execution (automatic polling, user request or widget startup)
   def execute(self, which, reason = 'requested', password = None):
 
     if which == 'runningcheck' and (self.processes['startcommand'].state() == QProcess.Running or self.processes['stopcommand'].state() == QProcess.Running):
@@ -172,6 +178,7 @@ class Service(QObject):
       self.execute('runningcheck', reason)
     
 
+  ## Called when a command or check finishes. This method checks the exit status and updates the state of the service.
   def finished(self, which, reason):
     proc = self.processes[which]
     if which == "installcheck":
@@ -186,11 +193,13 @@ class Service(QObject):
     self.killProcesses(which)
 
 
+  ## Retries the last command. Called (externally) when there was a password error.
   def retryLastCommand(self, password):
     if not self.lastCommand(): return
     self.execute(self.lastCommand(), 'requested', password)
 
 
+  ## Returns the identifier of the last command executed.
   def lastCommand(self):
     return self._lastCommand if self._lastCommand else None
 
@@ -200,6 +209,7 @@ class Service(QObject):
     self.sleepTime = n
 
 
+  ## Kills all given processes.
   def killProcesses(self, *args):
     for which in args:
       if self.processes[which] is not None:

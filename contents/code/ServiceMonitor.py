@@ -21,8 +21,8 @@ sourcedir   = contentsdir + "/sources"
 
 
 ## This is the plasmoid which can be placed on the desktop or in dock.
-# First the config dialog is initialised which loads all sources, services and configuration.
-# Then the applet gets the list of active services from the config, draws all widgets and sets up monitoring.
+## First the config dialog is initialised which loads all sources, services and configuration.
+## Then the applet gets the list of active services from the config, draws all widgets and sets up monitoring.
 class ServiceMonitor(Applet):
 
 
