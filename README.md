@@ -19,16 +19,16 @@ then add the widget in KDE. If you want to remove it again, run
 Screenshots
 ===========
 
-### Placement on desktop:
+#### Placement on desktop:
 ![pic1](http://www.documentroot.net/service-monitor/screenshots/2.0/service-monitor-1.png)
 
-### Placement in panel, with popup:
+#### Placement in panel, with popup:
 ![pic7](http://www.documentroot.net/service-monitor/screenshots/2.0/service-monitor-7.png)
 
-### Placement in panel, without popup:
+#### Placement in panel, without popup:
 ![pic8](http://www.documentroot.net/service-monitor/screenshots/2.0/service-monitor-8.png)
 
-### Configuration dialog:
+#### Configuration dialog:
 ![pic2](http://www.documentroot.net/service-monitor/screenshots/2.0/service-monitor-2.png)
 ![pic3](http://www.documentroot.net/service-monitor/screenshots/2.0/service-monitor-3.png)
 ![pic4](http://www.documentroot.net/service-monitor/screenshots/2.0/service-monitor-4.png)
