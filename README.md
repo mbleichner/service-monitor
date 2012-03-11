@@ -4,8 +4,7 @@ Service Monitor KDE Plasmoid
 For a detailed description see http://kde-look.org/content/show.php/Service+Monitor?content=125203
 
 
-Installation & Removal
-======================
+## Installation & Removal
 
 Simply run the following command:
 
@@ -16,8 +15,7 @@ then add the widget in KDE. If you want to remove it again, run
     $ plasmapkg -r service-monitor
 
 
-Screenshots
-===========
+## Screenshots
 
 #### Placement on desktop:
 ![pic1](http://www.documentroot.net/service-monitor/screenshots/2.0/service-monitor-1.png)
@@ -36,8 +34,7 @@ Screenshots
 ![pic6](http://www.documentroot.net/service-monitor/screenshots/2.0/service-monitor-6.png)
 
 
-Development
-===========
+## Development
 
 For development, you can use plasmoidviewer to quickly start the widget from command line. This way
 you don't have to install/uninstall all the time.
