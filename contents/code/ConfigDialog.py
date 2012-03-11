@@ -484,11 +484,12 @@ class ConfigDialog(KPageDialog):
   ## @param select automatically select service with given id
   def populateCustomList(self, select = None):
     self.customPage.serviceList.clear()
+    self.customPage.serviceList.setIconSize(QSize(22,22))
     if not self.sources.has_key(QString('custom.xml')):
       self.customPage.serviceList.addItem(self.tr('Error - custom.xml is missing or has been damaged'))
       return
     for service in self.sources[QString('custom.xml')].services:
-      icon = KIcon('text-x-generic')
+      icon = self.serviceIcon(service)
       item = QListWidgetItem(icon, (service.name + ' - ' + service.description) if service.description else service.name)
       item.service = service
       self.customPage.serviceList.addItem(item)
