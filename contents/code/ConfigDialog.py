@@ -455,7 +455,7 @@ class ConfigDialog(KPageDialog):
         f.write(self.res.readAll())
         f.close()
         print "received file, unpacking..."
-        exitcode = QProcess.execute("/bin/tar", QStringList() << "xfz" << f.fileName() << "-C" << sourcedir << "--no-anchored" << "sources" << "--strip-components=3")
+        exitcode = QProcess.execute("/bin/tar", QStringList() << "xfz" << f.fileName() << "-C" << sourcedir << "--no-anchored" << "sources" << "--strip-components=3" << "--exclude" << "custom.xml")
         f.remove()
         if exitcode == 0:
           self.cache.clear()
