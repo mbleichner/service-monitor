@@ -718,7 +718,7 @@ class ConfigDialog(KPageDialog):
     proc.setBashCommand('cat /etc/sudoers')
     proc.setSudoPassword(self.settingsPage.passwordLineEdit.text())
     proc.start()
-    proc.waitForStarted()
+    proc.waitForFinished()
     if proc.errorType() == QProcess.FailedToStart:
       QMessageBox.critical(None, self.tr('Process failed to start'), self.tr("Sudo configuration error. Verify that sudo is installed correctly and read the help text at the bottom for hints."))
     elif proc.errorType() == BashProcess.PermissionError:

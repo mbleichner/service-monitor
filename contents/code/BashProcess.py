@@ -50,8 +50,7 @@ class BashProcess(KProcess):
   def spitError(self, code, msg):
     self._errorType = code
     self._errorMessage = msg
-    self.terminate()
-    self.close()
+    self.kill()
     self.error.emit(self.errorType())
 
 
