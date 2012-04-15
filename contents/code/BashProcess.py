@@ -60,12 +60,12 @@ class BashProcess(KProcess):
   def start(self):
 
     # setup program
-    # Der Parameter -D 8 sorgt für eine sofortige Ausgabe nach erfolgreicher Passworteingabe.
-    # Ohne den Parameter hängt start() sonst so lange, bis das Hauptkommando ferig ist oder eine Ausgabe produziert.
+    # Ohne den echo-Befehl hängt waitForReadyRead() so lange, bis das Hauptkommando fertig ist oder eine Ausgabe produziert.
     program = QStringList()
     if self.usesSudo():
-      program << "/usr/bin/sudo" << "-kS" << "-D 8" << "-p" << "enter sudo password: "
-    program << "/bin/bash" << "-c" << self._command
+      program << "/usr/bin/sudo" << "-kS" << "-p" << "enter sudo password: " << "/bin/bash" << "-c" << ("echo 'password ok'\n" + self._command)
+    else:
+      program << "/bin/bash" << "-c" << self._command
     
     # start program
     self.setProgram(program)
