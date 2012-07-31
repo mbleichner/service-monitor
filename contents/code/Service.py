@@ -131,9 +131,9 @@ class Service(QObject):
 
 
   ## Initiates execution of a command or check.
-  ## @param reason refelcts the reason for the execution (automatic polling, user request or widget startup)
+  ## @param reason reflects the reason for the execution (automatic polling, user request or widget startup)
   def execute(self, which, reason = 'requested', password = None):
-
+    
     if which == 'runningcheck' and (self.processes['startcommand'].state() == QProcess.Running or self.processes['stopcommand'].state() == QProcess.Running):
       return
 
@@ -150,38 +150,34 @@ class Service(QObject):
       proc.setBashCommand("%s\nsleep %.1f" % (command, self.sleepTime))
     else:
       proc.setBashCommand(command)
+      
     if which in ["startcommand", "stopcommand"]:
-      if self.sudo: proc.setSudoPassword(password)
+      if self.sudo:
+        proc.setSudoPassword(password)
       self._lastCommand = which
       
     # start process
-    proc.start(); proc.waitForStarted()
+    proc.finished.connect(partial(self.finished, which, reason))
+    proc.start()
 
-    # check for startup errors
-    if proc.errorType() == QProcess.FailedToStart and proc.errorMessage():
-      QMessageBox.critical(None, self.tr('Process failed to start'), QString(proc.errorMessage()))
-    elif proc.errorType() == QProcess.FailedToStart and not proc.errorMessage():
-      QMessageBox.critical(None, self.tr('Process failed to start'), self.tr("There was an error starting the process. Please check your installation."))
-    elif proc.errorType() == BashProcess.PermissionError:
-      QMessageBox.critical(None, self.tr('Sudo permission error'), QString(proc.errorMessage()))
-    elif proc.errorType() == BashProcess.PasswordError:
-      self.wrongPassword.emit(which)
-
-    # if everything went ok, mark state and connect slot
-    if proc.state() == QProcess.Running:
-      if which in ["startcommand", "stopcommand"]:
-        self.setRunningState("starting" if which == "startcommand" else "stopping", reason)
-      proc.finished.connect(partial(self.finished, which, reason))
-
-    # if startup failed, issue state check
-    else:
-      self.execute('runningcheck', reason)
+    # errors should not be possible at this stage - just to make sure.
+    # if no error occurred, update the service state
+    if proc.errorType() == QProcess.FailedToStart:
+      QMessageBox.critical(None, self.tr('Process failed to start'), self.tr("There was an error starting the process. This should not happen and maybe you should report this incident..."))
+    elif which in ["startcommand", "stopcommand"]:
+      self.setRunningState("starting" if which == "startcommand" else "stopping", reason)
     
 
   ## Called when a command or check finishes. This method checks the exit status and updates the state of the service.
   def finished(self, which, reason):
     proc = self.processes[which]
-    if which == "installcheck":
+
+    # check for errors
+    if proc.errorType() == BashProcess.PermissionError:
+      QMessageBox.critical(None, self.tr('Sudo permission error'), QString(proc.errorMessage()))
+    elif proc.errorType() == BashProcess.PasswordError:
+      self.wrongPassword.emit(which)
+    elif which == "installcheck":
       self.setInstallState('installed' if (proc.exitCode() == 0 and proc.readAllStandardOutput().length() > 0) else 'missing', reason)
     elif which == "runningcheck":
       self.setRunningState('running' if (proc.exitCode() == 0 and proc.readAllStandardOutput().length() > 0) else 'stopped', reason)
@@ -190,6 +186,7 @@ class Service(QObject):
       if errorOutput and self.reportErrors:
         QMessageBox.warning(None, self.tr('Error output'), errorOutput)
       self.execute('runningcheck', reason)
+
     self.killProcesses(which)
 
 
@@ -212,5 +209,4 @@ class Service(QObject):
   ## Kills all given processes.
   def killProcesses(self, *args):
     for which in args:
-      if self.processes[which] is not None:
-        self.processes[which].close()
+      self.processes[which].kill()

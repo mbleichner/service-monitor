@@ -51,7 +51,9 @@ class BashProcess(KProcess):
     self._errorType = code
     self._errorMessage = msg
     self.kill()
+    self.close()
     self.error.emit(self.errorType())
+    self.finished.emit(1, 0)
 
 
   ## Starts the process. If we are using sudo and there is a sudo error (e.g. password or misconfiguration), it will immediately fail.
@@ -62,7 +64,7 @@ class BashProcess(KProcess):
     # Ohne den echo-Befehl hängt waitForReadyRead() so lange, bis das Hauptkommando fertig ist oder eine Ausgabe produziert.
     program = QStringList()
     if self.usesSudo():
-      program << "/usr/bin/sudo" << "-kS" << "-p" << "enter sudo password: " << "/bin/bash" << "-c" << ("echo 'password ok'\n" + self._command)
+      program << "/usr/bin/sudo" << "-kS" << "-p" << "enter sudo password: " << "/bin/bash" << "-c" << ("echo 'password ok' >&2\n" + self._command)
     else:
       program << "/bin/bash" << "-c" << self._command
     
@@ -75,7 +77,7 @@ class BashProcess(KProcess):
 
       # listen on stderr, since sudo prints everything there
       self.setReadChannel(QProcess.StandardError)
-
+      
       # start sudo, check if password prompt is present, then enter the password
       self.waitForReadyRead()
       output = self.readAll()
@@ -84,7 +86,8 @@ class BashProcess(KProcess):
       self.write("%s\n" % self._password)
 
       # wait for response and either issue an error or continue with normal process management
-      self.waitForReadyRead(); output = self.readAll()
+      self.waitForReadyRead()
+      output = self.readAll()
       if output.contains("try again"):
         return self.spitError(BashProcess.PasswordError, "Wrong sudo password")
       elif output.contains("not in the sudoers file"):

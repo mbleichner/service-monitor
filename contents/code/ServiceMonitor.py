@@ -196,8 +196,7 @@ class ServiceMonitor(Applet):
     if service.state[0] == 'missing':
       QMessageBox.warning(None, self.tr("Error"), self.tr('Service "%1" not installed. Aborting.').arg(service.id))
       return
-    if service.state[1] in ['running', 'starting']: command = "stopcommand"
-    if service.state[1] in ['stopped', 'stopping']: command = "startcommand"
+    command = "stopcommand" if service.state[1] in ['running', 'starting'] else "startcommand"
     service.execute(command, 'requested', self.passwordDialog.password())
 
 
