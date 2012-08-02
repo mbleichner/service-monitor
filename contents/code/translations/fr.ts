@@ -82,47 +82,47 @@ p, li { white-space: pre-wrap; }
         <translation>Services personnalisés</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="488"/>
+        <location filename="ConfigDialog.py" line="490"/>
         <source>Error - custom.xml is missing or has been damaged</source>
         <translation>Erreur - le fichier custom.xml est manquant ou corrompu</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="598"/>
+        <location filename="ConfigDialog.py" line="600"/>
         <source>Remove service</source>
         <translation>Supprimer le service</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="598"/>
+        <location filename="ConfigDialog.py" line="600"/>
         <source>Really delete the selected service?</source>
         <translation>Voulez-vous vraiment supprimer ce service ?</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="635"/>
+        <location filename="ConfigDialog.py" line="637"/>
         <source>Upload service definition</source>
         <translation>Envoi de la définition du service</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="635"/>
+        <location filename="ConfigDialog.py" line="637"/>
         <source>This will open a page in your web browser where you can submit the selected service definition to the community.</source>
         <translation>Une page s&apos;affichera dans votre navigateur web où vous pourrez envoyer la définition du service sélectionné à la communauté.</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="395"/>
+        <location filename="ConfigDialog.py" line="396"/>
         <source>%1 (%2, %3 entries)</source>
         <translation>%1 (%2, %3 entrées)</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="613"/>
+        <location filename="ConfigDialog.py" line="615"/>
         <source>Enter a short, concise description here</source>
         <translation>Donnez une courte description du service</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="612"/>
+        <location filename="ConfigDialog.py" line="614"/>
         <source>New Service, edit me</source>
         <translation>Nouveau service, éditez-moi</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="312"/>
+        <location filename="ConfigDialog.py" line="314"/>
         <source>&lt;strong&gt;%1&lt;/strong&gt;&lt;br/&gt;
         %2&lt;br/&gt;
         &lt;table&gt;
@@ -143,32 +143,32 @@ p, li { white-space: pre-wrap; }
         &lt;/table&gt;</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="726"/>
+        <location filename="ConfigDialog.py" line="727"/>
         <source>Wrong password</source>
         <translation>Mot de passe incorrect</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="724"/>
+        <location filename="ConfigDialog.py" line="725"/>
         <source>Sudo permission error</source>
         <translation>Erreur de permission pour sudo</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="728"/>
+        <location filename="ConfigDialog.py" line="729"/>
         <source>Success</source>
         <translation>Opération réussie</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="728"/>
+        <location filename="ConfigDialog.py" line="729"/>
         <source>Your installation seems to be working. Now try to start/stop some services in your list.</source>
         <translation>Votre installation semble opérationnelle. Essayez maintenant de démarrer / arrêter des services de votre liste.</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="726"/>
+        <location filename="ConfigDialog.py" line="727"/>
         <source>It seems you gave the wrong password. Try again.</source>
         <translation>Le mot de passe semble incorrect. Réessayez.</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="701"/>
+        <location filename="ConfigDialog.py" line="702"/>
         <source># copy-paste this snippet into your /etc/sudoers file:
 
 </source>
@@ -182,117 +182,117 @@ p, li { white-space: pre-wrap; }
         <translation>À propos</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="500"/>
+        <location filename="ConfigDialog.py" line="502"/>
         <source>Copy existing</source>
         <translation>Copier</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="529"/>
+        <location filename="ConfigDialog.py" line="531"/>
         <source>Save</source>
         <translation>Sauvegarder</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="530"/>
+        <location filename="ConfigDialog.py" line="532"/>
         <source>Cancel</source>
         <translation>Annuler</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="557"/>
+        <location filename="ConfigDialog.py" line="559"/>
         <source>Edit</source>
         <translation>Éditer</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="558"/>
+        <location filename="ConfigDialog.py" line="560"/>
         <source>Remove</source>
         <translation>Supprimer</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="429"/>
+        <location filename="ConfigDialog.py" line="430"/>
         <source>Updating</source>
         <translation>Mise à jour en cours</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="444"/>
+        <location filename="ConfigDialog.py" line="445"/>
         <source>The remote host closed the connection prematurely. Try again.</source>
         <translation>Le serveur distant à fermé la connexion prématurément. Essayez à nouveau.</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="445"/>
+        <location filename="ConfigDialog.py" line="446"/>
         <source>The update server could not be found. Are you online?</source>
         <translation>Le serveur de mise à jour est introuvable. Êtes-vous connecté ?</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="446"/>
+        <location filename="ConfigDialog.py" line="447"/>
         <source>The request timed out. Probably the server is under heavy load and you should try again later.</source>
         <translation>Délai d&apos;attente dépassé. Le serveur est probablement surchargé, veuillez essayer plus tard.</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="448"/>
+        <location filename="ConfigDialog.py" line="449"/>
         <source>Server access denied. Write me a mail if this happens and try another server.</source>
         <translation>Accès au serveur interdit. Envoyez-moi un courrier électronique si cela se produit et essayez avec un autre serveur.</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="449"/>
+        <location filename="ConfigDialog.py" line="450"/>
         <source>File not found. Write me a mail if this happens and try another server.</source>
         <translation>Fichier introuvable. Envoyez-moi un courrier électronique si cela se produit et essayez avec un autre serveur.</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="465"/>
+        <location filename="ConfigDialog.py" line="466"/>
         <source>Update successful</source>
         <translation>Mise à jour réussie</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="467"/>
+        <location filename="ConfigDialog.py" line="468"/>
         <source>Update failed</source>
         <translation>Échec de la mise à jour</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="465"/>
+        <location filename="ConfigDialog.py" line="466"/>
         <source>Update successful.</source>
         <translation>Mise à jour réussie.</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="467"/>
+        <location filename="ConfigDialog.py" line="468"/>
         <source>The file could be downloaded, but there was an error unpacking it. Maybe it is corrupted.</source>
         <translation>Le fichier a pu être téléchargé, mais une erreur est survenue lors de la décompression. Il est peut-être corrompu.</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="714"/>
+        <location filename="ConfigDialog.py" line="715"/>
         <source>Enter password</source>
         <translation>Entrez le mot de passe</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="714"/>
+        <location filename="ConfigDialog.py" line="715"/>
         <source>Please enter your password.</source>
         <translation>Veuillez entrez votre mot de passe.</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="722"/>
+        <location filename="ConfigDialog.py" line="723"/>
         <source>Sudo configuration error. Verify that sudo is installed correctly and read the help text at the bottom for hints.</source>
         <translation>Erreur de configuration de sudo. Véfiez que sudo soit correctement installé et consultez l&apos;aide ci-dessous pour plus de détails.</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="443"/>
+        <location filename="ConfigDialog.py" line="444"/>
         <source>Connection refused by the server. Usually this means that the server is temporarily offline.</source>
         <translation>Connexion refusée par le serveur. Habituellement cela signifie que le serveur est temporairement injoignable.</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="447"/>
+        <location filename="ConfigDialog.py" line="448"/>
         <source>Network error. Please check your connection and try again.</source>
         <translation>Erreur réseau. Veuillez vérifier votre connexion et essayer à nouveau.</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="722"/>
+        <location filename="ConfigDialog.py" line="723"/>
         <source>Process failed to start</source>
         <translation>Échec de lancement du processus</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="312"/>
+        <location filename="ConfigDialog.py" line="314"/>
         <source>Yes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="312"/>
+        <location filename="ConfigDialog.py" line="314"/>
         <source>No</source>
         <translation type="unfinished"></translation>
     </message>
@@ -472,45 +472,65 @@ Par exemple, pour vérifier si un fichier existe, vous pouvez utiliser ls /chemi
 <context>
     <name>Service</name>
     <message>
-        <location filename="Service.py" line="160"/>
+        <location filename="Service.py" line="166"/>
         <source>Sudo permission error</source>
         <translation>Erreur de permission pour sudo</translation>
     </message>
     <message>
-        <location filename="Service.py" line="184"/>
+        <location filename="Service.py" line="185"/>
         <source>Error output</source>
         <translation>Erreur de sortie</translation>
     </message>
     <message>
-        <location filename="Service.py" line="158"/>
+        <location filename="Service.py" line="162"/>
         <source>Process failed to start</source>
         <translation>Échec du lancement du processus</translation>
     </message>
     <message>
         <location filename="Service.py" line="158"/>
         <source>There was an error starting the process. Please check your installation.</source>
-        <translation>Une erreur s&apos;est produite au lancement du processus. Veuillez vérifier votre installation.</translation>
+        <translation type="obsolete">Une erreur s&apos;est produite au lancement du processus. Veuillez vérifier votre installation.</translation>
+    </message>
+    <message>
+        <location filename="Service.py" line="162"/>
+        <source>Process failed to start. This should not happen and maybe it is a serious bug.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Service.py" line="164"/>
+        <source>Sudo installation error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Service.py" line="164"/>
+        <source>Sudo could not be started. Make sure it is installed correctly.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Service.py" line="166"/>
+        <source>Sudo permission error. Are you sure sudo configured correctly? If you need help, use the sudo tool in the configuration dialog of Service Monitor.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>ServiceMonitor</name>
     <message>
-        <location filename="ServiceMonitor.py" line="136"/>
+        <location filename="ServiceMonitor.py" line="137"/>
         <source>&lt;b&gt;Thank you for downloading&lt;br/&gt;Service Monitor!&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;Right click to open the&lt;br/&gt;settings dialog.</source>
         <translation>&lt;b&gt;Merci d&apos;avoir téléchargé Service Monitor !&lt;/b&gt;&lt;br/&gt;Faites un clic droit pour ouvrir la fenêtre&lt;br/&gt;de paramétrage.</translation>
     </message>
     <message>
-        <location filename="ServiceMonitor.py" line="196"/>
+        <location filename="ServiceMonitor.py" line="197"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
     <message>
-        <location filename="ServiceMonitor.py" line="196"/>
+        <location filename="ServiceMonitor.py" line="197"/>
         <source>Service &quot;%1&quot; not installed. Aborting.</source>
         <translation>Service &quot;%1&quot; non installé. Échec.</translation>
     </message>
     <message>
-        <location filename="ServiceMonitor.py" line="138"/>
+        <location filename="ServiceMonitor.py" line="139"/>
         <source>Right click to add services.</source>
         <translation>Faites un clic droit pour ajouter des services.</translation>
     </message>

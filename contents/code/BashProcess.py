@@ -10,9 +10,12 @@ from PyKDE4.kdecore import *
 ## Commands can contain the $INITDIR variable, which is replaced by /etc/init.d or
 ## /etc/rc.d, depending on the distribution.
 class BashProcess(KProcess):
-  
-  PasswordError      = 11
-  PermissionError    = 12
+
+  NoError         = 0
+  StartupError    = 1
+  PermissionError = 2
+  PasswordError   = 3
+  SudoError       = 4
 
   def __init__(self, parent = None):
     KProcess.__init__(self, parent)
@@ -29,10 +32,6 @@ class BashProcess(KProcess):
   def usesSudo(self):
     return self._password is not None
 
-  ## Returns the type of the last error.
-  def errorType(self):
-    return self._errorType if self._errorType is not None else KProcess.error(self)
-
   ## Sets the command to be executed. It may contain the variable $INITDIR, which will be replaced according to guessInitDir().
   def setBashCommand(self, command):
     command = command.replace('$INITDIR', self.guessInitDir())
@@ -41,10 +40,6 @@ class BashProcess(KProcess):
   ## Returns either /etc/init.d or /etc/rc.d (e.g. on Arch systems).
   def guessInitDir(self):
     return "/etc/rc.d" if QFile.exists("/etc/rc.d") else "/etc/init.d"
-
-  ## Returns the human-readable message of the last error.
-  def errorMessage(self):
-    return self._errorMessage
 
   ## [internal] Convenience method.
   def spitError(self, code, msg):
@@ -55,9 +50,8 @@ class BashProcess(KProcess):
     self.error.emit(self.errorType())
     self.finished.emit(1, 0)
 
-
-  ## Starts the process. If we are using sudo and there is a sudo error (e.g. password or misconfiguration), it will immediately fail.
-  ## If no error occured (or sudo isn't used), the process will be detached and the finished() signal can be used to get notified.
+  ## Starts the process and returns an error code indicating startup errors (e.g. wrong password, sudo not installed, etc)
+  ## If no error occured, the process is detached and fires the finished() signal when it terminates.
   def start(self):
 
     # setup program
@@ -73,6 +67,9 @@ class BashProcess(KProcess):
     self.setProcessChannelMode(QProcess.SeparateChannels)
     KProcess.start(self)
 
+    if self.error() == QProcess.FailedToStart:
+      return StartupError
+
     if self.usesSudo():
 
       # listen on stderr, since sudo prints everything there
@@ -82,14 +79,20 @@ class BashProcess(KProcess):
       self.waitForReadyRead()
       output = self.readAll()
       if not output.contains("enter sudo password:"):
-        return self.spitError(QProcess.FailedToStart, "Please check your sudo installation")
+        self.close()
+        return BashProcess.SudoError
+        
       self.write("%s\n" % self._password)
 
       # wait for response and either issue an error or continue with normal process management
       self.waitForReadyRead()
       output = self.readAll()
       if output.contains("try again"):
-        return self.spitError(BashProcess.PasswordError, "Wrong sudo password")
+        self.close()
+        return BashProcess.PasswordError
       elif output.contains("not in the sudoers file"):
-        return self.spitError(BashProcess.PermissionError, "Your user is not mentioned in the sudoers file")
+        self.close()
+        return BashProcess.PermissionError
 
+    return 0
+        

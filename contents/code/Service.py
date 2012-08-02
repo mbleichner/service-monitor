@@ -148,22 +148,24 @@ class Service(QObject):
     proc = self.processes[which] = BashProcess()
     if which in ["startcommand", "stopcommand"]:
       proc.setBashCommand("%s\nsleep %.1f" % (command, self.sleepTime))
+      if self.sudo: proc.setSudoPassword(password)
+      self._lastCommand = which # remember for the case we have to retry
     else:
       proc.setBashCommand(command)
       
-    if which in ["startcommand", "stopcommand"]:
-      if self.sudo:
-        proc.setSudoPassword(password)
-      self._lastCommand = which
-      
-    # start process
+    # connect slot and start process
     proc.finished.connect(partial(self.finished, which, reason))
-    proc.start()
+    errorCode = proc.start()
 
-    # errors should not be possible at this stage - just to make sure.
-    # if no error occurred, update the service state
-    if proc.errorType() == QProcess.FailedToStart:
-      QMessageBox.critical(None, self.tr('Process failed to start'), self.tr("There was an error starting the process. This should not happen and maybe you should report this incident..."))
+    # check for startup or sudo errors. if no error occurred, update the service state
+    if errorCode == BashProcess.StartupError:
+      QMessageBox.critical(None, self.tr('Process failed to start'), self.tr('Process failed to start. This should not happen and maybe it is a serious bug.'))
+    elif errorCode == BashProcess.SudoError:
+      QMessageBox.critical(None, self.tr('Sudo installation error'), self.tr("Sudo could not be started. Make sure it is installed correctly."))
+    elif errorCode == BashProcess.PermissionError:
+      QMessageBox.critical(None, self.tr('Sudo permission error'), self.tr("Sudo permission error. Are you sure sudo configured correctly? If you need help, use the sudo tool in the configuration dialog of Service Monitor."))
+    elif errorCode == BashProcess.PasswordError:
+      self.wrongPassword.emit(which)
     elif which in ["startcommand", "stopcommand"]:
       self.setRunningState("starting" if which == "startcommand" else "stopping", reason)
     
@@ -173,11 +175,7 @@ class Service(QObject):
     proc = self.processes[which]
 
     # check for errors
-    if proc.errorType() == BashProcess.PermissionError:
-      QMessageBox.critical(None, self.tr('Sudo permission error'), QString(proc.errorMessage()))
-    elif proc.errorType() == BashProcess.PasswordError:
-      self.wrongPassword.emit(which)
-    elif which == "installcheck":
+    if which == "installcheck":
       self.setInstallState('installed' if (proc.exitCode() == 0 and proc.readAllStandardOutput().length() > 0) else 'missing', reason)
     elif which == "runningcheck":
       self.setRunningState('running' if (proc.exitCode() == 0 and proc.readAllStandardOutput().length() > 0) else 'stopped', reason)
@@ -186,8 +184,6 @@ class Service(QObject):
       if errorOutput and self.reportErrors:
         QMessageBox.warning(None, self.tr('Error output'), errorOutput)
       self.execute('runningcheck', reason)
-
-    self.killProcesses(which)
 
 
   ## Retries the last command. Called (externally) when there was a password error.
