@@ -168,4 +168,32 @@
     <stopcommand>service vsftpd start &amp;> /dev/null</stopcommand>
   </service>
 
+  <service id="redshift" sudo="no">
+    <name>Redshift</name>
+    <description>Redshift screen color temperature controller - submitted by Ahmad Draidi</description>
+    <installcheck>ls /usr/bin/redshift</installcheck>
+    <runningcheck>pidof redshift</runningcheck>
+    <startcommand>/usr/bin/redshift</startcommand>
+    <stopcommand>killall -w redshift</stopcommand>
+  </service>
+
+  <service id="sickbeard" sudo="yes">
+    <name>Sickbeard</name>
+    <description>Download TVShows</description>
+    <installcheck>ls $INITDIR/sickbeard</installcheck>
+    <runningcheck>if [ -f /var/run/sickbeard/sickbeard.pid ] ; then echo running; fi</runningcheck>
+    <startcommand>service sickbeard start</startcommand>
+    <stopcommand>service sickbeard stop</stopcommand>
+  </service>
+
+  <service id="freepops-daemon" sudo="yes">
+    <name>Freepops Daemon</name>
+    <description>A daemon providing a fake pop3 server for webmail-only email services - submitted by Lorenzo Novaro</description>
+    <installcheck>ls /usr/bin/freepopsd</installcheck>
+    <runningcheck>pidof freepopsd</runningcheck>
+    <startcommand>$INITDIR/freepops start</startcommand>
+    <stopcommand>$INITDIR/freepops stop</stopcommand>
+  </service>
+
+   
 </services>

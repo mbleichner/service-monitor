@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import shutil, random, os, sys, getpass, copy
 from functools import *
+from operator import attrgetter
 
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
@@ -275,7 +276,7 @@ class ConfigDialog(KPageDialog):
       item.service = service
       self.servicesPage.activeServicesList.addItem(item)
       if select == service.id: self.servicesPage.activeServicesList.setCurrentItem(item)
-    for source in activeSources:
+    for source in sorted(activeSources, key=attrgetter('filename')):
       filename = source.filename
       servicesToShow = [s for s in source.services if not s in activeServices and not s.overridden]
       if len(servicesToShow) == 0: continue
@@ -286,7 +287,7 @@ class ConfigDialog(KPageDialog):
       item.setForeground(QBrush(QColor(255, 255, 255)))
       font = item.font(); font.setBold(True); item.setFont(font)
       self.servicesPage.inactiveServicesList.addItem(item)
-      for service in servicesToShow:
+      for service in sorted(servicesToShow, key=attrgetter('name')):
         item = QListWidgetItem(service.name)
         item.service = service
         self.servicesPage.inactiveServicesList.addItem(item)
