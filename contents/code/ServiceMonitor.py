@@ -120,7 +120,7 @@ class ServiceMonitor(Applet):
         statusIcon.setMaximumSize(22, 22)
         nameLabel.setMinimumHeight(22)
         nameLabel.setMaximumHeight(22)
-        self.refreshStateIcon(service)
+        self.refreshStateIcon(service, 'initialization')
         if self.mode == 'icons' and self.formFactor() == Plasma.Vertical:
           self.mainLayout.addItem(statusIcon, i, 0)
         elif self.mode == 'icons' and self.formFactor() == Plasma.Horizontal:
@@ -201,11 +201,13 @@ class ServiceMonitor(Applet):
 
 
   ## Updates the icon corresponding to the service argument.
-  def refreshStateIcon(self, service, reason = ''):
+  def refreshStateIcon(self, service, reason):
+    print "%s, state: %s, reason: %s" % (service.id, service.state[1], reason)
+    
     icon = self.configDialog.runningStateIndicator(service)
     self.widgets[service.id]['status'].setIcon(icon)
     self.widgets[service.id]['status'].setToolTip("%s\nStatus: %s" % (service.name, service.state[1]))
-
+    
     # send a KNotify notification if the change wasn't issued by the user
     if self.configDialog.useKNotify() and service.state[1] in ["running", "stopped"] and reason == 'polling':
       if service.state[1] == "running":
