@@ -174,16 +174,21 @@ class ServiceMonitor(Applet):
 
   ## Triggered on wrongPassword signal. Retries the last command.
   def askPasswordAndRetry(self, service):
+
+    # disconnect any previously connected slots
     try: self.passwordDialog.newPasswordAvailable.disconnect()
-    except: pass # if no slots are connected
-    self.passwordDialog.setWindowTitle(service.name)
+    except: pass # if no slots were connected
+
+    # set new callback function
+    def retry(pw):
+      self.passwordDialog.hide()
+      service.retryLastCommand(pw)
+    self.passwordDialog.newPasswordAvailable[QString].connect(retry)
+
+    # display command, focus password field and display the dialog
     self.passwordDialog.setCommandInfo(getattr(service, service.lastCommand()))
     self.passwordDialog.focusPasswordField()
-    self.passwordDialog.setVisible(True)
-    def retry(pw):
-      self.passwordDialog.setVisible(False)
-      QTimer.singleShot(0, partial(service.retryLastCommand, pw))
-    self.passwordDialog.newPasswordAvailable[QString].connect(retry)
+    self.passwordDialog.show()
     
 
   ## Open the config dialog; called by plasma.

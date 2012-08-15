@@ -36,72 +36,72 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>ConfigDialog</name>
     <message>
-        <location filename="ConfigDialog.py" line="54"/>
+        <location filename="ConfigDialog.py" line="55"/>
         <source>Service Monitor Configuration</source>
         <translation>Service Monitor Konfiguration</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="60"/>
+        <location filename="ConfigDialog.py" line="61"/>
         <source>Activate Services</source>
         <translation>Dienste aktivieren</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="61"/>
+        <location filename="ConfigDialog.py" line="62"/>
         <source>Settings</source>
         <translation>Einstellungen</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="62"/>
+        <location filename="ConfigDialog.py" line="63"/>
         <source>Manage Sources</source>
         <translation>Quellen verwalten</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="63"/>
+        <location filename="ConfigDialog.py" line="64"/>
         <source>Custom Services</source>
         <translation>Eigene Dienste</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="490"/>
+        <location filename="ConfigDialog.py" line="491"/>
         <source>Error - custom.xml is missing or has been damaged</source>
         <translation>Fehler - custom.xml fehlt oder ist kaputt</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="600"/>
+        <location filename="ConfigDialog.py" line="601"/>
         <source>Remove service</source>
         <translation>Löschen</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="600"/>
+        <location filename="ConfigDialog.py" line="601"/>
         <source>Really delete the selected service?</source>
         <translation>Ausgewählten Eintrag wirklich löschen?</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="637"/>
+        <location filename="ConfigDialog.py" line="638"/>
         <source>Upload service definition</source>
         <translation>Definition im Internet zur Verfügung stellen</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="637"/>
+        <location filename="ConfigDialog.py" line="638"/>
         <source>This will open a page in your web browser where you can submit the selected service definition to the community.</source>
         <translation>Dies wird eine Webseite öffnen, auf der du die Definition hochladen kannst.</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="396"/>
+        <location filename="ConfigDialog.py" line="397"/>
         <source>%1 (%2, %3 entries)</source>
         <translation>%1 (%2, %3 Einträge)</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="615"/>
+        <location filename="ConfigDialog.py" line="616"/>
         <source>Enter a short, concise description here</source>
         <translation>Gib hier eine kurze Beschreibung ein</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="614"/>
+        <location filename="ConfigDialog.py" line="615"/>
         <source>New Service, edit me</source>
         <translation>Neue Definition, bearbeite mich</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="314"/>
+        <location filename="ConfigDialog.py" line="315"/>
         <source>&lt;strong&gt;%1&lt;/strong&gt;&lt;br/&gt;
         %2&lt;br/&gt;
         &lt;table&gt;
@@ -122,32 +122,32 @@ p, li { white-space: pre-wrap; }
         &lt;/table&gt;</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="727"/>
+        <location filename="ConfigDialog.py" line="728"/>
         <source>Wrong password</source>
         <translation>Falsches Passwort</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="725"/>
+        <location filename="ConfigDialog.py" line="726"/>
         <source>Sudo permission error</source>
         <translation>Keine sudo-Berechtigung</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="729"/>
+        <location filename="ConfigDialog.py" line="730"/>
         <source>Success</source>
         <translation>Erfolg</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="729"/>
+        <location filename="ConfigDialog.py" line="730"/>
         <source>Your installation seems to be working. Now try to start/stop some services in your list.</source>
         <translation>Deine Installation scheint ok zu sein. Versuche nun, einige Dienste zu starten/stoppen.</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="727"/>
+        <location filename="ConfigDialog.py" line="728"/>
         <source>It seems you gave the wrong password. Try again.</source>
         <translation>Sieht so aus, als stimmt das Passwort nicht, versuchs nochmal.</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="702"/>
+        <location filename="ConfigDialog.py" line="703"/>
         <source># copy-paste this snippet into your /etc/sudoers file:
 
 </source>
@@ -156,122 +156,122 @@ p, li { white-space: pre-wrap; }
 </translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="64"/>
+        <location filename="ConfigDialog.py" line="65"/>
         <source>About</source>
         <translation>About</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="502"/>
+        <location filename="ConfigDialog.py" line="503"/>
         <source>Copy existing</source>
         <translation>Kopiere existierenden</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="531"/>
+        <location filename="ConfigDialog.py" line="532"/>
         <source>Save</source>
         <translation>Speichern</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="532"/>
+        <location filename="ConfigDialog.py" line="533"/>
         <source>Cancel</source>
         <translation>Abbrechen</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="559"/>
+        <location filename="ConfigDialog.py" line="560"/>
         <source>Edit</source>
         <translation>Bearbeiten</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="560"/>
+        <location filename="ConfigDialog.py" line="561"/>
         <source>Remove</source>
         <translation>Entfernen</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="430"/>
+        <location filename="ConfigDialog.py" line="431"/>
         <source>Updating</source>
         <translation>Aktualisiere</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="445"/>
+        <location filename="ConfigDialog.py" line="446"/>
         <source>The remote host closed the connection prematurely. Try again.</source>
         <translation>Der Server hat die Verbindung beendet. Versuchs nochmal.</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="446"/>
+        <location filename="ConfigDialog.py" line="447"/>
         <source>The update server could not be found. Are you online?</source>
         <translation>Der Update-Server konnte nicht gefunden werden. Bist du online?</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="447"/>
+        <location filename="ConfigDialog.py" line="448"/>
         <source>The request timed out. Probably the server is under heavy load and you should try again later.</source>
         <translation>Bei der Anfrage gab es einen Timeout. Möglicherweise ist der Server überlastet und du solltest es später nochmal versuchen.</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="449"/>
+        <location filename="ConfigDialog.py" line="450"/>
         <source>Server access denied. Write me a mail if this happens and try another server.</source>
         <translation>Zugriff verweigert. Schreibe mir eine Mail falls das passiert und probiere es mit einem anderen Server.</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="450"/>
+        <location filename="ConfigDialog.py" line="451"/>
         <source>File not found. Write me a mail if this happens and try another server.</source>
         <translation>Datei nicht gefunden. Schreibe mir eine Mail falls das passiert und probiere es mit einem anderen Server.</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="466"/>
+        <location filename="ConfigDialog.py" line="467"/>
         <source>Update successful</source>
         <translation>Aktualisierung erfolgreich</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="468"/>
+        <location filename="ConfigDialog.py" line="469"/>
         <source>Update failed</source>
         <translation>Aktualisierung fehlgeschlagen</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="466"/>
+        <location filename="ConfigDialog.py" line="467"/>
         <source>Update successful.</source>
         <translation>Aktualisierung erfolgreich.</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="468"/>
+        <location filename="ConfigDialog.py" line="469"/>
         <source>The file could be downloaded, but there was an error unpacking it. Maybe it is corrupted.</source>
         <translation>Die Datei konnte heruntergeladen, aber nicht entpackt werden. Möglicherweise ist sie beschädigt.</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="715"/>
+        <location filename="ConfigDialog.py" line="716"/>
         <source>Enter password</source>
         <translation>Passwort eingeben</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="715"/>
+        <location filename="ConfigDialog.py" line="716"/>
         <source>Please enter your password.</source>
         <translation>Bitte gib dein Passwort ein.</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="723"/>
+        <location filename="ConfigDialog.py" line="724"/>
         <source>Sudo configuration error. Verify that sudo is installed correctly and read the help text at the bottom for hints.</source>
         <translation>Sudo Konfigurationsfehler. Stelle sicher, dass sudo korrekt installiert ist und lies den Hilfetext weiter unten.</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="444"/>
+        <location filename="ConfigDialog.py" line="445"/>
         <source>Connection refused by the server. Usually this means that the server is temporarily offline.</source>
         <translation>Der Verbindungsaufbau wurde vom Server abgelehnt. In der Regel bedeutet das, dass der Server gerade offline ist.</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="448"/>
+        <location filename="ConfigDialog.py" line="449"/>
         <source>Network error. Please check your connection and try again.</source>
         <translation>Netzwerkfehler. Prüfe deine Verbindung und versuche es nochmal.</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="723"/>
+        <location filename="ConfigDialog.py" line="724"/>
         <source>Process failed to start</source>
         <translation>Fehler beim Starten des Prozesses</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="314"/>
+        <location filename="ConfigDialog.py" line="315"/>
         <source>Yes</source>
         <translation>Ja</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="314"/>
+        <location filename="ConfigDialog.py" line="315"/>
         <source>No</source>
         <translation>Nein</translation>
     </message>
@@ -410,42 +410,47 @@ Um z.B. die Existenz einer Datei zu prüfen, kann man &quot;ls /pfad/zur/datei&q
     <message>
         <location filename="Password_ui.py" line="80"/>
         <source>Dialog</source>
-        <translation>Dialog</translation>
+        <translation type="obsolete">Dialog</translation>
     </message>
     <message>
-        <location filename="Password_ui.py" line="81"/>
+        <location filename="Password_ui.py" line="80"/>
         <source>Please enter your sudo password.</source>
         <translation>Bitte gib dein sudo-Passwort ein.</translation>
     </message>
     <message>
-        <location filename="Password_ui.py" line="82"/>
+        <location filename="Password_ui.py" line="81"/>
         <source>The following command will be executed:</source>
         <translation>Folgender Befehl wird ausgeführt:</translation>
     </message>
     <message>
-        <location filename="Password_ui.py" line="83"/>
+        <location filename="Password_ui.py" line="82"/>
         <source>/etc/init.d/apache stop</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Password_ui.py" line="84"/>
+        <location filename="Password_ui.py" line="83"/>
         <source>Remember for this session</source>
         <translation>Für diese Sitzung merken</translation>
     </message>
     <message>
-        <location filename="Password_ui.py" line="85"/>
+        <location filename="Password_ui.py" line="84"/>
         <source>Remember for fixed time</source>
         <translation>Für eine feste Zeit merken</translation>
     </message>
     <message>
-        <location filename="Password_ui.py" line="86"/>
+        <location filename="Password_ui.py" line="85"/>
         <source>Do not remember</source>
         <translation>Nicht merken</translation>
     </message>
     <message>
-        <location filename="Password_ui.py" line="87"/>
+        <location filename="Password_ui.py" line="86"/>
         <source> min</source>
         <translation> min</translation>
+    </message>
+    <message>
+        <location filename="Password_ui.py" line="79"/>
+        <source>Password input</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -499,22 +504,22 @@ Um z.B. die Existenz einer Datei zu prüfen, kann man &quot;ls /pfad/zur/datei&q
         <translation>&lt;b&gt;Danke fürs Installieren von&lt;br/&gt;Service Monitor!&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;Öffne die Einstellungen&lt;br/&gt;mit einem Rechtsklick.</translation>
     </message>
     <message>
-        <location filename="ServiceMonitor.py" line="197"/>
+        <location filename="ServiceMonitor.py" line="202"/>
         <source>Error</source>
         <translation>Fehler</translation>
     </message>
     <message>
-        <location filename="ServiceMonitor.py" line="197"/>
+        <location filename="ServiceMonitor.py" line="202"/>
         <source>Service &quot;%1&quot; not installed. Aborting.</source>
         <translation>&quot;%1&quot; ist nicht installiert. Abbruch.</translation>
     </message>
     <message>
-        <location filename="ServiceMonitor.py" line="214"/>
+        <location filename="ServiceMonitor.py" line="221"/>
         <source>%1 has been stopped.</source>
         <translation>%1 wurde beendet.</translation>
     </message>
     <message>
-        <location filename="ServiceMonitor.py" line="212"/>
+        <location filename="ServiceMonitor.py" line="219"/>
         <source>%1 is now running.</source>
         <translation>%1 wurde gestartet.</translation>
     </message>

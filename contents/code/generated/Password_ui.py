@@ -12,7 +12,6 @@ class Ui_PasswordDialog(object):
     def setupUi(self, PasswordDialog):
         PasswordDialog.setObjectName(_fromUtf8("PasswordDialog"))
         PasswordDialog.resize(309, 173)
-        PasswordDialog.setModal(True)
         self.verticalLayout = QtGui.QVBoxLayout(PasswordDialog)
         self.verticalLayout.setContentsMargins(15, 5, 15, 5)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
@@ -77,7 +76,7 @@ class Ui_PasswordDialog(object):
         PasswordDialog.setTabOrder(self.rememberTimeSpinbox, self.buttonBox)
 
     def retranslateUi(self, PasswordDialog):
-        PasswordDialog.setWindowTitle(QtGui.QApplication.translate("PasswordDialog", "Dialog", None, QtGui.QApplication.UnicodeUTF8))
+        PasswordDialog.setWindowTitle(QtGui.QApplication.translate("PasswordDialog", "Password input", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setText(QtGui.QApplication.translate("PasswordDialog", "Please enter your sudo password.", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("PasswordDialog", "The following command will be executed:", None, QtGui.QApplication.UnicodeUTF8))
         self.commandLabel.setText(QtGui.QApplication.translate("PasswordDialog", "/etc/init.d/apache stop", None, QtGui.QApplication.UnicodeUTF8))
