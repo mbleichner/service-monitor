@@ -24,6 +24,10 @@ class BashProcess(KProcess):
     self._password = None
     self._command = ''
 
+  def kill(self):
+    KProcess.kill(self)
+    KProcess.close(self)
+    
   ## Sets the password which is forwarded to sudo.
   def setSudoPassword(self, pw):
     self._password = pw
@@ -79,7 +83,7 @@ class BashProcess(KProcess):
       self.waitForReadyRead()
       output = self.readAll()
       if not output.contains("enter sudo password:"):
-        self.close()
+        self.kill()
         return BashProcess.SudoError
         
       self.write("%s\n" % self._password)
@@ -88,10 +92,10 @@ class BashProcess(KProcess):
       self.waitForReadyRead()
       output = self.readAll()
       if output.contains("try again"):
-        self.close()
+        self.kill()
         return BashProcess.PasswordError
       elif output.contains("not in the sudoers file"):
-        self.close()
+        self.kill()
         return BashProcess.PermissionError
 
     return 0
