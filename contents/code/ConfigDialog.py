@@ -487,9 +487,13 @@ class ConfigDialog(KPageDialog):
   def populateCustomList(self, select = None):
     self.customPage.serviceList.clear()
     self.customPage.serviceList.setIconSize(QSize(22,22))
+    
     if not self.sources.has_key(QString('custom.xml')):
       self.customPage.serviceList.addItem(self.tr('Error - custom.xml is missing or has been damaged'))
+      self.customPage.setEnabled(False)
       return
+      
+    self.customPage.setEnabled(True)
     for service in self.sources[QString('custom.xml')].services:
       icon = self.serviceIcon(service)
       item = QListWidgetItem(icon, (service.name + ' - ' + service.description) if service.description else service.name)
@@ -497,7 +501,7 @@ class ConfigDialog(KPageDialog):
       self.customPage.serviceList.addItem(item)
       if select == service.id:
         self.customPage.serviceList.setCurrentItem(item)
-        
+          
     self.customPage.copyComboBox.clear()
     self.customPage.copyComboBox.view().setSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
     self.customPage.copyComboBox.addItem(QIcon(':plus.png'), self.tr("Copy existing"))

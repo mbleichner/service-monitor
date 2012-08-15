@@ -77,7 +77,7 @@ class Ui_Sources(object):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'DejaVu Sans\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p></body></html>"))
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.infoTextarea.setObjectName(_fromUtf8("infoTextarea"))
         self.verticalLayout.addWidget(self.infoTextarea)
         self.horizontalLayout_2 = QtGui.QHBoxLayout()
@@ -156,8 +156,8 @@ class Ui_Sources(object):
     def retranslateUi(self, Sources):
         Sources.setWindowTitle(QtGui.QApplication.translate("Sources", "Dialog", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("Sources", "Online Update:", None, QtGui.QApplication.UnicodeUTF8))
-        self.updateComboBox.setItemText(0, QtGui.QApplication.translate("Sources", "from www.documentroot.net", None, QtGui.QApplication.UnicodeUTF8))
-        self.updateComboBox.setItemText(1, QtGui.QApplication.translate("Sources", "from www.github.com", None, QtGui.QApplication.UnicodeUTF8))
+        self.updateComboBox.setItemText(0, QtGui.QApplication.translate("Sources", "from www.github.com", None, QtGui.QApplication.UnicodeUTF8))
+        self.updateComboBox.setItemText(1, QtGui.QApplication.translate("Sources", "from www.documentroot.net", None, QtGui.QApplication.UnicodeUTF8))
         self.searchButton.setToolTip(QtGui.QApplication.translate("Sources", "Look for new XML files on the internet", None, QtGui.QApplication.UnicodeUTF8))
         self.searchButton.setText(QtGui.QApplication.translate("Sources", "Update", None, QtGui.QApplication.UnicodeUTF8))
         self.label_3.setText(QtGui.QApplication.translate("Sources", "Last update:", None, QtGui.QApplication.UnicodeUTF8))

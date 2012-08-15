@@ -82,27 +82,27 @@ p, li { white-space: pre-wrap; }
         <translation>Services personnalisés</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="491"/>
+        <location filename="ConfigDialog.py" line="492"/>
         <source>Error - custom.xml is missing or has been damaged</source>
         <translation>Erreur - le fichier custom.xml est manquant ou corrompu</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="601"/>
+        <location filename="ConfigDialog.py" line="605"/>
         <source>Remove service</source>
         <translation>Supprimer le service</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="601"/>
+        <location filename="ConfigDialog.py" line="605"/>
         <source>Really delete the selected service?</source>
         <translation>Voulez-vous vraiment supprimer ce service ?</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="638"/>
+        <location filename="ConfigDialog.py" line="642"/>
         <source>Upload service definition</source>
         <translation>Envoi de la définition du service</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="638"/>
+        <location filename="ConfigDialog.py" line="642"/>
         <source>This will open a page in your web browser where you can submit the selected service definition to the community.</source>
         <translation>Une page s&apos;affichera dans votre navigateur web où vous pourrez envoyer la définition du service sélectionné à la communauté.</translation>
     </message>
@@ -112,12 +112,12 @@ p, li { white-space: pre-wrap; }
         <translation>%1 (%2, %3 entrées)</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="616"/>
+        <location filename="ConfigDialog.py" line="620"/>
         <source>Enter a short, concise description here</source>
         <translation>Donnez une courte description du service</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="615"/>
+        <location filename="ConfigDialog.py" line="619"/>
         <source>New Service, edit me</source>
         <translation>Nouveau service, éditez-moi</translation>
     </message>
@@ -143,32 +143,32 @@ p, li { white-space: pre-wrap; }
         &lt;/table&gt;</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="728"/>
+        <location filename="ConfigDialog.py" line="732"/>
         <source>Wrong password</source>
         <translation>Mot de passe incorrect</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="726"/>
+        <location filename="ConfigDialog.py" line="730"/>
         <source>Sudo permission error</source>
         <translation>Erreur de permission pour sudo</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="730"/>
+        <location filename="ConfigDialog.py" line="734"/>
         <source>Success</source>
         <translation>Opération réussie</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="730"/>
+        <location filename="ConfigDialog.py" line="734"/>
         <source>Your installation seems to be working. Now try to start/stop some services in your list.</source>
         <translation>Votre installation semble opérationnelle. Essayez maintenant de démarrer / arrêter des services de votre liste.</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="728"/>
+        <location filename="ConfigDialog.py" line="732"/>
         <source>It seems you gave the wrong password. Try again.</source>
         <translation>Le mot de passe semble incorrect. Réessayez.</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="703"/>
+        <location filename="ConfigDialog.py" line="707"/>
         <source># copy-paste this snippet into your /etc/sudoers file:
 
 </source>
@@ -182,27 +182,27 @@ p, li { white-space: pre-wrap; }
         <translation>À propos</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="503"/>
+        <location filename="ConfigDialog.py" line="507"/>
         <source>Copy existing</source>
         <translation>Copier</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="532"/>
+        <location filename="ConfigDialog.py" line="536"/>
         <source>Save</source>
         <translation>Sauvegarder</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="533"/>
+        <location filename="ConfigDialog.py" line="537"/>
         <source>Cancel</source>
         <translation>Annuler</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="560"/>
+        <location filename="ConfigDialog.py" line="564"/>
         <source>Edit</source>
         <translation>Éditer</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="561"/>
+        <location filename="ConfigDialog.py" line="565"/>
         <source>Remove</source>
         <translation>Supprimer</translation>
     </message>
@@ -257,17 +257,17 @@ p, li { white-space: pre-wrap; }
         <translation>Le fichier a pu être téléchargé, mais une erreur est survenue lors de la décompression. Il est peut-être corrompu.</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="716"/>
+        <location filename="ConfigDialog.py" line="720"/>
         <source>Enter password</source>
         <translation>Entrez le mot de passe</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="716"/>
+        <location filename="ConfigDialog.py" line="720"/>
         <source>Please enter your password.</source>
         <translation>Veuillez entrez votre mot de passe.</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="724"/>
+        <location filename="ConfigDialog.py" line="728"/>
         <source>Sudo configuration error. Verify that sudo is installed correctly and read the help text at the bottom for hints.</source>
         <translation>Erreur de configuration de sudo. Véfiez que sudo soit correctement installé et consultez l&apos;aide ci-dessous pour plus de détails.</translation>
     </message>
@@ -282,7 +282,7 @@ p, li { white-space: pre-wrap; }
         <translation>Erreur réseau. Veuillez vérifier votre connexion et essayer à nouveau.</translation>
     </message>
     <message>
-        <location filename="ConfigDialog.py" line="724"/>
+        <location filename="ConfigDialog.py" line="728"/>
         <source>Process failed to start</source>
         <translation>Échec de lancement du processus</translation>
     </message>
@@ -830,12 +830,12 @@ plus récentes et les ajouter dans le plasmoid, et les utiliser immédiatement.<
         <translation>Dernière mise à jour :</translation>
     </message>
     <message>
-        <location filename="Sources_ui.py" line="160"/>
+        <location filename="Sources_ui.py" line="159"/>
         <source>from www.github.com</source>
         <translation>depuis www.github.com</translation>
     </message>
     <message>
-        <location filename="Sources_ui.py" line="159"/>
+        <location filename="Sources_ui.py" line="160"/>
         <source>from www.documentroot.net</source>
         <translation>depuis www.documentroot.net</translation>
     </message>
