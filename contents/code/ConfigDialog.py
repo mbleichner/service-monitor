@@ -722,13 +722,16 @@ class ConfigDialog(KPageDialog):
     proc = BashProcess()
     proc.setBashCommand('cat /etc/sudoers')
     proc.setSudoPassword(self.settingsPage.passwordLineEdit.text())
-    proc.start()
-    proc.waitForFinished()
-    if proc.errorType() == QProcess.FailedToStart:
-      QMessageBox.critical(None, self.tr('Process failed to start'), self.tr("Sudo configuration error. Verify that sudo is installed correctly and read the help text at the bottom for hints."))
-    elif proc.errorType() == BashProcess.PermissionError:
-      QMessageBox.critical(None, self.tr('Sudo permission error'), QString(proc.errorMessage()))
-    elif proc.errorType() == BashProcess.PasswordError:
+    errorCode = proc.start()
+
+    # check for startup or sudo errors. if no error occurred, update the service state
+    if errorCode == BashProcess.StartupError:
+      QMessageBox.critical(None, self.tr('Process failed to start'), self.tr('Process failed to start. This should not happen and maybe it is a serious bug.'))
+    elif errorCode == BashProcess.SudoError:
+      QMessageBox.critical(None, self.tr('Sudo installation error'), self.tr("Sudo could not be started. Make sure it is installed correctly."))
+    elif errorCode == BashProcess.PermissionError:
+      QMessageBox.critical(None, self.tr('Sudo permission error'), self.tr("Permission denied by /etc/sudoers. Make sure it contains the correct lines."))
+    elif errorCode == BashProcess.PasswordError:
       QMessageBox.warning(None, self.tr('Wrong password'), self.tr("It seems you gave the wrong password. Try again."))
     else:
       QMessageBox.information(None, self.tr('Success'), self.tr("Your installation seems to be working. Now try to start/stop some services in your list."))
