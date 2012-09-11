@@ -1,18 +1,15 @@
 # -*- coding: utf-8 -*-
-import sys, dbus
 
-from functools import *
-
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
-from PyKDE4.plasma import *
-from PyKDE4.plasmascript import *
-from PyKDE4.kdeui import *
-
-from generated.indicators_default_rc import *
-from generated.Password_ui import *
 from ConfigDialog import *
 from PasswordDialog import *
+from PyKDE4.kdeui import *
+from PyKDE4.plasma import *
+from PyKDE4.plasmascript import *
+from PyQt4.QtCore import *
+from PyQt4.QtGui import *
+from functools import *
+from generated.Password_ui import *
+from generated.indicators_default_rc import *
 
 
 contentsdir = os.path.dirname(os.path.dirname(__file__))

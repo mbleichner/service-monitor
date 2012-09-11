@@ -1,19 +1,19 @@
 # -*- coding: utf-8 -*-
-import shutil, random, os, sys, getpass, copy
+import random
+import os
+import getpass
+import copy
 from functools import *
 from operator import attrgetter
-
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 from PyQt4.QtNetwork import *
 from PyKDE4.kdeui import *
-
 from generated.Services_ui import *
 from generated.Custom_ui import *
 from generated.Sources_ui import *
 from generated.Settings_ui import *
 from generated.About_ui import *
-
 from Source import *
 from Service import *
 from functions import *
@@ -277,7 +277,6 @@ class ConfigDialog(KPageDialog):
       self.servicesPage.activeServicesList.addItem(item)
       if select == service.id: self.servicesPage.activeServicesList.setCurrentItem(item)
     for source in sorted(activeSources, key=attrgetter('filename')):
-      filename = source.filename
       servicesToShow = [s for s in source.services if not s in activeServices and not s.overridden]
       if len(servicesToShow) == 0: continue
       item = QListWidgetItem(source.name if source.name else source.filename)

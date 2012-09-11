@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 from functools import *
-
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
-
 from generated.Password_ui import *
 
 

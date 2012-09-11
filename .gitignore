@@ -1,4 +1,4 @@
 doxygen
 *.py[co]
-
+nbproject/private
 contents/sources/upload.sh

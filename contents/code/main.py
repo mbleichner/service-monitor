@@ -9,6 +9,8 @@ import os
 from ServiceMonitor import *
 
 codedir = os.path.dirname(__file__)
+contentsdir = os.path.dirname(codedir)
+maindir = os.path.dirname(contentsdir)
 
 # Set up localization
 locale = QLocale.system().name()
@@ -19,3 +21,6 @@ QApplication.installTranslator(translator)
 ## The main function called by Plasma.
 def CreateApplet(parent):
   return ServiceMonitor(parent)
+
+if __name__ == "__main__":
+    os.system("plasmoidviewer %s" % maindir)
