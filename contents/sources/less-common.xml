@@ -195,5 +195,32 @@
     <stopcommand>$INITDIR/freepops stop</stopcommand>
   </service>
 
+  <service id="nmbd-daemon" sudo="yes">
+    <name>Nmbd Daemon</name>
+    <description>NetBIOS nameservice and browsing support - submitted by xpertxx</description>
+    <installcheck>ls $INITDIR/nmb</installcheck>
+    <runningcheck>pidof nmbd</runningcheck>
+    <startcommand>$INITDIR/nmb start &amp;> /dev/null</startcommand>
+    <stopcommand>$INITDIR/nmb stop &amp;> /dev/null</stopcommand>
+  </service>
+
+  <service id="noip2-daemon" sudo="yes">
+    <name>NoIP Daemon</name>
+    <description>NoIP Dynamic DNS</description>
+    <installcheck>ls /usr/bin/noip2</installcheck>
+    <runningcheck>pidof noip2</runningcheck>
+    <startcommand>service noip2 start</startcommand>
+    <stopcommand>service noip2 stop</stopcommand>
+  </service>
+
+  <service id="redis-daemon" sudo="yes">
+    <name>Redis Database</name>
+    <description>Redis NoSQL Database</description>
+    <installcheck>ls /usr/local/bin/redis-server</installcheck>
+    <runningcheck>pidof redis</runningcheck>
+    <startcommand>service redis start</startcommand>
+    <stopcommand>service redis stop</stopcommand>
+  </service>
+
    
 </services>

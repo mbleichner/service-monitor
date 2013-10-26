@@ -9,11 +9,20 @@
 
   <service id="apache2-daemon-arch" priority="2" sudo="yes" icon="apache">
     <name>Apache2 Webserver</name>
-    <description>The most commonly used web server - submitted by hunterm</description>
-    <installcheck>ls $INITDIR/httpd</installcheck>
-    <runningcheck>ps ax | grep httpd | grep -v grep</runningcheck>
-    <startcommand>$INITDIR/httpd start</startcommand>
-    <stopcommand>$INITDIR/httpd stop</stopcommand>
+    <description>The most commonly used web server</description>
+    <installcheck>ls /usr/sbin/apachectl</installcheck>
+    <runningcheck>systemctl status httpd | grep running</runningcheck>
+    <startcommand>systemctl start httpd &amp;> /dev/null</startcommand>
+    <stopcommand>systemctl stop httpd &amp;> /dev/null</stopcommand>
+  </service>
+
+  <service id="mysql-daemon" priority="2" sudo="yes" icon="database">
+    <name>MySQL Database</name>
+    <description>Database server, mainly used for PHP</description>
+    <installcheck>ls /usr/bin/mysqld</installcheck>
+    <runningcheck>systemctl status mysqld | grep running</runningcheck>
+    <startcommand>systemctl start mysqld &amp;> /dev/null</startcommand>
+    <stopcommand>systemctl stop mysqld &amp;> /dev/null</stopcommand>
   </service>
 
 </services>

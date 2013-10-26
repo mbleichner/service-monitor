@@ -106,6 +106,15 @@
     <stopcommand>$INITDIR/samba stop &amp;> /dev/null</stopcommand>
   </service>
 
+  <service id="samba-daemon-2" sudo="yes" icon="samba">
+    <name>Samba Server (alternative)</name>
+    <description>Use this definition if the other one does not work for you - submitted by xpertxx</description>
+    <installcheck>ls $INITDIR/smb</installcheck>
+    <runningcheck>pidof smbd</runningcheck>
+    <startcommand>$INITDIR/smb start &amp;> /dev/null</startcommand>
+    <stopcommand>$INITDIR/smb stop &amp;> /dev/null</stopcommand>
+  </service>
+
   <service id="postgresql-daemon" sudo="yes" icon="database">
     <name>PostgreSQL Server</name>
     <description>PostgreSQL Database Server</description>
@@ -158,6 +167,24 @@
     <runningcheck>pidof privoxy</runningcheck>
     <startcommand>$INITDIR/privoxy start &amp;> /dev/null</startcommand>
     <stopcommand>$INITDIR/privoxy stop &amp;> /dev/null</stopcommand>
+  </service>
+
+  <service id="dropbox-daemon" sudo="yes" icon="network">
+    <name>Dropbox</name>
+    <description>Dropbox cloud storage and file sync - submitted by abmoraz</description>
+    <installcheck>ls $HOME/.dropbox-dist/dropboxd</installcheck>
+    <runningcheck>pidof dropbox</runningcheck>
+    <startcommand>$HOME/.dropbox-dist/dropboxd &amp;</startcommand>
+    <stopcommand>killall dropbox</stopcommand>
+  </service>
+
+  <service id="tomcat6-daemon" sudo="yes" icon="apache">
+    <name>Tomcat 6</name>
+    <description>Tomcat 6 - submitted by Kais Hassan</description>
+    <installcheck>ps -ef | grep tomcat | grep -v grep | grep -v restart | awk '{print $2}'</installcheck>
+    <runningcheck>pidof dropbox</runningcheck>
+    <startcommand>service tomcat6 start</startcommand>
+    <stopcommand>service tomcat6 stop</stopcommand>
   </service>
 
 </services>

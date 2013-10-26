@@ -16,4 +16,13 @@
     <stopcommand>stop mysql</stopcommand>
   </service>
 
+  <service id="samba-daemon" priority="2"sudo="yes" icon="samba">
+    <name>Samba Server</name>
+    <description>SMB File Server - submitted by abmoraz / Stewart Peters</description>
+    <installcheck>ls /usr/sbin/smbd</installcheck>
+    <runningcheck>pidof smbd</runningcheck>
+    <startcommand>start smbd &amp;</startcommand>
+    <stopcommand>stop smbd &amp;</stopcommand>
+  </service>
+
 </services>

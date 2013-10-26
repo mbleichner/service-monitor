@@ -44,6 +44,15 @@
     <stopcommand>swapoff -a</stopcommand>
   </service>
 
+  <service id="swap-space-clear" sudo="yes" icon="partition">
+    <name>Clear Swap Space</name>
+    <description>Deactivate, then reactivate all swap partitions (useful for flushing swapped data) - submitted by CxOrg</description>
+    <installcheck>echo "always installed"</installcheck>
+    <runningcheck>if [ $(cat /proc/swaps | wc --lines) != "1" ]; then echo "activated"; fi</runningcheck>
+    <startcommand>swapoff -a; swapon -a</startcommand>
+    <stopcommand>swapoff -a; swapon -a</stopcommand>
+  </service>
+
   <service id="package-cache" sudo="yes" icon="package">
     <name>Update Package Cache</name>
     <description>Update package cache, download upgradable packages, delete obsolete ones.</description>
@@ -78,6 +87,15 @@
     <runningcheck>xset q | grep "DPMS is Enabled"</runningcheck>
     <startcommand>xset dpms force on</startcommand>
     <stopcommand>xset dpms force off</stopcommand>
+  </service>
+
+  <service id="suspend-to-ram" sudo="yes" icon="shutdown">
+    <name>Suspend to RAM</name>
+    <description>Sleep (Suspend to RAM) - submitted by CxOrg</description>
+    <installcheck>ls /usr/sbin/pm-suspend</installcheck>
+    <runningcheck>ps ax | grep "/usr/sbin/pm-suspend" | grep -v grep | grep -v akonadi</runningcheck>
+    <startcommand>/usr/sbin/pm-suspend</startcommand>
+    <stopcommand></stopcommand>
   </service>
 
 </services>
