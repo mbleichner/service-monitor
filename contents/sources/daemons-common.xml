@@ -187,4 +187,22 @@
     <stopcommand>service tomcat6 stop</stopcommand>
   </service>
 
+  <service id="pureftp-daemon" sudo="yes" icon="network">
+    <name>Pure-FTP Server</name>
+    <description>Pure-FTPd FTP service</description>
+    <installcheck>ls $INITDIR/pure-ftpd</installcheck>
+    <runningcheck>pidof "pure-ftpd (SERVER)"</runningcheck>
+    <startcommand>$INITDIR/pure-ftpd start 2>/dev/null</startcommand>
+    <stopcommand>$INITDIR/pure-ftpd stop 2>/dev/null</stopcommand>
+  </service>
+
+  <service id="openvpn-daemon" sudo="yes" icon="network">
+    <name>OpenVPN</name>
+    <description>OpenVPN service</description>
+    <installcheck>ls $INITDIR/openvpn</installcheck>
+    <runningcheck>pidof openvpn</runningcheck>
+    <startcommand>$INITDIR/openvpn start &amp;> /dev/null</startcommand>
+    <stopcommand>$INITDIR/openvpn stop &amp;> /dev/null</stopcommand>
+  </service>
+
 </services>

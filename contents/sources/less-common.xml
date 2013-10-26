@@ -222,5 +222,40 @@
     <stopcommand>service redis stop</stopcommand>
   </service>
 
-   
+  <service id="vtun-daemon" sudo="yes">
+    <name>VTun</name>
+    <description>Virtual Tunnels over TCP/IP networks</description>
+    <installcheck>ls $INITDIR/vtun</installcheck>
+    <runningcheck>pidof vtund</runningcheck>
+    <startcommand>$INITDIR/vtun start</startcommand>
+    <stopcommand>$INITDIR/vtun stop</stopcommand>
+  </service>
+
+  <service id="amule-daemon" sudo="no">
+    <name>aMule Daemon</name>
+    <description>aMule Daemon - submitted by Mte90</description>
+    <installcheck>ls /usr/bin/amuled</installcheck>
+    <runningcheck>pidof amuled</runningcheck>
+    <startcommand>/usr/bin/amuled &amp;</startcommand>
+    <stopcommand>killall amuled</stopcommand>
+  </service>
+
+  <service id="hiawatha-daemon" sudo="yes">
+    <name>Hiawatha Daemon</name>
+    <description>An advanced and secure webserver for Unix</description>
+    <installcheck>ls /usr/local/sbin/hiawatha</installcheck>
+    <runningcheck>pidof hiawatha</runningcheck>
+    <startcommand>/usr/local/sbin/hiawatha</startcommand>
+    <stopcommand>pkill hiawatha</stopcommand>
+  </service>
+
+  <service id="sabnzbd-daemon" sudo="yes">
+    <name>SabNZBd</name>
+    <description>Web-based binary newsgrabber with NZB support</description>
+    <installcheck>ls $INITDIR/sabnzbdplus</installcheck>
+    <runningcheck>pidof -x sabnzbdplus</runningcheck>
+    <startcommand>$INITDIR/sabnzbdplus start</startcommand>
+    <stopcommand>$INITDIR/sabnzbdplus stop</stopcommand>
+  </service>
+
 </services>
