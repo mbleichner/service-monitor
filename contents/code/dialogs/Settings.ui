@@ -355,12 +355,12 @@ if you experience annoying error output being produced by some commands.</string
           </item>
           <item>
            <property name="text">
-            <string>every user in group sudoers, ask for user password</string>
+            <string>every user in group 'sudo', ask for user password</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>every user in group sudoers, ask for root password</string>
+            <string>every user in group 'sudo', ask for root password</string>
            </property>
           </item>
           <item>
